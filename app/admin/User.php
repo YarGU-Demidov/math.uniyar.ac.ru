@@ -5,23 +5,20 @@
  * For full list see documentation.
  */
 
-// Create admin model from User class with title and url alias
-Admin::model('\User')->title('Users')->as('users-alias-name')->denyCreating(function ()
+Admin::model('App\User')->title('Users')->display(function ()
 {
-	// Deny creating on thursday
-	return date('w') == 4;
-})->denyEditingAndDeleting(function ($instance)
+	$display = AdminDisplay::table();
+	$display->columns([
+		Column::string('name')->label('Name'),
+		Column::string('email')->label('Email'),
+	]);
+	return $display;
+})->createAndEdit(function ()
 {
-	// deny editing and deleting rows when this is true
-	return ($instance->id <= 2) || ($instance->email == 'admin');
-})->columns(function ()
-{
-	// Describing columns for table view
-	Column::string('name', 'Name');
-	Column::string('email', 'Email');
-})->form(function ()
-{
-	// Describing elements in create and editing forms
-	FormItem::text('name', 'Name');
-	FormItem::text('email', 'Email');
+	$form = AdminForm::form();
+	$form->items([
+		FormItem::text('name', 'Name')->required(),
+		FormItem::text('email', 'Email')->required()->unique(),
+	]);
+	return $form;
 });
