@@ -148,7 +148,10 @@ return [
 
 	    //ADDITIVES
 	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-	    Jenssegers\Agent\AgentServiceProvider::class
+	    Jenssegers\Agent\AgentServiceProvider::class,
+
+	    SleepingOwl\Admin\AdminServiceProvider::class,
+	    Illuminate\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -199,8 +202,18 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
 		//ADDITIVES
-        'Agent'     => 'Jenssegers\Agent\Facades\Agent',
+        'Agent'     => Jenssegers\Agent\Facades\Agent::class,
 
+        'Admin'             => SleepingOwl\Admin\Admin::class,
+        'AdminAuth'         => SleepingOwl\AdminAuth\Facades\AdminAuth::class,
+        'AdminRouter'       => SleepingOwl\Admin\Facades\AdminRouter::class,
+        'AssetManager'      => SleepingOwl\Admin\AssetManager\AssetManager::class,
+        'Column'            => SleepingOwl\Admin\Columns\Column::class,
+        'FormItem'          => SleepingOwl\Admin\Models\Form\FormItem::class,
+        'ModelItem'         => SleepingOwl\Admin\Models\ModelItem::class,
+
+        'Form'      => Illuminate\Html\FormFacade::class,
+        'Html'      => Illuminate\Html\HtmlFacade::class,
     ],
 
 ];
