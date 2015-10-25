@@ -10,7 +10,7 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "doctrine/dbal": "^2.5",
         "jenssegers/agent": "^2.2",
-        "sleeping-owl/admin": "^2.0"
+        "sleeping-owl/admin": "dev-development"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

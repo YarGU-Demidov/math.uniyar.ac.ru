@@ -67,11 +67,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fzaninotto/faker" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hamcrest/hamcrest-php" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/html" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/imagecache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jenssegers/agent" />
@@ -96,7 +92,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/phpunit-mock-objects" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psy/psysh" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/comparator" />
@@ -107,7 +102,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/recursion-context" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sleeping-owl/admin" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/sleeping-owl/with-join" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/class-loader" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
@@ -144,11 +138,7 @@
           <root url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
           <root url="file://$MODULE_DIR$/vendor/fzaninotto/faker" />
-          <root url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
           <root url="file://$MODULE_DIR$/vendor/hamcrest/hamcrest-php" />
-          <root url="file://$MODULE_DIR$/vendor/illuminate/html" />
-          <root url="file://$MODULE_DIR$/vendor/intervention/image" />
-          <root url="file://$MODULE_DIR$/vendor/intervention/imagecache" />
           <root url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
           <root url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
           <root url="file://$MODULE_DIR$/vendor/jenssegers/agent" />
@@ -173,7 +163,6 @@
           <root url="file://$MODULE_DIR$/vendor/phpunit/php-token-stream" />
           <root url="file://$MODULE_DIR$/vendor/phpunit/phpunit" />
           <root url="file://$MODULE_DIR$/vendor/phpunit/phpunit-mock-objects" />
-          <root url="file://$MODULE_DIR$/vendor/psr/http-message" />
           <root url="file://$MODULE_DIR$/vendor/psr/log" />
           <root url="file://$MODULE_DIR$/vendor/psy/psysh" />
           <root url="file://$MODULE_DIR$/vendor/sebastian/comparator" />
@@ -184,7 +173,6 @@
           <root url="file://$MODULE_DIR$/vendor/sebastian/recursion-context" />
           <root url="file://$MODULE_DIR$/vendor/sebastian/version" />
           <root url="file://$MODULE_DIR$/vendor/sleeping-owl/admin" />
-          <root url="file://$MODULE_DIR$/vendor/sleeping-owl/with-join" />
           <root url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
           <root url="file://$MODULE_DIR$/vendor/symfony/class-loader" />
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />
@@ -217,11 +205,7 @@
           <root url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
           <root url="file://$MODULE_DIR$/vendor/fzaninotto/faker" />
-          <root url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
           <root url="file://$MODULE_DIR$/vendor/hamcrest/hamcrest-php" />
-          <root url="file://$MODULE_DIR$/vendor/illuminate/html" />
-          <root url="file://$MODULE_DIR$/vendor/intervention/image" />
-          <root url="file://$MODULE_DIR$/vendor/intervention/imagecache" />
           <root url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
           <root url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
           <root url="file://$MODULE_DIR$/vendor/jenssegers/agent" />
@@ -246,7 +230,6 @@
           <root url="file://$MODULE_DIR$/vendor/phpunit/php-token-stream" />
           <root url="file://$MODULE_DIR$/vendor/phpunit/phpunit" />
           <root url="file://$MODULE_DIR$/vendor/phpunit/phpunit-mock-objects" />
-          <root url="file://$MODULE_DIR$/vendor/psr/http-message" />
           <root url="file://$MODULE_DIR$/vendor/psr/log" />
           <root url="file://$MODULE_DIR$/vendor/psy/psysh" />
           <root url="file://$MODULE_DIR$/vendor/sebastian/comparator" />
@@ -257,7 +240,6 @@
           <root url="file://$MODULE_DIR$/vendor/sebastian/recursion-context" />
           <root url="file://$MODULE_DIR$/vendor/sebastian/version" />
           <root url="file://$MODULE_DIR$/vendor/sleeping-owl/admin" />
-          <root url="file://$MODULE_DIR$/vendor/sleeping-owl/with-join" />
           <root url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
           <root url="file://$MODULE_DIR$/vendor/symfony/class-loader" />
           <root url="file://$MODULE_DIR$/vendor/symfony/console" />

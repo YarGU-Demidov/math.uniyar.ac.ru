@@ -5,55 +5,57 @@ return [
 	 * Admin title
 	 * Displays in page title and header
 	 */
-	'title'                 => 'AdminPanel',
+	'title'                   => 'Admin Panel',
 
 	/*
 	 * Admin url prefix
 	 */
-	'prefix'                => 'admin',
+	'prefix'                  => 'admin',
 
 	/*
-	 * Before filters to protect admin from unauthorized users
+	 * Middleware to use in admin routes
 	 */
-	'beforeFilters'         => ['admin.auth'],
+	'middleware'              => ['admin.auth'],
 
 	/*
-	 * Path to admin bootstrap files directory in app directory
-	 * Default: 'app/admin'
+	 * Path to admin bootstrap files directory
+	 * Default: app_path('Admin')
 	 */
-	'bootstrapDirectory'    => app_path('admin'),
+	'bootstrapDirectory'      => app_path('Admin'),
 
 	/*
-	 * Path to images directory
-	 * Default: 'public/images'
+	 * Directory to upload images to (relative to public directory)
 	 */
-	'imagesDirectory'       => public_path('images'),
-
-	/*
-	 * Path to files directory
- 	 * Default: 'public/files'
- 	 */
-	'filesDirectory'        => public_path('files'),
-
-	/*
-	 * Path to images upload directory within 'imagesDirectory'
-	 * Default: 'uploads'
-	 */
-	'imagesUploadDirectory' => 'uploads',
+	'imagesUploadDirectory' => 'images/uploads',
 
 	/*
 	 * Authentication config
 	 */
-	'auth'                  => [
-		'model'  => \SleepingOwl\AdminAuth\Entities\Administrator::class,
+	'auth'                    => [
+		'model' => \SleepingOwl\AdminAuth\Entities\Administrator::class,
 		'rules' => [
 			'username' => 'required',
 			'password' => 'required',
 		]
 	],
 
-    /*
-	 * Blade template prefix, default admin::
+	/*
+	 * Template to use
 	 */
-    'bladePrefix'                => 'admin::',
+	'template'                => SleepingOwl\Admin\Templates\TemplateDefault::class,
+
+	/*
+	 * Default date and time formats
+	 */
+	'datetimeFormat'          => 'd.m.Y H:i',
+	'dateFormat'              => 'd.m.Y',
+	'timeFormat'              => 'H:i',
+
+	/*
+	 * If you want, you can extend ckeditor default configuration
+	 * with this PHP Hash variable.
+	 *
+	 * Checkout http://docs.ckeditor.com/#!/api/CKEDITOR.config for more information.
+	 */
+	'ckeditor' => [],
 ];
