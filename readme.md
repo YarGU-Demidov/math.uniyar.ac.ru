@@ -10,7 +10,7 @@ Any pull requests and bug reports are welcome.
 
 ### Contributors
 
-* [Mokeev Andrey](http://mokeev1995.ru) <andrey@mokeev1995.ru>
+* [Mokeev Andrey](http://mokeev1995.ru) \< andrey@mokeev1995.ru >
 
 ### Copyright and License
 
