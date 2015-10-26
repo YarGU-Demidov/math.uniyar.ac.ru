@@ -5,7 +5,8 @@ return [
 	 * Admin title
 	 * Displays in page title and header
 	 */
-	'title'                   => 'Admin Panel',
+	'minititle'                   => 'AP',
+	'fulltitle'                   => 'Admin Panel',
 
 	/*
 	 * Admin url prefix
@@ -42,7 +43,7 @@ return [
 	/*
 	 * Template to use
 	 */
-	'template'                => SleepingOwl\Admin\Templates\TemplateDefault::class,
+	'template'                => App\AdminTheme\AdminTemplate::class, //SleepingOwl\Admin\Templates\TemplateDefault::class,
 
 	/*
 	 * Default date and time formats
@@ -58,4 +59,7 @@ return [
 	 * Checkout http://docs.ckeditor.com/#!/api/CKEDITOR.config for more information.
 	 */
 	'ckeditor' => [],
+
+	//admin version
+	'version' => "0.1.0a",
 ];

@@ -771,16 +771,16 @@
         },
         {
             "name": "jenssegers/agent",
-            "version": "v2.2.2",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/agent.git",
-                "reference": "6b9a79a7838a37ca0334c79c29ff8d4f87d53fb9"
+                "reference": "f1f432c1404632c73cdd358d48837db7f686d748"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/agent/zipball/6b9a79a7838a37ca0334c79c29ff8d4f87d53fb9",
-                "reference": "6b9a79a7838a37ca0334c79c29ff8d4f87d53fb9",
+                "url": "https://api.github.com/repos/jenssegers/agent/zipball/f1f432c1404632c73cdd358d48837db7f686d748",
+                "reference": "f1f432c1404632c73cdd358d48837db7f686d748",
                 "shasum": ""
             },
             "require": {
@@ -823,7 +823,7 @@
                 "user agent",
                 "useragent"
             ],
-            "time": "2015-10-16 16:14:37"
+            "time": "2015-10-17 21:01:25"
         },
         {
             "name": "jeremeamia/SuperClosure",

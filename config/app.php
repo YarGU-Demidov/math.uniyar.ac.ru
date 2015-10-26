@@ -151,6 +151,8 @@ return [
 	    Jenssegers\Agent\AgentServiceProvider::class,
 
 	    SleepingOwl\Admin\AdminServiceProvider::class,
+
+	    App\Providers\AdminThemeServiceProvider::class,
     ],
 
     /*
