@@ -4,7 +4,9 @@
 
 ### INFO
 
-This is site for Math. Faculty of PG Demidov Yaroslavl State University
+This is site for Math. Faculty of PG Demidov Yaroslavl State University. 
+
+Any pull requests and bug reports are welcome.
 
 ### Contributors
 
