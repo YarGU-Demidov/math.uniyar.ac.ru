@@ -6,6 +6,7 @@
       <w>endforeach</w>
       <w>fullname</w>
       <w>fulltitle</w>
+      <w>isset</w>
       <w>maxcdn</w>
       <w>middlename</w>
       <w>minititle</w>

@@ -1,15 +1,27 @@
 <?php
 	$user = AdminAuth::user();
-	$userPhoto = $user->image;
+
+	$name       = $user->name;
+	$surname    = $user->surname;
+	$middlename = $user->middlename;
+
+	$fullname = $name . " " . $surname;
+
+	if(isset($middlename) && !empty($middlename) && $middlename != "")
+		$fullname .= " " . $middlename;
+
+	$userImage = $user->image;
 ?>
 
 		<!-- Sidebar user panel -->
 <div class="user-panel">
 	<div class="image" style="text-align: center; margin: 20px 0;">
-		<img src="{{ $userPhoto }}" class="img-circle" alt="User Image">
+		<img src="{{ $userImage }}" class="img-circle" alt="User Image">
 	</div>
-	<div style="position:relative; display: block;width: 100%; text-align: center; color: #fff;">
-		<p>test</p>
+	<div style="text-align: center; color: #fff; overflow: hidden;">
+		<span class="sidebarUserName">
+			{{ $fullname }}
+		</span>
 	</div>
 </div>
 

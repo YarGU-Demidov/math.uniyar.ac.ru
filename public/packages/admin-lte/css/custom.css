@@ -10,3 +10,12 @@
 body{
     font-family: Roboto, 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
+
+.sidebarUserName{
+    white-space: normal;
+}
+
+.sidebar-collapse .sidebarUserName{
+    display: none;
+    transition: 0.2s;
+}

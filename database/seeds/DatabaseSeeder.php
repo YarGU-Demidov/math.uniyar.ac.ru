@@ -17,10 +17,11 @@
 			Model::unguard();
 
 			$default = [
-				'username' => 'admin',
-				'password' => 'test',
-				'name' => 'SleepingOwl',
-				'surname' => 'Administrator',
+				'username'  => 'admin',
+				'password'  => 'test',
+				'name'      => 'Math',
+				'surname'   => 'Faculty',
+				'middlename'=> 'Administrator'
 			];
 
 			try
