@@ -1,7 +1,7 @@
 <li {!! (count($items) > 0) ? 'class="treeview"' : '' !!}>
 	<a href="{{ $url }}">
 		<i class="fa {{ $icon }}"></i>
-        <span>{{ $label }}</span>
+		<span>{{ $label }}</span>
 		@if (count($items) > 0)
 			<i class="fa fa-angle-left pull-right"></i>
 		@endif

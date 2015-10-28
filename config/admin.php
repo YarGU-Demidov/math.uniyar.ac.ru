@@ -5,13 +5,11 @@ return [
 	 * Admin title
 	 * Displays in page title and header
 	 */
-	'minititle'                   => 'AP',
-	'fulltitle'                   => 'Admin Panel',
 
 	/*
 	 * Admin url prefix
 	 */
-	'prefix'                  => 'admin',
+	'prefix'                  => 'manager',
 
 	/*
 	 * Middleware to use in admin routes
@@ -33,7 +31,7 @@ return [
 	 * Authentication config
 	 */
 	'auth'                    => [
-		'model' => \SleepingOwl\AdminAuth\Entities\Administrator::class,
+		'model' => \App\Models\User::class, //\SleepingOwl\AdminAuth\Entities\Administrator::class,
 		'rules' => [
 			'username' => 'required',
 			'password' => 'required',
