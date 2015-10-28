@@ -1,53 +1,53 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+	use Illuminate\Database\Schema\Blueprint;
+	use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('username');
-	        $table->string('email')->nullable();
+	class CreateUsersTable extends Migration
+	{
+		/**
+		 * Run the migrations.
+		 *
+		 * @return void
+		 */
+		public function up()
+		{
+			Schema::create('users', function (Blueprint $table) {
+				$table->increments('id');
+				$table->string('username');
+				$table->string('email')->nullable();
 
-            $table->string('password', 60);
+				$table->string('password', 60);
 
-	        $table->string('name');
-	        $table->string('surname');
-	        $table->string('middlename')->nullable();
-
-
-	        $table->integer('groupId');
-
-	        $table->string('image')->default("/images/tempProfilePicture.jpg");
-
-	        $table->rememberToken();
-	        $table->timestamps();
+				$table->string('name');
+				$table->string('surname');
+				$table->string('middlename')->nullable();
 
 
-	        //================================================
-	        //==================INDEXES=======================
-	        //================================================
+				$table->integer('groupId');
 
-	        $table->unique(['username', 'email']);
+				$table->string('image')->default("/images/tempProfilePicture.jpg");
 
-        });
-    }
+				$table->rememberToken();
+				$table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop('users');
-    }
-}
+
+				//================================================
+				//==================INDEXES=======================
+				//================================================
+
+				$table->unique(['username', 'email']);
+
+			});
+		}
+
+		/**
+		 * Reverse the migrations.
+		 *
+		 * @return void
+		 */
+		public function down()
+		{
+			Schema::drop('users');
+		}
+	}

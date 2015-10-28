@@ -3,10 +3,13 @@
 	$userPhoto = $user->image;
 ?>
 
-<!-- Sidebar user panel -->
-<div class="user-panel" style="text-align: center;">
-	<div class="image" style="margin-bottom: 20px">
+		<!-- Sidebar user panel -->
+<div class="user-panel">
+	<div class="image" style="text-align: center; margin: 20px 0;">
 		<img src="{{ $userPhoto }}" class="img-circle" alt="User Image">
+	</div>
+	<div style="position:relative; display: block;width: 100%; text-align: center; color: #fff;">
+		<p>test</p>
 	</div>
 </div>
 
