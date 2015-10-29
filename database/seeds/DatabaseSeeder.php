@@ -15,7 +15,7 @@
 			Model::unguard();
 
 			$this->call('UserTableSeeder');
-			$this->command->info('Таблица пользователей загружена данными!');
+			$this->command->info('РўР°Р±Р»РёС†Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Р·Р°РіСЂСѓР¶РµРЅР° РґР°РЅРЅС‹РјРё!');
 
 			Model::reguard();
 		}
