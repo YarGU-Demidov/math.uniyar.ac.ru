@@ -9,6 +9,7 @@
 
 
 namespace App\Models{
+	use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\User
  *
@@ -37,6 +38,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUpdatedAt($value)
  */
-	class User {}
+	class User extends Model {}
 }
 

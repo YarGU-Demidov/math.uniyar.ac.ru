@@ -1,7 +1,5 @@
 <?php
 
-	use App\Models\User;
-
 	use Illuminate\Database\Seeder;
 	use Illuminate\Database\Eloquent\Model;
 
@@ -16,22 +14,8 @@
 		{
 			Model::unguard();
 
-			$default = [
-				'username'  => 'admin',
-				'password'  => 'test',
-				'name'      => 'Math',
-				'surname'   => 'Faculty',
-				'middlename'=> 'Administrator'
-			];
-
-			try
-			{
-				User::create($default);
-			}
-			catch(\Exception $e)
-			{
-				exit($e->getMessage());
-			}
+			$this->call('UserTableSeeder');
+			$this->command->info('“аблица пользователей загружена данными!');
 
 			Model::reguard();
 		}
