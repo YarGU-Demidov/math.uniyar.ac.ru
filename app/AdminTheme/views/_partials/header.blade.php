@@ -18,7 +18,7 @@
 <header class="main-header">
 
 	<!-- Logo -->
-	<a href="index2.html" class="logo">
+	<a href="{{ route("admin.home") }}" class="logo">
 		<!-- mini logo for sidebar mini 50x50 pixels -->
 		<span class="logo-mini">{{ trans('main.minititle') }}</span>
 		<!-- logo for regular state and mobile devices -->

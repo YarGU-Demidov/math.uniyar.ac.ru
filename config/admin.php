@@ -14,7 +14,7 @@ return [
 	/*
 	 * Middleware to use in admin routes
 	 */
-	'middleware'              => ['admin.auth'],
+	'middleware'              => ['admin.auth','lang-manager'],
 
 	/*
 	 * Path to admin bootstrap files directory

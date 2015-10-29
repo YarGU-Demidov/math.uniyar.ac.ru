@@ -14,7 +14,8 @@
 		{
 			Schema::create("degree",function(Blueprint $table)
 			{
-
+				$table->increments('id');
+				$table->integer('name');
 			});
 		}
 

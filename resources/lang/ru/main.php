@@ -2,6 +2,6 @@
 	
 	return
 		[
-			"minititle" => "ПА",
-			"fulltitle" => "Панель Администрирования",
+			"minititle" => "Адм",
+			"fulltitle" => "Админка",
 		];
