@@ -1,25 +1,25 @@
 <?php
 
 return [
-	'404'      => 'Página não encontrada.',
+	'404'      => 'PГЎgina nГЈo encontrada.',
 	'auth'     => [
-		'title'          => 'Autorização',
-		'username'       => 'Usuário',
+		'title'          => 'AutorizaГ§ГЈo',
+		'username'       => 'UsuГЎrio',
 		'password'       => 'Senha',
 		'login'          => 'Login',
 		'logout'         => 'Logout',
-		'wrong-username' => 'Nome de usuário errado',
+		'wrong-username' => 'Nome de usuГЎrio errado',
 		'wrong-password' => 'ou senha'
 	],
 	'ckeditor' => [
 		'upload'        => [
 			'success' => 'Arquivo enviado: \\n- Tamanho: :size kb \\n- largura/altura: :width x :height',
 			'error'   => [
-				'common'              => 'Não é possível enviar o arquivo.',
-				'wrong_extension'     => 'Arquivo ":file" está com a extensão errada.',
-				'filesize_limit'      => 'O tamanho máximo permitido para arquivo é :size kb.',
-				'imagesize_max_limit' => 'Largura x Altura = :width x :height \\n As dimensões máximas para Largura x Altura devem ser: :maxwidth x :maxheight',
-				'imagesize_min_limit' => 'Largura x Altura = :width x :height \\n As dimensões máximas para Largura x Altura devem ser: :minwidth x :minheight',
+				'common'              => 'NГЈo Г© possГ­vel enviar o arquivo.',
+				'wrong_extension'     => 'Arquivo ":file" estГЎ com a extensГЈo errada.',
+				'filesize_limit'      => 'O tamanho mГЎximo permitido para arquivo Г© :size kb.',
+				'imagesize_max_limit' => 'Largura x Altura = :width x :height \\n As dimensГµes mГЎximas para Largura x Altura devem ser: :maxwidth x :maxheight',
+				'imagesize_min_limit' => 'Largura x Altura = :width x :height \\n As dimensГµes mГЎximas para Largura x Altura devem ser: :minwidth x :minheight',
 			]
 		],
 		'image_browser' => [
@@ -32,7 +32,7 @@ return [
 		'edit'           => 'Editar',
 		'delete'         => 'Excluir',
 		'delete-confirm' => 'Tem certeza que deseja excluir este registro',
-		'delete-error'   => 'Ocorreu um erro ao excluir este registro. Você deve excluir todos os registros relacionados antes.',
+		'delete-error'   => 'Ocorreu um erro ao excluir este registro. VocГЄ deve excluir todos os registros relacionados antes.',
 		'moveUp'         => 'Mover p/cima',
 		'moveDown'       => 'Mover p/baixo',
 		'filter'         => 'Mostrar entradas similares',
@@ -51,7 +51,7 @@ return [
 		'infoThousands'  => '.',
 		'infoPostFix'    => '',
 		'search'         => 'Pesquisar: ',
-		'emptyTable'     => 'Nenhum informação na tabela',
+		'emptyTable'     => 'Nenhum informaГ§ГЈo na tabela',
 		'paginate'       => [
 			'first'    => '<i class="fa fa-angle-double-left"></i>',
 			'previous' => '<i class="fa fa-angle-left"></i>',
