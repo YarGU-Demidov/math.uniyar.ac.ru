@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2015-10-25.
+    * Generated on 2015-10-30.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -40,6 +40,11 @@ namespace PHPSTORM_META {
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
             'agent' instanceof \Jenssegers\Agent\Agent,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
+            'translator' instanceof \Illuminate\Translation\Translator,
+            'adminTemplate' instanceof \App\AdminTheme\AdminTemplate,
+            'admin.auth' instanceof \SleepingOwl\AdminAuth\AdminAuthManager,
             'command.app.name' instanceof \Illuminate\Foundation\Console\AppNameCommand,
             'command.clear-compiled' instanceof \Illuminate\Foundation\Console\ClearCompiledCommand,
             'command.command.make' instanceof \Illuminate\Foundation\Console\CommandMakeCommand,
@@ -115,12 +120,9 @@ namespace PHPSTORM_META {
             'IlluminateQueueClosure' instanceof \IlluminateQueueClosure,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'auth.password.tokens' instanceof \Illuminate\Auth\Passwords\DatabaseTokenRepository,
-            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
-            'translator' instanceof \Illuminate\Translation\Translator,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
             '' == '@',
@@ -153,6 +155,11 @@ namespace PHPSTORM_META {
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
             'agent' instanceof \Jenssegers\Agent\Agent,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
+            'translator' instanceof \Illuminate\Translation\Translator,
+            'adminTemplate' instanceof \App\AdminTheme\AdminTemplate,
+            'admin.auth' instanceof \SleepingOwl\AdminAuth\AdminAuthManager,
             'command.app.name' instanceof \Illuminate\Foundation\Console\AppNameCommand,
             'command.clear-compiled' instanceof \Illuminate\Foundation\Console\ClearCompiledCommand,
             'command.command.make' instanceof \Illuminate\Foundation\Console\CommandMakeCommand,
@@ -228,12 +235,9 @@ namespace PHPSTORM_META {
             'IlluminateQueueClosure' instanceof \IlluminateQueueClosure,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'auth.password.tokens' instanceof \Illuminate\Auth\Passwords\DatabaseTokenRepository,
-            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
-            'translator' instanceof \Illuminate\Translation\Translator,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
         ],
         \App::make('') => [
             '' == '@',
@@ -266,6 +270,11 @@ namespace PHPSTORM_META {
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
             'agent' instanceof \Jenssegers\Agent\Agent,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
+            'translator' instanceof \Illuminate\Translation\Translator,
+            'adminTemplate' instanceof \App\AdminTheme\AdminTemplate,
+            'admin.auth' instanceof \SleepingOwl\AdminAuth\AdminAuthManager,
             'command.app.name' instanceof \Illuminate\Foundation\Console\AppNameCommand,
             'command.clear-compiled' instanceof \Illuminate\Foundation\Console\ClearCompiledCommand,
             'command.command.make' instanceof \Illuminate\Foundation\Console\CommandMakeCommand,
@@ -341,12 +350,9 @@ namespace PHPSTORM_META {
             'IlluminateQueueClosure' instanceof \IlluminateQueueClosure,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'auth.password.tokens' instanceof \Illuminate\Auth\Passwords\DatabaseTokenRepository,
-            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
-            'translator' instanceof \Illuminate\Translation\Translator,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
         ],
         app('') => [
             '' == '@',
@@ -379,6 +385,11 @@ namespace PHPSTORM_META {
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
             'agent' instanceof \Jenssegers\Agent\Agent,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
+            'translator' instanceof \Illuminate\Translation\Translator,
+            'adminTemplate' instanceof \App\AdminTheme\AdminTemplate,
+            'admin.auth' instanceof \SleepingOwl\AdminAuth\AdminAuthManager,
             'command.app.name' instanceof \Illuminate\Foundation\Console\AppNameCommand,
             'command.clear-compiled' instanceof \Illuminate\Foundation\Console\ClearCompiledCommand,
             'command.command.make' instanceof \Illuminate\Foundation\Console\CommandMakeCommand,
@@ -454,12 +465,9 @@ namespace PHPSTORM_META {
             'IlluminateQueueClosure' instanceof \IlluminateQueueClosure,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'auth.password.tokens' instanceof \Illuminate\Auth\Passwords\DatabaseTokenRepository,
-            'translation.loader' instanceof \Illuminate\Translation\FileLoader,
-            'translator' instanceof \Illuminate\Translation\Translator,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
         ],
     ];
 }

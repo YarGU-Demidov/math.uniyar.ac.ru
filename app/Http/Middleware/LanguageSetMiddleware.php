@@ -1,35 +1,35 @@
 <?php
 
-namespace App\Http\Middleware;
+	namespace App\Http\Middleware;
 
-use Agent;
-use App\Cookies;
-use Closure;
-use Lang;
+	use Agent;
+	use App\Cookies;
+	use Closure;
+	use Lang;
 
-class LanguageSetMiddleware
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
-    {
-	    $cookies = new Cookies();
+	class LanguageSetMiddleware
+	{
+		/**
+		 * Handle an incoming request.
+		 *
+		 * @param  \Illuminate\Http\Request  $request
+		 * @param  \Closure  $next
+		 * @return mixed
+		 */
+		public function handle($request, Closure $next)
+		{
+			$cookies = new Cookies();
 
-	    $lang = $cookies->lang;
+			$lang = $cookies->lang;
 
-	    if($lang === null)
-	    {
-		    $lang = Agent::languages()[0];
-		    $cookies->lang = $lang;
-	    }
+			if($lang === null)
+			{
+				$lang = Agent::languages()[0];
+				$cookies->lang = $lang;
+			}
 
-	    Lang::setLocale($lang);
+			Lang::setLocale($lang);
 
-        return $next($request);
-    }
-}
+			return $next($request);
+		}
+	}
