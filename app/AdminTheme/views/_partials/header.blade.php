@@ -6,7 +6,7 @@
 	$surname    = $user->surname;
 	$middlename = $user->middlename;
 
-	$fullname = $name . " " . $surname;
+	$fullname = $surname . " " . $name;
 
 	if(isset($middlename) && !empty($middlename) && $middlename != "")
 		$fullname .= " " . $middlename;

@@ -15,7 +15,9 @@
 			Schema::create("degree",function(Blueprint $table)
 			{
 				$table->increments('id');
-				$table->integer('name');
+				$table->integer('name_string_id');
+
+				$table->timestamps();
 			});
 		}
 

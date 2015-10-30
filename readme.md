@@ -2,11 +2,26 @@
 # PG Demidov Yaroslavl State University
 ## Math faculty site
 
-### INFO
+### Info
 
 This is site for Math. Faculty of PG Demidov Yaroslavl State University. 
 
 Any pull requests and bug reports are welcome.
+
+### Installation Requirements
+
+* php 5.6.*
+* MySQL Server or other supported by laravel and php with enabled addon for php
+* composer
+* git
+
+### Installation Info
+
+* Clone repo to your server `git clone https://github.com/mokeev1995/math.uniyar.ac.ru.git `
+* Create `.env` file in root directory (copy contents from `.env.example`)
+* Create database for site
+* Configure connection string in `.env` and others options (turn off or on debug and so one)
+* Run `composer install`
 
 ### Contributors
 

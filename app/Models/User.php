@@ -53,7 +53,6 @@ class User extends Model implements AuthenticatableContract,
 	protected $fillable = [
 		'username',
 		'password',
-		'fullName',
 	];
 
 	/**
