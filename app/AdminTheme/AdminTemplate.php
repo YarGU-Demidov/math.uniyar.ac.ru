@@ -19,7 +19,7 @@
 			AssetManager::addStyle(asset('packages/admin-lte/plugins/iCheck/all.css'));
 
 			AssetManager::addScript(route('admin.lang'));
-			AssetManager::addScript(asset('packages/admin-lte/js/jquery-2.1.4.min.js'));
+			AssetManager::addScript(asset('packages/admin-lte/js/jquery.min.js'));
 			AssetManager::addScript(asset('packages/admin-lte/bootstrap/js/bootstrap.min.js'));
 			AssetManager::addScript(asset('packages/admin-lte/js/fastclick.js'));
 

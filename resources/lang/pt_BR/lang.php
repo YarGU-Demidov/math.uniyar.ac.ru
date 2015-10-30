@@ -1,25 +1,25 @@
 <?php
 
 return [
-	'404'      => 'PГЎgina nГЈo encontrada.',
+	'404'      => 'Página não encontrada.',
 	'auth'     => [
-		'title'          => 'AutorizaГ§ГЈo',
-		'username'       => 'UsuГЎrio',
+		'title'          => 'Autorização',
+		'username'       => 'Usuário',
 		'password'       => 'Senha',
 		'login'          => 'Login',
 		'logout'         => 'Logout',
-		'wrong-username' => 'Nome de usuГЎrio errado',
+		'wrong-username' => 'Nome de usuário errado',
 		'wrong-password' => 'ou senha'
 	],
 	'ckeditor' => [
 		'upload'        => [
 			'success' => 'Arquivo enviado: \\n- Tamanho: :size kb \\n- largura/altura: :width x :height',
 			'error'   => [
-				'common'              => 'NГЈo Г© possГ­vel enviar o arquivo.',
-				'wrong_extension'     => 'Arquivo ":file" estГЎ com a extensГЈo errada.',
-				'filesize_limit'      => 'O tamanho mГЎximo permitido para arquivo Г© :size kb.',
-				'imagesize_max_limit' => 'Largura x Altura = :width x :height \\n As dimensГµes mГЎximas para Largura x Altura devem ser: :maxwidth x :maxheight',
-				'imagesize_min_limit' => 'Largura x Altura = :width x :height \\n As dimensГµes mГЎximas para Largura x Altura devem ser: :minwidth x :minheight',
+				'common'              => 'Não é possível enviar o arquivo.',
+				'wrong_extension'     => 'Arquivo ":file" está com a extensão errada.',
+				'filesize_limit'      => 'O tamanho máximo permitido para arquivo é :size kb.',
+				'imagesize_max_limit' => 'Largura x Altura = :width x :height \\n As dimensões máximas para Largura x Altura devem ser: :maxwidth x :maxheight',
+				'imagesize_min_limit' => 'Largura x Altura = :width x :height \\n As dimensões máximas para Largura x Altura devem ser: :minwidth x :minheight',
 			]
 		],
 		'image_browser' => [
@@ -30,11 +30,13 @@ return [
 	'table'    => [
 		'new-entry'      => 'Nova entrada',
 		'edit'           => 'Editar',
+		'restore'        => 'Restaurar',
 		'delete'         => 'Excluir',
 		'delete-confirm' => 'Tem certeza que deseja excluir este registro',
-		'delete-error'   => 'Ocorreu um erro ao excluir este registro. VocГЄ deve excluir todos os registros relacionados antes.',
+		'delete-error'   => 'Ocorreu um erro ao excluir este registro. Você deve excluir todos os registros relacionados antes.',
 		'moveUp'         => 'Mover p/cima',
 		'moveDown'       => 'Mover p/baixo',
+		'error'          => 'Ocorreu um erro ao processar sua solicitação',
 		'filter'         => 'Mostrar entradas similares',
 		'filter-goto'    => 'Mostrar',
 		'save'           => 'Salvar',
@@ -51,16 +53,26 @@ return [
 		'infoThousands'  => '.',
 		'infoPostFix'    => '',
 		'search'         => 'Pesquisar: ',
-		'emptyTable'     => 'Nenhum informaГ§ГЈo na tabela',
+		'emptyTable'     => 'Nenhum informação na tabela',
 		'paginate'       => [
-			'first'    => '<i class="fa fa-angle-double-left"></i>',
-			'previous' => '<i class="fa fa-angle-left"></i>',
-			'next'     => '<i class="fa fa-angle-right"></i>',
-			'last'     => '<i class="fa fa-angle-double-right"></i>'
+			'first'    => 'Primeiro',
+			'previous' => '&larr;',
+			'next'     => '&rarr;',
+			'last'     => 'Último'
 		]
 	],
 	'select'   => [
 		'nothing'  => 'Nada selecionado',
-		'selected' => 'selecionado'
-	]
+		'selected' => 'selecionado',
+		'placeholder' => 'Selecione da lista',
+	],
+	'image'    => [
+		'browse'         => 'Seleciona a imagem',
+		'browseMultiple' => 'Selecione as imagens',
+		'remove'         => 'Remover a imagem',
+	],
+	'file'     => [
+		'browse' => 'Selecionar o arquivo',
+		'remove' => 'Remover o arquivo',
+	],
 ];

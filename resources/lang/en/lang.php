@@ -30,11 +30,13 @@ return [
 	'table'    => [
 		'new-entry'      => 'New Entry',
 		'edit'           => 'Edit',
+		'restore'        => 'Restore',
 		'delete'         => 'Delete',
 		'delete-confirm' => 'Are you sure want to delete this entry?',
 		'delete-error'   => 'Error while deleting this entry. You must delete all linked entries first.',
 		'moveUp'         => 'Move Up',
 		'moveDown'       => 'Move Down',
+		'error'          => 'There was an error during your request',
 		'filter'         => 'Show similar entries',
 		'filter-goto'    => 'Show',
 		'save'           => 'Save',
@@ -53,14 +55,24 @@ return [
 		'search'         => 'Search: ',
 		'emptyTable'     => 'No data available in table',
 		'paginate'       => [
-			'first'    => '<i class="fa fa-angle-double-left"></i>',
-			'previous' => '<i class="fa fa-angle-left"></i>',
-			'next'     => '<i class="fa fa-angle-right"></i>',
-			'last'     => '<i class="fa fa-angle-double-right"></i>'
+			'first'    => 'First',
+			'previous' => '&larr;',
+			'next'     => '&rarr;',
+			'last'     => 'Last'
 		]
 	],
 	'select'   => [
-		'nothing'  => 'Nothing selected',
-		'selected' => 'selected'
-	]
+		'nothing'     => 'Nothing selected',
+		'selected'    => 'selected',
+		'placeholder' => 'Select from the list',
+	],
+	'image'    => [
+		'browse'         => 'Select Image',
+		'browseMultiple' => 'Select Images',
+		'remove'         => 'Remove Image',
+	],
+	'file'     => [
+		'browse' => 'Select File',
+		'remove' => 'Remove File',
+	],
 ];

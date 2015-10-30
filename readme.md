@@ -10,7 +10,7 @@ Any pull requests and bug reports are welcome.
 
 ### Installation Requirements
 
-* php 5.6.*
+* PHP 5.6.*
 * MySQL Server or other supported by laravel and php with enabled addon for php
 * composer
 * git
@@ -21,7 +21,7 @@ Any pull requests and bug reports are welcome.
 * Create `.env` file in root directory (copy contents from `.env.example`)
 * Create database for site
 * Configure connection string in `.env` and others options (turn off or on debug and so one)
-* Run `composer install`
+* Run `composer install` in directory with site.
 
 ### Contributors
 

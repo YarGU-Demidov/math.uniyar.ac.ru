@@ -766,7 +766,7 @@
     },
     cs : {
       OK      : "OK",
-      CANCEL  : "ZruЕЎit",
+      CANCEL  : "Zrušit",
       CONFIRM : "Potvrdit"
     },
     da : {
@@ -780,9 +780,9 @@
       CONFIRM : "Akzeptieren"
     },
     el : {
-      OK      : "О•ОЅП„О¬ОѕОµО№",
-      CANCEL  : "О‘ОєПЌПЃП‰ПѓО·",
-      CONFIRM : "О•ПЂО№ОІОµОІО±ОЇП‰ПѓО·"
+      OK      : "Εντάξει",
+      CANCEL  : "Ακύρωση",
+      CONFIRM : "Επιβεβαίωση"
     },
     en : {
       OK      : "OK",
@@ -810,9 +810,9 @@
       CONFIRM : "D'accord"
     },
     he : {
-      OK      : "ЧђЧ™Ч©Ч•ЧЁ",
-      CANCEL  : "Ч‘Ч™ЧЧ•Чњ",
-      CONFIRM : "ЧђЧ™Ч©Ч•ЧЁ"
+      OK      : "אישור",
+      CANCEL  : "ביטול",
+      CONFIRM : "אישור"
     },
     id : {
       OK      : "OK",
@@ -826,18 +826,18 @@
     },
     ja : {
       OK      : "OK",
-      CANCEL  : "г‚­гѓЈгѓіг‚»гѓ«",
-      CONFIRM : "зўєиЄЌ"
+      CANCEL  : "キャンセル",
+      CONFIRM : "確認"
     },
     lt : {
       OK      : "Gerai",
-      CANCEL  : "AtЕЎaukti",
+      CANCEL  : "Atšaukti",
       CONFIRM : "Patvirtinti"
     },
     lv : {
       OK      : "Labi",
       CANCEL  : "Atcelt",
-      CONFIRM : "ApstiprinДЃt"
+      CONFIRM : "Apstiprināt"
     },
     nl : {
       OK      : "OK",
@@ -852,7 +852,7 @@
     pl : {
       OK      : "OK",
       CANCEL  : "Anuluj",
-      CONFIRM : "PotwierdЕє"
+      CONFIRM : "Potwierdź"
     },
     pt : {
       OK      : "OK",
@@ -861,8 +861,8 @@
     },
     ru : {
       OK      : "OK",
-      CANCEL  : "РћС‚РјРµРЅР°",
-      CONFIRM : "РџСЂРёРјРµРЅРёС‚СЊ"
+      CANCEL  : "Отмена",
+      CONFIRM : "Применить"
     },
     sv : {
       OK      : "OK",
@@ -871,18 +871,18 @@
     },
     tr : {
       OK      : "Tamam",
-      CANCEL  : "Д°ptal",
+      CANCEL  : "İptal",
       CONFIRM : "Onayla"
     },
     zh_CN : {
       OK      : "OK",
-      CANCEL  : "еЏ–ж¶€",
-      CONFIRM : "зЎ®и®¤"
+      CANCEL  : "取消",
+      CONFIRM : "确认"
     },
     zh_TW : {
       OK      : "OK",
-      CANCEL  : "еЏ–ж¶€",
-      CONFIRM : "зўєиЄЌ"
+      CANCEL  : "取消",
+      CONFIRM : "確認"
     }
   };
 
