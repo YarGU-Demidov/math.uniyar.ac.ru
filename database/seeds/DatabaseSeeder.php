@@ -14,7 +14,10 @@
 		{
 			Model::unguard();
 
-			$this->call('UserTableSeeder');
+			$this->call(DegreeTableSeeder::class);
+			$this->command->info('Degrees added to database!');
+
+			$this->call(UserTableSeeder::class);
 			$this->command->info('Users added to database!');
 
 			Model::reguard();
