@@ -11,7 +11,7 @@ Any pull requests and bug reports are welcome.
 ### Installation Requirements
 
 * PHP 5.6.*
-* MySQL Server or other supported by laravel and php with enabled addon for php
+* MySQL Server or other database server supported by Laravel Framework and PHP with enabled module for PHP
 * composer
 * git
 
