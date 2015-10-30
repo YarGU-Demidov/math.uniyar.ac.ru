@@ -21,8 +21,8 @@
 			$default = [
 				'username'  => 'admin',
 				'password'  => 'test',
-				'name'      => 'Math',
-				'surname'   => 'Faculty',
+				'name'      => 'Faculty',
+				'surname'   => 'Math',
 				'middlename'=> 'Administrator'
 			];
 

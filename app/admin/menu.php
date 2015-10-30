@@ -1,7 +1,7 @@
 <?php
 
-	Admin::menu()->url('/')->label('Start page')->icon('fa-dashboard');
-	Admin::menu(\App\Models\User::class)->label('Manage Users')->icon('fa-users');
-	Admin::menu()->label("Professors")->icon('fa-graduation-cap')->items(function(){
-		Admin::menu(\App\Models\Degree::class)->label('Degrees');
+	Admin::menu()->url('/')->label('Начальная страница')->icon('fa-dashboard');
+	Admin::menu(\App\Models\User::class)->label('Пользователи')->icon('fa-users');
+	Admin::menu()->label("Преподаватели")->icon('fa-graduation-cap')->items(function(){
+		Admin::menu(\App\Models\Degree::class)->label('Научн. степени');
 	});

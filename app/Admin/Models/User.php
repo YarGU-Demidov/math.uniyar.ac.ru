@@ -5,14 +5,14 @@
 	 * For full list see documentation.
 	 */
 
-	Admin::model(App\Models\User::class)->title('Manage Users')->display(function ()
+	Admin::model(App\Models\User::class)->title('Управление пользователями')->display(function ()
 	{
 		$display = AdminDisplay::table();
 		$display->columns([
-			Column::string('surname')->label('Surname'),
-			Column::string('name')->label('Name'),
-			Column::string('middlename')->label('Middlename'),
-			Column::string('username')->label('Username'),
+			Column::string('surname')->label('Фамилия'),
+			Column::string('name')->label('Имя'),
+			Column::string('middlename')->label('Отчество'),
+			Column::string('username')->label('Логин'),
 			Column::string('email')->label('Email'),
 		]);
 		return $display;
@@ -20,21 +20,22 @@
 	{
 		$form = AdminForm::form();
 		$form->items([
-			FormItem::text('surname','Surname')->required(),
-			FormItem::text('name','Name')->required(),
-			FormItem::text('middlename','Middlename')->required(),
-			FormItem::text('username', 'Username')->required()->unique(),
+			FormItem::text('surname','Фамилия')->required(),
+			FormItem::text('name','Имя')->required(),
+			FormItem::text('middlename','Отчество')->required(),
+			FormItem::text('username', 'Логин')->required()->unique(),
 			FormItem::text('email', 'Email')->required()->unique(),
-			FormItem::ckeditor("test", 'Test'),
+			FormItem::password('password', 'Пароль')->required(),
 		]);
 		return $form;
 	})->edit(function(){
 		$form = AdminForm::form();
 		$form->items([
-			FormItem::text('surname','Surname')->required(),
-			FormItem::text('name','Name')->required(),
-			FormItem::text('middlename','Middlename')->required(),
+			FormItem::text('surname','Фамилия')->required(),
+			FormItem::text('name','Имя')->required(),
+			FormItem::text('middlename','Отчество')->required(),
 			FormItem::text('email', 'Email')->required()->unique(),
+			FormItem::password('password', 'Пароль')->required(),
 		]);
 		return $form;
 	});

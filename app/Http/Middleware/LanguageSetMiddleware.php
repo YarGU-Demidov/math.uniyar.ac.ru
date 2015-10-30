@@ -18,7 +18,7 @@
 		 */
 		public function handle($request, Closure $next)
 		{
-			$cookies = new Cookies();
+			/*$cookies = new Cookies();
 
 			$lang = $cookies->lang;
 
@@ -28,7 +28,9 @@
 				$cookies->lang = $lang;
 			}
 
-			Lang::setLocale($lang);
+			Lang::setLocale($lang);*/
+
+			Lang::setLocale("ru");
 
 			return $next($request);
 		}
