@@ -10,10 +10,10 @@ Any pull requests and bug reports are welcome.
 
 ### Installation Requirements
 
+* git
+* composer
 * PHP 5.6.*
 * MySQL Server or other database server supported by Laravel Framework and PHP with enabled module for PHP
-* composer
-* git
 
 ### Installation Info
 
@@ -22,6 +22,8 @@ Any pull requests and bug reports are welcome.
 * Create database for site
 * Configure connection string in `.env` and others options (turn off or on debug and so one)
 * Run `composer install` in directory with site.
+* Launch `php artisan db:seed` 
+* Now you can enter to admin panel `{site adress}/manager/` (or other path, setted in `config/admin.php`) and use site
 
 ### Contributors
 
