@@ -16,6 +16,7 @@
 			{
 				$table->increments('id');
 				$table->string('name');
+				$table->integer('order')->unsigned();
 
 				$table->timestamps();
 			});

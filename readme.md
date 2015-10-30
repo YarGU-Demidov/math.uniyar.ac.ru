@@ -38,3 +38,5 @@ Any pull requests and bug reports are welcome.
 * [Admin Lte Laravel Template for Admin Panel](https://github.com/sleeping-owl/admin-lte-template) was written by Sleeping Owl for the Laravel framework and is released under the [MIT license](http://opensource.org/licenses/MIT).
 
 * [AdminLTE Template](https://github.com/almasaeed2010/AdminLTE)  is an open source project by [Almsaeed Studio](https://almsaeedstudio.com/) that is licensed under [MIT license](http://opensource.org/licenses/MIT).
+
+* [Admin Panel DEMO](https://github.com/sleeping-owl/admin-3-demo)
