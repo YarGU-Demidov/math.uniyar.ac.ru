@@ -39,4 +39,4 @@ Any pull requests and bug reports are welcome.
 
 * [AdminLTE Template](https://github.com/almasaeed2010/AdminLTE)  is an open source project by [Almsaeed Studio](https://almsaeedstudio.com/) that is licensed under [MIT license](http://opensource.org/licenses/MIT).
 
-* [Admin Panel DEMO](https://github.com/sleeping-owl/admin-3-demo)
+* The SleepingOwl [Admin Panel DEMO](https://github.com/sleeping-owl/admin-3-demo)  application is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

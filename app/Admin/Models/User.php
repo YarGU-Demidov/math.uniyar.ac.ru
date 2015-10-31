@@ -9,6 +9,7 @@
 	{
 		$display = AdminDisplay::table();
 		$display->columns([
+			Column::string('id')->label('Id'),
 			Column::string('surname')->label('Фамилия'),
 			Column::string('name')->label('Имя'),
 			Column::string('middlename')->label('Отчество'),
