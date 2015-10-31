@@ -5,7 +5,7 @@
 		function ()
 		{
 			$content = 'Define your dashboard here.';
-			return Admin::view($content, 'Dashboard');
 
+			return Admin::view($content, 'Dashboard');
 		}
 	]);
