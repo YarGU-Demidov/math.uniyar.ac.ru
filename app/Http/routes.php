@@ -13,10 +13,7 @@
 
 	Route::get("/", ["as" => "main", function(){
 
-		$news = [];
+		$news = \App\Models\News::all();
 
 		return view("home.index")->with("news", $news);
 	}]);
-
-
-	Route::resource("/news/{id}/{short_url?}", "NewsController");

@@ -8,3 +8,9 @@
 	{
 		Admin::menu(\App\Models\Degree::class)->label('Научн. степени');
 	});
+
+	Admin::menu()->label("Новостной раздел")->icon("fa-newspaper-o")->items(function(){
+		Admin::menu(\App\Models\Category::class)->label('Категории');
+		Admin::menu(\App\Models\News::class)->label('Новости');
+		Admin::menu(\App\Models\Keyword::class)->label('Ключевые слова');
+	});

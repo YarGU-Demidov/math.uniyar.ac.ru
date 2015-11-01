@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2015-10-31.
+    * Generated on 2015-11-01.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -33,7 +33,7 @@ namespace PHPSTORM_META {
             'filesystem' instanceof \Illuminate\Filesystem\FilesystemManager,
             'filesystem.disk' instanceof \Illuminate\Filesystem\FilesystemAdapter,
             'session' instanceof \Illuminate\Session\SessionManager,
-            'session.store' instanceof \Illuminate\Session\Store,
+            'session.store' instanceof \Illuminate\Session\EncryptedStore,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
@@ -148,7 +148,7 @@ namespace PHPSTORM_META {
             'filesystem' instanceof \Illuminate\Filesystem\FilesystemManager,
             'filesystem.disk' instanceof \Illuminate\Filesystem\FilesystemAdapter,
             'session' instanceof \Illuminate\Session\SessionManager,
-            'session.store' instanceof \Illuminate\Session\Store,
+            'session.store' instanceof \Illuminate\Session\EncryptedStore,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
@@ -263,7 +263,7 @@ namespace PHPSTORM_META {
             'filesystem' instanceof \Illuminate\Filesystem\FilesystemManager,
             'filesystem.disk' instanceof \Illuminate\Filesystem\FilesystemAdapter,
             'session' instanceof \Illuminate\Session\SessionManager,
-            'session.store' instanceof \Illuminate\Session\Store,
+            'session.store' instanceof \Illuminate\Session\EncryptedStore,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
@@ -378,7 +378,7 @@ namespace PHPSTORM_META {
             'filesystem' instanceof \Illuminate\Filesystem\FilesystemManager,
             'filesystem.disk' instanceof \Illuminate\Filesystem\FilesystemAdapter,
             'session' instanceof \Illuminate\Session\SessionManager,
-            'session.store' instanceof \Illuminate\Session\Store,
+            'session.store' instanceof \Illuminate\Session\EncryptedStore,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,

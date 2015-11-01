@@ -24,6 +24,8 @@
 			$this->menuItems = [
 				new A("#", null, "Абитуриентам"),
 				new A("#", null, "Студентам"),
+				new A("#", null, "Кафедры"),
+				new A("#", null, "Контакты"),
 			];
 		}
 

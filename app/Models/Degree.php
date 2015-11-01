@@ -16,6 +16,9 @@
 	 * @property \Carbon\Carbon $updated_at
 	 * @method static \Illuminate\Database\Query\Builder|\App\Models\Degree whereCreatedAt($value)
 	 * @method static \Illuminate\Database\Query\Builder|\App\Models\Degree whereUpdatedAt($value)
+	 * @property integer $order
+	 * @method static \Illuminate\Database\Query\Builder|\App\Models\Degree whereOrder($value)
+	 * @method static \Illuminate\Database\Query\Builder|\App\Models\Degree orderModel()
 	 */
 	class Degree extends Model
 	{

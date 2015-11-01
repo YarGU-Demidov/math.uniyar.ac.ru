@@ -59,5 +59,5 @@
 		'ckeditor' => [],
 
 		//admin version
-		'version' => "0.1.1a",
+		'version' => "0.1.2a",
 	];
