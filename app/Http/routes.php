@@ -12,5 +12,11 @@
 	*/
 
 	Route::get("/", ["as" => "main", function(){
-		return view("home.index");
+
+		$news = [];
+
+		return view("home.index")->with("news", $news);
 	}]);
+
+
+	Route::resource("/news/{id}/{short_url?}", "NewsController");

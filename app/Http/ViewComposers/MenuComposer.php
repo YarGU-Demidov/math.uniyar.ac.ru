@@ -5,11 +5,12 @@
 	 * Date: 31.10.2015
 	 * Time: 16:11
 	 */
-	
+
 	namespace App\Http\ViewComposers;
 
+	use App\HTMLItems\A;
 	use Illuminate\Contracts\View\View;
-	
+
 	class MenuComposer
 	{
 		protected $menuItems = [];
@@ -19,8 +20,10 @@
 		 */
 		public function __construct()
 		{
+			//TODO: Get items from database!
 			$this->menuItems = [
-
+				new A("#", null, "Абитуриентам"),
+				new A("#", null, "Студентам"),
 			];
 		}
 
@@ -32,6 +35,6 @@
 		 */
 		public function compose(View $view)
 		{
-			$view->with('menu', ["test"]);
+			$view->with('menu', $this->menuItems);
 		}
 	}

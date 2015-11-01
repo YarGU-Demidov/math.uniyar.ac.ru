@@ -21,7 +21,7 @@
 	{
 		use OrderableModel;
 
-		protected $table = "degree";
+		protected $table = "degrees";
 
 		protected $fillable = ['name'];
 

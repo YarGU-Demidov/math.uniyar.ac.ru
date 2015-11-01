@@ -3,7 +3,7 @@
 	use Illuminate\Database\Schema\Blueprint;
 	use Illuminate\Database\Migrations\Migration;
 
-	class CreateDegreeTable extends Migration
+	class CreateCategoryTable extends Migration
 	{
 		/**
 		 * Run the migrations.
@@ -12,13 +12,10 @@
 		 */
 		public function up()
 		{
-			Schema::create("degrees",function(Blueprint $table)
+			Schema::create("categories",function(Blueprint $table)
 			{
 				$table->increments('id');
-				$table->string('name');
-				$table->integer('order')->unsigned();
-
-				$table->unique("name");
+				$table->string('name')->unique('name');
 
 				$table->timestamps();
 			});
@@ -31,6 +28,6 @@
 		 */
 		public function down()
 		{
-			Schema::drop("degrees");
+			Schema::drop("categories");
 		}
 	}

@@ -4,11 +4,9 @@
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="{{ url('main') }}" class="brand-logo">Матфак</a>
 		<ul class="right hide-on-med-and-down">
-			@if(isset($menu))
-			@foreach ($menu as $data )
-				<li><a href="#">{{ $data }}</a></li>
+			@foreach ($menu as $data)
+				<li><a href="#">{!! $data  !!} </a></li>
 			@endforeach
-			@endif
 		</ul>
 
 		<ul id="nav-mobile" class="side-nav">

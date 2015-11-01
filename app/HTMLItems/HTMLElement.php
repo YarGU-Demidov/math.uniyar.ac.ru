@@ -69,9 +69,9 @@
 		/**
 		 * @param HTMLElement|null $element
 		 * @param string $data
-		 * @param array $properties
+		 * @param array $attributes
 		 */
-		public function __construct(HTMLElement $element = null, $data = "", $attributes = [])
+		public function __construct($element = null, $data = "", $attributes = [])
 		{
 			$this->internalElement = $element;
 			$this->data = $data;
@@ -95,13 +95,13 @@
 		public function __set($name, $value)
 		{
 			if($name == "xmllang") $name = "xml:lang";
-			$this->data[$name] = $value;
+			$this->attributes[$name] = $value;
 		}
 
 		/**
 		 * @return bool
 		 */
-		public function isNeedClose()
+		public function needClose()
 		{
 			return $this->needClose;
 		}
@@ -114,6 +114,27 @@
 			$this->needClose = $needClose;
 		}
 
+
+		/**
+		 * @param string $data
+		 * @return HTMLElement
+		 */
+		public function addDataAfter($data)
+		{
+			$this->data .= $data;
+			return $this;
+		}
+
+		/**
+		 * @param string $data
+		 * @return HTMLElement
+		 */
+		public function addDataBefore($data)
+		{
+			$this->data = $data . $this->data;
+			return $this;
+		}
+
 		/**
 		 * @return string
 		 */
@@ -123,7 +144,7 @@
 
 			foreach ($this->attributes as $attribute => $value)
 			{
-				$attributesString .= $attribute . "=" . "\"" . e($value) . "\"";
+				$attributesString .= $attribute . "=" . "\"" . e($value) . "\" ";
 			}
 
 
@@ -135,7 +156,20 @@
 		 */
 		protected function parse()
 		{
-			return "<" . $this->tag . " " . $this->parseAttributes() . ">" . $this->data .  ;
+			$attr = $this->parseAttributes();
+
+			$tag = $this->tag;
+
+			$data =
+				($this->internalElement != null)
+					? (string) $this->internalElement->addDataAfter($this->data)
+					: $this->data;
+
+			$closeTag = ($this->needClose()) ? "</" . $this->tag . ">" : "";
+
+			$htmlString = "<" . $tag . " " . $attr . ">" . $data . $closeTag;
+
+			return $htmlString;
 		}
 
 		/**

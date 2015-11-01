@@ -29,7 +29,7 @@
 			@yield("content")
 		</main>
 
-		{Html.RenderPartial("~/Views/Partials/_Footer.cshtml");}
+		@include('partials.footer')
 
 		<script type="text/javascript" src="{{ url("js/jquery-2.1.4.min.js") }}"></script>
 		<script type="text/javascript" src="{{ url("js/ie_fix.js") }}"></script>
