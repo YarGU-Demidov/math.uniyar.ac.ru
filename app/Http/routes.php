@@ -11,7 +11,6 @@
 	|
 	*/
 
-	Route::get('/', function ()
-	{
-		return view('welcome');
-	});
+	Route::get("/", ["as" => "main", function(){
+		return view("home.index");
+	}]);

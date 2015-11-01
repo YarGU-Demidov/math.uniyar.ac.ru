@@ -153,6 +153,7 @@ return [
 	    SleepingOwl\Admin\AdminServiceProvider::class,
 
 	    App\Providers\AdminThemeServiceProvider::class,
+	    App\Providers\ComposerServiceProvider::class,
     ],
 
     /*
