@@ -14,6 +14,8 @@ class CreateKeywordsTable extends Migration
     {
 	    Schema::create("news_keywords",function(Blueprint $table)
 	    {
+		    $table->increments('id');
+
 		    $table->integer('news_id')->unsigned();
 		    $table->integer('keyword_id')->unsigned();
 

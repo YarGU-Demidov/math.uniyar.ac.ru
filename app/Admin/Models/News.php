@@ -21,7 +21,7 @@
 					FormItem::select('author_id','Автор')->model(\App\Models\User::class)->display("username")->required(),
 					FormItem::select('category_id','Категория')->model(\App\Models\Category::class)->display('name')->required(),
 					FormItem::multiselect('keywords', 'Ключевые слова')->model(\App\Models\Keyword::class)->display('word'),
-					FormItem::image('image')->label('Изображение')->required(),
+					FormItem::image('image')->label('Изображение'),
 				],
 				[
 					FormItem::ckeditor('announce')->label('Анонс')->required(),

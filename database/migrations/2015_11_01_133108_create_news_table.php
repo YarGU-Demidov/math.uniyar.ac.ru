@@ -17,12 +17,12 @@ class CreateNewsTable extends Migration
 		    $table->increments('id');
 		    $table->string('title');
 		    $table->integer('author_id')->unsigned();
-		    $table->string('image');
+		    $table->string('image')->nullable();
 		    $table->text('announce');
 		    $table->text('text');
 		    $table->integer('category_id')->unsigned();
 
-		    $table->string('short_url');
+		    $table->string('short_url')->nullable();
 
 		    $table->timestamps();
 	    });

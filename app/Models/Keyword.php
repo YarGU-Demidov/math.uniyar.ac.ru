@@ -26,4 +26,24 @@
 			'created_at',
 			'updated_at',
 		];
+
+		public function news()
+		{
+			return $this->belongsToMany(\App\Models\News::class, 'news_keywords', 'news_id');
+		}
+
+		public function scopeWithNews($query, $newsId)
+		{
+			$query->whereHas('news', function ($q) use ($newsId)
+			{
+				$q->where('news_id', $newsId);
+			});
+		}
+
+		public function setNewsIdAttribute($newsId)
+		{
+			$this->save();
+			$news = News::find($newsId);
+			$this->news()->attach($news);
+		}
 	}

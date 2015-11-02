@@ -23,11 +23,10 @@
 			<div class="parallax-dark-cover"></div>
 		</div>
 	</div>
-
+<!--
 	<div class="container">
 		<div class="section">
 
-			<!-- Icon Section -->
 			<div class="row">
 				<div class="col s12 m4">
 					<div class="icon-block">
@@ -68,11 +67,11 @@
 		<div class="section no-pad-bot valign-wrapper">
 			<h1 class="valign center-align blue-grey-text text-lighten-4">Новости</h1></div>
 		<div class="parallax">
-			<!--<img src="http://math.uniyar.ac.ru/math/system/files/1eAMk_TFS-c.jpg" alt="7k">-->
+			<!--<img src="http://math.uniyar.ac.ru/math/system/files/1eAMk_TFS-c.jpg" alt="7k">
 			<div class="parallax-dark-cover"></div>
 		</div>
 	</div>
-
+-->
 
 	<div class="container">
 		<div class="section">
