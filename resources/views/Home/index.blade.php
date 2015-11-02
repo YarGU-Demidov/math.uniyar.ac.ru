@@ -5,7 +5,7 @@
 		<div class="section no-pad-bot">
 			<div class="container">
 				<br><br>
-				<h1 class="header center blue-grey-text text-lighten-4">Математический факультет ЯрГУ</h1>
+				<h1 class="header center blue-grey-text text-lighten-4">Матфак ЯрГУ</h1>
 				<div class="row center">
 					<h5 class="header col s12 light white-text">Slogan</h5>
 				</div>
