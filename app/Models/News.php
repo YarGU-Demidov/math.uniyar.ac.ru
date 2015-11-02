@@ -36,11 +36,11 @@
 
 		protected $fillable = [
 			'title',
-			'author_id',
+			'author',
 			'image',
 			'announce',
 			'text',
-			'category_id',
+			'category',
 			'short_url',
 		];
 

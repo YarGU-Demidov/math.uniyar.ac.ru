@@ -20,6 +20,8 @@ class CreateNewskeywordsForeignKeys extends Migration
 		    $table->foreign('keyword_id')
 			    ->references('id')->on('keywords')
 			    ->onDelete("CASCADE");
+
+		    $table->unique(['news_id', 'keyword_id'], 'unique_pair');
 	    });
     }
 

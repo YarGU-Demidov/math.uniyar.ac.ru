@@ -4,19 +4,12 @@
 	{
 		$display = AdminDisplay::table();
 
-		//$display->with('users', 'categories');
-
-		$display->filters([
-			Filter::related('category_id')->model(\App\Models\Category::class),
-		]);
-
 		$display->columns([
 			Column::string('id')->label('Id'),
 			Column::string('title')->label('Заголовок'),
-			Column::string('user.username')->label('Автор')->append('author_id'),
+			Column::string('user.username')->label('Автор'),
 			Column::image('image')->label('Изображение'),
 			Column::string('announce')->label('Анонс'),
-			Column::string('text')->label('Текст'),
 			Column::string('categories.name')->label('Категория'),
 		]);
 		return $display;
@@ -29,7 +22,7 @@
 			FormItem::image('image')->label('Изображение')->required(),
 			FormItem::text('announce')->label('Анонс')->required(),
 			FormItem::ckeditor('text')->label('Текст')->required(),
-			FormItem::text('category')->label('Категория')->required(),
+			FormItem::select('category_id','Категория')->model(\App\Models\Category::class)->display('name')->required(),
 		]);
 		return $form;
 	});

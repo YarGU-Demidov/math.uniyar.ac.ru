@@ -20,6 +20,8 @@ class CreateNewsForeignKeys extends Migration
 		    $table->foreign('category_id')
 			    ->references('id')->on('categories')
 			    ->onDelete("CASCADE");
+		    
+		    $table->unique(['author_id', 'category_id'], 'unique_pair');
 	    });
     }
 

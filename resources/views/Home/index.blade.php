@@ -87,7 +87,7 @@
 								<span class="card-title">{{ $item->title }}</span>
 							</div>
 							<div class="card-content">
-								{{ $item->annotation }}
+								{{ $item->announce }}
 							</div>
 							<div class="card-action">
 								<a href="#">This is a link</a>
