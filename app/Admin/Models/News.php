@@ -17,12 +17,18 @@
 	{
 		$form = AdminForm::form();
 		$form->items([
-			FormItem::text('title')->label('Заголовок')->required(),
-			FormItem::select('author_id','Автор')->model(\App\Models\User::class)->display("username")->required(),
-			FormItem::image('image')->label('Изображение')->required(),
-			FormItem::ckeditor('announce')->label('Анонс')->required(),
-			FormItem::ckeditor('text')->label('Текст')->required(),
-			FormItem::select('category_id','Категория')->model(\App\Models\Category::class)->display('name')->required(),
+			FormItem::columns()->columns([
+				[
+					FormItem::text('title')->label('Заголовок')->required(),
+					FormItem::select('author_id','Автор')->model(\App\Models\User::class)->display("username")->required(),
+					FormItem::select('category_id','Категория')->model(\App\Models\Category::class)->display('name')->required(),
+					FormItem::image('image')->label('Изображение')->required(),
+				],
+				[
+					FormItem::ckeditor('announce')->label('Анонс')->required(),
+					FormItem::ckeditor('text')->label('Текст')->required(),
+				],
+			]),
 		]);
 		return $form;
 	});
