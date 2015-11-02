@@ -20,7 +20,7 @@
 			FormItem::text('title')->label('Заголовок')->required(),
 			FormItem::select('author_id','Автор')->model(\App\Models\User::class)->display("username")->required(),
 			FormItem::image('image')->label('Изображение')->required(),
-			FormItem::text('announce')->label('Анонс')->required(),
+			FormItem::ckeditor('announce')->label('Анонс')->required(),
 			FormItem::ckeditor('text')->label('Текст')->required(),
 			FormItem::select('category_id','Категория')->model(\App\Models\Category::class)->display('name')->required(),
 		]);

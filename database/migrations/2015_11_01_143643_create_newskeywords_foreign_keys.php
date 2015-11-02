@@ -34,8 +34,8 @@ class CreateNewskeywordsForeignKeys extends Migration
     {
 	    Schema::table("news_keywords",function(Blueprint $table)
 	    {
-		    $table->dropForeign('keyword_id');
-		    $table->dropForeign('news_id');
+		    $table->dropForeign('news_keywords_keyword_id_foreign');
+		    $table->dropForeign('news_keywords_news_id_foreign');
 	    });
     }
 }
