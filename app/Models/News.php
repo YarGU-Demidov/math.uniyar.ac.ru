@@ -58,4 +58,17 @@
 		{
 			return $this->belongsTo(\App\Models\Category::class);
 		}
+
+		public function keywords()
+		{
+			return $this->belongsToMany(\App\Models\Keyword::class, 'news_keywords', 'keyword_id');
+		}
+
+		public function setKeywordsAttribute($keywords)
+		{
+			$this->keywords()->detach();
+			if ( ! $keywords) return;
+			if ( ! $this->exists) $this->save();
+			$this->keywords()->attach($keywords);
+		}
 	}
