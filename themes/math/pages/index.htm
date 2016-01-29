@@ -1,0 +1,17 @@
+title = "Главная страница"
+url = "/"
+layout = "IndexPage"
+description = "Главная страница сайта Математического факультета ЯрГУ"
+is_hidden = 0
+meta_title = "МатФак"
+meta_description = "Главная страница сайта Математического факультета ЯрГУ"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 6
+noPostsMessage = "Постов пока нет"
+sortOrder = "published_at desc"
+categoryPage = "index"
+postPage = "post-view"
+==
+{% component 'blogPosts' %}

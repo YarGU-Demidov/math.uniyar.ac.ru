@@ -1,0 +1,34 @@
+title = "Post View"
+url = "/news/show/:slug"
+layout = "news-view"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "index"
+==
+<div class="content">{{ post.content_html|raw }}</div>
+
+{% if post.featured_images.count %}
+    <div class="featured-images text-center">
+        {% for image in post.featured_images %}
+            <p>
+                <img
+                    data-src="{{ image.filename }}"
+                    src="{{ image.path }}"
+                    alt="{{ image.description }}"
+                    style="max-width: 100%" />
+            </p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<p class="info">
+    Опубликовано
+    {% if post.categories.count %} в
+        {% for category in post.categories %}
+            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+     {{ post.published_at|date('M d, Y') }}
+</p>

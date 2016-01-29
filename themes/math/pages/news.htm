@@ -1,0 +1,17 @@
+title = "Новости факультета"
+url = "/news/:page?"
+layout = "News"
+description = "Список последних новостей факультета"
+is_hidden = 0
+meta_title = "Новости факультета"
+meta_description = "Новости нашего факультета"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "Постов нет"
+sortOrder = "published_at desc"
+categoryPage = "index"
+postPage = "post-view"
+==
+{% component 'blogPosts' %}

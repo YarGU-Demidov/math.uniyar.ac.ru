@@ -1,0 +1,24 @@
+name: 'Тема сайта МатФака'
+description: 'Тема сайта Математического Факультета'
+author: mokeev1995
+homepage: 'http://mokeev1995.ru'
+code: ''
+form:
+    fields:
+        site_favicon:
+            label: 'Иконка сайта'
+            type: mediafinder
+            mode: image
+        site_favicon_type:
+            label: 'Расширение файла иконки сайта'
+            type: dropdown
+            options:
+                gif: GIF
+                png: PNG
+                x-icon: ICO
+        site_name:
+            label: 'Имя сайта'
+            comment: 'Имя сайта используется по всему сайту'
+        site_keywords:
+            label: 'Ключевые слова'
+            comment: 'Ключевые слома используется поисковиками для упрощения поиска'
