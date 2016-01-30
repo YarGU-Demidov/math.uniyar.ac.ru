@@ -54,11 +54,11 @@
 
 			'mysql' => [
 				'driver'    => 'mysql',
-				'host'      => 'localhost',
+				'host'      => env("DATABASE_HOST",'localhost'),
 				'port'      => '',
-				'database'  => 'math',
-				'username'  => 'math',
-				'password'  => 'mathSite',
+				'database'  => env("DATABASE_NAME",'math'),
+				'username'  => env("DATABASE_USER",'math'),
+				'password'  => env("DATABASE_PASS", 'mathSite'),
 				'charset'   => 'utf8',
 				'collation' => 'utf8_unicode_ci',
 				'prefix'    => '',

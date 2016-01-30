@@ -16,7 +16,7 @@
 		|
 		*/
 
-		'debug' => true,
+		'debug' => env("APP_DEBUG", false),
 
 		/*
 		|--------------------------------------------------------------------------
@@ -115,7 +115,8 @@
 
 			// 'Illuminate\Html\HtmlServiceProvider', // Example
 
-			'System\ServiceProvider',
+			System\ServiceProvider::class,
+			Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 		] ),
 
 		/*
