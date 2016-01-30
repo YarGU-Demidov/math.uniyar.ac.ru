@@ -26,7 +26,7 @@
 		|
 		*/
 
-		'default' => 'mysql',
+		'default' => env('DB_CONNECTION', 'mysql'),
 
 		/*
 		|--------------------------------------------------------------------------
@@ -66,24 +66,25 @@
 
 			'pgsql' => [
 				'driver'   => 'pgsql',
-				'host'     => 'localhost',
-				'port'     => '',
-				'database' => 'database',
-				'username' => 'root',
-				'password' => '',
+				'host'     => env('DB_HOST', 'localhost'),
+				'database' => env('DB_DATABASE', 'forge'),
+				'username' => env('DB_USERNAME', 'forge'),
+				'password' => env('DB_PASSWORD', ''),
 				'charset'  => 'utf8',
 				'prefix'   => '',
 				'schema'   => 'public',
+				'port'     => '',
 			],
 
 			'sqlsrv' => [
 				'driver'   => 'sqlsrv',
-				'host'     => 'localhost',
-				'port'     => '',
-				'database' => 'database',
-				'username' => 'root',
-				'password' => '',
+				'host'     => env('DB_HOST', 'localhost'),
+				'database' => env('DB_DATABASE', 'forge'),
+				'username' => env('DB_USERNAME', 'forge'),
+				'password' => env('DB_PASSWORD', ''),
+				'charset'  => 'utf8',
 				'prefix'   => '',
+				'port'     => '',
 			],
 
 		],
@@ -117,8 +118,9 @@
 			'cluster' => false,
 
 			'default' => [
-				'host'     => '127.0.0.1',
-				'port'     => 6379,
+				'host'     => env('REDIS_HOST', 'localhost'),
+				'password' => env('REDIS_PASSWORD', null),
+				'port'     => env('REDIS_PORT', 6379),
 				'database' => 0,
 			],
 

@@ -81,7 +81,7 @@
 		|
 		*/
 
-		'key' => 'Q7XzqAu9nH825ymRkgoFVuSsF2nyjutj',
+		'key' => env("APP_KEY", '93P0TVTL2zBB29lHryBqO9vXlbBRmizU'),
 
 		'cipher' => MCRYPT_RIJNDAEL_128,
 
