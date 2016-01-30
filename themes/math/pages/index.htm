@@ -1,6 +1,5 @@
 title = "Главная страница"
 url = "/"
-layout = "IndexPage"
 description = "Главная страница сайта Математического факультета ЯрГУ"
 is_hidden = 0
 meta_title = "МатФак"
@@ -14,4 +13,23 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
-{% component 'blogPosts' %}
+<ul class="post-list">
+    {% for post in posts %}
+        <li>
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+
+            <p class="info">
+                Posted
+                {% if post.categories.count %} in {% endif %}
+                {% for category in post.categories %}
+                    <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                on {{ post.published_at|date('M d, Y') }}
+            </p>
+
+            <p class="excerpt">{{ post.summary }}</p>
+        </li>
+    {% else %}
+        <li class="no-data">{{ noPostsMessage }}</li>
+    {% endfor %}
+</ul>
