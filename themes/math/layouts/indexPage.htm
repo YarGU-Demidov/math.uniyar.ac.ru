@@ -7,7 +7,7 @@ description = "Layout for Main Page"
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="{{ this.page.meta_description }}">
 		<meta name="title" content="{{ this.page.meta_title }}">
-		<meta name="keywords" content="{{ this.theme.site_keywords }}{% if this.page.keywords %},{{ this.page.keywords }} {% endif %}">
+		<meta name="keywords" content="{{ this.theme.site_keywords }}{% if (this.page.keywords and this.theme.site_keywords) %},{% endif %}{{ this.page.keywords }} ">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="mokeev1995">
 		<link rel="shortcut icon" href="{{ this.theme.site_favicon }}" type="image/{{ this.theme.site_favicon_type }}">
@@ -28,6 +28,11 @@ description = "Layout for Main Page"
 		<header>
 			<section id="header" class="container">
 				header
+				<menu>
+					<li><a href="#">Абитуриентам</a></li>
+					<li><a href="#">Студентам</a></li>
+					<li><a href="#">Контакты</a></li>
+				</menu>
 			</section>
 			<section id="news-preview" >
 				<div class="container">
