@@ -16,6 +16,7 @@ description = "Layout for Main Page"
 
 		{% styles %}
 
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<link href="{{ [
 			'assets/css/bootstrap.css',
 			'assets/css/bootstrap-theme.css',
@@ -27,7 +28,11 @@ description = "Layout for Main Page"
 
 		<header>
 			<section id="header" class="container">
-				header
+				<div id="logo-img">
+					<a href="{{  ''|page }}">
+						{{ this.theme.site_name }}
+					</a>
+				</div>
 				<menu>
 					<li><a href="#">Абитуриентам</a></li>
 					<li><a href="#">Студентам</a></li>
