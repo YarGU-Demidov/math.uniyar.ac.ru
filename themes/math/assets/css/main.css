@@ -81,7 +81,9 @@ menu li:last-child a
 
 #quick-data
 {
+	display: block;
 	padding: 50px 100px;
+	height: 500px;
 }
 
 #quick-data .title
@@ -109,7 +111,43 @@ menu li:last-child a
 	position: relative;
 	bottom:0;
 	background-color: rgba(3,23,113,0.6);
-	height: 150px;
+	height: 250px;
+}
+
+#splashes
+{
+	margin: 0 auto;
+	width: 826px;
+	position: relative;
+	top: -250px;
+}
+
+#splashes figure
+{
+	display: inline-block;
+	width: 275px;
+	height: 300px;
+	background-color: rgba(0,0,0,.1);
+}
+
+/*
+	browser fixes
+*/
+#splashes figure:not(:first-child)
+{
+	margin-left: -3px;
+}
+#splashes figure:last-child
+{
+	margin-left: -4px;
+}
+
+#news-text
+{
+	margin-top: -185px;
+	font-size: 30px;
+	color: #fff;
+	font-weight: 300;
 }
 
 #left-bg,
