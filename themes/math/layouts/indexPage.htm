@@ -7,7 +7,8 @@ description = "Layout for Main Page"
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="{{ this.page.meta_description }}">
 		<meta name="title" content="{{ this.page.meta_title }}">
-		<meta name="keywords" content="{{ this.theme.site_keywords }}{% if (this.page.keywords and this.theme.site_keywords) %},{% endif %}{{ this.page.keywords }} ">
+		<meta name="keywords"
+		      content="{{ this.theme.site_keywords }}{% if (this.page.keywords and this.theme.site_keywords) %},{% endif %}{{ this.page.keywords }} ">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="mokeev1995">
 		<link rel="shortcut icon" href="{{ this.theme.site_favicon }}" type="image/{{ this.theme.site_favicon_type }}">
@@ -16,11 +17,12 @@ description = "Layout for Main Page"
 
 		{% styles %}
 
-		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext'
+		      rel='stylesheet' type='text/css'>
 		<link href="{{ [
-			'assets/css/bootstrap.css',
-			'assets/css/bootstrap-theme.css',
-			'assets/css/main.css'
+		'assets/css/bootstrap.css',
+		'assets/css/bootstrap-theme.css',
+		'assets/css/main.css'
 		]|theme }}" rel="stylesheet">
 	</head>
 
@@ -30,7 +32,7 @@ description = "Layout for Main Page"
 			<div id="left-bg"></div>
 			<section id="header" class="container">
 				<div id="logo">
-					<a href="{{  ''|page }}">
+					<a href="{{ ''|page }}">
 						{{ this.theme.site_name }}
 					</a>
 				</div>
@@ -49,17 +51,29 @@ description = "Layout for Main Page"
 				</a>
 			</section>
 
-			<section id="news-preview" >
+			<section id="news-preview">
 				<div id="splashes">
-					<figure id="left">
-						left
-					</figure>
-					<figure id="center">
-						center
-					</figure>
-					<figure id="right">
-						right
-					</figure>
+					<table>
+						<tr>
+							<td>
+								<figure id="left">
+									left
+								</figure>
+							</td>
+							<td>
+								<figure id="center">
+									center
+								</figure>
+							</td>
+							<td>
+								<figure id="right">
+									right
+								</figure>
+							</td>
+						</tr>
+					</table>
+
+
 				</div>
 				<div id="news-text" class="text-center">
 					У нас творится история &nbsp;&nbsp; <a href="#" class="button">Новости</a>
@@ -82,9 +96,9 @@ description = "Layout for Main Page"
 
 		<!-- Scripts -->
 		<script src="{{ [
-			'assets/js/jquery-2.2.0.min.js',
-			'assets/js/bootstrap.min.js',
-			'assets/js/app.js',
+		'assets/js/jquery-2.2.0.min.js',
+		'assets/js/bootstrap.min.js',
+		'assets/js/app.js',
 		] | theme }}"></script>
 		{% framework extras %}
 		{% scripts %}

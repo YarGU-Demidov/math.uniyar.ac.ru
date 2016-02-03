@@ -130,18 +130,6 @@ menu li:last-child a
 	background-color: rgba(0,0,0,.1);
 }
 
-/*
-	browser fixes
-*/
-#splashes figure:not(:first-child)
-{
-	margin-left: -3px;
-}
-#splashes figure:last-child
-{
-	margin-left: -4px;
-}
-
 #news-text
 {
 	margin-top: -185px;
