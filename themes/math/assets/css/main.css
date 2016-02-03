@@ -10,14 +10,14 @@ body
 	font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-header,
+#header-section,
 #header,
 #news-preview .container
 {
 	min-width: 1100px;
 }
 
-header
+#header-section
 {
 	background: rgb(75,129,195); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(75,129,195,1) 0%, rgba(124,208,229,1) 100%); /* FF3.6-15 */
@@ -31,7 +31,7 @@ header
 	float: left;
 	font-size: 0;
 	line-height: 0;
-	height: 100px;
+	height: 150px;
 	width: 200px;
 	background: url("../imgs/math_logo_blue.svg") no-repeat center;
 	background-size: cover;
@@ -53,7 +53,6 @@ header
 {
 	position: relative;
 	display: block;
-	height: 450px;
 }
 
 menu,
@@ -71,14 +70,38 @@ menu
 menu li a
 {
 	display: block;
-	padding: 40px 40px;
+	padding: 40px 20px;
 	color: #fff;
 }
 
-menu li a:last-child
+menu li:last-child a
 {
-	padding: 40px 0 40px 40px;
+	padding: 20px 0 20px 40px;
 }
+
+#quick-data
+{
+	padding: 50px 100px;
+}
+
+#quick-data .title
+{
+	color: #fff;
+	font-size: 50px;
+	font-weight: 300;
+}
+
+#quick-data .button
+{
+	display: block;
+	background-color: #E14167;
+	height: 30px;
+	width: 80px;
+	padding: 0 5px 0 7px;
+	line-height: 30px;
+	color: #fff;
+}
+
 
 #news-preview
 {
@@ -88,3 +111,21 @@ menu li a:last-child
 	background-color: rgba(3,23,113,0.6);
 	height: 150px;
 }
+
+#left-bg,
+#right-bg
+{
+	display: block;
+	position: relative;
+}
+
+#left-bg
+{
+	float: left;
+}
+
+#right-bg
+{
+	float: right;
+}
+

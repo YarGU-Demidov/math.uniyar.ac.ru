@@ -26,7 +26,8 @@ description = "Layout for Main Page"
 
 	<body>
 
-		<header>
+		<section id="header-section">
+			<div id="left-bg"></div>
 			<section id="header" class="container">
 				<div id="logo">
 					<a href="{{  ''|page }}">
@@ -39,12 +40,26 @@ description = "Layout for Main Page"
 					<li><a href="#">Контакты</a></li>
 				</menu>
 			</section>
+			<section id="quick-data" class="container">
+				<div class="title">
+					Информационные <br/>технологии
+				</div>
+				<a class="button" href="#">
+					Узнать &nbsp;►
+				</a>
+			</section>
+
+			<section>
+
+			</section>
+
 			<section id="news-preview" >
 				<div class="container">
 					news
 				</div>
 			</section>
-		</header>
+			<div id="right-bg"></div>
+		</section>
 
 		<main>
 			{% page %}
