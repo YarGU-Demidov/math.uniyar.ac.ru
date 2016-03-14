@@ -39,16 +39,17 @@ description = "Layout for Main Page"
 				<menu>
 					<li><a href="#">Абитуриентам</a></li>
 					<li><a href="#">Студентам</a></li>
-					<li><a href="#">Контакты</a></li>
+  				    <li><a href="#">Контакты</a></li>
 				</menu>
 			</section>
+
 			<section id="quick-data" class="container">
 				<div class="title">
 					Информационные <br/>технологии
 				</div>
 				<a class="button" href="#">
-					Узнать &nbsp;►
-				</a>
+					УЗНАТЬ &nbsp;►
+				</a><div class="robot"></div>
 			</section>
 
 			<section id="news-preview">
@@ -57,17 +58,26 @@ description = "Layout for Main Page"
 						<tr>
 							<td>
 								<figure id="left">
-									left
+									<div class="leftpic"></div>
+									Как поступить <br>
+									<div class="left1">Пошаговое руководство.<br>Полезные советы</div>
+
 								</figure>
 							</td>
 							<td>
 								<figure id="center">
-									center
+									<div class="centerpic"></div>
+									Как учиться
+									<div class="center1">Олимпиады.<br>Какие кафедры классные?<br>Что, если не понятно?</div>
+
 								</figure>
 							</td>
 							<td>
 								<figure id="right">
-									right
+									<div class="rightpic"></div>
+									Где трудиться
+									<div class="right1">Что Вас ждет в будущем?<br>Куда пойти работать?<br>Есть ли смысл в этой жизни?</div>
+
 								</figure>
 							</td>
 						</tr>
@@ -75,22 +85,57 @@ description = "Layout for Main Page"
 
 
 				</div>
+
 				<div id="news-text" class="text-center">
-					У нас творится история &nbsp;&nbsp; <a href="#" class="button">Новости</a>
+					У нас творится история
 				</div>
+				<div class="buttonblue"><a href="#" class="button1">НОВОСТИ &nbsp;►</a></div>
+				<section>
+					<table style="margin: 39px 0 0 231px;">
+						<tr>
+							<td>
+								<div class="news1">
+								</div>
+							</td>
+							<td>
+								<div class="news2">
+								</div>
+							</td>
+							<td>
+								<div class="news3">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="news4">
+								</div>
+							</td>
+							<td>
+								<div class="news5">
+								</div>
+							</td>
+							<td>
+								<div class="news6">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</section>
+
 				<div class="clearfix"></div>
 			</section>
+
 			<div id="right-bg"></div>
 		</section>
-
 		<main>
-			{% page %}
+			{#{% page %}#}
 		</main>
 
 		<!-- Footer -->
 		<footer>
 
-			{% partial "footer" %}
+			{#{% partial "footer" %}#}
 
 		</footer>
 

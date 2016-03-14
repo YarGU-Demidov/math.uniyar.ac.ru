@@ -28,12 +28,13 @@ body
 
 #logo
 {
+	margin: 8px 0 0 70px;
 	float: left;
 	font-size: 0;
 	line-height: 0;
-	height: 150px;
-	width: 200px;
-	background: url("../imgs/math_logo_blue.svg") no-repeat center;
+	height: 149px;
+	width: 289px;
+	background: url("../imgs/math_logo.png") no-repeat center;
 	background-size: cover;
 }
 
@@ -64,7 +65,7 @@ menu li
 
 menu
 {
-	float: right;
+	margin: 0 0 0 260px;
 }
 
 menu li a
@@ -72,6 +73,8 @@ menu li a
 	display: block;
 	padding: 40px 20px;
 	color: #fff;
+	font-family: "Circe Light";
+	font-size: 15px;
 }
 
 menu li:last-child a
@@ -86,22 +89,53 @@ menu li:last-child a
 	height: 500px;
 }
 
+
 #quick-data .title
 {
 	color: #fff;
-	font-size: 50px;
+	font-size: 43px;
 	font-weight: 300;
+	margin: -38px 0 0 68px;
+	font-family: "Circe Light";
 }
 
 #quick-data .button
 {
 	display: block;
 	background-color: #E14167;
-	height: 30px;
-	width: 80px;
-	padding: 0 5px 0 7px;
+	height: 28px;
+	width: 83px;
+	padding: 0 5px 0 13px;
 	line-height: 30px;
 	color: #fff;
+	margin: 0 0 0 69px;
+	font-size: 11px;
+}
+
+#quick-data .button1
+{
+	display: block;
+	background-color: #E14167;
+	height: 28px;
+	width: 83px;
+	padding: 0 5px 0 13px;
+	line-height: 30px;
+	color: #fff;
+	margin: 0 0 0 69px;
+	font-size: 11px;
+}
+
+.buttonblue
+{
+	display: block;
+	background-color: #2889f5;
+	height: 28px;
+	width: 105px;
+	padding: 0 5px 0 21px;
+	line-height: 30px;
+	color: #fff;
+	margin: -32px 0 0 790px;
+	font-size: 11px;
 }
 
 
@@ -117,20 +151,24 @@ menu li:last-child a
 #splashes
 {
 	margin: 0 auto;
-	width: 825px;
+	width: 886px;
 	position: relative;
-	top: -250px;
+	top: -303px;
 }
 
 #splashes figure
 {
 	display: inline-block;
-	width: 275px;
-	height: 300px;
+	width: 295px;
+	height: 375px;
 }
 
 #splashes figure#left
 {
+	color: #ffffff;
+	font-size: 24px;
+	padding: 243px 0 0 75px;
+	font-family: "calibri";
 	background: rgb(249,159,27); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(249,159,27,1) 0%, rgba(240,83,107,1) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, rgba(249,159,27,1) 0%,rgba(240,83,107,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -138,8 +176,129 @@ menu li:last-child a
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99f1b', endColorstr='#f0536b',GradientType=0 ); /* IE6-8 */
 }
 
+.left1
+{
+	font-size: 14px;
+	text-align: center;
+	margin: 0px 0 0 -77px;
+	line-height: normal;
+}
+
+.center1
+{
+	font-size: 14px;
+	text-align: center;
+	margin: 0px 0 0 -84px;
+	line-height: normal;
+}
+
+.right1
+{
+	font-size: 14px;
+	text-align: center;
+	margin: 0px 0 0 -77px;
+	line-height: normal;
+}
+
+.robot
+{
+	margin: -225px 0 0 635px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 265px;
+	width: 255px;
+	background: url("../imgs/robot.png") no-repeat center;
+	background-size: cover;
+}
+
+.news1
+{
+	margin: 0px 15px 15px 0px;
+	height: 360px;
+	width: 284px;
+	background: url("../imgs/news1.png") no-repeat center;
+	background-size: cover;
+}
+
+.news2
+{
+	margin: 0px 15px 15px 0px;
+	height: 360px;
+	width: 284px;
+	background: url("../imgs/news2.png") no-repeat center;
+	background-size: cover;
+}
+
+.news3
+{
+	margin: 0px 15px 15px 0px;
+	height: 360px;
+	width: 284px;
+	background: url("../imgs/news3.png");
+	background-size: cover;
+}
+
+.news4
+{
+	margin: 0px 0px 0px 0px;
+	height: 360px;
+	width: 284px;
+	background: url("../imgs/news4.png");
+	background-size: cover;
+}
+
+.news5
+{
+	margin: 0px 0px 0px 0px;
+	height: 360px;
+	width: 284px;
+	background: url("../imgs/news5.png");
+	background-size: cover;
+}
+
+.news6
+{
+	margin: 0px 0px 0px 0px;
+	height: 360px;
+	width: 284px;
+	background: url("../imgs/news6.png");
+	background-size: cover;
+}
+
+.leftpic
+{
+	margin: -180px 0px 48px 0px;
+	height: 135px;
+	width: 135px;
+	background: url("../imgs/leftpic.png");
+	background-size: cover;
+}
+.centerpic
+{
+	margin: -180px 0px 48px -6px;
+	height: 135px;
+	width: 135px;
+	background: url("../imgs/centerpic.png");
+	background-size: cover;
+}
+.rightpic
+{
+	margin: -180px 0px 48px 0px;
+	height: 135px;
+	width: 135px;
+	background: url("../imgs/rightpic.png");
+	background-size: cover;
+}
+
+
+
 #splashes figure#center
 {
+	color: #ffffff;
+	font-size: 24px;
+	padding: 243px 0 0 87px;
+	font-family: "calibri";
 	background: rgb(240,86,128); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(240,86,128,1) 0%, rgba(224,70,62,1) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, rgba(240,86,128,1) 0%,rgba(224,70,62,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -149,6 +308,10 @@ menu li:last-child a
 
 #splashes figure#right
 {
+	color: #ffffff;
+	font-size: 24px;
+	padding: 243px 0 0 73px;
+	font-family: "calibri";
 	background: rgb(147,86,163); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(147,86,163,1) 0%, rgba(127,145,201,1) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, rgba(147,86,163,1) 0%,rgba(127,145,201,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -159,7 +322,7 @@ menu li:last-child a
 
 #news-text
 {
-	margin-top: -185px;
+	margin: -274px 0 0 -175px;
 	font-size: 30px;
 	color: #fff;
 	font-weight: 300;
