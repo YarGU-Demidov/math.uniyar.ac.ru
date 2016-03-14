@@ -73,8 +73,8 @@ menu li a
 	display: block;
 	padding: 40px 20px;
 	color: #fff;
-	font-family: "Circe Light";
-	font-size: 15px;
+	font-family: "roboto";
+	font-size: 14px;
 }
 
 menu li:last-child a
@@ -93,10 +93,10 @@ menu li:last-child a
 #quick-data .title
 {
 	color: #fff;
-	font-size: 43px;
+	font-size: 41px;
 	font-weight: 300;
 	margin: -38px 0 0 68px;
-	font-family: "Circe Light";
+	font-family: "Roboto";
 }
 
 #quick-data .button
@@ -214,7 +214,7 @@ menu li:last-child a
 
 .news1
 {
-	margin: 0px 15px 15px 0px;
+	margin: 0px 17px 16px 10px;
 	height: 360px;
 	width: 284px;
 	background: url("../imgs/news1.png") no-repeat center;
@@ -223,7 +223,7 @@ menu li:last-child a
 
 .news2
 {
-	margin: 0px 15px 15px 0px;
+	margin: 0px 17px 16px 0px;
 	height: 360px;
 	width: 284px;
 	background: url("../imgs/news2.png") no-repeat center;
@@ -232,7 +232,7 @@ menu li:last-child a
 
 .news3
 {
-	margin: 0px 15px 15px 0px;
+	margin: 0px 17px 16px 0px;
 	height: 360px;
 	width: 284px;
 	background: url("../imgs/news3.png");
@@ -241,7 +241,7 @@ menu li:last-child a
 
 .news4
 {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 17px 16px 10px;
 	height: 360px;
 	width: 284px;
 	background: url("../imgs/news4.png");
@@ -250,7 +250,7 @@ menu li:last-child a
 
 .news5
 {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 17px 16px 0px;
 	height: 360px;
 	width: 284px;
 	background: url("../imgs/news5.png");
@@ -259,7 +259,7 @@ menu li:last-child a
 
 .news6
 {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 17px 16px 0px;
 	height: 360px;
 	width: 284px;
 	background: url("../imgs/news6.png");
