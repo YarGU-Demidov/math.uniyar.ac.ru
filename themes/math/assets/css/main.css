@@ -28,13 +28,13 @@ body
 
 #logo
 {
-	margin: 8px 0 0 70px;
+	margin: 8px 0 0 65px;
 	float: left;
 	font-size: 0;
 	line-height: 0;
-	height: 149px;
-	width: 289px;
-	background: url("../imgs/math_logo.png") no-repeat center;
+	height: 148px;
+	width: 236px;
+	background: url("../imgs/math_logo_blue1.svg") no-repeat center;
 	background-size: cover;
 }
 
@@ -65,7 +65,7 @@ menu li
 
 menu
 {
-	margin: 0 0 0 260px;
+	margin: 0 0 0 295px;
 }
 
 menu li a
@@ -74,12 +74,12 @@ menu li a
 	padding: 40px 20px;
 	color: #fff;
 	font-family: "roboto";
-	font-size: 14px;
+	font-size: 16px;
 }
 
 menu li:last-child a
 {
-	padding: 20px 0 20px 40px;
+	padding: 20px 0 20px 20px;
 }
 
 #quick-data
@@ -93,7 +93,7 @@ menu li:last-child a
 #quick-data .title
 {
 	color: #fff;
-	font-size: 41px;
+	font-size: 36px;
 	font-weight: 300;
 	margin: -38px 0 0 68px;
 	font-family: "Roboto";
@@ -115,19 +115,6 @@ menu li:last-child a
 #quick-data .button1
 {
 	display: block;
-	background-color: #E14167;
-	height: 28px;
-	width: 83px;
-	padding: 0 5px 0 13px;
-	line-height: 30px;
-	color: #fff;
-	margin: 0 0 0 69px;
-	font-size: 11px;
-}
-
-.buttonblue
-{
-	display: block;
 	background-color: #2889f5;
 	height: 28px;
 	width: 105px;
@@ -138,6 +125,104 @@ menu li:last-child a
 	font-size: 11px;
 }
 
+.abutton1
+{
+	display: inline-block;
+	background-color: #2889f5;
+	color: #fff;
+	line-height: 32px;
+	height: 31px;
+	width: 111px;
+	padding: 0 5px 0 13px;
+	margin: 0px 0 0px 23px;
+	position: relative;
+	top: -5px;
+	font-size: 13px;
+}
+
+#background_pattern_left
+{
+	margin: 370px 0 0 -609px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 460px;
+	width: 753px;
+	background: url("../themes/math/assets/imgs/header-pattern.png") no-repeat center;
+	background-size: cover;
+}
+
+#background_pattern_right
+{
+	margin: -460px 0 0 755px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 460px;
+	width: 753px;
+	background: url("../themes/math/assets/imgs/header-pattern.png") no-repeat center;
+	background-size: cover;
+}
+
+#shar
+{
+	margin: 375px 0px 0px 0;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 40px;
+	width: 40px;
+	background: url("../themes/math/assets/imgs/shar.png") no-repeat center;
+	background-size: cover;
+}
+
+#kub
+{
+	margin: 96px 0px 0px 0px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 80px;
+	width: 80px;
+	background: url("../themes/math/assets/imgs/kub.png") no-repeat center;
+	background-size: cover;
+}
+
+#shar2
+{
+	margin: 0px 0px 0px -93px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 30px;
+	width: 30px;
+	background: url("../themes/math/assets/imgs/shar2.png") no-repeat center;
+	background-size: cover;
+}
+
+#kub2
+{
+	margin: -42px 0px 0px 936px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 80px;
+	width: 80px;
+	background: url("../themes/math/assets/imgs/kub2.png") no-repeat center;
+	background-size: cover;
+}
+
+#t1
+{
+	margin: 0px 0px 0px 980px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 80px;
+	width: 80px;
+	background: url("../themes/math/assets/imgs/t1.png") no-repeat center;
+	background-size: cover;
+}
 
 #news-preview
 {
@@ -153,7 +238,19 @@ menu li:last-child a
 	margin: 0 auto;
 	width: 886px;
 	position: relative;
-	top: -303px;
+	top: -320px;
+}
+
+.robot
+{
+	margin: -207px 0 0 620px;
+	float: left;
+	font-size: 0;
+	line-height: 0;
+	height: 245px;
+	width: 230px;
+	background: url("../imgs/robot.png") no-repeat center;
+	background-size: cover;
 }
 
 #splashes figure
@@ -198,18 +295,6 @@ menu li:last-child a
 	text-align: center;
 	margin: 0px 0 0 -77px;
 	line-height: normal;
-}
-
-.robot
-{
-	margin: -225px 0 0 635px;
-	float: left;
-	font-size: 0;
-	line-height: 0;
-	height: 265px;
-	width: 255px;
-	background: url("../imgs/robot.png") no-repeat center;
-	background-size: cover;
 }
 
 .news1
@@ -322,7 +407,7 @@ menu li:last-child a
 
 #news-text
 {
-	margin: -274px 0 0 -175px;
+	margin: -274px 0 0 -25px;
 	font-size: 30px;
 	color: #fff;
 	font-weight: 300;
