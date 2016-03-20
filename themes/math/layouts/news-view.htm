@@ -16,10 +16,11 @@ description = "Шаблон отображения новости"
 
 		{% styles %}
 
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
 		<link href="{{ [
-		'assets/css/bootstrap.css',
-		'assets/css/bootstrap-theme.css',
-		'assets/css/main.css'
+			'assets/css/bootstrap.css',
+			'assets/css/bootstrap-theme.css',
 		]|theme }}" rel="stylesheet">
 	</head>
 
@@ -38,9 +39,9 @@ description = "Шаблон отображения новости"
 
 		<!-- Scripts -->
 		<script src="{{ [
-		'assets/js/jquery-2.2.0.min.js',
-		'assets/js/bootstrap.min.js',
-		'assets/js/app.js',
+			'assets/js/jquery-2.2.0.min.js',
+			'assets/js/bootstrap.min.js',
+			'assets/js/app.js',
 		] | theme }}"></script>
 		{% framework extras %}
 		{% scripts %}

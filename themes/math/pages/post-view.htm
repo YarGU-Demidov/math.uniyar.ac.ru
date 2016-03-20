@@ -30,5 +30,5 @@ categoryPage = "index"
             <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
         {% endfor %}
     {% endif %}
-     {{ post.published_at|date('M d, Y') }}
+	{{ post.published_at|localizeddate('medium', 'none', locale) }}
 </p>

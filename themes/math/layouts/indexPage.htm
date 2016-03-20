@@ -7,8 +7,7 @@ description = "Layout for Main Page"
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="{{ this.page.meta_description }}">
 		<meta name="title" content="{{ this.page.meta_title }}">
-		<meta name="keywords"
-		      content="{{ this.theme.site_keywords }}{% if (this.page.keywords and this.theme.site_keywords) %},{% endif %}{{ this.page.keywords }} ">
+		<meta name="keywords" content="{{ this.theme.site_keywords }}{% if (this.page.keywords and this.theme.site_keywords) %},{% endif %}{{ this.page.keywords }} ">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="mokeev1995">
 		<link rel="shortcut icon" href="{{ this.theme.site_favicon }}" type="image/{{ this.theme.site_favicon_type }}">
@@ -17,12 +16,11 @@ description = "Layout for Main Page"
 
 		{% styles %}
 
-		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext'
-		      rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<link href="{{ [
-		'assets/css/bootstrap.css',
-		'assets/css/bootstrap-theme.css',
-		'assets/css/main.css'
+			'assets/css/bootstrap.css',
+			'assets/css/bootstrap-theme.css',
+			'assets/css/main.css'
 		]|theme }}" rel="stylesheet">
 	</head>
 
@@ -148,9 +146,9 @@ description = "Layout for Main Page"
 
 		<!-- Scripts -->
 		<script src="{{ [
-		'assets/js/jquery-2.2.0.min.js',
-		'assets/js/bootstrap.min.js',
-		'assets/js/app.js',
+			'assets/js/jquery-2.2.0.min.js',
+			'assets/js/bootstrap.min.js',
+			'assets/js/app.js',
 		] | theme }}"></script>
 		{% framework extras %}
 		{% scripts %}
