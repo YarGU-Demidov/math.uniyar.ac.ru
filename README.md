@@ -22,7 +22,7 @@ Any pull requests and bug reports are welcome.
 * Configure connection string in `/config/app.php` and others options (turn off or on debug and so one)
 * Run `composer install` in directory with site.
 * Launch `php artisan october:up` 
-* Now you can enter to admin panel `{site adress}/manager/` (or other path, setted in `/config/cms.php`) and use site
+* Now you can enter to admin panel `{site address}/manager/` (or other path, set in `/config/cms.php`) and use site
 
 ### Contributors
 
