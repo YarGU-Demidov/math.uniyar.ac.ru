@@ -197,15 +197,15 @@
 		'storage' => [
 
 			'uploads' => [
-				'disk'   => 'uploads',
+				'disk'   => 'local',
 				'folder' => 'uploads',
-				'path'   => '/uploads',
+				'path'   => '/storage/app/uploads',
 			],
 
 			'media' => [
-				'disk'   => 'uploads',
+				'disk'   => 'local',
 				'folder' => 'media',
-				'path'   => '/uploads/media',
+				'path'   => '/storage/app/media',
 			],
 
 		],

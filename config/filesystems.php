@@ -48,10 +48,10 @@
 				'root'   => storage_path() . '/app',
 			],
 
-			'uploads' => [
+			/*'uploads' => [
 				'driver' => 'local',
 				'root'   => base_path() . '/uploads',
-			],
+			],*/
 
 			's3' => [
 				'driver' => 's3',
