@@ -142,29 +142,29 @@ menu li:last-child a
 
 #background_pattern_left
 {
-	margin: 370px 0 0 -609px;
+	margin: 370px 0 0 -259px;
 	float: left;
 	font-size: 0;
 	line-height: 0;
 	height: 460px;
-	width: 753px;
+	width: 430px;
 	background: url("../themes/math/assets/imgs/header-pattern.png") no-repeat center;
 	background-size: cover;
 }
 
 #background_pattern_right
 {
-	margin: -460px 0 0 755px;
+	margin: -492px 0 0 815px;
 	float: left;
 	font-size: 0;
 	line-height: 0;
-	height: 460px;
-	width: 753px;
-	background: url("../themes/math/assets/imgs/header-pattern.png") no-repeat center;
+	height: 492px;
+	width: 364px;
+	background: url("../themes/math/assets/imgs/header-pattern2.png") no-repeat center;
 	background-size: cover;
 }
 
-#shar
+#background_ball
 {
 	margin: 375px 0px 0px 0;
 	float: left;
@@ -176,7 +176,7 @@ menu li:last-child a
 	background-size: cover;
 }
 
-#kub
+#background_cube
 {
 	margin: 96px 0px 0px 0px;
 	float: left;
@@ -188,7 +188,7 @@ menu li:last-child a
 	background-size: cover;
 }
 
-#shar2
+#background_ball_2
 {
 	margin: 0px 0px 0px -93px;
 	float: left;
@@ -200,7 +200,7 @@ menu li:last-child a
 	background-size: cover;
 }
 
-#kub2
+#background_cube_2
 {
 	margin: -42px 0px 0px 936px;
 	float: left;
@@ -212,7 +212,7 @@ menu li:last-child a
 	background-size: cover;
 }
 
-#t1
+#background_pyramid
 {
 	margin: 0px 0px 0px 981px;
 	float: left;
@@ -243,13 +243,13 @@ menu li:last-child a
 
 .robot
 {
-	margin: -207px 0 0 620px;
+	margin: -268px 0 0 185px;
 	float: left;
 	font-size: 0;
 	line-height: 0;
-	height: 245px;
-	width: 230px;
-	background: url("../imgs/robot.png") no-repeat center;
+	height: 308px;
+	width: 739px;
+	background: url("../imgs/robot2.png") no-repeat center;
 	background-size: cover;
 }
 
@@ -353,30 +353,28 @@ menu li:last-child a
 
 .leftpic
 {
-	margin: -180px 0px 48px 0px;
-	height: 135px;
-	width: 135px;
-	background: url("../imgs/leftpic.png");
+	margin: -242px 0px 7px -75px;
+	height: 235px;
+	width: 297px;
+	background: url("../imgs/school_pic.png");
 	background-size: cover;
 }
 .centerpic
 {
-	margin: -180px 0px 48px -6px;
-	height: 135px;
-	width: 135px;
-	background: url("../imgs/centerpic.png");
+	margin: -242px 0px 7px -88px;
+	height: 235px;
+	width: 297px;
+	background: url("../imgs/student_pic.png");
 	background-size: cover;
 }
 .rightpic
 {
-	margin: -180px 0px 48px 0px;
-	height: 135px;
-	width: 135px;
-	background: url("../imgs/rightpic.png");
+	margin: -242px 0px 7px -75px;
+	height: 235px;
+	width: 297px;
+	background: url("../imgs/work_pic.png");
 	background-size: cover;
 }
-
-
 
 #splashes figure#center
 {
@@ -403,7 +401,6 @@ menu li:last-child a
 	background: linear-gradient(to bottom, rgba(147,86,163,1) 0%,rgba(127,145,201,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9356a3', endColorstr='#7f91c9',GradientType=0 ); /* IE6-9 */
 }
-
 
 #news-text
 {
