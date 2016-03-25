@@ -1,5 +1,7 @@
 # Twig extensions
 
+[![Build Status](https://travis-ci.org/vojtasvoboda/oc-twigextensions-plugin.svg?branch=master)](https://travis-ci.org/vojtasvoboda/oc-twigextensions-plugin)
+[![HHVM Status](https://img.shields.io/hhvm/vojtasvoboda/oc-twigextensions-plugin/master.svg)](http://hhvm.h4cc.de/package/vojtasvoboda/oc-twigextensions-plugin)
 [![Codacy](https://img.shields.io/codacy/c6b23b6527bd407092763cace324ef4a.svg)](https://www.codacy.com/app/vojtasvoboda/oc-twigextensions-plugin)
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/g/vojtasvoboda/oc-twigextensions-plugin.svg)](https://scrutinizer-ci.com/g/vojtasvoboda/oc-twigextensions-plugin/?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vojtasvoboda/oc-twigextensions-plugin/blob/master/LICENSE.md)
@@ -37,8 +39,8 @@ Function loads a template from a string.
 ## Available filters
 
 strftime, uppercase, lowercase, ucfirst, lcfirst, ltrim, rtrim, str_repeat,
-plural, truncate, wordwrap, shuffle, time_diff, localizeddate, localizednumber,
-localizedcurrency
+plural, truncate, wordwrap, strpad, leftpad, rightpad, shuffle, time_diff,
+localizeddate, localizednumber, localizedcurrency
 
 ### strftime
 
@@ -189,6 +191,48 @@ nsectetur zz
 adipiscing  
 ```
 
+### strpad
+
+Pad a string to a certain length with another string from both sides.
+
+```
+{{ 'xxx' | strpad(7, 'o') }}
+```
+
+This would print:
+
+```
+ooxxxoo
+```
+
+### leftpad
+
+Pad a string to a certain length with another string from left side.
+
+```
+{{ 'xxx' | leftpad(5, 'o') }}
+```
+
+This would print:
+
+```
+ooxxx
+```
+
+### rightpad
+
+Pad a string to a certain length with another string from right side.
+
+```
+{{ 'xxx' | rightpad(5, 'o') }}
+```
+
+This would print:
+
+```
+xxxoo
+```
+
 ### shuffle
 
 Shuffle an array.
@@ -281,7 +325,8 @@ Use the localizedcurrency filter to format a currency value into a localized str
 
 ## Future plans
 
-[ ] Add checkboxes for each function group
+- [x] Add Unit tests
+- [ ] Create backend settings and add checkboxes for each functions/filters group
 
 **Feel free to send pullrequest!**
 

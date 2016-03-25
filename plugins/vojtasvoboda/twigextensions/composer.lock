@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "804c1f3a3a343f687f93b3e83467319f",
-    "content-hash": "5124be5d1c9f5dcee41b506a49b86310",
+    "hash": "8e79b78c411584854a196811d5d10ee8",
+    "content-hash": "75d57ef3473a530e8e9c224961ed847a",
     "packages": [
         {
             "name": "symfony/polyfill-mbstring",
@@ -72,12 +72,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "a515b102eec65c7215baa84573803c3c2c33ee09"
+                "reference": "eb3f5213b1f72990c6bd61c79ff8f9f0977ebe7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a515b102eec65c7215baa84573803c3c2c33ee09",
-                "reference": "a515b102eec65c7215baa84573803c3c2c33ee09",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/eb3f5213b1f72990c6bd61c79ff8f9f0977ebe7d",
+                "reference": "eb3f5213b1f72990c6bd61c79ff8f9f0977ebe7d",
                 "shasum": ""
             },
             "require": {
@@ -128,7 +128,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-16 16:22:05"
+            "time": "2016-03-25 01:52:00"
         },
         {
             "name": "twig/extensions",
