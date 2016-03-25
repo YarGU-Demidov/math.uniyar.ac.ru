@@ -1,0 +1,6 @@
+plugin:
+    name: 'mokeev1995.blogextender::lang.plugin.name'
+    description: 'mokeev1995.blogextender::lang.plugin.description'
+    author: mokeev1995
+    icon: oc-icon-info
+    homepage: ''
