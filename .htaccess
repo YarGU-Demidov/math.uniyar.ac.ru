@@ -1,74 +1,114 @@
 <IfModule mod_rewrite.c>
 
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
+	<IfModule mod_negotiation.c>
+		Options -MultiViews
+	</IfModule>
 
-    RewriteEngine On
+	RewriteEngine On
 
-    ##
-    ## You may need to uncomment the following line for some hosting environments,
-    ## if you have installed to a subdirectory, enter the name here also.
-    ##
-    # Rewrite Base /
+	##
+	## You may need to uncomment the following line for some hosting environments,
+	## if you have installed to a subdirectory, enter the name here also.
+	##
+	# Rewrite Base /
 
-    ##
-    ## Black list protected files
-    ##
-    RewriteRule ^themes/.*/(layouts|pages|partials)/.*.htm index.php [L,NC]
-    RewriteRule ^bootstrap/.* index.php [L,NC]
-    RewriteRule ^config/.* index.php [L,NC]
-    RewriteRule ^vendor/.* index.php [L,NC]
-    RewriteRule ^storage/cms/.* index.php [L,NC]
-    RewriteRule ^storage/logs/.* index.php [L,NC]
-    RewriteRule ^storage/framework/.* index.php [L,NC]
-    RewriteRule ^storage/temp/protected/.* index.php [L,NC]
-    RewriteRule ^storage/app/uploads/protected/.* index.php [L,NC]
+	##
+	## Black list protected files
+	##
+	RewriteRule ^themes/.*/(layouts|pages|partials)/.*.htm index.php [L,NC]
+	RewriteRule ^bootstrap/.* index.php [L,NC]
+	RewriteRule ^config/.* index.php [L,NC]
+	RewriteRule ^vendor/.* index.php [L,NC]
+	RewriteRule ^storage/cms/.* index.php [L,NC]
+	RewriteRule ^storage/logs/.* index.php [L,NC]
+	RewriteRule ^storage/framework/.* index.php [L,NC]
+	RewriteRule ^storage/temp/protected/.* index.php [L,NC]
+	RewriteRule ^storage/app/uploads/protected/.* index.php [L,NC]
 
-    ##
-    ## White listed folders and files
-    ##
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteCond %{REQUEST_URI} !\.js
-    RewriteCond %{REQUEST_URI} !\.map
-    RewriteCond %{REQUEST_URI} !\.ico
-    RewriteCond %{REQUEST_URI} !\.jpg
-    RewriteCond %{REQUEST_URI} !\.jpeg
-    RewriteCond %{REQUEST_URI} !\.bmp
-    RewriteCond %{REQUEST_URI} !\.png
-    RewriteCond %{REQUEST_URI} !\.gif
-    RewriteCond %{REQUEST_URI} !\.svg
-    RewriteCond %{REQUEST_URI} !\.css
-    RewriteCond %{REQUEST_URI} !\.less
-    RewriteCond %{REQUEST_URI} !\.scss
-    RewriteCond %{REQUEST_URI} !\.pdf
-    RewriteCond %{REQUEST_URI} !\.swf
-    RewriteCond %{REQUEST_URI} !\.txt
-    RewriteCond %{REQUEST_URI} !\.xml
-    RewriteCond %{REQUEST_URI} !\.xls
-    RewriteCond %{REQUEST_URI} !\.eot
-    RewriteCond %{REQUEST_URI} !\.woff
-    RewriteCond %{REQUEST_URI} !\.woff2
-    RewriteCond %{REQUEST_URI} !\.ttf
-    RewriteCond %{REQUEST_URI} !\.flv
-    RewriteCond %{REQUEST_URI} !\.wmv
-    RewriteCond %{REQUEST_URI} !\.mp3
-    RewriteCond %{REQUEST_URI} !\.ogg
-    RewriteCond %{REQUEST_URI} !\.wav
-    RewriteCond %{REQUEST_URI} !\.avi
-    RewriteCond %{REQUEST_URI} !\.mov
-    RewriteCond %{REQUEST_URI} !\.mp4
-    RewriteCond %{REQUEST_URI} !\.mpeg
-    RewriteCond %{REQUEST_URI} !\.webm
-    RewriteCond %{REQUEST_URI} !\.mkv
-    RewriteCond %{REQUEST_URI} !docs/.*
-    RewriteCond %{REQUEST_URI} !themes/.*
-    RewriteRule ^ index.php [L,NC]
+	##
+	## White listed folders and files
+	##
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteCond %{REQUEST_URI} !\.js
+	RewriteCond %{REQUEST_URI} !\.map
+	RewriteCond %{REQUEST_URI} !\.ico
+	RewriteCond %{REQUEST_URI} !\.jpg
+	RewriteCond %{REQUEST_URI} !\.jpeg
+	RewriteCond %{REQUEST_URI} !\.bmp
+	RewriteCond %{REQUEST_URI} !\.png
+	RewriteCond %{REQUEST_URI} !\.gif
+	RewriteCond %{REQUEST_URI} !\.svg
+	RewriteCond %{REQUEST_URI} !\.css
+	RewriteCond %{REQUEST_URI} !\.less
+	RewriteCond %{REQUEST_URI} !\.scss
+	RewriteCond %{REQUEST_URI} !\.pdf
+	RewriteCond %{REQUEST_URI} !\.swf
+	RewriteCond %{REQUEST_URI} !\.txt
+	RewriteCond %{REQUEST_URI} !\.xml
+	RewriteCond %{REQUEST_URI} !\.xls
+	RewriteCond %{REQUEST_URI} !\.eot
+	RewriteCond %{REQUEST_URI} !\.woff
+	RewriteCond %{REQUEST_URI} !\.woff2
+	RewriteCond %{REQUEST_URI} !\.ttf
+	RewriteCond %{REQUEST_URI} !\.flv
+	RewriteCond %{REQUEST_URI} !\.wmv
+	RewriteCond %{REQUEST_URI} !\.mp3
+	RewriteCond %{REQUEST_URI} !\.ogg
+	RewriteCond %{REQUEST_URI} !\.wav
+	RewriteCond %{REQUEST_URI} !\.avi
+	RewriteCond %{REQUEST_URI} !\.mov
+	RewriteCond %{REQUEST_URI} !\.mp4
+	RewriteCond %{REQUEST_URI} !\.mpeg
+	RewriteCond %{REQUEST_URI} !\.webm
+	RewriteCond %{REQUEST_URI} !\.mkv
+	RewriteCond %{REQUEST_URI} !docs/.*
+	RewriteCond %{REQUEST_URI} !themes/.*
+	RewriteRule ^ index.php [L,NC]
 
-    ##
-    ## Standard routes
-    ##
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+	##
+	## Standard routes
+	##
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^ index.php [L]
 
 </IfModule>
+
+<ifModule mod_expires.c>
+
+	# Add correct content-type for fonts
+	AddType application/vnd.ms-fontobject .eot
+	AddType application/x-font-ttf .ttf
+	AddType application/x-font-opentype .otf
+	AddType application/x-font-woff .woff
+	AddType image/svg+xml .svg
+
+	# Compress compressible fonts
+	AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-opentype image/svg+xml
+
+	ExpiresActive On
+	ExpiresDefault "access plus 5 seconds"
+
+	# Cache Images
+	ExpiresByType image/x-icon "access plus 2592000 seconds"
+	ExpiresByType image/jpeg "access plus 2592000 seconds"
+	ExpiresByType image/png "access plus 2592000 seconds"
+	ExpiresByType image/gif "access plus 2592000 seconds"
+	ExpiresByType image/svg+xml "access plus 2592000 seconds"
+
+	# Cache Fonts
+	ExpiresByType application/vnd.ms-fontobject "access plus 2592000 seconds"
+	ExpiresByType application/x-font-ttf "access plus 2592000 seconds"
+	ExpiresByType application/x-font-opentype "access plus 2592000 seconds"
+	ExpiresByType application/x-font-woff "access plus 2592000 seconds"
+	ExpiresByType image/svg+xml "access plus 2592000 seconds"
+
+	# Cache other content types (Flash, CSS, JS, HTML, XML)
+	ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+	ExpiresByType text/css "access plus 604800 seconds"
+	ExpiresByType text/javascript "access plus 2592000 seconds"
+	ExpiresByType application/javascript "access plus 2592000 seconds"
+	ExpiresByType application/x-javascript "access plus 2592000 seconds"
+	ExpiresByType text/html "access plus 600 seconds"
+	ExpiresByType application/xhtml+xml "access plus 600 seconds"
+
+</ifModule>
