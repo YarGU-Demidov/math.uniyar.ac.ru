@@ -25,11 +25,16 @@ postPage = "post-view"
 				<article class="news__item">
 					<div class="news__item_preview">
 						{% if post.featured_images.count %}
+							{# the first variable will select the first featured image of the respective post #}
+							{% set first = post.featured_images|first %}
+							{# the second variable will create the path to the thumbnail #}
+							{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ first.extension %}
 							<img
-									data-src="{{ post.featured_images[0].filename }}"
-									src="{{ post.featured_images[0].path }}"
-									alt="{{ post.featured_images[0].description }}"
-									style="max-width: 100%" class="news_pic round">
+									data-src="{{ first.filename }}"
+									src="{{ src }}"
+									alt="{{ first.description }}"
+									style="max-width: 100%" class="news_pic round"
+							/>
 						{% else %}
 							<img src="{{ "assets/img/news__5.png" | theme }}" alt="Новость" class="news_pic round">
 						{% endif %}
