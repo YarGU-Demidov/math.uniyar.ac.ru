@@ -1,34 +1,191 @@
 title = "Post View"
 url = "/article/:slug"
-layout = "news-view"
+layout = "SecondaryLayout"
 is_hidden = 0
 
 [blogPost]
 slug = "{{ :slug }}"
 categoryPage = "index"
 ==
-<div class="content">{{ post.content_html|raw }}</div>
 
-{% if post.featured_images.count %}
-    <div class="featured-images text-center">
-        {% for image in post.featured_images %}
-            <p>
-                <img
-                    data-src="{{ image.filename }}"
-                    src="{{ image.path }}"
-                    alt="{{ image.description }}"
-                    style="max-width: 100%" />
-            </p>
-        {% endfor %}
-    </div>
-{% endif %}
+<div class="entrant__body">
+	<div class="entrant__body_news">
+		<div class="entrant__body_news_title">
+			О факультете
+		</div>
+		<div class="entrant__news">
+			<div class="entrant__item">
+				<div class="entrant__item_body">
+					<div class="news__description">
+						<img src="img/news_pic.png" alt="" class="news__pic-view">
+						Основной сайт факультета: <a href="http://www.math.uniyar.ac.ru" style="text-decoration: none; color: #4793f6;"> math.uniyar.ac.ru </a><br><br>
 
-<p class="info">
-    Опубликовано
-    {% if post.categories.count %} в
-        {% for category in post.categories %}
-            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
-        {% endfor %}
-    {% endif %}
-	{{ post.published_at|localizeddate('medium', 'none', locale) }}
-</p>
+						Математический факультет Ярославского государственного университета имени П.Г.Демидова был образован 7 июля 1976 года в соответствии
+						с приказом министра высшего и среднего специального образования РСФСР №309 путем разделения физико-математического факультета на физический
+						и математический факультеты.<br><br>
+
+						Математический факультет осуществляет подготовку бакалавров и магистров по направлениям "Математика", "Математика и компьютерные науки",
+						"Прикладная математика и информатика", а также дипломированных специалистов по специальностям: "Математика", "Прикладная математика и информатика",
+						"Компьютерная безопасность". В состав математического факультета входят кафедры алгебры и математической логики, дифференциальных уравнений,
+						компьютерной безопасности и математических методов обработки информации, математического анализа, математического моделирования, общей математики,
+						теории функций и функционального анализа. На факультете работают учебно-научные лаборатории теоретико-групповых методов исследования,
+						программно-аппаратных средств обеспечения информационной безопасности, технической защиты информации, а также Научно-образовательный центр "Нелинейная динамика".
+						В 2011 г. на базе математического факультета и факультета ИВТ в ЯрГУ создана Международная научно-исследовательская лаборатория "Дискретная и вычислительная геометрия"
+						имени Б.Н.Делоне.<br>
+						Высокое качество образования выпускников гарантировано высокой квалификацией преподавателей и ученых, работающих на факультете и
+						известных своими достижениями не только российскому, но и мировому научному сообществу. <br><br>
+						На кафедрах факультета ведутся научные исследования по фундаментальным проблемам математики и ее приложениям. Основные направления научных исследований:
+						<ul>
+							<li>
+								супералгебры и супермногообразия; конечные группы; представления конечных групп;
+							</li>
+							<li>
+								комбинаторные и алгоритмические вопросы для групп и полугрупп;
+							</li>
+							<li>
+								комбинаторная геометрия и топология;
+							</li>
+							<li>
+								геометрия выпуклых тел; теория кодирования;
+							</li>
+							<li>
+								теория функций и функциональных анализ;
+							</li>
+							<li>
+								аппроксимация в функциональных пространствах;
+							</li>
+							<li>
+								вещественная алгебраическая геометрия;
+							</li>
+							<li>
+								эллиптическая система дифференциальных уравнений;
+							</li>
+							<li>
+								вариационные неравенства;
+							</li>
+							<li>
+								автоволновые процессы;
+							</li>
+							<li>
+								математические методы исследования нелинейных колебательных систем;
+							</li>
+							<li>
+								теория отображений в пространствах с различными метриками.
+							</li>
+						</ul>
+						На базе факультета действуют два диссертационных совета по защите кандидатских и докторских диссертаций,
+						открыта докторантура по специальности Математическая логика, алгебра и теория чисел.<br><br>
+						Научные работы студентов и аспирантов регулярно публикуются в специализированных сборниках. Регулярно проводятся научные
+						и научно-методические конференции. Международное сотрудничество осуществляется в форме обучения отдельных студентов и аспирантов и учебно-научной работе преподавателей за рубежом.
+
+						<div class="secondary__body entrant__body">
+							<div class="secondary__body_news">
+								<div class="secondary__news">
+									<div class="news__item">
+										<div class="news__item_preview">
+											<img src="img/news__5.png" alt="Новость" class="news_pic round">
+										</div>
+										<div class="news__item_body">
+											<time class="news__item_date_date">
+												14.01.2016
+											</time>
+											<div class="news__item_title">
+												<li><a class="contacts_link" href="/article/:slug">Расписание занятий</a></li>
+											</div>
+											<div class="news__item_description">
+												Расписание занятий на 1 семестр 2015/2016 учебного года. Внимание! Возможно изменения.
+											</div>
+										</div>
+									</div>
+									<div class="news__item">
+										<div class="news__item_preview">
+											<img src="img/news__2.png" alt="Новость" class="news_pic round">
+										</div>
+										<div class="news__item_body">
+											<time class="news__item_date_date">
+												27.09.2016
+											</time>
+											<div class="news__item_title">
+												<li><a class="contacts_link" href="/news">Зачисление абитуриентов</a></li>
+											</div>
+											<div class="news__item_description">
+												Уважаемые абитуриенты! <br>
+												Ниже мы прикладываем приказы о зачислении по общему конкурсу
+												в первую волну на математический факультет. Обратите внимание,
+												что проект приказа на официальном сайте приемной комиссии содержит ошибки.
+												По всем возникающим вопросам Вы можете обратиться в приемную комиссию.
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="secondary__body secondary__body_info">
+		<ul class="secondary__body_info_nav">
+			<li><a class="contacts_link" href="news.html">Новости</a></li>
+			<li><a class="contacts_link" href="#">События</a></li>
+			<li><a class="contacts_link" href="#">Фотогалерея</a></li>
+		</ul>
+		<div class="secondary__body_info_poster">
+			<a href="#"><img src="img/poster_1.png" alt="" class="poster"></a>
+		</div>
+		<div class="secondary__body_info_contacts">
+			<div class="contacts_math">
+				<div class="contacts__title">
+					Математический факультет
+				</div>
+				<div class="contacts__description">
+					+7 (4852) 308-550
+				</div>
+				<div class="contacts__description">
+					Ярославль, <br> ул.Союзная, 144
+				</div>
+			</div>
+
+			<div class="contacts_priem">
+				<div class="contacts__title">
+					Приёмная комиссия
+				</div>
+				<div class="contacts__description">
+					+7 (4852) 303-210, 314-373
+				</div>
+				<div class="contacts__description">
+					Ярославль, <br> ул.Кирова, 8/10
+				</div>
+			</div>
+		</div>
+	</div>
+<!--
+	<div class="content">{{ post.content_html|raw }}</div>
+
+	{% if post.featured_images.count %}
+		<div class="featured-images text-center">
+			{% for image in post.featured_images %}
+				<p>
+					<img
+							data-src="{{ image.filename }}"
+							src="{{ image.path }}"
+							alt="{{ image.description }}"
+							style="max-width: 100%" />
+				</p>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<p class="info">
+		Опубликовано
+		{% if post.categories.count %} в
+			{% for category in post.categories %}
+				<a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+			{% endfor %}
+		{% endif %}
+		{{ post.published_at|localizeddate('medium', 'none', locale) }}
+	</p>
+	-->
+</div>

@@ -1,0 +1,95 @@
+description = "Layout for Main Page"
+==
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% partial "headers" %}
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="main__container container">
+				<header class="main__head header">
+					<h1 class="header__logo2">
+						<a class="logo" href="{{ ""|page }}">
+							<div class="logo__label">
+								<img src="{{ "assets/img/math_logo_blue1.svg" | theme }}" alt="" class="logo__label1">
+							</div>
+						</a>
+					</h1>
+					<nav class="header__nav">
+						<ul class="nav">
+							<li class="nav__item">
+								<a class="nav__link" href="#">Абитуриентам</a>
+							</li>
+							<li class="nav__item">
+								<a class="nav__link" href="#">Студентам</a>
+							</li>
+							<li class="nav__item">
+								<a class="nav__link" href="#">Контакты</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+				<div class="main__stage stage">
+					<h2 class="stage__title">
+						Информационная <br> безопасность
+					</h2>
+					<div class="stage__action">
+						<a class="button button__main" href="#">УЗНАТЬ &nbsp;►</a>
+					</div>
+				</div>
+				<div class="main__wizard wizard">
+					<div class="wizard__item">
+						<div class="card card_type_beginner">
+							<div class="card_type_begginer_pic"></div>
+							<h3 class="card__title">
+								<a href="/entrant" class="card__title actions__link">Как поступить</a>
+							</h3>
+							<div class="card__description">
+								Пошаговое руководство. <br>
+								Полезные советы
+							</div>
+						</div>
+					</div>
+					<div class="wizard__item">
+						<div class="card card_type_student">
+							<div class="card_type_student_pic"></div>
+							<h3 class="card__title">
+								<a href="/entrant" class="card__title actions__link">Как учиться</a>
+							</h3>
+							<div class="card__description">
+								Олимпиады. <br>
+								Какие кафедры классные? <br>
+								Что, если не понятно? <br>
+							</div>
+						</div>
+					</div>
+					<div class="wizard__item">
+						<div class="card card_type_worker">
+							<div class="card_type_worker_pic"></div>
+							<h3 class="card__title">
+								<a href="/entrant" class="card__title actions__link">Где трудиться</a>
+							</h3>
+							<div class="card__description">
+								Что Вас ждет в будущем? <br>
+								Куда пойти работать? <br>
+								Есть ли смысл в этой жизни? <br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Content -->
+		{% page %}
+
+		<!-- Footer -->
+		{% partial "footer" %}
+
+		<!-- Scripts -->
+		{% partial "scripts" %}
+
+	</body>
+</html>

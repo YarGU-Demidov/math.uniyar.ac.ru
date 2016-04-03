@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.35 on 2016-03-25.
+ * Generated for Laravel 5.0.35 on 2016-04-03.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -5955,7 +5955,7 @@ namespace {
         /**
          * Get the language line loader implementation.
          *
-         * @return \Illuminate\Translation\LoaderInterface 
+         * @return \October\Rain\Translation\LoaderInterface 
          * @static 
          */
         public static function getLoader(){
@@ -6302,7 +6302,7 @@ namespace {
          * Helper for raw() method, send a new message when only a raw text part.
          *
          * @param array $recipients
-         * @param string $text
+         * @param string $view
          * @param mixed $callback
          * @param boolean $queue
          * @return int 
@@ -14017,7 +14017,7 @@ namespace {
          * Parses supplied Twig contents, with supplied variables.
          *
          * @param string $contents Twig contents to parse.
-         * @param string $vars Context variables.
+         * @param array $vars Context variables.
          * @return string 
          * @static 
          */

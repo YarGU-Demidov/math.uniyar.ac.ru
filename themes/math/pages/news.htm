@@ -1,6 +1,6 @@
 title = "Новости факультета"
 url = "/news/:page?"
-layout = "News"
+layout = "SecondaryLayout"
 description = "Список последних новостей факультета"
 is_hidden = 0
 meta_title = "Новости факультета"
@@ -14,6 +14,137 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
+<div class="secondary__body">
+	<div class="secondary__body_news">
+		<div class="secondary__body_news_title">
+			Новости
+		</div>
+		<div class="secondary__news">
+			<div class="news__item">
+				<div class="news__item_preview">
+					<img src="{{ "assets/img/news__4.png" | theme }}" alt="Новость" class="news_pic round">
+				</div>
+				<div class="news__item_body">
+					<time class="news__item_date_date">
+						14.01.2016
+					</time>
+					<div class="news__item_title">
+						<li><a class="contacts_link" href="http://math.dev/article/first-blog-post">Расписание занятий</a></li>
+					</div>
+					<div class="news__item_description">
+						Расписание занятий на 1 семестр 2015/2016 учебного года. Внимание! Возможно изменения.
+					</div>
+				</div>
+			</div>
+			<div class="news__item">
+				<div class="news__item_preview">
+					<img src="{{ "assets/img/news__2.png" | theme }}" alt="Новость" class="news_pic round">
+				</div>
+				<div class="news__item_body">
+					<time class="news__item_date_date">
+						27.09.2016
+					</time>
+					<div class="news__item_title">
+						<li><a class="contacts_link" href="http://math.dev/article/first-blog-post">Зачисление абитуриентов</a></li>
+					</div>
+					<div class="news__item_description">
+						Уважаемые абитуриенты! <br>
+						Ниже мы прикладываем приказы о зачислении по общему конкурсу
+						в первую волну на математический факультет. Обратите внимание,
+						что проект приказа на официальном сайте приемной комиссии содержит ошибки.
+						По всем возникающим вопросам Вы можете обратиться в приемную комиссию.
+					</div>
+				</div>
+			</div>
+			<div class="news__item">
+				<div class="news__item_preview">
+					<img src="{{ "assets/img/news__5.png" | theme }}" alt="Новость" class="news_pic round">
+				</div>
+				<div class="news__item_body">
+					<time class="news__item_date_date">
+						14.01.2016
+					</time>
+					<div class="news__item_title">
+						<li><a class="contacts_link" href="http://math.dev/article/first-blog-post">Школа при факультете</a></li>
+					</div>
+					<div class="news__item_description">
+						Расписание занятий на 1 семестр 2015/2016 учебного года. Внимание! Возможно изменения.
+					</div>
+				</div>
+			</div>
+			<div class="news__item">
+				<div class="news__item_preview">
+					<img src="{{ "assets/img/news__5.png" | theme }}" alt="Новость" class="news_pic round">
+				</div>
+				<div class="news__item_body">
+					<time class="news__item_date_date">
+						14.01.2016
+					</time>
+					<div class="news__item_title">
+						<li><a class="contacts_link" href="http://math.dev/article/first-blog-post">День открытых дверей математического факультета</a></li>
+					</div>
+					<div class="news__item_description">
+						Уважаемые школьники и их родители! <br> 10 апреля 2016 года в 11:00
+						математический факультет ЯрГУ им.П.Г.Демидова открывает свои двери для встречи
+						с Вами.
+					</div>
+				</div>
+			</div>
+			<div class="news__item">
+				<div class="news__item_preview">
+					<img src="{{ "assets/img/news__5.png" | theme }}" alt="Новость" class="news_pic round"/>
+				</div>
+				<div class="news__item_body">
+					<time class="news__item_date_date">
+						14.01.2016
+					</time>
+					<div class="news__item_title">
+						<li><a class="contacts_link" href="http://math.dev/article/first-blog-post">Сменился телефон деканата</a></li>
+					</div>
+					<div class="news__item_description">
+						Расписание занятий на 1 семестр 2015/2016 учебного года. Внимание! Возможно изменения.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="secondary__body secondary__body_info">
+		<ul class="secondary__body_info_nav">
+			<li><a class="contacts_link" href="/news">Новости</a></li>
+			<li><a class="contacts_link" href="#">События</a></li>
+			<li><a class="contacts_link" href="#">Фотогалерея</a></li>
+		</ul>
+		<div class="secondary__body_info_poster">
+			<a href="#"><img src="{{ "assets/img/poster_1.png" | theme }}" alt="" class="poster"></a>
+		</div>
+		<div class="secondary__body_info_contacts">
+			<div class="contacts_math">
+				<div class="contacts__title">
+					Математический факультет
+				</div>
+				<div class="contacts__description">
+					+7 (4852) 308-550
+				</div>
+				<div class="contacts__description">
+					Ярославль, <br> ул.Союзная, 144
+				</div>
+			</div>
+
+			<div class="contacts_priem">
+				<div class="contacts__title">
+					Приёмная комиссия
+				</div>
+				<div class="contacts__description">
+					+7 (4852) 303-210, 314-373
+				</div>
+				<div class="contacts__description">
+					Ярославль, <br> ул.Кирова, 8/10
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--
 <div class="post-list">
 	{% for post in posts %}
 
@@ -65,3 +196,4 @@ postPage = "post-view"
 		</ul>
 	</nav>
 {% endif %}
+-->
