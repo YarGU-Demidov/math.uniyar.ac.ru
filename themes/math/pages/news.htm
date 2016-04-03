@@ -25,7 +25,11 @@ postPage = "post-view"
 				<article class="news__item">
 					<div class="news__item_preview">
 						{% if post.featured_images.count %}
-							<img src="{{ post.featured_images[0] }}" alt="Новость" class="news_pic round">
+							<img
+									data-src="{{ post.featured_images[0].filename }}"
+									src="{{ post.featured_images[0].path }}"
+									alt="{{ post.featured_images[0].description }}"
+									style="max-width: 100%" class="news_pic round">
 						{% else %}
 							<img src="{{ "assets/img/news__5.png" | theme }}" alt="Новость" class="news_pic round">
 						{% endif %}
