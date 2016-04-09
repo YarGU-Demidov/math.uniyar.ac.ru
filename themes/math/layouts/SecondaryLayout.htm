@@ -47,7 +47,62 @@ description = "Layout for All Pages"
 				</nav>
 
 				<!-- Content -->
-				{% page %}
+				<main class="secondary__body">
+					<div class="secondary__body_news">
+						<h1 class="secondary__body_news_title">
+							{% if (this.page.title != "post-view") %}
+								{{ this.page.title }}
+							{% else %}
+								{{ post.title }}
+							{% endif %}
+						</h1>
+						<div class="secondary__news">
+							<div class="secondary__item">
+								<div class="secondary__item_body">
+									<div class="news__description">
+										{% page %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<aside class="secondary__body secondary__body_info">
+						<ul class="secondary__body_info_nav">
+							<li><a class="contacts_link" href="news.html">Новости</a></li>
+							<li><a class="contacts_link" href="#">События</a></li>
+							<li><a class="contacts_link" href="#">Фотогалерея</a></li>
+						</ul>
+						<div class="secondary__body_info_poster">
+							<a href="#"><img src="img/poster_1.png" alt="" class="poster"></a>
+						</div>
+						<div class="secondary__body_info_contacts">
+							<div class="contacts_math">
+								<div class="contacts__title">
+									Математический факультет
+								</div>
+								<div class="contacts__description">
+									+7 (4852) 308-550
+								</div>
+								<div class="contacts__description">
+									Ярославль, <br> ул.Союзная, 144
+								</div>
+							</div>
+
+							<div class="contacts_priem">
+								<div class="contacts__title">
+									Приёмная комиссия
+								</div>
+								<div class="contacts__description">
+									+7 (4852) 303-210, 314-373
+								</div>
+								<div class="contacts__description">
+									Ярославль, <br> ул.Кирова, 8/10
+								</div>
+							</div>
+						</div>
+					</aside>
+				</main>
 			</div>
 		</div>
 

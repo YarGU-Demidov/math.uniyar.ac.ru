@@ -15,8 +15,13 @@
 <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">-->
 
+{% if (this.page.title != "post-view") %}
+	{% set title = this.page.title %}
+{% else %}
+	{% set title = post.title %}
+{% endif %}
 
-<title>{{ this.page.title }} | {{ this.theme.site_name }}</title>
+<title>{{ title }} | {{ this.theme.site_name }}</title>
 
 {% styles %}
 
