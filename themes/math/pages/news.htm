@@ -21,8 +21,9 @@ postPage = "post-view"
 			{% if post.featured_images.count %}
 				{# the first variable will select the first featured image of the respective post #}
 				{% set first = post.featured_images|first %}
+				{% set ext = first.extension|lower %}
 				{# the second variable will create the path to the thumbnail #}
-				{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ first.extension %}
+				{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
 				<img
 						data-src="{{ first.filename }}"
 						src="{{ src }}"
