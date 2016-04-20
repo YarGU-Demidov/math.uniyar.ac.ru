@@ -4,6 +4,7 @@ namespace VojtaSvoboda\TwigExtensions\Tests;
 
 use App;
 use Carbon\Carbon;
+use Config;
 use PluginTestCase;
 use Twig_Environment;
 
@@ -78,10 +79,19 @@ class PluginTest extends PluginTestCase
 
         $template = "{{ [1, 2, 3] | shuffle }}";
 
-        /*
         $twigTemplate = $twig->createTemplate($template);
+        $this->setExpectedException('Twig_Error_Runtime', 'Array to string conversion');
         $twigTemplate->render([]);
-        */
+    }
+
+    public function testShuffleFilterForeach()
+    {
+        $twig = $this->getTwig();
+
+        $template = "{% for i in [1, 2, 3] | shuffle %}{{ i }}{% endfor %}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals(strlen($twigTemplate->render([])), 3);
     }
 
     public function testTimeDiffFunction()
@@ -213,5 +223,18 @@ class PluginTest extends PluginTestCase
 
         $twigTemplate = $twig->createTemplate($template);
         $this->assertEquals($twigTemplate->render([]), 'testooo');
+    }
+
+    public function testConfigFunction()
+    {
+        $twig = $this->getTwig();
+
+        $key = 'app.custom.key';
+        $value = 'test value';
+        Config::set($key, $value);
+        $template = "{{ config('" . $key . "') }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals($twigTemplate->render([]), $value);
     }
 }
