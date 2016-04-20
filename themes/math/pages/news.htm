@@ -36,7 +36,7 @@ postPage = "post-view"
 		</div>
 		<div class="news__item_body">
 			<time class="news__item_date_date">
-				{{ post.published_at|localizeddate('medium', 'none', locale) }}
+				{{ post.published_at|localizeddate('medium', 'none', "ru") }}
 			</time>
 			<div class="news__item_title">
 				<a class="contacts_link" href="{{ post.url }}">{{ post.title }}</a>
