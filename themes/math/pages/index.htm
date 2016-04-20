@@ -52,7 +52,9 @@ postPage = "post-view"
 								{{ post.title }}
 							</h3>
 							<div class="teaser__description">
-								{{ post.summary|raw }}
+								{% set text = post.summary|raw %}
+								{% set resultText = str_limit(text, 210) %}
+								{{ resultText }}
 							</div>
 							<time class="teaser__date">
 								{{ post.published_at|localizeddate('medium', 'none', "ru") }}
