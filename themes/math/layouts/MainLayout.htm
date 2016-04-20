@@ -11,10 +11,8 @@ description = "Layout for Main Page"
 			<div class="main__container container">
 				<header class="main__head header">
 					<h1 class="header__logo2">
-						<a class="logo" href="{{ ""|page }}">
-							<div class="logo__label">
-								<img src="{{ "assets/img/math_logo_blue1.svg" | theme }}" alt="" class="logo__label1">
-							</div>
+						<a class="logo" href="#">
+							<div class="logo__label" style="visibility: hidden">Математический факультет</div>
 						</a>
 					</h1>
 					<nav class="header__nav">
@@ -24,6 +22,9 @@ description = "Layout for Main Page"
 							</li>
 							<li class="nav__item">
 								<a class="nav__link" href="#">Студентам</a>
+							</li>
+							<li class="nav__item">
+								<a class="nav__link" href="math-school.html">Школа</a>
 							</li>
 							<li class="nav__item">
 								<a class="nav__link" href="#">Контакты</a>
@@ -40,44 +41,50 @@ description = "Layout for Main Page"
 					</div>
 				</div>
 				<div class="main__wizard wizard">
-					<div class="wizard__item">
-						<div class="card card_type_beginner">
+					<a class="wizard__item" href="entrant.html">
+						<div class="card_type_beginner">
 							<div class="card_type_begginer_pic"></div>
-							<h3 class="card__title">
-								<a href="/entrant" class="card__title actions__link">Как поступить</a>
-							</h3>
-							<div class="card__description">
-								Пошаговое руководство. <br>
-								Полезные советы
+							<div class="card__text">
+								<h3 class="card__title">
+									Как поступить
+								</h3>
+								<div class="card__description">
+									Пошаговое руководство.<br>
+									Полезные советы
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="wizard__item">
-						<div class="card card_type_student">
+					</a>
+
+					<a class="wizard__item" href="student.html">
+						<div class="card_type_student">
 							<div class="card_type_student_pic"></div>
-							<h3 class="card__title">
-								<a href="/entrant" class="card__title actions__link">Как учиться</a>
-							</h3>
-							<div class="card__description">
-								Олимпиады. <br>
-								Какие кафедры классные? <br>
-								Что, если не понятно? <br>
+							<div class="card__text">
+								<h3 class="card__title">
+									Как учиться
+								</h3>
+								<div class="card__description">
+									Олимпиады.<br>
+									Наши кафедры.
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="wizard__item">
-						<div class="card card_type_worker">
+					</a>
+
+					<a class="wizard__item" href="worker.html">
+						<div class="card_type_worker">
 							<div class="card_type_worker_pic"></div>
-							<h3 class="card__title">
-								<a href="/entrant" class="card__title actions__link">Где трудиться</a>
-							</h3>
-							<div class="card__description">
-								Что Вас ждет в будущем? <br>
-								Куда пойти работать? <br>
-								Есть ли смысл в этой жизни? <br>
+							<div class="card__text">
+								<h3 class="card__title">
+									Где трудиться
+								</h3>
+								<div class="card__description">
+									Что Вас ждет в будущем? <br>
+									Куда пойти работать? <br>
+								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
