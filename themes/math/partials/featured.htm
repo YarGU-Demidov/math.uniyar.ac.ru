@@ -1,3 +1,5 @@
+[blogPosts]
+==
 <div class="features__news features_type_simple">
 	<div class="features__container container">
 		<div class="features__head">
@@ -9,66 +11,44 @@
 			</div>
 		</div>
 		<ul class="features__list">
-			<li class="features__item teaser_palette_blue">
-				<a class="teaser" href="#">
-					<div class="teaser__head">
-						<img class="teaser__preview" src="{{ "assets/img/news_1.png" | theme }}" alt="">
-					</div>
-					<div class="teaser__body">
-						<h3 class="teaser__title">
-							Конкурс
-						</h3>
-						<div class="teaser__description">
-							By utilizing elements and principles of Material Design,
-							we were able to create a framework that incorporates
-							components and animations that provide more feedback to users.
+			{% set index = 0 %}
+			{% for post in posts if index < 3 %}
+				<li class="features__item {{ index % 3 == 0 ? 'teaser_palette_blue' : index % 3 == 1 ? 'teaser_palette_purple' : 'teaser_palette_orange' }}">
+					<a class="teaser" href="{{ post.url }}">
+						<div class="teaser__head">
+							{% if post.featured_images.count %}
+								{# the first variable will select the first featured image of the respective post #}
+								{% set first = post.featured_images|first %}
+								{% set ext = first.extension|lower %}
+								{# the second variable will create the path to the thumbnail #}
+								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
+								<img
+										data-src="{{ first.filename }}"
+										src="{{ src }}"
+										alt="{{ first.description }}"
+										class="teaser__preview"
+								/>
+							{% else %}
+								<img src="{{ "assets/img/default_news.png" | theme }}" alt="Новость" class="teaser__preview">
+							{% endif %}
 						</div>
-						<time class="teaser__date">
-							20 ноября 2015
-						</time>
-					</div>
-				</a>
-			</li>
-			<li class="features__item teaser_palette_purple">
-				<a class="teaser" href="#">
-					<div class="teaser__head">
-						<img class="teaser__preview" src="{{ "assets/img/news_2.png" | theme }}" alt="">
-					</div>
-					<div class="teaser__body">
-						<h3 class="teaser__title">
-							Конкурс
-						</h3>
-						<div class="teaser__description">
-							By utilizing elements and principles of Material Design,
-							we were able to create a framework that incorporates
-							components and animations that provide more feedback to users.
+						<div class="teaser__body">
+							<h3 class="teaser__title">
+								{{ post.title }}
+							</h3>
+							<div class="teaser__description">
+								{% set text = post.summary|raw %}
+								{% set resultText = str_limit(text, 210) %}
+								{{ resultText }}
+							</div>
+							<time class="teaser__date">
+								{{ post.published_at|localizeddate('medium', 'none', "ru") }}
+							</time>
 						</div>
-						<time class="teaser__date">
-							20 ноября 2015
-						</time>
-					</div>
-				</a>
-			</li>
-			<li class="features__item teaser_palette_orange">
-				<a class="teaser" href="#">
-					<div class="teaser__head">
-						<img class="teaser__preview" src="{{ "assets/img/news_2.png" | theme }}" alt="">
-					</div>
-					<div class="teaser__body">
-						<h3 class="teaser__title">
-							Конкурс
-						</h3>
-						<div class="teaser__description">
-							By utilizing elements and principles of Material Design,
-							we were able to create a framework that incorporates
-							components and animations that provide more feedback to users.
-						</div>
-						<time class="teaser__date">
-							20 ноября 2015
-						</time>
-					</div>
-				</a>
-			</li>
+					</a>
+				</li>
+				{% set index = index + 1 %}
+			{% endfor %}
 
 		</ul>
 	</div>
