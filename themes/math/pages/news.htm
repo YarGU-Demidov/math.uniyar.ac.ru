@@ -14,7 +14,6 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
-
 {% for post in posts %}
 	<article class="news__item">
 		<div class="news__item_preview">
@@ -50,56 +49,40 @@ postPage = "post-view"
 	<article class="news__item no-data">{{ noPostsMessage }}</article>
 {% endfor %}
 
-<!--
-<div class="post-list">
-	{% for post in posts %}
-
-		<article class="media">
-			<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-
-			<p class="info">
-				Опубликовано
-				{% if post.categories.count %} в {% endif %}
-				{% for category in post.categories %}
-					<a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
-				{% endfor %}
-				{{ post.published_at|localizeddate('medium', 'none', locale) }}
-				({{ post.published_at | time_diff  }})
-			</p>
-
-			<p class="excerpt">{{ post.summary }}</p>
-		</article>
-
-	{% else %}
-		<li class="no-data">{{ noPostsMessage }}</li>
-	{% endfor %}
-</div>
-
 {% if posts.lastPage > 1 %}
 	<nav>
-		<ul class="pagination">
+		<ul class="pagination-digg">
 			{% if posts.currentPage > 1 %}
-				<li>
-					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
+				<li class="previous">
+					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}" aria-label="Назад">
+						<span aria-hidden="true">&laquo; Назад</span>
 					</a>
 				</li>
+			{% else %}
+				<li class="previous-off">&laquo; Назад</li>
 			{% endif %}
 
 			{% for page in 1..posts.lastPage %}
-				<li class="{{ posts.currentPage == page ? 'active' : null }}">
-					<a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
-				</li>
+				{% if posts.currentPage == page %}
+					<li class="active">
+						{{ page }}
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+					</li>
+				{% endif %}
 			{% endfor %}
 
 			{% if posts.lastPage > posts.currentPage %}
 				<li>
-					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
+					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}" aria-label="Вперед">
+						<span aria-hidden="true">Вперед&raquo;</span>
 					</a>
 				</li>
+			{% else %}
+				<li class="previous-off">Вперед&raquo;</li>
 			{% endif %}
 		</ul>
 	</nav>
 {% endif %}
--->
