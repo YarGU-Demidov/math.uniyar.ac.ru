@@ -28,10 +28,10 @@ postPage = "post-view"
 						data-src="{{ first.filename }}"
 						src="{{ src }}"
 						alt="{{ first.description }}"
-						style="max-width: 100%" class="news_pic round"
+						class="news_pic round"
 				/>
 			{% else %}
-				<img src="{{ "assets/img/news__5.png" | theme }}" alt="Новость" class="news_pic round">
+				<img src="{{ "assets/img/default_news.png" | theme }}" alt="Новость" class="news_pic round">
 			{% endif %}
 		</div>
 		<div class="news__item_body">
