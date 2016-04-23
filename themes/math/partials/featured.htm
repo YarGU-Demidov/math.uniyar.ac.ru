@@ -24,8 +24,8 @@
 								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
 								<img
 										data-src="{{ first.filename }}"
-										src="{{ src }}"
 										alt="{{ first.description }}"
+										style="background-image: url({{ src }})"
 										class="teaser__preview"
 								/>
 							{% else %}
