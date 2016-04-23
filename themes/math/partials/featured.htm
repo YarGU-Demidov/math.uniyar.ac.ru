@@ -22,14 +22,9 @@
 								{% set ext = first.extension|lower %}
 								{# the second variable will create the path to the thumbnail #}
 								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
-								<img
-										data-src="{{ first.filename }}"
-										alt="{{ first.description }}"
-										style="background-image: url({{ src }})"
-										class="teaser__preview"
-								/>
+								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})" class="teaser__preview"></div>
 							{% else %}
-								<img src="{{ "assets/img/default_news.png" | theme }}" alt="Новость" class="teaser__preview">
+								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})" class="teaser__preview"></div>
 							{% endif %}
 						</div>
 						<div class="teaser__body">
