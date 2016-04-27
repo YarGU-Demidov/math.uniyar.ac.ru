@@ -1,0 +1,77 @@
+description = "Layout for Math School Pages"
+
+[staticPage]
+
+[staticBreadcrumbs]
+==
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% partial "headers" %}
+	</head>
+
+	<body>
+
+		<div class="secondary">
+			<div class="container secondary__container">
+				<!-- Header -->
+				<header class="header secondary__head header_type_short">
+					<div class="header__logo">
+						<a class="logo logo_type_simple" href="#">
+							<div class="logo__label2">
+								<a href="/"><img src="{{ "assets/img/math_logo.svg" | theme }}" alt="" class="logo__label2"></a>
+							</div>
+						</a>
+					</div>
+					<nav class="header__nav">
+						<ul class="nav">
+							<li class="nav__item">
+								<a class="nav__link" href="#">Абитуриентам</a>
+							</li>
+							<li class="nav__item">
+								<a class="nav__link" href="#">Студентам</a>
+							</li>
+							<li class="nav__item">
+								<a class="nav__link" href="#">Школа</a>
+							</li>
+							<li class="nav__item">
+								<a class="nav__link" href="#">Контакты</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+
+				<!-- Breadcrumbs -->
+				<nav class="secondary__path">
+					<ul class="breadcrumbs">
+						<li class="breadcrumbs__item">
+							<a class="button button_palette_darkblue" href="/">ГЛАВНАЯ &nbsp;►</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="button" href="/entrants">Абитуриентам</a>
+						</li>
+					</ul>
+				</nav>
+
+				<!-- Content -->
+				<div class="school__body">
+					<img src="{{ 'assets/img/school_header.jpg' | theme }}" alt="" class="school__pic-view">
+					<div class="school__description">
+						{% page %}
+					</div>
+					<img src="{{ 'assets/img/school_footer.jpg' | theme }}" alt="" class="school__pic-view">
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		{% partial "featured" %}
+
+		<!-- Footer -->
+		{% partial "footer" %}
+
+		<!-- Scripts -->
+		{% partial "scripts" %}
+
+	</body>
+</html>
