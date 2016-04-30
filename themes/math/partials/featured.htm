@@ -1,4 +1,8 @@
 [blogPosts]
+postsPerPage = 3
+noPostsMessage = "Постов пока нет"
+sortOrder = "published_at desc"
+postPage = "post-view"
 ==
 <div class="features__news features_type_simple">
 	<div class="features__container container">
@@ -12,7 +16,7 @@
 		</div>
 		<ul class="features__list">
 			{% set index = 0 %}
-			{% for post in posts if index < 3 %}
+			{% for post in posts %}
 				<li class="features__item {{ index % 3 == 0 ? 'teaser_palette_blue' : index % 3 == 1 ? 'teaser_palette_purple' : 'teaser_palette_orange' }}">
 					<a class="teaser" href="{{ post.url }}">
 						<div class="teaser__head">
