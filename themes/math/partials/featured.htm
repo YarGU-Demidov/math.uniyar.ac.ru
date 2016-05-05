@@ -1,8 +1,14 @@
 [blogPosts]
+pageNumber = "{{ :page }}"
 postsPerPage = 3
 noPostsMessage = "Постов пока нет"
 sortOrder = "published_at desc"
+categoryPage = "blog/category"
 postPage = "post-view"
+
+[viewBag]
+snippetCode = "featured"
+snippetName = "Featured"
 ==
 <div class="features__news features_type_simple">
 	<div class="features__container container">
@@ -11,7 +17,7 @@ postPage = "post-view"
 				У нас творится история
 			</h2>
 			<div class="features__link">
-				<a class="button button_palette_blue button__news" href="/news">НОВОСТИ &nbsp;►</a>
+				<a class="button button_palette_blue button__news" href="/news">НОВОСТИ  ►</a>
 			</div>
 		</div>
 		<ul class="features__list">
