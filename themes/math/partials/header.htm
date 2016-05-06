@@ -1,0 +1,19 @@
+description = "Заголовок страниц"
+
+[staticMenu]
+code = "top-menu"
+
+[viewBag]
+snippetCode = "header"
+snippetName = "Header"
+==
+<header class="main__head header">
+	<h1 class="header__logo2">
+		<a class="logo" href="#">
+			<div class="logo__label" style="visibility: hidden">Математический факультет</div>
+		</a>
+	</h1>
+	<nav class="header__nav">
+		{% component 'staticMenu' %}
+	</nav>
+</header>

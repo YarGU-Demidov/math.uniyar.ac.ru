@@ -11,28 +11,7 @@ description = "Layout for All Pages"
 		<div class="secondary">
 			<div class="container secondary__container">
 				<!-- Header -->
-				<header class="header secondary__head header_type_short">
-					<div class="header__logo">
-						<a class="logo logo_type_simple" href="#">
-							<div class="logo__label2">
-								<a href="/"><img src="{{ "assets/img/math_logo.svg" | theme }}" alt="" class="logo__label2"></a>
-							</div>
-						</a>
-					</div>
-					<nav class="header__nav">
-						<ul class="nav">
-							<li class="nav__item">
-								<a class="nav__link" href="#">Абитуриентам</a>
-							</li>
-							<li class="nav__item">
-								<a class="nav__link" href="#">Студентам</a>
-							</li>
-							<li class="nav__item">
-								<a class="nav__link" href="#">Контакты</a>
-							</li>
-						</ul>
-					</nav>
-				</header>
+				{% partial "header" %}
 
 				<!-- Breadcrumbs -->
 				<nav class="secondary__path">
