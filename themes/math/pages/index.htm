@@ -1,6 +1,6 @@
 title = "Главная страница"
 url = "/"
-layout = "IndexPage"
+layout = "MainLayout"
 description = "Главная страница сайта Математического факультета ЯрГУ"
 is_hidden = 0
 meta_title = "МатФак"
@@ -14,4 +14,51 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
-{% component 'blogPosts' %}
+
+<div class="features">
+	<div class="features__container container">
+		<div class="features__head">
+			<h2 class="features__title">
+				У нас творится история
+			</h2>
+			<div class="features__link">
+				<a class="button button_palette_blue button__news" href="/news">НОВОСТИ &nbsp;►</a>
+			</div>
+		</div>
+		<ul class="features__list">
+			{% set index = 0 %}
+			{% for post in posts %}
+				<li class="features__item {{ index % 3 == 0 ? 'teaser_palette_blue' : index % 3 == 1 ? 'teaser_palette_purple' : 'teaser_palette_orange' }}">
+					<a class="teaser" href="{{ post.url }}">
+						<div class="teaser__head">
+							{% if post.featured_images.count %}
+								{# the first variable will select the first featured image of the respective post #}
+								{% set first = post.featured_images|first %}
+								{% set ext = first.extension|lower %}
+								{# the second variable will create the path to the thumbnail #}
+								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
+								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})" class="teaser__preview"></div>
+							{% else %}
+								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})" class="teaser__preview"></div>
+							{% endif %}
+						</div>
+						<div class="teaser__body">
+							<h3 class="teaser__title">
+								{{ post.title }}
+							</h3>
+							<div class="teaser__description">
+								{% set text = post.summary|raw %}
+								{% set resultText = str_limit(text, 210) %}
+								{{ resultText }}
+							</div>
+							<time class="teaser__date">
+								{{ post.published_at|localizeddate('medium', 'none', "ru") }}
+							</time>
+						</div>
+					</a>
+				</li>
+				{% set index = index + 1 %}
+			{% endfor %}
+		</ul>
+	</div>
+</div>

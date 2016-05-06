@@ -1,6 +1,6 @@
 title = "Новости факультета"
 url = "/news/:page?"
-layout = "News"
+layout = "SecondaryLayout"
 description = "Список последних новостей факультета"
 is_hidden = 0
 meta_title = "Новости факультета"
@@ -14,4 +14,75 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
-{% component 'blogPosts' %}
+{% for post in posts %}
+	<article class="news__item">
+		<div class="news__item_preview">
+			{% if post.featured_images.count %}
+				{# the first variable will select the first featured image of the respective post #}
+				{% set first = post.featured_images|first %}
+				{% set ext = first.extension|lower %}
+				{# the second variable will create the path to the thumbnail #}
+				{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
+				<img
+						data-src="{{ first.filename }}"
+						src="{{ src }}"
+						alt="{{ first.description }}"
+						class="news_pic round"
+				/>
+			{% else %}
+				<img src="{{ "assets/img/default_news.png" | theme }}" alt="Новость" class="news_pic round">
+			{% endif %}
+		</div>
+		<div class="news__item_body">
+			<time class="news__item_date_date">
+				{{ post.published_at|localizeddate('medium', 'none', "ru") }}
+			</time>
+			<div class="news__item_title">
+				<a class="contacts_link" href="{{ post.url }}">{{ post.title }}</a>
+			</div>
+			<div class="news__item_description">
+				{{ post.summary|raw }}
+			</div>
+		</div>
+	</article>
+{% else %}
+	<article class="news__item no-data">{{ noPostsMessage }}</article>
+{% endfor %}
+
+{% if posts.lastPage > 1 %}
+	<nav>
+		<ul class="pagination-digg">
+			{% if posts.currentPage > 1 %}
+				<li class="previous">
+					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}" aria-label="Назад">
+						<span aria-hidden="true">&laquo; Назад</span>
+					</a>
+				</li>
+			{% else %}
+				<li class="previous-off">&laquo; Назад</li>
+			{% endif %}
+
+			{% for page in 1..posts.lastPage %}
+				{% if posts.currentPage == page %}
+					<li class="active">
+						{{ page }}
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+
+			{% if posts.lastPage > posts.currentPage %}
+				<li>
+					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}" aria-label="Вперед">
+						<span aria-hidden="true">Вперед&raquo;</span>
+					</a>
+				</li>
+			{% else %}
+				<li class="previous-off">Вперед&raquo;</li>
+			{% endif %}
+		</ul>
+	</nav>
+{% endif %}

@@ -1,0 +1,58 @@
+description = "Layout for All Pages"
+==
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% partial "headers" %}
+	</head>
+
+	<body>
+
+		<div class="secondary">
+			<div class="container secondary__container">
+				<!-- Header -->
+				{% partial "header" %}
+
+				<!-- Breadcrumbs -->
+				<nav class="secondary__path">
+					<ul class="breadcrumbs">
+						<li class="breadcrumbs__item">
+							<a class="button button_palette_darkblue" href="/">ГЛАВНАЯ &nbsp;►</a>
+						</li>
+						<li class="breadcrumbs__item">
+							<a class="button" href="/news">НОВОСТИ</a>
+						</li>
+					</ul>
+				</nav>
+
+				<!-- Content -->
+				<main class="secondary__body">
+					<div class="secondary__body_news">
+						<h1 class="secondary__body_news_title">
+							{% if (this.page.title != "post-view") %}
+								{{ this.page.title }}
+							{% else %}
+								{{ post.title }}
+							{% endif %}
+						</h1>
+						<div class="secondary__news">
+							{% page %}
+						</div>
+					</div>
+
+					{% partial "sidebar" %}
+				</main>
+			</div>
+		</div>
+
+		<!-- Featured -->
+		{% partial "featured" %}
+
+		<!-- Footer -->
+		{% partial "footer" %}
+
+		<!-- Scripts -->
+		{% partial "scripts" %}
+
+	</body>
+</html>

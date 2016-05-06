@@ -1,0 +1,52 @@
+name: 'Верхнее меню'
+items:
+    -
+        title: Абитуриентам
+        nesting: '1'
+        type: static-page
+        url: ''
+        code: ''
+        reference: for-entrants
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Студентам
+        nesting: '1'
+        type: static-page
+        url: ''
+        code: ''
+        reference: for-students
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Школа
+        nesting: '1'
+        type: static-page
+        url: ''
+        code: ''
+        reference: shkolnikam
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Контакты
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: contacts
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

@@ -1,7 +1,7 @@
 <?php
 
 	return [
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Application Debug Mode
@@ -16,7 +16,7 @@
 		|
 		*/
 
-		'debug' => true,
+		'debug' => env("APP_DEBUG", false),
 
 		/*
 		|--------------------------------------------------------------------------
@@ -81,7 +81,7 @@
 		|
 		*/
 
-		'key' => 'Q7XzqAu9nH825ymRkgoFVuSsF2nyjutj',
+		'key' => env("APP_KEY", '93P0TVTL2zBB29lHryBqO9vXlbBRmizU'),
 
 		'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -115,7 +115,8 @@
 
 			// 'Illuminate\Html\HtmlServiceProvider', // Example
 
-			'System\ServiceProvider',
+			System\ServiceProvider::class,
+			Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 		] ),
 
 		/*
