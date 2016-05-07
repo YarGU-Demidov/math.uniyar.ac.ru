@@ -1,0 +1,13 @@
+name: 'Нижнее меню'
+items:
+    -
+        title: Кафедры
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: departments
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
