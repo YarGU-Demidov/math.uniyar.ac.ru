@@ -7,33 +7,33 @@ static-pages:
     kak-postupit: {  }
     gde-truditsya: {  }
     kak-uchitsya: {  }
-    departments: {  }
-    algebra: {  }
-    kafedra-differencialnyh-uravnenij: {  }
-    kafedra-kompyuternoj-bezopasnosti: {  }
-    kafedra-matematicheskogo-analiza: {  }
-    mathmod: {  }
-    kafedra-obshej-matematiki: {  }
-    kafedra-teorii-funkcij: {  }
-    kazarin-lev-sergeevich: {  }
-    onishik-arkadij-lvovich: {  }
-    yablokova-svetlana-ivanovna: {  }
-    vypuskniki-kafedry: {  }
-    nikulina-elena-vyacheslavovna: {  }
-    polyakov-sergej-vladimirovich: {  }
-    kolesov-andrej-yurevich: {  }
-    balabaev-vladimir-evgenevich: {  }
-    klimov-vladimir-stepanovich: {  }
-    uhalov-aleksej-yurevich: {  }
-    kashenko-sergej-aleksandrovich: {  }
-    glyzin-dmitrij-sergeevich: {  }
-    parallelnye-vychisleniya: {  }
-    kashenko-ilya-sergeevich: {  }
-    nesterov-pavel-nikolaevich: {  }
-    kuznecova-valentina-anatolevna: {  }
-    medvedeva-lyudmila-borisovna: {  }
-    chuj-tatyana-leonidovna: {  }
-    shukin-evgenij-ivanovich: {  }
-    bolshakov-yurij-ivanovich: {  }
-    glazkov-dmitrij-vladimirovich: {  }
-    litvinov-vladimir-viktorovich: {  }
+    departments:
+        kafedra-teorii-funkcij: {  }
+        kafedra-obshej-matematiki:
+            bolshakov-yurij-ivanovich: {  }
+            shukin-evgenij-ivanovich: {  }
+            chuj-tatyana-leonidovna: {  }
+            medvedeva-lyudmila-borisovna: {  }
+            kuznecova-valentina-anatolevna: {  }
+            polyakov-sergej-vladimirovich: {  }
+            nikulina-elena-vyacheslavovna: {  }
+        kafedra-matematicheskogo-analiza:
+            uhalov-aleksej-yurevich: {  }
+            balabaev-vladimir-evgenevich: {  }
+            litvinov-vladimir-viktorovich: {  }
+            klimov-vladimir-stepanovich: {  }
+        kafedra-kompyuternoj-bezopasnosti: {  }
+        algebra:
+            vypuskniki-kafedry: {  }
+            onishik-arkadij-lvovich: {  }
+            yablokova-svetlana-ivanovna: {  }
+            kazarin-lev-sergeevich: {  }
+        mathmod:
+            nesterov-pavel-nikolaevich: {  }
+            kashenko-ilya-sergeevich: {  }
+            glyzin-dmitrij-sergeevich:
+                parallelnye-vychisleniya: {  }
+            kashenko-sergej-aleksandrovich: {  }
+        kafedra-differencialnyh-uravnenij:
+            glazkov-dmitrij-vladimirovich: {  }
+            kolesov-andrej-yurevich: {  }
