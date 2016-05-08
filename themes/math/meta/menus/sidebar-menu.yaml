@@ -1,0 +1,91 @@
+name: 'Боковое меню'
+items:
+    -
+        title: Кафедры
+        nesting: '1'
+        type: static-page
+        code: ''
+        reference: departments
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Кафердра теории функций и функционального анализа'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: kafedra-teorii-funkcij
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра общей математики'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: kafedra-obshej-matematiki
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра математического анализа'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: kafedra-matematicheskogo-analiza
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра компьютерной безопасности и математических методов обработки информации'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: kafedra-kompyuternoj-bezopasnosti
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра алгебры и математической логики'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: algebra
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра математического моделирования'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: mathmod
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра дифференциальных уравнений'
+                nesting: '0'
+                type: static-page
+                code: ''
+                reference: kafedra-differencialnyh-uravnenij
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
