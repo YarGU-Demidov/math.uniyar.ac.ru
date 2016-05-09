@@ -24,10 +24,15 @@ static-pages:
             klimov-vladimir-stepanovich: {  }
         kafedra-kompyuternoj-bezopasnosti: {  }
         algebra:
+            uchebnye-posobiya-i-metodicheskij-ukazaniya-kafedry-algebry-i-matematicheskoj-logiki: {  }
+            temy-diplomnyh-i-vypusknyh-kvalifikacionnyh-rabot-kafedry-algebry-i-matematicheskoj-logiki: {  }
+            o-vypusknikah-kafedry-algebry-i-matematicheskoj-logiki: {  }
+            zavodchikov-mihail-aleksandrovich: {  }
+            timofeeva-nadezhda-vladimirovna: {  }
+            kazarin-lev-sergeevich: {  }
             vypuskniki-kafedry: {  }
             onishik-arkadij-lvovich: {  }
             yablokova-svetlana-ivanovna: {  }
-            kazarin-lev-sergeevich: {  }
         mathmod:
             nesterov-pavel-nikolaevich: {  }
             kashenko-ilya-sergeevich: {  }
@@ -38,8 +43,3 @@ static-pages:
             glazkov-dmitrij-vladimirovich: {  }
             kolesov-andrej-yurevich: {  }
     aktivizm: {  }
-    timofeeva-nadezhda-vladimirovna: {  }
-    zavodchikov-mihail-aleksandrovich: {  }
-    o-vypusknikah-kafedry-algebry-i-matematicheskoj-logiki: {  }
-    temy-diplomnyh-i-vypusknyh-kvalifikacionnyh-rabot-kafedry-algebry-i-matematicheskoj-logiki: {  }
-    uchebnye-posobiya-i-metodicheskij-ukazaniya-kafedry-algebry-i-matematicheskoj-logiki: {  }
