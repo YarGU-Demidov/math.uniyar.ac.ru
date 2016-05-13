@@ -22,7 +22,8 @@ static-pages:
             balabaev-vladimir-evgenevich: {  }
             litvinov-vladimir-viktorovich: {  }
             klimov-vladimir-stepanovich: {  }
-        kafedra-kompyuternoj-bezopasnosti: {  }
+        kafedra-kompyuternoj-bezopasnosti:
+            temy-kursovyh-i-diplomnyh-rabot-kafedry-kompyuternoj-bezopasnosti-i-matematicheskih-metodov-obrabotki-informacii: {  }
         algebra:
             uchebnye-posobiya-i-metodicheskij-ukazaniya-kafedry-algebry-i-matematicheskoj-logiki: {  }
             temy-diplomnyh-i-vypusknyh-kvalifikacionnyh-rabot-kafedry-algebry-i-matematicheskoj-logiki: {  }
