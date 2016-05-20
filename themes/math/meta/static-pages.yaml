@@ -47,4 +47,5 @@ static-pages:
             departments-differential-equations-sokolov-aleksej-vladilenovich: {  }
     aktivizm: {  }
     kruzhok-po-kompyuternoj-bezopasnosti: {  }
-    kruzhki: {  }
+    kruzhki:
+        kruzhki-dlya-studentov-trenirovki-po-sportivnomu-programmirovaniyu: {  }
