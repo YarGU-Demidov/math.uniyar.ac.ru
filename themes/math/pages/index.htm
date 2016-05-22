@@ -27,7 +27,7 @@ postPage = "post-view"
 		</div>
 		<ul class="features__list">
 			{% set index = 0 %}
-			{% for post in posts %}
+			{% for post in posts if post.front_page_visible %}
 				<li class="features__item {{ index % 3 == 0 ? 'teaser_palette_blue' : index % 3 == 1 ? 'teaser_palette_purple' : 'teaser_palette_orange' }}">
 					<a class="teaser" href="{{ post.url }}">
 						<div class="teaser__head">

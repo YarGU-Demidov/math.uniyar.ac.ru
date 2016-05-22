@@ -1,2 +1,5 @@
 1.0.1:
     - Initialize plugin.
+1.0.2:
+    - Added model
+    - add_new_rows_to_blog_posts_table.php
