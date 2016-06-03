@@ -1,0 +1,63 @@
+% Шапка документа - не менять
+\documentclass[12pt, a4paper]{extarticle}
+\usepackage{amsfonts}
+%\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage{mathtext}  
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[russian]{babel}
+\usepackage[body={17.5cm, 23.5cm},left=2cm, top=2cm]{geometry}
+\sloppy
+\binoppenalty=10000
+\relpenalty=10000
+
+
+% Определения некоторых макросов - не менять
+
+% Макросы для ученых степеней
+\newcommand{\kfmn}{{\mdseries канд.~физ.-мат.~наук}}
+\newcommand{\ken}{{\mdseries канд.~эконом.~наук}}
+\newcommand{\kpn}{{\mdseries канд.~пед.~наук}}
+\newcommand{\khn}{{\mdseries канд.~хим.~наук}}
+\newcommand{\dpn}{{\mdseries доктор~пед.~наук}}
+\newcommand{\dfmn}{{\mdseries доктор~физ.-мат.~наук}}
+%ученые звания
+\newcommand{\doc}{{\mdseries доцент}}
+\newcommand{\prof}{{\mdseries профессор}}
+
+%Заголовок аннотации
+\newcommand{\atitle}[1]{\begin{center}{\Large #1\par}\end{center}}
+%автор
+\newcommand{\auth}[2]{\noindent{\bf #1}, #2 курс\addcontentsline{toc}{subsection}{#1}\par}
+%научный руководитель
+\newcommand{\swise}[1]{\noindent Научный руководитель: {\bfseries #1\par}}
+\newcommand{\coswise}[1]{\noindent Соруководитель:  #1\par}
+
+
+% Текств
+\begin{document}
+
+% Название работы, тема курсовой, диплома.
+\atitle{Название работы}
+
+% Фамилия Имя Отчество автора и курс, на котором выполнена работа.
+\auth{Фамилия Имя Отчество}{?}
+
+% ученая степень, ученое звание Фамилия и инициалы научного руководителя
+% Ученые степени (расшифровки есть выше):
+% \kfmn, \ken, \kpn, \khn, \dpn, \dfmn
+% если у научного руководителя иная степень, то оформить ее словами - новый макрос заводить не нужно
+% Ученые звания (расшифровки есть выше):
+% \doc, \prof
+% Если у научного руководителя отсутствует ученая степень и/или звание, то не пишется ничего
+\swise{\kfmn, \doc~Нестеров П.Н.}
+
+\medskip
+
+Текст расширенной аннотации
+
+{\large \noindent Список литературы}
+
+1. 
+
+\end{document}
