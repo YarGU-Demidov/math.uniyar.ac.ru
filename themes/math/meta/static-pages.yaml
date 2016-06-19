@@ -7,6 +7,8 @@ static-pages:
     for-students:
         for-students-seminary:
             for-students-seminary-seminar-laboratorii-diskretnaya-i-vychislitelnaya-geometriya-im-bn-delone: {  }
+            for-students-seminary-seminar-nelinejnaya-dinamika-i-sinergetika: {  }
+        for-students-programmnoe-obespechenie: {  }
     shkolnikam: {  }
     contacts: {  }
     informacionnaya-bezopasnost: {  }
@@ -24,6 +26,11 @@ static-pages:
             polyakov-sergej-vladimirovich: {  }
             nikulina-elena-vyacheslavovna: {  }
             departments-general-math-irodova-irina-pavlovna: {  }
+            departments-general-math-bestuzheva-lyudmila-petrovna: {  }
+            departments-general-math-nikulina-elena-vyacheslavovna: {  }
+            departments-general-math-bolshakov-yurij-ivanovich: {  }
+            departments-general-math-ermakova-svetlana-mihajlovna: {  }
+            departments-general-math-istoriya-kafedry: {  }
         kafedra-matematicheskogo-analiza:
             uhalov-aleksej-yurevich: {  }
             balabaev-vladimir-evgenevich: {  }
@@ -31,6 +38,7 @@ static-pages:
             klimov-vladimir-stepanovich: {  }
         kafedra-kompyuternoj-bezopasnosti:
             temy-kursovyh-i-diplomnyh-rabot-kafedry-kompyuternoj-bezopasnosti-i-matematicheskih-metodov-obrabotki-informacii: {  }
+            departments-computer-security-yakimova-olga-pavlovna: {  }
         algebra:
             uchebnye-posobiya-i-metodicheskij-ukazaniya-kafedry-algebry-i-matematicheskoj-logiki: {  }
             temy-diplomnyh-i-vypusknyh-kvalifikacionnyh-rabot-kafedry-algebry-i-matematicheskoj-logiki: {  }
@@ -56,3 +64,4 @@ static-pages:
     kruzhok-po-kompyuternoj-bezopasnosti: {  }
     kruzhki:
         kruzhki-dlya-studentov-trenirovki-po-sportivnomu-programmirovaniyu: {  }
+    departments-computer-security-vlasova-olga-vladimirovna: {  }
