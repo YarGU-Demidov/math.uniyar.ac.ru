@@ -4,24 +4,29 @@ use Model;
 
 class Category extends Model
 {
-    /**
-     * @var string The database table used by the model.
-     */
-    public $table = 'database_tester_categories';
+	/**
+	 * @var string The database table used by the model.
+	 */
+	public $table = 'database_tester_categories';
+	
+	public function getCustomNameAttribute()
+	{
+		return $this->name . ' (#' . $this->id . ')';
+	}
 }
 
 
 class CategorySimple extends Category
 {
-    use \October\Rain\Database\Traits\SimpleTree;
+	use \October\Rain\Database\Traits\SimpleTree;
 }
 
 class CategoryNested extends Category
 {
-    use \October\Rain\Database\Traits\NestedTree;
-
-    /**
-     * @var string The database table used by the model.
-     */
-    public $table = 'database_tester_categories_nested';
+	use \October\Rain\Database\Traits\NestedTree;
+	
+	/**
+	 * @var string The database table used by the model.
+	 */
+	public $table = 'database_tester_categories_nested';
 }

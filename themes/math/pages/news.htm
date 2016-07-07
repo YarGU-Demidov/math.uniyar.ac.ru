@@ -54,7 +54,8 @@ postPage = "post-view"
 		<ul class="pagination-digg">
 			{% if posts.currentPage > 1 %}
 				<li class="previous">
-					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}" aria-label="Назад">
+					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}"
+					   aria-label="Назад">
 						<span aria-hidden="true">&laquo; Назад</span>
 					</a>
 				</li>
@@ -76,7 +77,8 @@ postPage = "post-view"
 
 			{% if posts.lastPage > posts.currentPage %}
 				<li>
-					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}" aria-label="Вперед">
+					<a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}"
+					   aria-label="Вперед">
 						<span aria-hidden="true">Вперед&raquo;</span>
 					</a>
 				</li>

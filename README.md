@@ -1,34 +1,64 @@
-![PG Demidov Yaroslavl State University](https://upload.wikimedia.org/wikipedia/ru/2/28/Logo_demidovskiy_universitet.png)
-# ЯрГУ им. П.Г.Демидова
-## Сайт математического факультета
+<p align="center">
+    <img src="https://github.com/octobercms/october/blob/master/themes/demo/assets/images/october.png?raw=true" alt="October" width="25%" height="25%" />
+</p>
 
-### Info
+[October](http://octobercms.com) is a Content Management System (CMS) and web platform whose sole purpose is to make your development workflow simple again. It was born out of frustration with existing systems. We feel building websites has become a convoluted and confusing process that leaves developers unsatisfied. We want to turn you around to the simpler side and get back to basics.
 
-Это сайт для матфака ЯрГУ им. П.Г.Демидова 
+October's mission is to show the world that web development is not rocket science.
 
-Любые pull request-ы, содержащие bugfix-ы и новые полезные features приветствуются
+[![Build Status](https://travis-ci.org/octobercms/october.svg?branch=develop)](https://travis-ci.org/octobercms/october)
+[![License](https://poser.pugx.org/october/october/license.svg)](https://packagist.org/packages/october/october)
 
-### Требования к системе
+### Learning October
 
-* Наличие git
-* Наличие composer
-* Наличие PHP 5.6.* и новее (лучше 7.0)
-* MySQL Server или другая база данных, которую поддерживает Laravel Framework и PHP с включеным соотв. модулем
+The best place to learn October is by [reading the documentation](http://octobercms.com/docs) or [the resources page](http://octobercms.com/resources).
 
-### Информация по установке
+### Installing October
 
-* Склонировать `git clone https://github.com/mokeev1995/math.uniyar.ac.ru.git ` (если нужна самая последняя версия -- брать из dev ветки)
-* Создать базу данных для сайта
-* Сконфигурировать сайт в `/config/app.php` (вкл или выкл debug режима и так далее)
-* Запустить `composer install` в папке с сайтом(корень сайта, тут валяется нужный ему `composer.json`).
-* Запустить `php artisan october:up` 
-* И теперь вы можете зайти в панель управления по адр. `{site address}/manager/` (или другому, установленному в `/config/cms.php`) и использовать сайт!)
+Instructions on how to install October can be found at the [installation guide](http://octobercms.com/docs/setup/installation).
 
-### Contributors
+### Quick start installation
 
-* [Mokeev Andrey](http://mokeev1995.ru) \< andrey@mokeev1995.ru >
+For advanced users, run this in your terminal to install October from command line:
 
-### Copyright and License
+```
+php -r "eval('?>'.file_get_contents('https://octobercms.com/api/installer'));"
+```
 
-* The [Laravel framework](http://laravel.com) is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-* The [OctoberCMS (based on Laravel Framework)](https://github.com/octobercms/october) is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+If you plan on using a database, run this command:
+
+```
+php artisan october:install
+```
+
+### Development Team
+
+October was created by [Alexey Bobkov](http://ca.linkedin.com/pub/aleksey-bobkov/2b/ba0/232) and [Samuel Georges](http://au.linkedin.com/pub/sam-georges/31/641/a9), who both continue to develop the platform.
+
+### Foundation library
+
+The CMS uses [Laravel](http://laravel.com) as a foundation PHP framework.
+
+### Contact
+
+You can communicate with us using the following mediums:
+
+* [Follow us on Twitter](http://twitter.com/octobercms) for announcements and updates.
+* [Follow us on Facebook](http://facebook.com/octobercms) for announcements and updates.
+* [Join us on IRC](http://octobercms.com/chat) to chat with us.
+
+### License
+
+The OctoberCMS platform is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+### Contributing
+
+Before sending a Pull Request, be sure to review the [Contributing Guidelines](CONTRIBUTING.md) first.
+
+### Coding standards
+
+Please follow the following guides and code standards:
+
+* [PSR 4 Coding Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md)
+* [PSR 2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+* [PSR 1 Coding Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)

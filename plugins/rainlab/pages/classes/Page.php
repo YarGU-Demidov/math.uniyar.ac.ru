@@ -1,6 +1,6 @@
 <?php namespace RainLab\Pages\Classes;
 
-use URL;
+use Url;
 use File;
 use Lang;
 use Cache;
@@ -12,10 +12,12 @@ use RainLab\Pages\Classes\Snippet;
 use RainLab\Pages\Classes\PageList;
 use Cms\Classes\Theme;
 use Cms\Classes\Layout;
-use Cms\Classes\Content;
+use Cms\Classes\Content as ContentBase;
 use Cms\Classes\ComponentManager;
+use System\Helpers\View as ViewHelper;
 use October\Rain\Support\Str;
 use October\Rain\Router\Helper as RouterHelper;
+use October\Rain\Parse\Bracket as TextParser;
 use October\Rain\Parse\Syntax\Parser as SyntaxParser;
 use ApplicationException;
 
@@ -25,35 +27,71 @@ use ApplicationException;
  * @package rainlab\pages
  * @author Alexey Bobkov, Samuel Georges
  */
-class Page extends Content
+class Page extends ContentBase
 {
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableCmsObject'];
+
+    /**
+     * @var string The container name associated with the model, eg: pages.
+     */
+    protected $dirName = 'content/static-pages';
+
+    /**
+     * @var bool Wrap code section in PHP tags.
+     */
+    protected $wrapCode = false;
+
     /**
      * @var array Properties that can be set with fill()
      */
-    protected static $fillable = [
+    protected $fillable = [
         'markup',
         'settings',
-        'code',
-        'fileName',
-        'parentFileName'
+        'placeholders',
     ];
 
-    protected $viewBagValidationRules = [
+    /**
+     * @var array List of attribute names which are not considered "settings".
+     */
+    protected $purgeable = ['parsedMarkup', 'placeholders'];
+
+    /**
+     * @var array The rules to be applied to the data.
+     */
+    public $rules = [
         'title' => 'required',
-        'url'   => ['required', 'regex:/^\/[a-z0-9\/_\-]*$/i', 'uniqueUrl']
+        'url'   => ['required', 'regex:/^\/[a-z0-9\/_\-\.]*$/i', 'uniqueUrl']
     ];
+
+    /**
+     * @var array The array of custom attribute names.
+     */
+    public $attributeNames = [
+        'title' => 'title',
+        'url' => 'url',
+    ];
+
+    /**
+     * @var array Attributes that support translation, if available.
+     */
+    public $translatable = [
+        'code',
+        'markup',
+        'viewBag[title]',
+        'viewBag[meta_title]',
+        'viewBag[meta_description]',
+    ];
+
+    /**
+     * @var string Translation model used for translation, if available.
+     */
+    public $translatableModel = 'RainLab\Translate\Classes\MLStaticPage';
 
     /**
      * @var string Contains the page parent file name.
      * This property is used by the page editor internally.
      */
     public $parentFileName;
-
-    /**
-     * @var RainLab\Pages\Classes\PlaceholderList Contains the page placeholder values.
-     * This property is used by the page editor internally.
-     */
-    public $placeholders;
 
     protected static $menuTreeCache = null;
 
@@ -67,43 +105,21 @@ class Page extends Content
 
     /**
      * Creates an instance of the object and associates it with a CMS theme.
-     * @param \Cms\Classes\Theme $theme Specifies the theme the object belongs to.
-     * If the theme is specified as NULL, then a query can be performed on the object directly.
+     * @param array $attributes
      */
-    public function __construct(Theme $theme = null)
+    public function __construct(array $attributes = [])
     {
-        parent::__construct($theme);
+        parent::__construct($attributes);
 
-        $this->viewBagValidationMessages = [
+        $this->customMessages = [
             'url.regex'      => Lang::get('rainlab.pages::lang.page.invalid_url'),
             'url.unique_url' => Lang::get('rainlab.pages::lang.page.url_not_unique')
         ];
-
-        $this->placeholders = new PlaceholderList;
     }
 
     //
     // CMS Object
     //
-
-    /**
-     * Returns the directory name corresponding to the object type.
-     * For pages the directory name is "pages", for layouts - "layouts", etc.
-     * @return string
-     */
-    public static function getObjectTypeDirName()
-    {
-        return 'content/static-pages';
-    }
-
-    /**
-     * Determines if the content of the code section should be wrapped to PHP tags.
-     * @return boolean
-     */
-    protected function wrapCodeToPhpTags()
-    {
-        return false;
-    }
 
     /**
      * Sets the object attributes.
@@ -124,10 +140,19 @@ class Page extends Content
     }
 
     /**
+     * Returns the attributes used for validation.
+     * @return array
+     */
+    protected function getValidationAttributes()
+    {
+        return $this->getAttributes() + $this->viewBag;
+    }
+
+    /**
      * Validates the object properties.
      * Throws a ValidationException in case of an error.
      */
-    protected function validate()
+    public function beforeValidate()
     {
         $pages = Page::listInTheme($this->theme, true);
 
@@ -145,49 +170,58 @@ class Page extends Content
 
             return true;
         });
-
-        parent::validate();
     }
 
     /**
-     * Saves the object to the disk.
+     * Triggered before a new object is saved.
      */
-    public function save()
+    public function beforeCreate()
     {
-        $isNewFile = !strlen($this->fileName);
+        $this->fileName = $this->generateFilenameFromCode();
+    }
 
-        /*
-         * Generate a file name basing on the URL
-         */
-        if ($isNewFile) {
-            $dir = rtrim(static::getFilePath($this->theme, ''), '/');
+    /**
+     * Triggered after a new object is saved.
+     */
+    public function afterCreate()
+    {
+        $this->appendToMeta();
+    }
 
-            $fileName = trim(str_replace('/', '-', $this->getViewBag()->property('url')), '-');
-            if (strlen($fileName) > 200) {
-                $fileName = substr($fileName, 0, 200);
-            }
+    /**
+     * Adds this page to the meta index.
+     */
+    protected function appendToMeta()
+    {
+        $pageList = new PageList($this->theme);
+        $pageList->appendPage($this);
+    }
 
-            if (!strlen($fileName)) {
-                $fileName = 'index';
-            }
+    /*
+     * Generate a file name based on the URL
+     */
+    protected function generateFilenameFromCode()
+    {
+        $dir = rtrim($this->getFilePath(''), '/');
 
-            $curName = trim($fileName).'.htm';
-            $counter = 2;
-
-            while (File::exists($dir.'/'.$curName)) {
-                $curName = $fileName.'-'.$counter.'.htm';
-                $counter++;
-            }
-
-            $this->fileName = $curName;
+        $fileName = trim(str_replace('/', '-', $this->getViewBag()->property('url')), '-');
+        if (strlen($fileName) > 200) {
+            $fileName = substr($fileName, 0, 200);
         }
 
-        parent::save();
-
-        if ($isNewFile) {
-            $pageList = new PageList($this->theme);
-            $pageList->appendPage($this);
+        if (!strlen($fileName)) {
+            $fileName = 'index';
         }
+
+        $curName = trim($fileName).'.htm';
+        $counter = 2;
+
+        while (File::exists($dir.'/'.$curName)) {
+            $curName = $fileName.'-'.$counter.'.htm';
+            $counter++;
+        }
+
+        return $curName;
     }
 
     /**
@@ -209,8 +243,7 @@ class Page extends Content
         /*
          * Remove from meta
          */
-        $pageList = new PageList($this->theme);
-        $pageList->removeSubtree($this);
+        $this->removeFromMeta();
 
         /*
          * Delete the object
@@ -220,6 +253,16 @@ class Page extends Content
         parent::delete();
 
         return $result;
+    }
+
+
+    /**
+     * Removes this page to the meta index.
+     */
+    protected function removeFromMeta()
+    {
+        $pageList = new PageList($this->theme);
+        $pageList->removeSubtree($this);
     }
 
     //
@@ -251,10 +294,10 @@ class Page extends Content
         $actionExists = Route::getRoutes()->getByAction($routeAction) !== null;
 
         if ($actionExists) {
-            return URL::action($routeAction, ['slug' => $url]);
+            return Url::action($routeAction, ['slug' => $url]);
         }
         else {
-            return URL::to($url);
+            return Url::to($url);
         }
     }
 
@@ -308,7 +351,7 @@ class Page extends Content
     }
 
     /**
-     * Returns a list of layouts available in the theme. 
+     * Returns a list of layouts available in the theme.
      * This method is used by the form widget.
      * @return array Returns an array of strings.
      */
@@ -323,7 +366,7 @@ class Page extends Content
             }
 
             $baseName = $layout->getBaseFileName();
-            $result[$baseName] = strlen($layout->name) ? $layout->name : $baseName;
+            $result[$baseName] = strlen($layout->description) ? $layout->description : $baseName;
         }
 
         if (!$result) {
@@ -412,10 +455,12 @@ class Page extends Content
             }
 
             $type = $node->hasAttribute('type') ? trim($node->getAttribute('type')) : null;
+            $ignore = $node->hasAttribute('ignore') ? trim($node->getAttribute('ignore')) : false;
 
             $placeholderInfo = [
-                'title' => $title,
-                'type'  => $type ?: 'html'
+                'title'  => $title,
+                'type'   => $type ?: 'html',
+                'ignore' => $ignore
             ];
 
             $result[$node->getAttribute('name')] = $placeholderInfo;
@@ -448,10 +493,14 @@ class Page extends Content
      * Parses the page placeholder {% put %} tags and extracts the placeholder values.
      * @return array Returns an associative array of the placeholder names and values.
      */
-    public function getPlaceholderValues()
+    public function getPlaceholdersAttribute()
     {
         if (!strlen($this->code)) {
             return [];
+        }
+
+        if ($placeholders = array_get($this->attributes, 'placeholders')) {
+            return $placeholders;
         }
 
         $bodyNode = $this->getTwigNodeTree($this->code)->getNode('body')->getNode(0);
@@ -469,7 +518,42 @@ class Page extends Content
             $result[$node->getAttribute('name')] = trim($bodyNode->getAttribute('data'));
         }
 
+        $this->attributes['placeholders'] = $result;
+
         return $result;
+    }
+
+    /**
+     * Takes an array of placeholder data (key: code, value: content) and renders
+     * it as a single string of Twig markup against the "code" attribute.
+     * @param array  $value
+     * @return void
+     */
+    public function setPlaceholdersAttribute($value)
+    {
+        if (!is_array($value)) {
+            return;
+        }
+
+        // Prune any attempt at setting a placeholder that
+        // is not actually defined by this pages layout.
+        $placeholders = array_intersect_key($value, $this->listLayoutPlaceholders());
+
+        $result = '';
+
+        foreach ($placeholders as $code => $content) {
+            if (!strlen($content)) {
+                continue;
+            }
+
+            $result .= '{% put '.$code.' %}'.PHP_EOL;
+            $result .= $content.PHP_EOL;
+            $result .= '{% endput %}'.PHP_EOL;
+            $result .= PHP_EOL;
+        }
+
+        $this->attributes['code'] = trim($result);
+        $this->attributes['placeholders'] = $placeholders;
     }
 
     public function getProcessedMarkup()
@@ -478,11 +562,22 @@ class Page extends Content
             return $this->processedMarkupCache;
         }
 
+        /*
+         * Process snippets
+         */
         $markup = Snippet::processPageMarkup(
             $this->getFileName(),
             $this->theme,
             $this->markup
         );
+
+        /*
+         * Inject global view variables
+         */
+        $globalVars = ViewHelper::getGlobalVars();
+        if (!empty($globalVars)) {
+            $markup = TextParser::parse($markup, $globalVars);
+        }
 
         return $this->processedMarkupCache = $markup;
     }
@@ -493,11 +588,22 @@ class Page extends Content
             return $this->processedBlockMarkupCache[$placeholderName];
         }
 
+        /*
+         * Process snippets
+         */
         $markup = Snippet::processPageMarkup(
             $this->getFileName().md5($placeholderName),
             $this->theme,
             $placeholderContents
         );
+
+        /*
+         * Inject global view variables
+         */
+        $globalVars = ViewHelper::getGlobalVars();
+        if (!empty($globalVars)) {
+            $markup = TextParser::parse($markup, $globalVars);
+        }
 
         return $this->processedBlockMarkupCache[$placeholderName] = $markup;
     }
@@ -541,13 +647,20 @@ class Page extends Content
     //
 
     /**
+     * Returns a cache key for this record.
+     */
+    protected static function getMenuCacheKey($theme)
+    {
+        return crc32($theme->getPath()).'static-page-menu-'.Lang::getLocale();
+    }
+
+    /**
      * Clears the menu item cache
      * @param \Cms\Classes\Theme $theme Specifies the current theme.
      */
     public static function clearMenuCache($theme)
     {
-        $key = crc32($theme->getPath()).'static-page-menu-tree';
-        Cache::forget($key);
+        Cache::forget(self::getMenuCacheKey($theme));
     }
 
     /**
@@ -590,7 +703,7 @@ class Page extends Content
      * with the following keys:
      * - url - the menu item URL. Not required for menu item types that return all available records.
      *   The URL should be returned relative to the website root and include the subdirectory, if any.
-     *   Use the URL::to() helper to generate the URLs.
+     *   Use the Url::to() helper to generate the URLs.
      * - isActive - determines whether the menu item is active. Not required for menu item types that 
      *   return all available records.
      * - items - an array of arrays with the same keys (url, isActive, items) + the title key. 
@@ -613,7 +726,7 @@ class Page extends Content
 
         if ($item->type == 'static-page') {
             $pageInfo = $tree[$item->reference];
-            $result['url'] = URL::to($pageInfo['url']);
+            $result['url'] = Url::to($pageInfo['url']);
             $result['mtime'] = $pageInfo['mtime'];
             $result['isActive'] = $result['url'] == $url;
         }
@@ -634,7 +747,7 @@ class Page extends Content
                     }
 
                     $branchItem = [];
-                    $branchItem['url'] = URL::to($itemInfo['url']);
+                    $branchItem['url'] = Url::to($itemInfo['url']);
                     $branchItem['isActive'] = $branchItem['url'] == $url;
                     $branchItem['title'] = $itemInfo['title'];
                     $branchItem['mtime'] = $itemInfo['mtime'];
@@ -704,7 +817,7 @@ class Page extends Content
             return self::$menuTreeCache;
         }
 
-        $key = crc32($theme->getPath()).'static-page-menu-tree';
+        $key = self::getMenuCacheKey($theme);
 
         $cached = Cache::get($key, false);
         $unserialized = $cached ? @unserialize($cached) : false;
@@ -721,16 +834,17 @@ class Page extends Content
             $result = [];
 
             foreach ($items as $item) {
-                $viewBag = $item->page->getViewBag();
+                $viewBag = $item->page->viewBag;
                 $pageCode = $item->page->getBaseFileName();
+                $pageUrl = Str::lower(RouterHelper::normalizeUrl(array_get($viewBag, 'url')));
 
                 $itemData = [
-                    'url'    => Str::lower(RouterHelper::normalizeUrl($viewBag->property('url'))),
-                    'title'  => $viewBag->property('title'),
+                    'url'    => $pageUrl,
+                    'title'  => array_get($viewBag, 'title'),
                     'mtime'  => $item->page->mtime,
                     'items'  => $iterator($item->subpages, $pageCode, $level+1),
                     'parent' => $parent,
-                    'navigation_hidden' => $viewBag->property('navigation_hidden')
+                    'navigation_hidden' => array_get($viewBag, 'navigation_hidden')
                 ];
 
                 if ($level == 0) {

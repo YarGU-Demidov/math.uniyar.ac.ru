@@ -1,2 +1,3 @@
 system.log
 laravel.log
+*.sqlite

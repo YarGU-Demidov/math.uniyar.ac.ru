@@ -12,7 +12,7 @@ return [
         'delete_confirm_single' => 'Vuoi davvero eliminare questa pagina? L\'operazione cancellerà anche le sottopagine, se presenti.',
         'new' => 'Nuova pagina',
         'add_subpage' => 'Aggiungi sottopagina',
-        'invalid_url' => 'Formato dell\'URL non valido. L\'URL deve iniziare con una barra e può contenere numeri, lettere latine e i seguenti simboli: _-/',
+        'invalid_url' => 'Formato dell\'URL non valido. L\'URL deve iniziare con una barra e può contenere numeri, lettere latine e i seguenti simboli: _-/.',
         'url_not_unique' => 'L\'URL è già utilizzato da un\'altra pagina.',
         'layout' => 'Layout',
         'layouts_not_found' => 'Layouts non trovato',
@@ -36,7 +36,6 @@ return [
         'code' => 'Codice',
         'items' => 'Voci di menu',
         'add_subitem' => 'Aggiungi sottomenu',
-        'no_records' => 'Nessun elemento trovato',
         'code_required' => 'Il Codice è obbligatorio',
         'invalid_code' => 'Formato del Codice non valido. Il Codice può contenere numeri, lettere latine e i seguenti simboli: _-'
     ],
@@ -61,7 +60,9 @@ return [
         'url_required' => 'L\'URL è obbligatorio',
         'cms_page_required' => 'Seleziona una pagina CMS',
         'code' => 'Codice',
-        'code_comment' => 'Inserisci il codice della voce di menu se vuoi accedervi con l\'API.'
+        'code_comment' => 'Inserisci il codice della voce di menu se vuoi accedervi con l\'API.',
+        'static_page' => 'Pagine',
+        'all_static_pages' => 'Tutte le pagine'
     ],
     'content' => [
         'menu_label' => 'Contenuti',

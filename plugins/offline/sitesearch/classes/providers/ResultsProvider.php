@@ -83,21 +83,18 @@ abstract class ResultsProvider
     /**
      * Adds a result to the results array.
      *
-     * @param string $title
-     * @param string $text
-     * @param string $url
-     * @param string $relevance
+     * @param Result $result
      * @param null   $provider
      *
      * @return ResultsProvider
      */
-    public function addResult($title, $text = '', $url = '', $relevance = '', $provider = null)
+    public function addResult(Result $result, $provider = null)
     {
         if ($provider === null) {
-            $provider = $this->displayName;
+            $result->provider = $this->displayName;
         }
 
-        $this->results[] = new Result($this->query, $title, $text, $url, $relevance, $provider);
+        $this->results[] = $result;
 
         return $this;
     }

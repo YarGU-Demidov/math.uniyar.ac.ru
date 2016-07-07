@@ -1,15 +1,15 @@
 description = "This layout tests the page life cycle"
 ==
 function onStart() {
-    $this['layoutStartVar'] = 1;
+$this['layoutStartVar'] = 1;
 }
 
 function onBeforePageStart() {
-    $this['layoutBeforePageStartVar'] = 2;
+$this['layoutBeforePageStartVar'] = 2;
 }
 
 function onEnd() {
-    $this['layoutEndVar'] = 5;
+$this['layoutEndVar'] = 5;
 }
 ==
 {{ page() }}

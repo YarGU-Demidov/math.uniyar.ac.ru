@@ -3,6 +3,7 @@ namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use DomainException;
 use Event;
+use OFFLINE\SiteSearch\Classes\Result;
 
 /**
  * Handles results that are provided by
@@ -35,22 +36,26 @@ class GenericResultsProvider extends ResultsProvider
     /**
      * Adds a result to the ResultBag.
      *
-     * @param $results
+     * @param $returns
      * @param $provider
      *
      * @throws DomainException
      */
-    protected function addResultsForProvider($results, $provider)
+    protected function addResultsForProvider($returns, $provider)
     {
-        foreach ($results as $result) {
-            $result = $this->validateResult($result);
-            $this->addResult(
-                $result['title'],
-                $result['text'],
-                $result['url'],
-                $result['relevance'],
-                $provider
-            );
+        foreach ($returns as $return) {
+            if ( ! $this->validate($return)) {
+                continue;
+            };
+
+            $relevance = isset($return['relevance']) ? $return['relevance'] : 1;
+
+            $result = new Result($this->query, $relevance, $provider);
+            foreach ($return as $key => $value) {
+                $result->{$key} = $value;
+            }
+
+            $this->addResult($result, $provider);
         }
     }
 
@@ -58,37 +63,21 @@ class GenericResultsProvider extends ResultsProvider
      * Validates that all mandatory keys are
      * available in the provided results array
      *
-     * @param $result
+     * @param $return
      *
      * @throws DomainException
      * @return array
      */
-    protected function validateResult(array $result)
+    protected function validate($return)
     {
-        if ( ! array_key_exists('title', $result)) {
-            throw new DomainException('Provide a title key in your results array');
+        if ( ! is_array($return)) {
+            return false;
+        }
+        if ( ! array_key_exists('title', $return)) {
+            return false;
         }
 
-        return $this->fillMissingKeys($result);
-    }
-
-    /**
-     * Adds the missing keys to the results array.
-     *
-     * @param array $result
-     *
-     * @return array
-     */
-    private function fillMissingKeys(array $result)
-    {
-        $keys = ['text', 'url', 'relevance'];
-        foreach ($keys as $key) {
-            if ( ! array_key_exists($key, $result)) {
-                $result[$key] = '';
-            }
-        }
-
-        return $result;
+        return true;
     }
 
     /**
@@ -111,4 +100,3 @@ class GenericResultsProvider extends ResultsProvider
         return '';
     }
 }
-

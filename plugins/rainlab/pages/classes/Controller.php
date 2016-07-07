@@ -1,7 +1,7 @@
 <?php namespace RainLab\Pages\Classes;
 
 use Lang;
-use Cms\Classes\Page;
+use Cms\Classes\Page as CmsPage;
 use Cms\Classes\Theme;
 use Cms\Classes\Layout;
 use Cms\Classes\CmsException;
@@ -45,22 +45,19 @@ class Controller
             return null;
         }
 
-        $viewBag = $page->getViewBag();
+        $viewBag = $page->viewBag;
 
-        $cmsPage = new Page($this->theme);
+        $cmsPage = CmsPage::inTheme($this->theme);
+        $cmsPage->url = $url;
         $cmsPage->apiBag['staticPage'] = $page;
-
-        $cmsPage->title = $viewBag->property('title');
-        $cmsPage->settings['url'] = $url;
-        $cmsPage->settings['components'] = [];
 
         /*
          * Transfer specific values from the content view bag to the page settings object.
          */
-        $viewBagToSettings = ['is_hidden', 'layout', 'meta_title', 'meta_description'];
+        $viewBagToSettings = ['title', 'layout', 'meta_title', 'meta_description', 'is_hidden'];
 
         foreach ($viewBagToSettings as $property) {
-            $cmsPage->settings[$property] = $viewBag->property($property);
+            $cmsPage->settings[$property] = array_get($viewBag, $property);
         }
 
         return $cmsPage;
@@ -76,7 +73,7 @@ class Controller
 
         CmsException::mask($staticPage, 400);
         $loader->setObject($staticPage);
-        $template = $twig->loadTemplate($staticPage->getFullPath());
+        $template = $twig->loadTemplate($staticPage->getFilePath());
         $template->render([]);
         CmsException::unmask();
     }
