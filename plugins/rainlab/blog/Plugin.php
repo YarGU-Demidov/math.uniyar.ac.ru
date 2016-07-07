@@ -25,7 +25,8 @@ class Plugin extends PluginBase
         return [
             'RainLab\Blog\Components\Post'       => 'blogPost',
             'RainLab\Blog\Components\Posts'      => 'blogPosts',
-            'RainLab\Blog\Components\Categories' => 'blogCategories'
+            'RainLab\Blog\Components\Categories' => 'blogCategories',
+            'RainLab\Blog\Components\RssFeed'    => 'blogRssFeed',
         ];
     }
 
@@ -46,8 +47,9 @@ class Plugin extends PluginBase
                 'label'       => 'rainlab.blog::lang.blog.menu_label',
                 'url'         => Backend::url('rainlab/blog/posts'),
                 'icon'        => 'icon-pencil',
+                'iconSvg'     => 'plugins/rainlab/blog/assets/images/blog-icon.svg',
                 'permissions' => ['rainlab.blog.*'],
-                'order'       => 500,
+                'order'       => 30,
 
                 'sideMenu' => [
                     'new_post' => [

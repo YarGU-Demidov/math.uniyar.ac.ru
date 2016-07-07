@@ -1,5 +1,5 @@
 <?php
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Create The Application
@@ -10,11 +10,11 @@
 	| the IoC container for the system binding all of the various parts.
 	|
 	*/
-
+	
 	$app = new October\Rain\Foundation\Application(
-		realpath( __DIR__ . '/../' )
+		realpath(__DIR__ . '/../')
 	);
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Bind Important Interfaces
@@ -25,22 +25,22 @@
 	| incoming requests to this application from both the web and CLI.
 	|
 	*/
-
+	
 	$app->singleton(
-		'Illuminate\Contracts\Http\Kernel',
-		'October\Rain\Foundation\Http\Kernel'
+		Illuminate\Contracts\Http\Kernel::class,
+		October\Rain\Foundation\Http\Kernel::class
 	);
-
+	
 	$app->singleton(
-		'Illuminate\Contracts\Console\Kernel',
-		'October\Rain\Foundation\Console\Kernel'
+		Illuminate\Contracts\Console\Kernel::class,
+		October\Rain\Foundation\Console\Kernel::class
 	);
-
+	
 	$app->singleton(
-		'Illuminate\Contracts\Debug\ExceptionHandler',
-		'October\Rain\Foundation\Exception\Handler'
+		Illuminate\Contracts\Debug\ExceptionHandler::class,
+		October\Rain\Foundation\Exception\Handler::class
 	);
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Return The Application
@@ -51,5 +51,5 @@
 	| from the actual running of the application and sending responses.
 	|
 	*/
-
+	
 	return $app;

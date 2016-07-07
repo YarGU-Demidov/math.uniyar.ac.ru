@@ -1,5 +1,5 @@
 <?php
-
+	
 	return [
 		
 		/*
@@ -15,9 +15,9 @@
 		| of this page. Otherwise a default error page is shown.
 		|
 		*/
-
+		
 		'debug' => env("APP_DEBUG", false),
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Application URL
@@ -28,9 +28,9 @@
 		| your application so that it is used when running Artisan tasks.
 		|
 		*/
-
-		'url' => 'http://math.uniyar.ac.ru',
-
+		
+		'url' => env("APP_URL", 'http://math.uniyar.ac.ru'),
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Application Timezone
@@ -41,9 +41,9 @@
 		| ahead and set this to a sensible default for you out of the box.
 		|
 		*/
-
+		
 		'timezone' => 'UTC',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Application Locale Configuration
@@ -54,9 +54,9 @@
 		| to any of the locales which will be supported by the application.
 		|
 		*/
-
+		
 		'locale' => 'ru',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Application Fallback Locale
@@ -67,9 +67,9 @@
 		| the language folders that are provided through your application.
 		|
 		*/
-
+		
 		'fallback_locale' => 'en',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Encryption Key
@@ -80,11 +80,11 @@
 		| will not be safe. Please do this before deploying an application!
 		|
 		*/
-
+		
 		'key' => env("APP_KEY", '93P0TVTL2zBB29lHryBqO9vXlbBRmizU'),
-
-		'cipher' => MCRYPT_RIJNDAEL_128,
-
+		
+		'cipher' => 'AES-256-CBC',
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Logging Configuration
@@ -97,9 +97,9 @@
 		| Available Settings: "single", "daily", "syslog", "errorlog"
 		|
 		*/
-
+		
 		'log' => 'single',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Autoloaded Service Providers
@@ -110,15 +110,15 @@
 		| this array to grant expanded functionality to your applications.
 		|
 		*/
-
-		'providers' => array_merge( include(base_path() . '/modules/system/providers.php'), [
-
+		
+		'providers' => array_merge(include(base_path('modules/system/providers.php')), [
+			
 			// 'Illuminate\Html\HtmlServiceProvider', // Example
-
+			
 			System\ServiceProvider::class,
 			Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-		] ),
-
+		]),
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Class Aliases
@@ -129,11 +129,10 @@
 		| the aliases are "lazy" loaded so they don't hinder performance.
 		|
 		*/
-
-		'aliases' => array_merge( include(base_path() . '/modules/system/aliases.php'), [
-
+		
+		'aliases' => array_merge(include(base_path('modules/system/aliases.php')), [
+			
 			// 'Str' => 'Illuminate\Support\Str', // Example
-
-		] ),
-
+		]),
+	
 	];

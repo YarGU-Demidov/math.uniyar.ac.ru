@@ -1,7 +1,7 @@
 <?php
-
+	
 	return [
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Default Session Driver
@@ -15,9 +15,9 @@
 		|            "memcached", "redis", "array"
 		|
 		*/
-
+		
 		'driver' => 'file',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Lifetime
@@ -28,11 +28,11 @@
 		| to immediately expire when the browser closes, set it to zero.
 		|
 		*/
-
+		
 		'lifetime' => 120,
-
+		
 		'expire_on_close' => false,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Encryption
@@ -43,9 +43,9 @@
 		| automatically by Laravel and you can use the Session like normal.
 		|
 		*/
-
+		
 		'encrypt' => false,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session File Location
@@ -56,9 +56,9 @@
 		| location may be specified. This is only needed for file sessions.
 		|
 		*/
-
-		'files' => storage_path() . '/framework/sessions',
-
+		
+		'files' => storage_path('framework/sessions'),
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Database Connection
@@ -69,9 +69,9 @@
 		| correspond to a connection in your "database" configuration file.
 		|
 		*/
-
+		
 		'connection' => null,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Database Table
@@ -82,9 +82,9 @@
 		| provided for you; however, you are free to change this as needed.
 		|
 		*/
-
+		
 		'table' => 'sessions',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Sweeping Lottery
@@ -95,9 +95,9 @@
 		| happen on a given request. By default, the odds are 2 out of 100.
 		|
 		*/
-
-		'lottery' => [ 2, 100 ],
-
+		
+		'lottery' => [2, 100],
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Cookie Name
@@ -108,9 +108,9 @@
 		| new session cookie is created by the framework for every driver.
 		|
 		*/
-
-		'cookie' => 'october_session',
-
+		
+		'cookie' => 'math_session',
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Cookie Path
@@ -121,9 +121,9 @@
 		| your application but you are free to change this when necessary.
 		|
 		*/
-
+		
 		'path' => '/',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Session Cookie Domain
@@ -134,9 +134,9 @@
 		| available to in your application. A sensible default has been set.
 		|
 		*/
-
+		
 		'domain' => null,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| HTTPS Only Cookies
@@ -147,7 +147,7 @@
 		| the cookie from being sent to you if it can not be done securely.
 		|
 		*/
-
+		
 		'secure' => false,
-
+	
 	];

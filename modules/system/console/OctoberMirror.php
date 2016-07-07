@@ -26,6 +26,7 @@ class OctoberMirror extends Command
     protected $description = '(Experimental) Generates a mirrored public folder using symbolic links.';
 
     protected $files = [
+        '.htaccess',
         'index.php',
         'favicon.ico',
         'robots.txt',
@@ -40,16 +41,29 @@ class OctoberMirror extends Command
 
     protected $wildcards = [
         'modules/*/assets',
+        'modules/*/resources',
         'modules/*/behaviors/*/assets',
+        'modules/*/behaviors/*/resources',
         'modules/*/widgets/*/assets',
+        'modules/*/widgets/*/resources',
         'modules/*/formwidgets/*/assets',
+        'modules/*/formwidgets/*/resources',
+        'modules/*/reportwidgets/*/assets',
+        'modules/*/reportwidgets/*/resources',
 
         'plugins/*/*/assets',
+        'plugins/*/*/resources',
         'plugins/*/*/behaviors/*/assets',
+        'plugins/*/*/behaviors/*/resources',
+        'plugins/*/*/reportwidgets/*/assets',
+        'plugins/*/*/reportwidgets/*/resources',
         'plugins/*/*/formwidgets/*/assets',
+        'plugins/*/*/formwidgets/*/resources',
         'plugins/*/*/widgets/*/assets',
+        'plugins/*/*/widgets/*/resources',
 
         'themes/*/assets',
+        'themes/*/resources',
     ];
 
     protected $destinationPath;

@@ -2,6 +2,8 @@
 namespace OFFLINE\SiteSearch\Classes\Providers;
 
 use Illuminate\Database\Eloquent\Collection;
+use OFFLINE\SiteSearch\Classes\Result;
+use OFFLINE\SiteSearch\Classes\ResultData;
 use OFFLINE\SiteSearch\Models\Settings;
 use RainLab\Blog\Models\Post;
 
@@ -28,7 +30,16 @@ class RainlabBlogResultsProvider extends ResultsProvider
             // Make this result more relevant, if the query is found in the title
             $relevance = stripos($post->title, $this->query) === false ? 1 : 2;
 
-            $this->addResult($post->title, $post->summary, $this->getUrl($post), $relevance);
+            $result        = new Result($this->query, $relevance);
+            $result->title = $post->title;
+            $result->text  = $post->summary;
+            $result->url   = $this->getUrl($post);
+
+            if($post->featured_images) {
+                $result->thumb = $post->featured_images->first();
+            }
+
+            $this->addResult($result);
         }
 
         return $this;
@@ -62,7 +73,7 @@ class RainlabBlogResultsProvider extends ResultsProvider
     }
 
     /**
-     * Genreates the url to a blog post.
+     * Generates the url to a blog post.
      *
      * @param $post
      *

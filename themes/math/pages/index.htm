@@ -37,9 +37,11 @@ postPage = "post-view"
 								{% set ext = first.extension|lower %}
 								{# the second variable will create the path to the thumbnail #}
 								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
-								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})" class="teaser__preview"></div>
+								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})"
+								     class="teaser__preview"></div>
 							{% else %}
-								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})" class="teaser__preview"></div>
+								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})"
+								     class="teaser__preview"></div>
 							{% endif %}
 						</div>
 						<div class="teaser__body">

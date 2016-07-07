@@ -10,9 +10,9 @@
          stopOnFailure="true"
          syntaxCheck="false"
 >
-	<testsuites>
-		<testsuite name="October Test Suite">
-			<directory>./</directory>
-		</testsuite>
-	</testsuites>
+    <testsuites>
+        <testsuite name="October Test Suite">
+            <directory>./</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>

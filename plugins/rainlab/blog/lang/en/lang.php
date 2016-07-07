@@ -9,9 +9,9 @@ return [
         'menu_label' => 'Blog',
         'menu_description' => 'Manage Blog Posts',
         'posts' => 'Posts',
-        'create_post' => 'blog post',
+        'create_post' => 'Blog post',
         'categories' => 'Categories',
-        'create_category' => 'blog category',
+        'create_category' => 'Blog category',
         'tab' => 'Blog',
         'access_posts' => 'Manage the blog posts',
         'access_categories' => 'Manage the blog categories',
@@ -24,8 +24,8 @@ return [
     ],
     'posts' => [
         'list_title' => 'Manage the blog posts',
-        'category' => 'Category',
-        'hide_published' => 'Hide published',
+        'filter_category' => 'Category',
+        'filter_published' => 'Published',
         'new_post' => 'New post'
     ],
     'post' => [
@@ -102,6 +102,10 @@ return [
         'posts_category' => 'Category page',
         'posts_category_description' => 'Name of the category page file for the "Posted into" category links. This property is used by the default component partial.',
         'posts_post' => 'Post page',
-        'posts_post_description' => 'Name of the blog post page file for the "Learn more" links. This property is used by the default component partial.'
+        'posts_post_description' => 'Name of the blog post page file for the "Learn more" links. This property is used by the default component partial.',
+        'rssfeed_blog' => 'Blog page',
+        'rssfeed_blog_description' => 'Name of the main blog page file for generating links. This property is used by the default component partial.',
+        'rssfeed_title' => 'RSS Feed',
+        'rssfeed_description' => 'Generates an RSS feed containing posts from the blog.',
     ]
 ];

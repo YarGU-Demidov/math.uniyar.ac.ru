@@ -1,7 +1,7 @@
 <?php
-
+	
 	return [
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| PDO Fetch Style
@@ -12,9 +12,9 @@
 		| array format for simplicity. Here you can tweak the fetch style.
 		|
 		*/
-
+		
 		'fetch' => PDO::FETCH_CLASS,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Default Database Connection Name
@@ -25,9 +25,9 @@
 		| you may use many connections at once using the Database library.
 		|
 		*/
-
+		
 		'default' => env('DB_CONNECTION', 'mysql'),
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Database Connections
@@ -43,52 +43,51 @@
 		| choice installed on your machine before you begin development.
 		|
 		*/
-
+		
 		'connections' => [
-
+			
 			'sqlite' => [
 				'driver'   => 'sqlite',
 				'database' => 'storage/database.sqlite',
 				'prefix'   => '',
 			],
-
+			
 			'mysql' => [
 				'driver'    => 'mysql',
-				'host'      => env("DATABASE_HOST",'localhost'),
+				'host'      => env("DATABASE_HOST", 'localhost'),
 				'port'      => '',
-				'database'  => env("DATABASE_NAME",'math'),
-				'username'  => env("DATABASE_USER",'math'),
+				'database'  => env("DATABASE_NAME", 'math'),
+				'username'  => env("DATABASE_USER", 'math'),
 				'password'  => env("DATABASE_PASS", 'mathSite'),
 				'charset'   => 'utf8',
 				'collation' => 'utf8_unicode_ci',
 				'prefix'    => '',
 			],
-
+			
 			'pgsql' => [
 				'driver'   => 'pgsql',
 				'host'     => env('DB_HOST', 'localhost'),
-				'database' => env('DB_DATABASE', 'forge'),
-				'username' => env('DB_USERNAME', 'forge'),
+				'database' => env('DB_DATABASE', 'database'),
+				'username' => env('DB_USERNAME', 'root'),
 				'password' => env('DB_PASSWORD', ''),
 				'charset'  => 'utf8',
 				'prefix'   => '',
 				'schema'   => 'public',
 				'port'     => '',
 			],
-
+			
 			'sqlsrv' => [
 				'driver'   => 'sqlsrv',
 				'host'     => env('DB_HOST', 'localhost'),
-				'database' => env('DB_DATABASE', 'forge'),
-				'username' => env('DB_USERNAME', 'forge'),
+				'database' => env('DB_DATABASE', 'database'),
+				'username' => env('DB_USERNAME', 'root'),
 				'password' => env('DB_PASSWORD', ''),
-				'charset'  => 'utf8',
 				'prefix'   => '',
 				'port'     => '',
 			],
-
+		
 		],
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Migration Repository Table
@@ -99,9 +98,9 @@
 		| the migrations on disk have not actually be run in the databases.
 		|
 		*/
-
+		
 		'migrations' => 'migrations',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Redis Databases
@@ -112,18 +111,18 @@
 		| such as APC or Memcached. Laravel makes it easy to dig right in.
 		|
 		*/
-
+		
 		'redis' => [
-
+			
 			'cluster' => false,
-
+			
 			'default' => [
 				'host'     => env('REDIS_HOST', 'localhost'),
 				'password' => env('REDIS_PASSWORD', null),
 				'port'     => env('REDIS_PORT', 6379),
 				'database' => 0,
 			],
-
+		
 		],
-
+	
 	];

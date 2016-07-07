@@ -1,6 +1,18 @@
 <?php
+	
 	return [
-
+		
+		/*
+		|--------------------------------------------------------------------------
+		| Specifies the default CMS theme.
+		|--------------------------------------------------------------------------
+		|
+		| This parameter value can be overridden by the CMS back-end settings.
+		|
+		*/
+		
+		'activeTheme' => 'demo',
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Bleeding edge updates
@@ -11,31 +23,34 @@
 		| and use the development copies of core files and plugins.
 		|
 		*/
-
+		
 		'edgeUpdates' => false,
-
-		/*
-		|--------------------------------------------------------------------------
-		| Specifies the default CMS theme.
-		|--------------------------------------------------------------------------
-		|
-		| This parameter value can be overridden by the CMS back-end settings.
-		|
-		*/
-
-		'activeTheme' => 'math',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Back-end URI prefix
 		|--------------------------------------------------------------------------
 		|
-		| Specifies the URI prefix used for accessing back-end pages.
+		| Specifies the URL name used for accessing back-end pages.
+		| For example: backend -> http://localhost/backend
 		|
 		*/
-
+		
 		'backendUri' => 'manager',
-
+		
+		/*
+		|--------------------------------------------------------------------------
+		| Back-end timezone
+		|--------------------------------------------------------------------------
+		|
+		| This acts as the default setting for a back-end user's timezone. This can
+		| be changed by the user at any time using the backend preferences. All
+		| dates displayed in the back-end will be converted to this timezone.
+		|
+		*/
+		
+		'backendTimezone' => 'UTC',
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Back-end Skin
@@ -44,9 +59,9 @@
 		| Specifies the back-end skin to use.
 		|
 		*/
-
+		
 		'backendSkin' => 'Backend\Skins\Standard',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Determines which modules to load
@@ -55,9 +70,9 @@
 		| Specify which modules should be registered when using the application.
 		|
 		*/
-
-		'loadModules' => [ 'System', 'Backend', 'Cms' ],
-
+		
+		'loadModules' => ['System', 'Backend', 'Cms'],
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Prevents application updates
@@ -69,9 +84,9 @@
 		| and themes will still be downloaded.
 		|
 		*/
-
-		'disableCoreUpdates' => true,
-
+		
+		'disableCoreUpdates' => false,
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Specific plugins to disable
@@ -80,9 +95,9 @@
 		| Specify plugin codes which will always be disabled in the application.
 		|
 		*/
-
-		'disablePlugins' => [ ],
-
+		
+		'disablePlugins' => [],
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Determines if the routing caching is enabled.
@@ -94,9 +109,9 @@
 		| to disable the caching during the development, and enable it in the production mode.
 		|
 		*/
-
+		
 		'enableRoutesCache' => false,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Time to live for the URL map.
@@ -107,9 +122,9 @@
 		| interval, in minutes, specified with the urlMapCacheTTL parameter expires.
 		|
 		*/
-
+		
 		'urlCacheTtl' => 10,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Time to live for parsed CMS objects.
@@ -120,9 +135,9 @@
 		| the corresponding template file is modified.
 		|
 		*/
-
+		
 		'parsedPageCacheTTL' => 10,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Determines if the asset caching is enabled.
@@ -134,9 +149,9 @@
 		| to disable the caching during the development, and enable it in the production mode.
 		|
 		*/
-
+		
 		'enableAssetCache' => false,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Determines if the asset minification is enabled.
@@ -148,9 +163,9 @@
 		| when debug mode (app.debug) is disabled.
 		|
 		*/
-
-		'enableAssetMinify' => true,
-
+		
+		'enableAssetMinify' => env("CMS_ASSET_MINIFY", true),
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Public plugins path
@@ -160,9 +175,9 @@
 		| or you can specify a full URL path.
 		|
 		*/
-
+		
 		'pluginsPath' => '/plugins',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Public themes path
@@ -172,9 +187,9 @@
 		| or you can specify a full URL path.
 		|
 		*/
-
+		
 		'themesPath' => '/themes',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Resource storage
@@ -193,23 +208,23 @@
 		| path   - the public path relative to the application base URL,
 		|          or you can specify a full URL path.
 		*/
-
+		
 		'storage' => [
-
+			
 			'uploads' => [
 				'disk'   => 'local',
 				'folder' => 'uploads',
 				'path'   => '/storage/app/uploads',
 			],
-
+			
 			'media' => [
 				'disk'   => 'local',
 				'folder' => 'media',
 				'path'   => '/storage/app/media',
 			],
-
+		
 		],
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Convert Line Endings
@@ -219,9 +234,9 @@
 		| \r\n to the unix style \n.
 		|
 		*/
-
+		
 		'convertLineEndings' => false,
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Linking policy
@@ -235,9 +250,9 @@
 		| force    - force hostname and schema using app.url config value
 		|
 		*/
-
+		
 		'linkPolicy' => 'detect',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Default permission mask
@@ -246,9 +261,22 @@
 		| Specifies a default file and folder permission for newly created objects.
 		|
 		*/
-
-		'defaultMask' => [ 'file' => null, 'folder' => null ],
-
+		
+		'defaultMask' => ['file' => null, 'folder' => null],
+		
+		/*
+		|--------------------------------------------------------------------------
+		| Safe mode
+		|--------------------------------------------------------------------------
+		|
+		| If safe mode is enabled, the PHP code section is disabled in the CMS
+		| for security reasons. If set to null, safe mode is on when debug mode
+		| (app.debug) is disabled.
+		|
+		*/
+		
+		'enableSafeMode' => null,
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Cross Site Request Forgery (CSRF) Protection
@@ -258,7 +286,7 @@
 		| for a valid security token.
 		|
 		*/
-
+		
 		'enableCsrfProtection' => true,
-
+	
 	];
