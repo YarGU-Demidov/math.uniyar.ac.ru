@@ -116,7 +116,6 @@
 			// 'Illuminate\Html\HtmlServiceProvider', // Example
 			
 			System\ServiceProvider::class,
-			Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 		]),
 		
 		/*
