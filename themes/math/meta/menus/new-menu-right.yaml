@@ -1,0 +1,31 @@
+name: 'Нижнее меню: правое'
+items:
+    -
+        title: Контакты
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: contacts
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: math@uniyar.ac.ru
+        type: url
+        url: 'mailto:math@uniyar.ac.ru'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: www.math.uniyar.ac.ru
+        type: url
+        url: 'http://www.math.uniyar.ac.ru'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

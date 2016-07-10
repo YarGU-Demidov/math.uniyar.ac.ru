@@ -1,11 +1,11 @@
-name: 'Нижнее меню'
+name: 'Нижнее меню: центр-левое'
 items:
     -
-        title: Кафедры
+        title: Студентам
         nesting: '0'
         type: static-page
         code: ''
-        reference: departments
+        reference: for-students
         replace: '0'
         viewBag:
             isHidden: '0'
