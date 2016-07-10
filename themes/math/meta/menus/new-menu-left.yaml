@@ -1,0 +1,26 @@
+name: 'Нижнее меню: левое'
+items:
+    -
+        title: Абитуриентам
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: for-entrants
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Кафедры
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: departments
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

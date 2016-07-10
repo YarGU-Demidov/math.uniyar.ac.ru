@@ -1,0 +1,13 @@
+name: 'Нижнее меню: центр-правое'
+items:
+    -
+        title: Школа
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: shkolnikam
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
