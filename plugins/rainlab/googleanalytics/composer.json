@@ -1,5 +1,6 @@
 {
     "name": "rainlab/googleanalytics",
+    "type": "october-plugin",
     "description": "Google Analytics integration plugin for OctoberCMS",
     "homepage": "http://octobercms.com",
     "keywords": ["october", "cms", "rainlab", "google", "analytics"],
@@ -14,8 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "guzzlehttp/guzzle": "~5.0",
+        "php": ">=5.5.9",
+        "guzzlehttp/guzzle": "~6.0",
         "google/apiclient": "^2.0.0@RC"
     }
 }

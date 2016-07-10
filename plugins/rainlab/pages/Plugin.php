@@ -66,6 +66,7 @@ class Plugin extends PluginBase
                 'label'       => 'rainlab.pages::lang.plugin.name',
                 'url'         => Backend::url('rainlab/pages'),
                 'icon'        => 'icon-files-o',
+                'iconSvg'     => 'plugins/rainlab/pages/assets/images/pages-icon.svg',
                 'permissions' => ['rainlab.pages.*'],
                 'order'       => 20,
 
@@ -145,8 +146,8 @@ class Plugin extends PluginBase
 
         Event::listen('pages.menuitem.listTypes', function() {
             return [
-                'static-page'      => 'Static Page',
-                'all-static-pages' => 'All Static Pages'
+                'static-page'      => 'rainlab.pages::lang.menuitem.static_page',
+                'all-static-pages' => 'rainlab.pages::lang.menuitem.all_static_pages'
             ];
         });
 
@@ -192,12 +193,12 @@ class Plugin extends PluginBase
 
         Event::listen('backend.richeditor.listTypes', function () {
             return [
-                'static-page' => 'Static page',
+                'static-page' => 'rainlab.pages::lang.menuitem.static_page',
             ];
         });
 
         Event::listen('backend.richeditor.getTypeInfo', function ($type) {
-            if ($type == 'static-page') {
+            if ($type === 'static-page') {
                 return StaticPage::getRichEditorTypeInfo($type);
             }
         });

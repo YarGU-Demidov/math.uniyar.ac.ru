@@ -38,6 +38,7 @@ static-pages:
             departments-calculus-nevskij-mihail-viktorovich: {  }
         kafedra-kompyuternoj-bezopasnosti:
             temy-kursovyh-i-diplomnyh-rabot-kafedry-kompyuternoj-bezopasnosti-i-matematicheskih-metodov-obrabotki-informacii: {  }
+            departments-computer-security-vlasova-olga-vladimirovna: {  }
             departments-computer-security-yakimova-olga-pavlovna: {  }
         algebra:
             uchebnye-posobiya-i-metodicheskij-ukazaniya-kafedry-algebry-i-matematicheskoj-logiki: {  }
@@ -64,5 +65,4 @@ static-pages:
     kruzhok-po-kompyuternoj-bezopasnosti: {  }
     kruzhki:
         kruzhki-dlya-studentov-trenirovki-po-sportivnomu-programmirovaniyu: {  }
-    departments-computer-security-vlasova-olga-vladimirovna: {  }
     departments-computer-security-chaplygina-nadezhda-borisovna: {  }

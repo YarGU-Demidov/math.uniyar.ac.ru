@@ -240,18 +240,6 @@
             $tabPane = $(form).closest('.tab-pane')
 
         this.updateContentEditorMode($tabPane, false)
-
-        var extension = this.getContentExtension($tabPane),
-            val = ''
-
-        if (extension == 'htm' || extension == 'html')
-            val = $('div[data-control=richeditor]', $tabPane).data('oc.richEditor').$textarea.redactor('code.get')
-        else {
-            var editor = $('[data-control=codeeditor]', $tabPane)
-            val = editor.data('oc.codeEditor').editor.getSession().getValue()
-        }
-
-       data.options.data['markup'] = val
     }
 
     /*
@@ -577,16 +565,17 @@
             $('[data-field-name=markup_html]', pane).show()
 
             if (!initialization && $(pane).data('prev-extension') != 'htm') {
-                var val = editor.data('oc.codeEditor').editor.getSession().getValue()
-                $('div[data-control=richeditor]', pane).data('oc.richEditor').$textarea.redactor('code.set', val)
+                var val = editor.codeEditor('getContent')
+                $('div[data-control=richeditor]', pane).richEditor('setContent', val)
             }
-        } else {
+        }
+        else {
             $('[data-field-name=markup]', pane).show()
             $('[data-field-name=markup_html]', pane).hide()
 
             if (!initialization && $(pane).data('prev-extension') == 'htm') {
-                var val = $('div[data-control=richeditor]', pane).data('oc.richEditor').$textarea.redactor('code.get')
-                editor.data('oc.codeEditor').editor.getSession().setValue(val)
+                var val = $('div[data-control=richeditor]', pane).richEditor('getContent')
+                editor.codeEditor('setContent', val)
             }
 
             var modes = $.oc.codeEditorExtensionModes
@@ -596,7 +585,9 @@
 
             var setEditorMode = function() {
                 window.setTimeout(function(){
-                    editor.data('oc.codeEditor').editor.getSession().setMode({path: 'ace/mode/'+mode})
+                    editor.codeEditor('getEditorObject')
+                        .getSession()
+                        .setMode({ path: 'ace/mode/'+mode })
                 }, 200)
             }
 
@@ -614,7 +605,8 @@
      * Returns the content file extension
      */
     PagesPage.prototype.getContentExtension = function(form) {
-        var fileName = $('input[name=fileName]', form).val(),
+        var $input = $('input[name=fileName]', form),
+            fileName = $input.length ? $input.val() : '',
             parts = fileName.split('.')
 
         if (parts.length >= 2)

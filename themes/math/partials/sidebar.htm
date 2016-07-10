@@ -3,13 +3,18 @@ description = "Боковая панель"
 [viewBag]
 snippetCode = "sidebar"
 snippetName = "Sidebar"
+
+[staticMenu]
+code = "sidebar-menu"
 ==
 <aside class="secondary__body secondary__body_info">
+	{% component 'staticMenu' %}
+	<!--
 	<ul class="secondary__body_info_nav">
 		<li><a class="contacts_link" href="news.html">Новости</a></li>
 		<li><a class="contacts_link" href="#">События</a></li>
 		<li><a class="contacts_link" href="#">Фотогалерея</a></li>
-	</ul>
+	</ul>-->
 	<div class="secondary__body_info_poster">
 		<a href="#"><img src="{{ 'assets/img/poster_1.png' | theme }}" alt="" class="poster"></a>
 	</div>

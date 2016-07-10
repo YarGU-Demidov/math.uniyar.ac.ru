@@ -8,7 +8,7 @@ meta_description = "Главная страница сайта Математи�
 
 [blogPosts]
 pageNumber = "{{ :page }}"
-postsPerPage = 6
+postsPerPage = 999999999999999999999
 noPostsMessage = "Постов пока нет"
 sortOrder = "published_at desc"
 categoryPage = "index"
@@ -27,7 +27,7 @@ postPage = "post-view"
 		</div>
 		<ul class="features__list">
 			{% set index = 0 %}
-			{% for post in posts %}
+			{% for post in posts if post.front_page_visible and index < 6 %}
 				<li class="features__item {{ index % 3 == 0 ? 'teaser_palette_blue' : index % 3 == 1 ? 'teaser_palette_purple' : 'teaser_palette_orange' }}">
 					<a class="teaser" href="{{ post.url }}">
 						<div class="teaser__head">
@@ -37,9 +37,11 @@ postPage = "post-view"
 								{% set ext = first.extension|lower %}
 								{# the second variable will create the path to the thumbnail #}
 								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
-								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})" class="teaser__preview"></div>
+								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})"
+								     class="teaser__preview"></div>
 							{% else %}
-								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})" class="teaser__preview"></div>
+								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})"
+								     class="teaser__preview"></div>
 							{% endif %}
 						</div>
 						<div class="teaser__body">

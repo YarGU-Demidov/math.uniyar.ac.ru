@@ -1,16 +1,16 @@
 description = "Дополнительные новости"
 
-[blogPosts]
-pageNumber = "{{ :page }}"
-postsPerPage = 3
-noPostsMessage = "Постов пока нет"
-sortOrder = "published_at desc"
-categoryPage = "blog/category"
-postPage = "post-view"
-
 [viewBag]
 snippetCode = "featured"
 snippetName = "Featured"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 999999999999999999999
+noPostsMessage = "Постов пока нет"
+sortOrder = "published_at desc"
+categoryPage = 403
+postPage = "post-view"
 ==
 <div class="features__news features_type_simple">
 	<div class="features__container container">
@@ -24,7 +24,7 @@ snippetName = "Featured"
 		</div>
 		<ul class="features__list">
 			{% set index = 0 %}
-			{% for post in posts %}
+			{% for post in posts if post.front_page_visible and index < 3 %}
 				<li class="features__item {{ index % 3 == 0 ? 'teaser_palette_blue' : index % 3 == 1 ? 'teaser_palette_purple' : 'teaser_palette_orange' }}">
 					<a class="teaser" href="{{ post.url }}">
 						<div class="teaser__head">
@@ -34,9 +34,11 @@ snippetName = "Featured"
 								{% set ext = first.extension|lower %}
 								{# the second variable will create the path to the thumbnail #}
 								{% set src = first.path|trim(first.disk_name) ~ 'thumb_' ~ first.id ~ '_' ~ '200x200_0_0_crop' ~ '.' ~ ext %}
-								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})" class="teaser__preview"></div>
+								<div data-src="{{ first.filename }}" style="background-image: url({{ src }})"
+								     class="teaser__preview"></div>
 							{% else %}
-								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})" class="teaser__preview"></div>
+								<div style="background-image: url({{ "assets/img/default_news.png" | theme }})"
+								     class="teaser__preview"></div>
 							{% endif %}
 						</div>
 						<div class="teaser__body">

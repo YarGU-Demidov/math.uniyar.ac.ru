@@ -1,7 +1,7 @@
 <?php
-
+	
 	return [
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Default Filesystem Disk
@@ -14,9 +14,9 @@
 		| Supported: "local", "s3", "rackspace"
 		|
 		*/
-
+		
 		'default' => 'local',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Default Cloud Filesystem Disk
@@ -27,9 +27,9 @@
 		| will be bound as the Cloud disk implementation in the container.
 		|
 		*/
-
+		
 		'cloud' => 's3',
-
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Filesystem Disks
@@ -40,14 +40,14 @@
 		| been setup for each driver as an example of the required options.
 		|
 		*/
-
+		
 		'disks' => [
-
+			
 			'local' => [
 				'driver' => 'local',
-				'root'   => storage_path() . '/app',
+				'root'   => storage_path('app'),
 			],
-
+			
 			's3' => [
 				'driver' => 's3',
 				'key'    => 'your-key',
@@ -55,7 +55,7 @@
 				'region' => 'your-region',
 				'bucket' => 'your-bucket',
 			],
-
+			
 			'rackspace' => [
 				'driver'    => 'rackspace',
 				'username'  => 'your-username',
@@ -64,7 +64,7 @@
 				'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
 				'region'    => 'IAD',
 			],
-
+		
 		],
-
+	
 	];

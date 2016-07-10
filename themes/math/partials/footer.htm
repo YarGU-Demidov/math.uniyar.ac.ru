@@ -3,78 +3,39 @@ description = "Подвал сайта"
 [viewBag]
 snippetCode = "footer"
 snippetName = "Footer"
+
+[staticMenu]
+code = "new-menu-left"
+
+[staticMenu staticMenu2]
+code = "new-menu-center-left"
+
+[staticMenu staticMenu3]
+code = "new-menu-center-right"
+
+[staticMenu staticMenu4]
+code = "new-menu-right"
 ==
 <footer class="footer">
 	<div class="footer__container container">
 		<div class="footer__primary">
 			<div class="footer__nav">
 				<nav class="column-nav">
-					<div class="column-nav__column">
-						<div class="column-nav__title">
-							<a class="column-nav__primary-link" href="#">
-								АБИТУРИЕНТАМ
-							</a>
-						</div>
-						<ul class="column-nav__list">
-							<li class="column-nav__item">
-								<a class="column-nav__link" href="#">
-									кафедры
-								</a>
-							</li>
-							<li class="column-nav__item">
-								<a class="column-nav__link" href="#">
-									события
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="column-nav__column">
-						<div class="column-nav__title">
-							<a class="column-nav__primary-link" href="#">
-								СТУДЕНТАМ
-							</a>
-						</div>
-						<ul class="column-nav__list">
-							<li class="column-nav__item">
-								<a class="column-nav__link" href="#">
-									наука
-								</a>
-							</li>
-							<li class="column-nav__item">
-								<a class="column-nav__link" href="#">
-									фотографии
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="column-nav__column">
-						<div class="column-nav__title">
-							<a class="column-nav__primary-link" href="math-school.html">
-								ШКОЛА
-							</a>
-						</div>
-					</div>
-					<div class="column-nav__column">
-						<div class="column-nav__title">
-							<a class="column-nav__primary-link" href="#">
-								КОНТАКТЫ
-							</a>
-						</div>
-						<ul class="column-nav__list">
-							<li class="column-nav__item">
-								<a class="column-nav__link" href="mailto:math@uniyar.ac.ru">
-									math@uniyar.ac.ru
-								</a>
-							</li>
-							<li class="column-nav__item">
-								<a class="column-nav__link" href="http://www.math.uniyar.ac.ru">
-									www.math.uniyar.ac.ru
-								</a>
-							</li>
-						</ul>
-					</div>
+				    <section>
+				        {% component 'staticMenu' %}
+				    </section>
+				    <section>
+				        {% component 'staticMenu2' %}
+				    </section>
+				    <section>
+				        {% component 'staticMenu3' %}
+				    </section>
+				    <section>
+				        {% component 'staticMenu4' %}
+				    </section>
 				</nav>
 			</div>
+			<!--
 			<div class="footer__actions">
 				<div class="footer__search">
 					<form class="search">
@@ -85,7 +46,7 @@ snippetName = "Footer"
 				<div class="footer__site-map">
 					<a class="link" href="#">Карта сайта</a>
 				</div>
-			</div>
+			</div>-->
 			<div class="footer__secondary_line"></div>
 		</div>
 		<div class="footer__secondary">

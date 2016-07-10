@@ -1,0 +1,94 @@
+name: 'Боковое меню'
+items:
+    -
+        title: Кафедры
+        nesting: '1'
+        type: static-page
+        url: ''
+        code: ''
+        reference: departments
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Кафедра общей математики'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: kafedra-obshej-matematiki
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра математического анализа'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: kafedra-matematicheskogo-analiza
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра компьютерной безопасности и математических методов обработки информации'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: kafedra-kompyuternoj-bezopasnosti
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра алгебры и математической логики'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: algebra
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра математического моделирования'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: mathmod
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Кафедра дифференциальных уравнений'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: kafedra-differencialnyh-uravnenij
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'

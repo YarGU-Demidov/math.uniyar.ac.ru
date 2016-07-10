@@ -24,6 +24,33 @@ use GuzzleHttp\Client;
 class Google_AccessToken_VerifyTest extends BaseTest
 {
   /**
+   * This test needs to run before the other verify tests,
+   * to ensure the constants are not defined.
+   */
+  public function testPhpsecConstants()
+  {
+    $client = $this->getClient();
+    $verify = new Google_AccessToken_Verify($client->getHttpClient());
+
+    // set these to values that will be changed
+    if (defined('MATH_BIGINTEGER_OPENSSL_ENABLED') || defined('CRYPT_RSA_MODE')) {
+      $this->markTestSkipped('Cannot run test - constants already defined');
+    }
+
+    // Pretend we are on App Engine VMs
+    putenv('GAE_VM=1');
+
+    $verify->verifyIdToken('a.b.c');
+
+    putenv('GAE_VM=0');
+
+    $openSslEnable = constant('MATH_BIGINTEGER_OPENSSL_ENABLED');
+    $rsaMode = constant('CRYPT_RSA_MODE');
+    $this->assertEquals(true, $openSslEnable);
+    $this->assertEquals(phpseclib\Crypt\RSA::MODE_OPENSSL, $rsaMode);
+  }
+
+  /**
    * Most of the logic for ID token validation is in AuthTest -
    * this is just a general check to ensure we verify a valid
    * id token if one exists.
@@ -71,7 +98,7 @@ class Google_AccessToken_VerifyTest extends BaseTest
     $certs = $method->invoke($verify, Google_AccessToken_Verify::FEDERATED_SIGNON_CERT_URL);
 
     $this->assertArrayHasKey('keys', $certs);
-    $this->assertEquals(2, count($certs['keys']));
+    $this->assertGreaterThan(1, count($certs['keys']));
     $this->assertArrayHasKey('alg', $certs['keys'][0]);
     $this->assertEquals('RS256', $certs['keys'][0]['alg']);
   }

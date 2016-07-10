@@ -1,0 +1,13 @@
+name: 'Нижнее меню: центр-левое'
+items:
+    -
+        title: Студентам
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: for-students
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

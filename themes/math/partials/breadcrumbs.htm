@@ -1,0 +1,16 @@
+description = "Хлебные крошки"
+
+[viewBag]
+snippetCode = "breadcrumbs"
+snippetName = "Breadcrumbs"
+==
+{% if breadcrumbs %}
+	<ul>
+		<li>a[href="#"]</li>
+		{% for breadcrumb in breadcrumbs %}
+			<li class="{{ breadcrumb.isActive ? 'active' : '' }}">
+				<a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}
