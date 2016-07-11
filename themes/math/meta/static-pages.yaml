@@ -36,10 +36,17 @@ static-pages:
             litvinov-vladimir-viktorovich: {  }
             klimov-vladimir-stepanovich: {  }
             departments-calculus-nevskij-mihail-viktorovich: {  }
+            departments-calculus-semko-elena-romanovna: {  }
+            departments-calculus-strelkov-nikolaj-aleksandrovich: {  }
+            departments-calculus-kashenko-aleksandra-andreevna: {  }
+            departments-calculus-kubyshkin-evgenij-pavlovich: {  }
+            departments-calculus-glazkov-dmitrij-vladimirovich: {  }
+            departments-calculus-istoriya: {  }
         kafedra-kompyuternoj-bezopasnosti:
             temy-kursovyh-i-diplomnyh-rabot-kafedry-kompyuternoj-bezopasnosti-i-matematicheskih-metodov-obrabotki-informacii: {  }
-            departments-computer-security-vlasova-olga-vladimirovna: {  }
             departments-computer-security-yakimova-olga-pavlovna: {  }
+            departments-computer-security-vlasova-olga-vladimirovna: {  }
+            departments-computer-security-chaplygina-nadezhda-borisovna: {  }
         algebra:
             uchebnye-posobiya-i-metodicheskij-ukazaniya-kafedry-algebry-i-matematicheskoj-logiki: {  }
             temy-diplomnyh-i-vypusknyh-kvalifikacionnyh-rabot-kafedry-algebry-i-matematicheskoj-logiki: {  }
@@ -61,8 +68,11 @@ static-pages:
             kolesov-andrej-yurevich: {  }
             departments-differential-equations-istoriya-kafedry: {  }
             departments-differential-equations-sokolov-aleksej-vladilenovich: {  }
+        departments-paorkova-florida-idyfatovna: {  }
     aktivizm: {  }
     kruzhok-po-kompyuternoj-bezopasnosti: {  }
     kruzhki:
         kruzhki-dlya-studentov-trenirovki-po-sportivnomu-programmirovaniyu: {  }
-    departments-computer-security-chaplygina-nadezhda-borisovna: {  }
+    preobrazhenskaya-margarita-mihajlovna: {  }
+    fragmenty-istorii-kafedry-matematicheskogo-analiza: {  }
+    iz-istorii-kafedry-teorii-funkcij-i-funkcionalnogo-analiza: {  }
