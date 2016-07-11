@@ -17,8 +17,8 @@ class AddNewRowsToBlogPostsTable extends Migration
 	
 	public function down()
 	{
-		Schema::table('users', function (Blueprint $table){
-			$table->dropDown([
+		Schema::table('rainlab_blog_posts', function (Blueprint $table){
+			$table->dropColumn([
 				"front_page_visible"
 			]);
 		});
