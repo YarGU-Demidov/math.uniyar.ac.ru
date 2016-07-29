@@ -6,6 +6,7 @@ use Html;
 use Lang;
 use Model;
 use Markdown;
+use BackendAuth;
 use ValidationException;
 use RainLab\Blog\Classes\TagProcessor;
 use Backend\Models\User;
@@ -116,6 +117,13 @@ class Post extends Model
 
         if (array_key_exists('categories', $this->getRelations())) {
             $params['category'] = $this->categories->count() ? $this->categories->first()->slug : null;
+        }
+
+        //expose published year, month and day as URL parameters
+        if ($this->published) {
+            $params['year'] = $this->published_at->format('Y');
+            $params['month'] = $this->published_at->format('m');
+            $params['day'] = $this->published_at->format('d');
         }
 
         return $this->url = $controller->pageUrl($pageName, $params);
@@ -263,7 +271,13 @@ class Post extends Model
      */
     public function getHasSummaryAttribute()
     {
-        return strlen($this->getSummaryAttribute()) < strlen($this->content_html);
+        $more = '<!-- more -->';
+
+        return (
+            !!strlen(trim($this->excerpt)) ||
+            strpos($this->content_html, $more) !== false ||
+            strlen(Html::strip($this->content_html)) > 600
+        );
     }
 
     /**
@@ -287,5 +301,23 @@ class Post extends Model
         }
 
         return Str::limit(Html::strip($this->content_html), 600);
+    }
+    
+    /** 
+     * A new function to limit visibility of the published-button
+     * @return boolean
+    */
+    public function filterFields($fields, $context = null)
+    {
+        $user = BackendAuth::getUser();
+
+        if (!$user->hasAnyAccess(["rainlab.blog.access_publish"])) {
+            $fields->published->hidden = true;
+            $fields->published_at->hidden = true;
+        }
+        else {
+            $fields->published->hidden = false;
+            $fields->published_at->hidden = false;
+        }
     }
 }

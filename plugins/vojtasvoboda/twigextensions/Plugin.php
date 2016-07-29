@@ -26,10 +26,11 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'Twig Extensions',
+            'name'        => 'Twig Extensions',
             'description' => 'Add more Twig filters to your templates.',
-            'author' => 'Vojta Svoboda',
-            'icon' => 'icon-plus',
+            'author'      => 'Vojta Svoboda',
+            'icon'        => 'icon-plus',
+            'homepage'    => 'https://github.com/vojtasvoboda/oc-twigextensions-plugin'
         ];
     }
 
@@ -57,6 +58,12 @@ class Plugin extends PluginBase
         // add Config function
         $functions += $this->getConfigFunction();
 
+        // add Session function
+        $functions += $this->getSessionFunction();
+
+        // add Trans function
+        $functions += $this->getTransFunction();
+
         // add Text extensions
         $filters += $this->getTextFilters($twig);
 
@@ -75,7 +82,7 @@ class Plugin extends PluginBase
         $filters += $this->getPhpFunctions();
 
         return [
-            'filters' => $filters,
+            'filters'   => $filters,
             'functions' => $functions
         ];
     }
@@ -239,7 +246,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Works like the config() function
+     * Works like the config() helper function
      *
      * @return array
      */
@@ -248,6 +255,34 @@ class Plugin extends PluginBase
         return [
             'config' => function($key = null, $default = null) {
                 return config($key, $default);
+            },
+        ];
+    }
+
+    /**
+     * Works like the session() helper function
+     *
+     * @return array
+     */
+    private function getSessionFunction()
+    {
+        return [
+            'session' => function($key = null) {
+                return session($key);
+            },
+        ];
+    }
+
+    /**
+     * Works like the trans() helper function
+     *
+     * @return array
+     */
+    private function getTransFunction()
+    {
+        return [
+            'trans' => function($key = null) {
+                return trans($key);
             },
         ];
     }
