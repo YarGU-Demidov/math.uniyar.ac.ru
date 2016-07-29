@@ -333,9 +333,13 @@ final class Mbstring
 
     public static function mb_strlen($s, $encoding = null)
     {
-        $encoding = self::getEncoding($encoding);
+        switch ($encoding = self::getEncoding($encoding)) {
+            case 'ASCII':
+            case 'CP850':
+                return strlen($s);
+        }
 
-        return iconv_strlen($s, $encoding);
+        return @iconv_strlen($s, $encoding);
     }
 
     public static function mb_strpos($haystack, $needle, $offset = 0, $encoding = null)

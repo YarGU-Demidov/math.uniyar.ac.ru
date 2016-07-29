@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "6bab34bbffa5f5ac079fdc4a68e143f158e87b7d"
+            "reference": "8a6bdec191138e01c92ae026e5aacb7b3e66267d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/6bab34bbffa5f5ac079fdc4a68e143f158e87b7d",
-            "reference": "6bab34bbffa5f5ac079fdc4a68e143f158e87b7d",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8a6bdec191138e01c92ae026e5aacb7b3e66267d",
+            "reference": "8a6bdec191138e01c92ae026e5aacb7b3e66267d",
             "shasum": ""
         },
         "require": {
@@ -20,11 +20,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-04-15 07:04:29",
+        "time": "2016-06-29 14:58:48",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.1-dev"
+                "dev-master": "1.2-dev"
             }
         },
         "installation-source": "source",
@@ -67,12 +67,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "16cfb319708163087786c713dfe9391826114edb"
+            "reference": "cf96ecf366eb24cfe680b62f9134b5ddc9b86818"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/16cfb319708163087786c713dfe9391826114edb",
-            "reference": "16cfb319708163087786c713dfe9391826114edb",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/cf96ecf366eb24cfe680b62f9134b5ddc9b86818",
+            "reference": "cf96ecf366eb24cfe680b62f9134b5ddc9b86818",
             "shasum": ""
         },
         "require": {
@@ -83,7 +83,7 @@
             "symfony/debug": "~2.7",
             "symfony/phpunit-bridge": "~2.7"
         },
-        "time": "2016-04-01 06:56:37",
+        "time": "2016-05-30 09:07:11",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -185,12 +185,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "82a923279e03c8cab7bfdcad706b1bf51afddd0f"
+            "reference": "3c589e93013e2808758f61b02755afc113f3be44"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/82a923279e03c8cab7bfdcad706b1bf51afddd0f",
-            "reference": "82a923279e03c8cab7bfdcad706b1bf51afddd0f",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/3c589e93013e2808758f61b02755afc113f3be44",
+            "reference": "3c589e93013e2808758f61b02755afc113f3be44",
             "shasum": ""
         },
         "require": {
@@ -211,11 +211,11 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2016-03-31 18:23:24",
+        "time": "2016-06-29 05:43:10",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.1-dev"
+                "dev-master": "3.2-dev"
             }
         },
         "installation-source": "source",

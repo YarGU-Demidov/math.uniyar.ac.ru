@@ -126,10 +126,10 @@ class ExtraPackage
     }
 
     /**
-     * @param string $json
+     * @param array $json
      * @return CompletePackage
      */
-    protected function loadPackage($json)
+    protected function loadPackage(array $json)
     {
         $loader = new ArrayLoader();
         $package = $loader->load($json);
@@ -152,12 +152,9 @@ class ExtraPackage
      */
     public function mergeInto(RootPackageInterface $root, PluginState $state)
     {
-        $this->addRepositories($root);
+        $this->prependRepositories($root);
 
         $this->mergeRequires('require', $root, $state);
-        if ($state->isDevMode()) {
-            $this->mergeRequires('require-dev', $root, $state);
-        }
 
         $this->mergePackageLinks('conflict', $root);
         $this->mergePackageLinks('replace', $root);
@@ -166,11 +163,26 @@ class ExtraPackage
         $this->mergeSuggests($root);
 
         $this->mergeAutoload('autoload', $root);
-        if ($state->isDevMode()) {
-            $this->mergeAutoload('devAutoload', $root);
-        }
 
         $this->mergeExtra($root, $state);
+
+        if ($state->isDevMode()) {
+            $this->mergeDevInto($root, $state);
+        } else {
+            $this->mergeReferences($root);
+        }
+    }
+
+    /**
+     * Merge just the dev portion into a RootPackageInterface
+     *
+     * @param RootPackageInterface $root
+     * @param PluginState $state
+     */
+    public function mergeDevInto(RootPackageInterface $root, PluginState $state)
+    {
+        $this->mergeRequires('require-dev', $root, $state);
+        $this->mergeAutoload('devAutoload', $root);
         $this->mergeReferences($root);
     }
 
@@ -180,7 +192,7 @@ class ExtraPackage
      *
      * @param RootPackageInterface $root
      */
-    protected function addRepositories(RootPackageInterface $root)
+    protected function prependRepositories(RootPackageInterface $root)
     {
         if (!isset($this->json['repositories'])) {
             return;
@@ -192,12 +204,12 @@ class ExtraPackage
             if (!isset($repoJson['type'])) {
                 continue;
             }
-            $this->logger->info("Adding {$repoJson['type']} repository");
+            $this->logger->info("Prepending {$repoJson['type']} repository");
             $repo = $repoManager->createRepository(
                 $repoJson['type'],
                 $repoJson
             );
-            $repoManager->addRepository($repo);
+            $repoManager->prependRepository($repo);
             $newRepos[] = $repo;
         }
 
@@ -409,23 +421,41 @@ class ExtraPackage
 
         if ($state->replaceDuplicateLinks()) {
             $unwrapped->setExtra(
-                array_merge($rootExtra, $extra)
+                self::mergeExtraArray($state->shouldMergeExtraDeep(), $rootExtra, $extra)
             );
-
         } else {
-            foreach (array_intersect(
-                array_keys($extra),
-                array_keys($rootExtra)
-            ) as $key) {
-                $this->logger->info(
-                    "Ignoring duplicate <comment>{$key}</comment> in ".
-                    "<comment>{$this->path}</comment> extra config."
-                );
+            if (!$state->shouldMergeExtraDeep()) {
+                foreach (array_intersect(
+                    array_keys($extra),
+                    array_keys($rootExtra)
+                ) as $key) {
+                    $this->logger->info(
+                        "Ignoring duplicate <comment>{$key}</comment> in ".
+                        "<comment>{$this->path}</comment> extra config."
+                    );
+                }
             }
             $unwrapped->setExtra(
-                array_merge($extra, $rootExtra)
+                self::mergeExtraArray($state->shouldMergeExtraDeep(), $extra, $rootExtra)
             );
         }
+    }
+
+    /**
+     * Merges two arrays either via arrayMergeDeep or via array_merge.
+     *
+     * @param bool $mergeDeep
+     * @param array $array1
+     * @param array $array2
+     * @return array
+     */
+    public static function mergeExtraArray($mergeDeep, $array1, $array2)
+    {
+        if ($mergeDeep) {
+            return NestedArray::mergeDeep($array1, $array2);
+        }
+
+        return array_merge($array1, $array2);
     }
 
     /**
