@@ -29,7 +29,10 @@ use ApplicationException;
  */
 class Page extends ContentBase
 {
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableCmsObject'];
+    public $implement = [
+        '@RainLab.Translate.Behaviors.TranslatablePageUrl',
+        '@RainLab.Translate.Behaviors.TranslatableCmsObject'
+    ];
 
     /**
      * @var string The container name associated with the model, eg: pages.
@@ -255,7 +258,6 @@ class Page extends ContentBase
         return $result;
     }
 
-
     /**
      * Removes this page to the meta index.
      */
@@ -284,7 +286,7 @@ class Page extends ContentBase
             return null;
         }
 
-        $url = $page->getViewBag()->property('url');
+        $url = array_get($page->attributes, 'viewBag.url');
 
         if (substr($url, 0, 1) == '/') {
             $url = substr($url, 1);
@@ -542,7 +544,7 @@ class Page extends ContentBase
         $result = '';
 
         foreach ($placeholders as $code => $content) {
-            if (!strlen($content)) {
+            if (!strlen(trim($content))) {
                 continue;
             }
 
