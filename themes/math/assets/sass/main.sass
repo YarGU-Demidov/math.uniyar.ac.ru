@@ -1,0 +1,216 @@
+//noinspection CssUnknownTarget
+@import "bourbon"
+@import "vars.sass"
+
+//Load Libs SASS
+@import "./../libs/animate/animate.sass"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+//Custom Styles Here
+
+.teaser__body
+	position: relative
+	padding: 11px 11px 15px
+	flex-grow: 1
+	display: flex
+	flex-direction: column
+	&:before
+		content: ""
+		display: block
+		position: absolute
+		left: 50%
+		bottom: 100%
+		border-bottom: 20px solid red
+		border-left: 10px solid transparent
+		border-right: 10px solid transparent
+		margin-left: -10px
+
+.teaser__title
+	margin: 3px 0px 0px 10px
+	color: white
+	font-size: 17px
+	font-weight: 500
+
+.teaser__description
+	color: white
+	font-size: 13px
+	font-weight: 400
+	margin: 5px 10px 10px 10px
+	flex-grow: 1
+
+.teaser__date
+	display: block
+	color: white
+	font-size: 11px
+	font-weight: 400
+	border-top: 1px solid white
+	margin: 10px 10px 0 10px
+	padding-top: 6px
+
+.footer
+	background: #2889f5
+
+.footer__nav
+	display: inline-block
+	vertical-align: top
+	margin: 30px
+	width: 610px
+
+.footer__actions
+	display: inline-block
+	vertical-align: top
+	margin: 30px 0 0 0
+	width: 173px
+
+.footer__site-map
+	margin-top: 2px
+
+.footer__secondary
+	padding: 5px 0 30px 30px
+
+.footer__secondary_line
+	border: none
+	background-color: white
+	color: white
+	height: 1px
+	margin: 6px 26px
+
+.footer__secondary_title
+	color: white
+	font-size: 11px
+	margin: 0
+	font-weight: 200
+
+.footer__secondary_description
+	display: inline-block
+	vertical-align: top
+
+.footer__secondary_logo
+	display: inline-block
+	vertical-align: top
+	margin: 4px 5px 4px 0
+	height: 20px
+	width: 15px
+	background-size: cover
+	background: $url_11 no-repeat right top
+
+.link
+	text-decoration: none
+	color: white
+	font-size: 13px
+	font-weight: 200
+
+.link_palette_blue
+	color: blue
+
+.search__input
+	background-color: transparent
+	border: 1px solid white
+	width: 100%
+	box-shadow: none
+
+.search__submit
+	width: 21px
+	height: 21px
+	background: $url_12 no-repeat center center
+	right: 3px
+	top: 2px
+	position: absolute
+	border: none
+	margin: 0
+	padding: 0
+
+.search
+	position: relative
+
+.column-nav
+	text-decoration: none
+
+.column-nav section
+	display: inline-block
+	vertical-align: top
+	text-decoration: none
+	padding: 0 37px 0 0
+
+.column-nav section:last-child
+	padding-right: 0
+
+.column-nav h2
+	color: white
+	font-size: 12px
+	margin: 0
+	font-weight: 200
+
+.column-nav h2 a
+	color: white
+	font-size: 16px
+	margin: 0
+	font-weight: 200
+	text-decoration: none
+	text-transform: uppercase
+
+.column-nav ul  li:first-child
+	color: white
+	font-size: 16px
+	margin: 0
+	font-weight: 200
+	text-decoration: none
+	text-transform: uppercase
+
+.column-nav h2 a:hover
+	text-decoration: underline
+
+.column-nav ul
+	list-style: none
+	padding: 0
+	margin: 8px 0 0
+
+.column-nav li
+	margin-top: 2px
+
+.column-nav ul a
+	color: white
+	font-size: 17px
+	margin: 0
+	font-weight: 200
+	text-decoration: none
+
+.column-nav ul a:hover
+	text-decoration: underline
+
+.school__body h3
+	color: #4793f6
+
+.school__body h1
+	color: #4793f6
+	font-size: 23px
+	margin: 0
+	text-align: center
+
+.contact__description h3
+	color: #000000
+
+//ALWAYS END
+@import "media"
