@@ -16,5 +16,7 @@ selenium.php
 composer.lock
 Thumbs.db
 
+node_modules
+
 # for netbeans
 nbproject
