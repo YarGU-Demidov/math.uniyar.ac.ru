@@ -2,50 +2,8 @@ description = "Layout for Math School Pages"
 
 [staticPage]
 ==
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		{% partial "headers" %}
-	</head>
-
-	<body>
-
-		<div class="secondary">
-			<div class="container secondary__container">
-				<!-- Header -->
-				{% partial "header" %}
-
-				<!-- Breadcrumbs -->
-				<nav class="secondary__path">
-					<ul class="breadcrumbs">
-						<li class="breadcrumbs__item">
-							<a class="button button_palette_darkblue" href="/">ГЛАВНАЯ &nbsp;►</a>
-						</li>
-						<li class="breadcrumbs__item">
-							<a class="button" href="/entrants">Абитуриентам</a>
-						</li>
-					</ul>
-				</nav>
-
-				<!-- Content -->
-				<div class="school__body">
-					<img src="{{ 'assets/img/school_header.jpg' | theme }}" alt="" class="school__pic-view">
-					<div class="school__description">
-						{% page %}
-					</div>
-					<img src="{{ 'assets/img/school_footer.jpg' | theme }}" alt="" class="school__pic-view">
-				</div>
-			</div>
-		</div>
-
-		<!-- Footer -->
-		{% partial "featured" %}
-
-		<!-- Footer -->
-		{% partial "footer" %}
-
-		<!-- Scripts -->
-		{% partial "scripts" %}
-
-	</body>
-</html>
+{% if betaAccess() or agent('isTablet') or agent('isMobile') %}
+	{% partial "Mobile/MathSchoolLayout" %}
+{% else %}
+	{% partial "Desktop/MathSchoolLayout" %}
+{% endif %}

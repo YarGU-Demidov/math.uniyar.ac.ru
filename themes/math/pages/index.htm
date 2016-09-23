@@ -14,14 +14,6 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
-{% if agent('isDesktop') %}
-    You're using a desktop!
-{% elseif agent('isTablet') %}
-    You're using a tablet!
-{% elseif agent('isMobile') %}
-    You're using a mobile device!
-{% endif %}
-
 <div class="features">
 	<div class="features__container container">
 		<div class="features__head">

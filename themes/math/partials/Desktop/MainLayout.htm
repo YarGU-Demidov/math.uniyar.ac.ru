@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% partial "headers" %}
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="main__container container">
+
+				<!-- Header -->
+				{% partial "header" %}
+
+				<div class="main__stage stage">
+					<h2 class="stage__title">
+						Информационная <br> безопасность
+					</h2>
+					<div class="stage__action">
+						<a class="button button__main" href="{{ 'index'| page }}/computer-security">УЗНАТЬ &nbsp;►</a>
+					</div>
+				</div>
+				<div class="main__wizard wizard">
+					<a class="wizard__item" href="{{ 'index'| page }}/how-to-enter">
+						<div class="card_type_beginner">
+							<div class="card_type_begginer_pic"></div>
+							<div class="card__text">
+								<h3 class="card__title">
+									Как поступить
+								</h3>
+								<div class="card__description">
+									Пошаговое руководство.<br>
+									Полезные советы
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<a class="wizard__item" href="{{ 'index'| page }}/how-to-learn">
+						<div class="card_type_student">
+							<div class="card_type_student_pic"></div>
+							<div class="card__text">
+								<h3 class="card__title">
+									Как учиться
+								</h3>
+								<div class="card__description">
+									Олимпиады.<br>
+									Наши кафедры.
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<a class="wizard__item" href="{{ 'index'| page }}/where-to-work">
+						<div class="card_type_worker">
+							<div class="card_type_worker_pic"></div>
+							<div class="card__text">
+								<h3 class="card__title">
+									Где трудиться
+								</h3>
+								<div class="card__description">
+									Что Вас ждет в будущем? <br>
+									Куда пойти работать? <br>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Content -->
+		{% page %}
+
+		<!-- Footer -->
+		{% partial "footer" %}
+
+		<!-- Scripts -->
+		{% partial "scripts" %}
+
+	</body>
+</html>

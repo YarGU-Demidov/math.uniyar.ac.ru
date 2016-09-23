@@ -1,6 +1,7 @@
 <?php namespace mokeev1995\UserAgentParser;
 
 use App;
+use BackendAuth;
 use Illuminate\Foundation\AliasLoader;
 use System\Classes\PluginBase;
 
@@ -47,7 +48,11 @@ class Plugin extends PluginBase
             'functions' => [
                 'agent' => function($option) use ($agent) {
                     return $agent->$option();
-                }
+                },
+	            'betaAccess' => function(){
+		            $user = BackendAuth::getUser();
+                	return $user != null && $user->is_superuser ? "y" : "n";
+	            }
             ]
         ];
     }
