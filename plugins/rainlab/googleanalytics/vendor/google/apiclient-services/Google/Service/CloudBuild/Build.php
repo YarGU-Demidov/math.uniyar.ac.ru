@@ -23,11 +23,15 @@ class Google_Service_CloudBuild_Build extends Google_Collection
   public $id;
   public $images;
   public $logsBucket;
+  protected $optionsType = 'Google_Service_CloudBuild_BuildOptions';
+  protected $optionsDataType = '';
   public $projectId;
   protected $resultsType = 'Google_Service_CloudBuild_Results';
   protected $resultsDataType = '';
   protected $sourceType = 'Google_Service_CloudBuild_Source';
   protected $sourceDataType = '';
+  protected $sourceProvenanceType = 'Google_Service_CloudBuild_SourceProvenance';
+  protected $sourceProvenanceDataType = '';
   public $startTime;
   public $status;
   public $statusDetail;
@@ -75,6 +79,14 @@ class Google_Service_CloudBuild_Build extends Google_Collection
   {
     return $this->logsBucket;
   }
+  public function setOptions(Google_Service_CloudBuild_BuildOptions $options)
+  {
+    $this->options = $options;
+  }
+  public function getOptions()
+  {
+    return $this->options;
+  }
   public function setProjectId($projectId)
   {
     $this->projectId = $projectId;
@@ -98,6 +110,14 @@ class Google_Service_CloudBuild_Build extends Google_Collection
   public function getSource()
   {
     return $this->source;
+  }
+  public function setSourceProvenance(Google_Service_CloudBuild_SourceProvenance $sourceProvenance)
+  {
+    $this->sourceProvenance = $sourceProvenance;
+  }
+  public function getSourceProvenance()
+  {
+    return $this->sourceProvenance;
   }
   public function setStartTime($startTime)
   {

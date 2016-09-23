@@ -114,6 +114,16 @@ class Google_Service_Clouderrorreporting extends Google_Service
                   'type' => 'string',
                 ),
               ),
+            ),'report' => array(
+              'path' => 'v1beta1/{+projectName}/events:report',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'projectName' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),
           )
         )

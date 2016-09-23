@@ -30,7 +30,7 @@ class Google_Service_Books_Resource_VolumesMybooks extends Google_Service_Resour
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string acquireMethod How the book was aquired
+   * @opt_param string acquireMethod How the book was acquired
    * @opt_param string country ISO-3166-1 code to override the IP-based location.
    * @opt_param string locale ISO-639-1 language and ISO-3166-1 country code.
    * Ex:'en_US'. Used for generating recommendations.

@@ -15,7 +15,7 @@
  * the License.
  */
 
-class Google_Service_Consumersurveys_SurveyCost extends Google_Model
+class Google_Service_ConsumerSurveys_SurveyCost extends Google_Model
 {
   public $costPerResponseNanos;
   public $currencyCode;

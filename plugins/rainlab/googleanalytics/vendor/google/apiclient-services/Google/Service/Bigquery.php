@@ -134,6 +134,10 @@ class Google_Service_Bigquery extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'maxResults' => array(
                   'location' => 'query',
                   'type' => 'integer',

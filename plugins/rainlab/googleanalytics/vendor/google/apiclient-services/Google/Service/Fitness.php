@@ -19,7 +19,7 @@
  * Service definition for Fitness (v1).
  *
  * <p>
- * Google Fit API</p>
+ * Stores and accesses user data in the fitness store from apps on any platform.</p>
  *
  * <p>
  * For more information about this service, see the API

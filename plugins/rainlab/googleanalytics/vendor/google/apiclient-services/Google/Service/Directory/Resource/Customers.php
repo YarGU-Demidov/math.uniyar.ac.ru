@@ -26,7 +26,7 @@
 class Google_Service_Directory_Resource_Customers extends Google_Service_Resource
 {
   /**
-   * Retrives a customer. (customers.get)
+   * Retrieves a customer. (customers.get)
    *
    * @param string $customerKey Id of the customer to be retrieved
    * @param array $optParams Optional parameters.

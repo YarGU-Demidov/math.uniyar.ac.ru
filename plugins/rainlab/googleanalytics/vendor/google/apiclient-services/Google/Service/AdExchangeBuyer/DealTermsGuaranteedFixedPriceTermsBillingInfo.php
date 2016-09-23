@@ -18,6 +18,7 @@
 class Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTermsBillingInfo extends Google_Model
 {
   public $currencyConversionTimeMs;
+  public $dfpLineItemId;
   public $originalContractedQuantity;
   protected $priceType = 'Google_Service_AdExchangeBuyer_Price';
   protected $priceDataType = '';
@@ -29,6 +30,14 @@ class Google_Service_AdExchangeBuyer_DealTermsGuaranteedFixedPriceTermsBillingIn
   public function getCurrencyConversionTimeMs()
   {
     return $this->currencyConversionTimeMs;
+  }
+  public function setDfpLineItemId($dfpLineItemId)
+  {
+    $this->dfpLineItemId = $dfpLineItemId;
+  }
+  public function getDfpLineItemId()
+  {
+    return $this->dfpLineItemId;
   }
   public function setOriginalContractedQuantity($originalContractedQuantity)
   {

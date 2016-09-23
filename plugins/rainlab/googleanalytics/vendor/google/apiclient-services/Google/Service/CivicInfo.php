@@ -19,7 +19,8 @@
  * Service definition for CivicInfo (v2).
  *
  * <p>
- * An API for accessing civic information.</p>
+ * Provides polling places, early vote locations, contest data, election
+ * officials, and government representatives for U.S. residential addresses.</p>
  *
  * <p>
  * For more information about this service, see the API

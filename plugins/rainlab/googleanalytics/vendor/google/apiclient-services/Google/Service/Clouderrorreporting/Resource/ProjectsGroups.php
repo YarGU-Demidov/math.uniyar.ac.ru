@@ -28,8 +28,12 @@ class Google_Service_Clouderrorreporting_Resource_ProjectsGroups extends Google_
   /**
    * Get the specified group. (groups.get)
    *
-   * @param string $groupName Group resource name. Required. Example: `projects
-   * /my-project-123/groups/my-group`
+   * @param string $groupName [Required] The group resource name. Written as
+   * projects/projectID/groups/group_name. Call
+   *
+   * groupStats.list to return a list of groups belonging to this project.
+   *
+   * Example: projects/my-project-123/groups/my-group
    * @param array $optParams Optional parameters.
    * @return Google_Service_Clouderrorreporting_ErrorGroup
    */
@@ -43,8 +47,8 @@ class Google_Service_Clouderrorreporting_Resource_ProjectsGroups extends Google_
    * Replace the data for the specified group. Fails if the group does not exist.
    * (groups.update)
    *
-   * @param string $name Group resource name. Example: `projects/my-
-   * project-123/groups/my-groupid`
+   * @param string $name The group resource name. Example: projects/my-
+   * project-123/groups/my-groupid
    * @param Google_Service_Clouderrorreporting_ErrorGroup $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Clouderrorreporting_ErrorGroup

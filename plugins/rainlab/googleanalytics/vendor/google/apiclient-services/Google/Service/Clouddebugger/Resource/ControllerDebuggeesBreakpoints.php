@@ -19,11 +19,11 @@
  * The "breakpoints" collection of methods.
  * Typical usage is:
  *  <code>
- *   $clouddebuggerService = new Google_Service_Clouddebugger(...);
+ *   $clouddebuggerService = new Google_Service_CloudDebugger(...);
  *   $breakpoints = $clouddebuggerService->breakpoints;
  *  </code>
  */
-class Google_Service_Clouddebugger_Resource_ControllerDebuggeesBreakpoints extends Google_Service_Resource
+class Google_Service_CloudDebugger_Resource_ControllerDebuggeesBreakpoints extends Google_Service_Resource
 {
   /**
    * Returns the list of all active breakpoints for the debuggee. The breakpoint
@@ -49,13 +49,13 @@ class Google_Service_Clouddebugger_Resource_ControllerDebuggeesBreakpoints exten
    * `true` when the server-selected timeout has expired (recommended). If set to
    * `false`, returns `google.rpc.Code.ABORTED` status when the server-selected
    * timeout has expired (deprecated).
-   * @return Google_Service_Clouddebugger_ListActiveBreakpointsResponse
+   * @return Google_Service_CloudDebugger_ListActiveBreakpointsResponse
    */
   public function listControllerDebuggeesBreakpoints($debuggeeId, $optParams = array())
   {
     $params = array('debuggeeId' => $debuggeeId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Clouddebugger_ListActiveBreakpointsResponse");
+    return $this->call('list', array($params), "Google_Service_CloudDebugger_ListActiveBreakpointsResponse");
   }
   /**
    * Updates the breakpoint state or mutable fields. The entire Breakpoint message
@@ -68,14 +68,14 @@ class Google_Service_Clouddebugger_Resource_ControllerDebuggeesBreakpoints exten
    *
    * @param string $debuggeeId Identifies the debuggee being debugged.
    * @param string $id Breakpoint identifier, unique in the scope of the debuggee.
-   * @param Google_Service_Clouddebugger_UpdateActiveBreakpointRequest $postBody
+   * @param Google_Service_CloudDebugger_UpdateActiveBreakpointRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Clouddebugger_UpdateActiveBreakpointResponse
+   * @return Google_Service_CloudDebugger_UpdateActiveBreakpointResponse
    */
-  public function update($debuggeeId, $id, Google_Service_Clouddebugger_UpdateActiveBreakpointRequest $postBody, $optParams = array())
+  public function update($debuggeeId, $id, Google_Service_CloudDebugger_UpdateActiveBreakpointRequest $postBody, $optParams = array())
   {
     $params = array('debuggeeId' => $debuggeeId, 'id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Clouddebugger_UpdateActiveBreakpointResponse");
+    return $this->call('update', array($params), "Google_Service_CloudDebugger_UpdateActiveBreakpointResponse");
   }
 }

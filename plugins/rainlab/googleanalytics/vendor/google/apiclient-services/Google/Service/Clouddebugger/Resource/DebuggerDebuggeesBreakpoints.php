@@ -19,11 +19,11 @@
  * The "breakpoints" collection of methods.
  * Typical usage is:
  *  <code>
- *   $clouddebuggerService = new Google_Service_Clouddebugger(...);
+ *   $clouddebuggerService = new Google_Service_CloudDebugger(...);
  *   $breakpoints = $clouddebuggerService->breakpoints;
  *  </code>
  */
-class Google_Service_Clouddebugger_Resource_DebuggerDebuggeesBreakpoints extends Google_Service_Resource
+class Google_Service_CloudDebugger_Resource_DebuggerDebuggeesBreakpoints extends Google_Service_Resource
 {
   /**
    * Deletes the breakpoint from the debuggee. (breakpoints.delete)
@@ -34,13 +34,13 @@ class Google_Service_Clouddebugger_Resource_DebuggerDebuggeesBreakpoints extends
    *
    * @opt_param string clientVersion The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   * @return Google_Service_Clouddebugger_ClouddebuggerEmpty
+   * @return Google_Service_CloudDebugger_ClouddebuggerEmpty
    */
   public function delete($debuggeeId, $breakpointId, $optParams = array())
   {
     $params = array('debuggeeId' => $debuggeeId, 'breakpointId' => $breakpointId);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Clouddebugger_ClouddebuggerEmpty");
+    return $this->call('delete', array($params), "Google_Service_CloudDebugger_ClouddebuggerEmpty");
   }
   /**
    * Gets breakpoint information. (breakpoints.get)
@@ -51,13 +51,13 @@ class Google_Service_Clouddebugger_Resource_DebuggerDebuggeesBreakpoints extends
    *
    * @opt_param string clientVersion The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   * @return Google_Service_Clouddebugger_GetBreakpointResponse
+   * @return Google_Service_CloudDebugger_GetBreakpointResponse
    */
   public function get($debuggeeId, $breakpointId, $optParams = array())
   {
     $params = array('debuggeeId' => $debuggeeId, 'breakpointId' => $breakpointId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Clouddebugger_GetBreakpointResponse");
+    return $this->call('get', array($params), "Google_Service_CloudDebugger_GetBreakpointResponse");
   }
   /**
    * Lists all breakpoints for the debuggee.
@@ -84,30 +84,30 @@ class Google_Service_Clouddebugger_Resource_DebuggerDebuggeesBreakpoints extends
    * called again with the same `wait_token`.
    * @opt_param string clientVersion The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   * @return Google_Service_Clouddebugger_ListBreakpointsResponse
+   * @return Google_Service_CloudDebugger_ListBreakpointsResponse
    */
   public function listDebuggerDebuggeesBreakpoints($debuggeeId, $optParams = array())
   {
     $params = array('debuggeeId' => $debuggeeId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Clouddebugger_ListBreakpointsResponse");
+    return $this->call('list', array($params), "Google_Service_CloudDebugger_ListBreakpointsResponse");
   }
   /**
    * Sets the breakpoint to the debuggee. (breakpoints.set)
    *
    * @param string $debuggeeId ID of the debuggee where the breakpoint is to be
    * set.
-   * @param Google_Service_Clouddebugger_Breakpoint $postBody
+   * @param Google_Service_CloudDebugger_Breakpoint $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string clientVersion The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   * @return Google_Service_Clouddebugger_SetBreakpointResponse
+   * @return Google_Service_CloudDebugger_SetBreakpointResponse
    */
-  public function set($debuggeeId, Google_Service_Clouddebugger_Breakpoint $postBody, $optParams = array())
+  public function set($debuggeeId, Google_Service_CloudDebugger_Breakpoint $postBody, $optParams = array())
   {
     $params = array('debuggeeId' => $debuggeeId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('set', array($params), "Google_Service_Clouddebugger_SetBreakpointResponse");
+    return $this->call('set', array($params), "Google_Service_CloudDebugger_SetBreakpointResponse");
   }
 }

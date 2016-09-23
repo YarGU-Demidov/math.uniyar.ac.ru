@@ -51,6 +51,12 @@ class Google_Service_Gmail extends Google_Service
   /** Send email on your behalf. */
   const GMAIL_SEND =
       "https://www.googleapis.com/auth/gmail.send";
+  /** Manage your basic mail settings. */
+  const GMAIL_SETTINGS_BASIC =
+      "https://www.googleapis.com/auth/gmail.settings.basic";
+  /** Manage your sensitive mail settings, including who can manage your mail. */
+  const GMAIL_SETTINGS_SHARING =
+      "https://www.googleapis.com/auth/gmail.settings.sharing";
 
   public $users;
   public $users_drafts;
@@ -58,6 +64,10 @@ class Google_Service_Gmail extends Google_Service
   public $users_labels;
   public $users_messages;
   public $users_messages_attachments;
+  public $users_settings;
+  public $users_settings_filters;
+  public $users_settings_forwardingAddresses;
+  public $users_settings_sendAs;
   public $users_threads;
   
   /**
@@ -181,6 +191,10 @@ class Google_Service_Gmail extends Google_Service
                   'type' => 'integer',
                 ),
                 'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'q' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -550,6 +564,321 @@ class Google_Service_Gmail extends Google_Service
                   'required' => true,
                 ),
                 'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->users_settings = new Google_Service_Gmail_Resource_UsersSettings(
+        $this,
+        $this->serviceName,
+        'settings',
+        array(
+          'methods' => array(
+            'getAutoForwarding' => array(
+              'path' => '{userId}/settings/autoForwarding',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'getImap' => array(
+              'path' => '{userId}/settings/imap',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'getPop' => array(
+              'path' => '{userId}/settings/pop',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'getVacation' => array(
+              'path' => '{userId}/settings/vacation',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'updateAutoForwarding' => array(
+              'path' => '{userId}/settings/autoForwarding',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'updateImap' => array(
+              'path' => '{userId}/settings/imap',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'updatePop' => array(
+              'path' => '{userId}/settings/pop',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'updateVacation' => array(
+              'path' => '{userId}/settings/vacation',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->users_settings_filters = new Google_Service_Gmail_Resource_UsersSettingsFilters(
+        $this,
+        $this->serviceName,
+        'filters',
+        array(
+          'methods' => array(
+            'create' => array(
+              'path' => '{userId}/settings/filters',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => '{userId}/settings/filters/{id}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => '{userId}/settings/filters/{id}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => '{userId}/settings/filters',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->users_settings_forwardingAddresses = new Google_Service_Gmail_Resource_UsersSettingsForwardingAddresses(
+        $this,
+        $this->serviceName,
+        'forwardingAddresses',
+        array(
+          'methods' => array(
+            'create' => array(
+              'path' => '{userId}/settings/forwardingAddresses',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => '{userId}/settings/forwardingAddresses/{forwardingEmail}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'forwardingEmail' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => '{userId}/settings/forwardingAddresses/{forwardingEmail}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'forwardingEmail' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => '{userId}/settings/forwardingAddresses',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->users_settings_sendAs = new Google_Service_Gmail_Resource_UsersSettingsSendAs(
+        $this,
+        $this->serviceName,
+        'sendAs',
+        array(
+          'methods' => array(
+            'create' => array(
+              'path' => '{userId}/settings/sendAs',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => '{userId}/settings/sendAs/{sendAsEmail}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'sendAsEmail' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => '{userId}/settings/sendAs/{sendAsEmail}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'sendAsEmail' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => '{userId}/settings/sendAs',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'patch' => array(
+              'path' => '{userId}/settings/sendAs/{sendAsEmail}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'sendAsEmail' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'update' => array(
+              'path' => '{userId}/settings/sendAs/{sendAsEmail}',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'sendAsEmail' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'verify' => array(
+              'path' => '{userId}/settings/sendAs/{sendAsEmail}/verify',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'sendAsEmail' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

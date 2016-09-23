@@ -77,7 +77,7 @@ class Google_Service_Compute_Resource_Images extends Google_Service_Resource
    * deprecated. (images.getFromFamily)
    *
    * @param string $project Project ID for this request.
-   * @param string $family Name of the image resource to return.
+   * @param string $family Name of the image family to search for.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Compute_Image
    */

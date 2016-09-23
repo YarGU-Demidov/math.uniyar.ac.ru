@@ -19,7 +19,7 @@
  * Service definition for Mirror (v1).
  *
  * <p>
- * API for interacting with Glass users via the timeline.</p>
+ * Interacts with Glass users via the timeline.</p>
  *
  * <p>
  * For more information about this service, see the API

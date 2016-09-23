@@ -19,11 +19,11 @@
  * The "debuggees" collection of methods.
  * Typical usage is:
  *  <code>
- *   $clouddebuggerService = new Google_Service_Clouddebugger(...);
+ *   $clouddebuggerService = new Google_Service_CloudDebugger(...);
  *   $debuggees = $clouddebuggerService->debuggees;
  *  </code>
  */
-class Google_Service_Clouddebugger_Resource_DebuggerDebuggees extends Google_Service_Resource
+class Google_Service_CloudDebugger_Resource_DebuggerDebuggees extends Google_Service_Resource
 {
   /**
    * Lists all the debuggees that the user can set breakpoints to.
@@ -37,12 +37,12 @@ class Google_Service_Clouddebugger_Resource_DebuggerDebuggees extends Google_Ser
    * debuggees. Otherwise, the result includes only debuggees that are active.
    * @opt_param string clientVersion The client version making the call.
    * Following: `domain/type/version` (e.g., `google.com/intellij/v1`).
-   * @return Google_Service_Clouddebugger_ListDebuggeesResponse
+   * @return Google_Service_CloudDebugger_ListDebuggeesResponse
    */
   public function listDebuggerDebuggees($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Clouddebugger_ListDebuggeesResponse");
+    return $this->call('list', array($params), "Google_Service_CloudDebugger_ListDebuggeesResponse");
   }
 }

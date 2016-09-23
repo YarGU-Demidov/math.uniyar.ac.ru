@@ -15,7 +15,7 @@
  * the License.
  */
 
-class Google_Service_Consumersurveys_SurveysStartRequest extends Google_Model
+class Google_Service_ConsumerSurveys_SurveysStartRequest extends Google_Model
 {
   public $maxCostPerResponseNanos;
 

@@ -2,7 +2,7 @@ name: 'Тема сайта МатФака'
 description: 'Тема сайта Математического Факультета'
 author: mokeev1995
 homepage: 'http://mokeev1995.ru'
-code: ''
+code: ru.mokeev1995.math-theme
 form:
     fields:
         site_favicon:

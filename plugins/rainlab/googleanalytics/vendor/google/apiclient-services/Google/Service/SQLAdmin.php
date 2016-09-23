@@ -106,6 +106,21 @@ class Google_Service_SQLAdmin extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'insert' => array(
+              'path' => 'projects/{project}/instances/{instance}/backupRuns',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'project' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'instance' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'list' => array(
               'path' => 'projects/{project}/instances/{instance}/backupRuns',
               'httpMethod' => 'GET',

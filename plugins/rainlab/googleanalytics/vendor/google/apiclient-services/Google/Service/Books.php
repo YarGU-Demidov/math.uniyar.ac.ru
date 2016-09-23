@@ -19,7 +19,7 @@
  * Service definition for Books (v1).
  *
  * <p>
- * Lets you search for books and manage your Google Books library.</p>
+ * Searches for books and manages your Google Books library.</p>
  *
  * <p>
  * For more information about this service, see the API

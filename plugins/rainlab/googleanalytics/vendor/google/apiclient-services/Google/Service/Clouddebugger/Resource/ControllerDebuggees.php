@@ -19,11 +19,11 @@
  * The "debuggees" collection of methods.
  * Typical usage is:
  *  <code>
- *   $clouddebuggerService = new Google_Service_Clouddebugger(...);
+ *   $clouddebuggerService = new Google_Service_CloudDebugger(...);
  *   $debuggees = $clouddebuggerService->debuggees;
  *  </code>
  */
-class Google_Service_Clouddebugger_Resource_ControllerDebuggees extends Google_Service_Resource
+class Google_Service_CloudDebugger_Resource_ControllerDebuggees extends Google_Service_Resource
 {
   /**
    * Registers the debuggee with the controller service. All agents attached to
@@ -34,14 +34,14 @@ class Google_Service_Clouddebugger_Resource_ControllerDebuggees extends Google_S
    * data loss. If the debuggee is disabled by the server, the response will have
    * `is_disabled` set to `true`. (debuggees.register)
    *
-   * @param Google_Service_Clouddebugger_RegisterDebuggeeRequest $postBody
+   * @param Google_Service_CloudDebugger_RegisterDebuggeeRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Clouddebugger_RegisterDebuggeeResponse
+   * @return Google_Service_CloudDebugger_RegisterDebuggeeResponse
    */
-  public function register(Google_Service_Clouddebugger_RegisterDebuggeeRequest $postBody, $optParams = array())
+  public function register(Google_Service_CloudDebugger_RegisterDebuggeeRequest $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('register', array($params), "Google_Service_Clouddebugger_RegisterDebuggeeResponse");
+    return $this->call('register', array($params), "Google_Service_CloudDebugger_RegisterDebuggeeResponse");
   }
 }

@@ -81,6 +81,11 @@ class Google_Service_Bigquery_Resource_Datasets extends Google_Service_Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool all Whether to list all datasets, including hidden ones
+   * @opt_param string filter An expression for filtering the results of the
+   * request by label. The syntax is "labels.[:]". Multiple filters can be ANDed
+   * together by connecting with a space. Example: "labels.department:receiving
+   * labels.active". See https://cloud.google.com/bigquery/docs/labeling-
+   * datasets#filtering_datasets_using_labels for details.
    * @opt_param string maxResults The maximum number of results to return
    * @opt_param string pageToken Page token, returned by a previous call, to
    * request the next page of results

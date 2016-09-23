@@ -39,6 +39,7 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   public $height;
   public $impressionTrackingUrl;
   public $kind;
+  public $languages;
   protected $nativeAdType = 'Google_Service_AdExchangeBuyer_CreativeNativeAd';
   protected $nativeAdDataType = '';
   public $openAuctionStatus;
@@ -179,6 +180,14 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   public function getKind()
   {
     return $this->kind;
+  }
+  public function setLanguages($languages)
+  {
+    $this->languages = $languages;
+  }
+  public function getLanguages()
+  {
+    return $this->languages;
   }
   public function setNativeAd(Google_Service_AdExchangeBuyer_CreativeNativeAd $nativeAd)
   {

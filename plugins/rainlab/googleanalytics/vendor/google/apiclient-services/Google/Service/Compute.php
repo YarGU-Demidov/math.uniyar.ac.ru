@@ -4026,6 +4026,21 @@ class Google_Service_Compute extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'invalidateCache' => array(
+              'path' => '{project}/global/urlMaps/{urlMap}/invalidateCache',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'project' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'urlMap' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'list' => array(
               'path' => '{project}/global/urlMaps',
               'httpMethod' => 'GET',

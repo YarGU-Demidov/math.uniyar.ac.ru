@@ -70,6 +70,22 @@ class Google_Service_Compute_Resource_UrlMaps extends Google_Service_Resource
     return $this->call('insert', array($params), "Google_Service_Compute_Operation");
   }
   /**
+   * Initiates a cache invalidation operation, invalidating the specified path,
+   * scoped to the specified UrlMap. (urlMaps.invalidateCache)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $urlMap Name of the UrlMap scoping this request.
+   * @param Google_Service_Compute_CacheInvalidationRule $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Compute_Operation
+   */
+  public function invalidateCache($project, $urlMap, Google_Service_Compute_CacheInvalidationRule $postBody, $optParams = array())
+  {
+    $params = array('project' => $project, 'urlMap' => $urlMap, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('invalidateCache', array($params), "Google_Service_Compute_Operation");
+  }
+  /**
    * Retrieves the list of UrlMap resources available to the specified project.
    * (urlMaps.listUrlMaps)
    *
