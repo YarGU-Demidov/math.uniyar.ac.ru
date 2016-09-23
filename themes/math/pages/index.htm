@@ -2,9 +2,9 @@ title = "Главная страница"
 url = "/"
 layout = "MainLayout"
 description = "Главная страница сайта Математического факультета ЯрГУ"
-is_hidden = 0
 meta_title = "МатФак"
 meta_description = "Главная страница сайта Математического факультета ЯрГУ"
+is_hidden = 0
 
 [blogPosts]
 pageNumber = "{{ :page }}"
@@ -14,6 +14,13 @@ sortOrder = "published_at desc"
 categoryPage = "index"
 postPage = "post-view"
 ==
+{% if agent('isDesktop') %}
+    You're using a desktop!
+{% elseif agent('isTablet') %}
+    You're using a tablet!
+{% elseif agent('isMobile') %}
+    You're using a mobile device!
+{% endif %}
 
 <div class="features">
 	<div class="features__container container">
