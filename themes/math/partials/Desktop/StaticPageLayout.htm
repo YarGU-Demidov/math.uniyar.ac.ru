@@ -17,22 +17,32 @@
 						<li class="breadcrumbs__item">
 							<a class="button button_palette_darkblue" href="/">ГЛАВНАЯ &nbsp;►</a>
 						</li>
-						<li class="breadcrumbs__item">
-							<a class="button" href="/entrants">Абитуриентам</a>
-						</li>
 					</ul>
 				</nav>
 
-				<!-- Content -->
-				<div class="school__body">
-					<img src="{{ 'assets/img/school_header.jpg' | theme }}" alt="" class="school__pic-view">
-					<div class="school__description">
-						{% page %}
+				<main class="secondary__body">
+					<div class="secondary__body_news">
+						<h1 class="secondary__body_news_title">
+							{{ title }}
+						</h1>
+						<div class="secondary__news">
+							<div class="secondary__item">
+								<div class="secondary__item_body">
+									<div class="news__description">
+										<article class="content">
+											{% component 'staticPage' %}
+										</article>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<img src="{{ 'assets/img/school_footer.jpg' | theme }}" alt="" class="school__pic-view">
-				</div>
+
+					{% partial "Desktop/Parts/sidebar" %}
+				</main>
 			</div>
 		</div>
+
 
 		<!-- Footer -->
 		{% partial "Desktop/Parts/featured" %}

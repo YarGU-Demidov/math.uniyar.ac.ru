@@ -51,7 +51,7 @@ class Plugin extends PluginBase
                 },
 	            'betaAccess' => function(){
 		            $user = BackendAuth::getUser();
-                	return $user != null && $user->is_superuser ? "y" : "n";
+                	return $user != null && $user->is_superuser;
 	            }
             ]
         ];

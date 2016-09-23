@@ -2,60 +2,8 @@ description = "Layout for static pages"
 
 [staticPage]
 ==
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		{% partial "headers" %}
-	</head>
-
-	<body>
-
-		<div class="secondary">
-			<div class="container secondary__container">
-				<!-- Header -->
-				{% partial "header" %}
-
-				<!-- Breadcrumbs -->
-				<nav class="secondary__path">
-					<ul class="breadcrumbs">
-						<li class="breadcrumbs__item">
-							<a class="button button_palette_darkblue" href="/">ГЛАВНАЯ &nbsp;►</a>
-						</li>
-					</ul>
-				</nav>
-
-				<main class="secondary__body">
-					<div class="secondary__body_news">
-						<h1 class="secondary__body_news_title">
-							{{ title }}
-						</h1>
-						<div class="secondary__news">
-							<div class="secondary__item">
-								<div class="secondary__item_body">
-									<div class="news__description">
-										<article class="content">
-											{% component 'staticPage' %}
-										</article>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					{% partial "sidebar" %}
-				</main>
-			</div>
-		</div>
-
-
-		<!-- Footer -->
-		{% partial "featured" %}
-
-		<!-- Footer -->
-		{% partial "footer" %}
-
-		<!-- Scripts -->
-		{% partial "scripts" %}
-
-	</body>
-</html>
+{% if betaAccess() or agent('isTablet') or agent('isMobile') %}
+	{% partial "Mobile/StaticPageLayout" %}
+{% else %}
+	{% partial "Desktop/StaticPageLayout" %}
+{% endif %}
