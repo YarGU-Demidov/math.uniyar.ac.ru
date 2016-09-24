@@ -44,6 +44,7 @@ class Google_Service_AndroidEnterprise extends Google_Service
   public $installs;
   public $permissions;
   public $products;
+  public $serviceaccountkeys;
   public $storelayoutclusters;
   public $storelayoutpages;
   public $users;
@@ -347,7 +348,29 @@ class Google_Service_AndroidEnterprise extends Google_Service
         'enterprises',
         array(
           'methods' => array(
-            'delete' => array(
+            'acknowledgeNotificationSet' => array(
+              'path' => 'enterprises/acknowledgeNotificationSet',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'notificationSetId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'completeSignup' => array(
+              'path' => 'enterprises/completeSignup',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'completionToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'enterpriseToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'delete' => array(
               'path' => 'enterprises/{enterpriseId}',
               'httpMethod' => 'DELETE',
               'parameters' => array(
@@ -367,6 +390,15 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'generateSignupUrl' => array(
+              'path' => 'enterprises/signupUrl',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'callbackUrl' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),'get' => array(
               'path' => 'enterprises/{enterpriseId}',
               'httpMethod' => 'GET',
@@ -375,6 +407,20 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+              ),
+            ),'getServiceAccount' => array(
+              'path' => 'enterprises/{enterpriseId}/serviceAccount',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'keyType' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'getStoreLayout' => array(
@@ -405,6 +451,15 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                   'required' => true,
+                ),
+              ),
+            ),'pullNotificationSet' => array(
+              'path' => 'enterprises/pullNotificationSet',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'requestMode' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'sendTestPushNotification' => array(
@@ -901,6 +956,21 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'type' => 'string',
                 ),
               ),
+            ),'unapprove' => array(
+              'path' => 'enterprises/{enterpriseId}/products/{productId}/unapprove',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'productId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'updatePermissions' => array(
               'path' => 'enterprises/{enterpriseId}/products/{productId}/permissions',
               'httpMethod' => 'PUT',
@@ -911,6 +981,51 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
                 'productId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->serviceaccountkeys = new Google_Service_AndroidEnterprise_Resource_Serviceaccountkeys(
+        $this,
+        $this->serviceName,
+        'serviceaccountkeys',
+        array(
+          'methods' => array(
+            'delete' => array(
+              'path' => 'enterprises/{enterpriseId}/serviceAccountKeys/{keyId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'keyId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'insert' => array(
+              'path' => 'enterprises/{enterpriseId}/serviceAccountKeys',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'enterprises/{enterpriseId}/serviceAccountKeys',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'enterpriseId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -1136,7 +1251,37 @@ class Google_Service_AndroidEnterprise extends Google_Service
         'users',
         array(
           'methods' => array(
-            'generateToken' => array(
+            'delete' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'generateAuthenticationToken' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}/authenticationToken',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'generateToken' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/token',
               'httpMethod' => 'POST',
               'parameters' => array(
@@ -1181,6 +1326,16 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'insert' => array(
+              'path' => 'enterprises/{enterpriseId}/users',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'list' => array(
               'path' => 'enterprises/{enterpriseId}/users',
               'httpMethod' => 'GET',
@@ -1192,6 +1347,21 @@ class Google_Service_AndroidEnterprise extends Google_Service
                 ),
                 'email' => array(
                   'location' => 'query',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'patch' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ),
@@ -1213,6 +1383,21 @@ class Google_Service_AndroidEnterprise extends Google_Service
               ),
             ),'setAvailableProductSet' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/availableProductSet',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}',
               'httpMethod' => 'PUT',
               'parameters' => array(
                 'enterpriseId' => array(

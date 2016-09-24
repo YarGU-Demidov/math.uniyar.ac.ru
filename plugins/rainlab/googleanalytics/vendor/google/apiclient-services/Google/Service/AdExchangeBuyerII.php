@@ -20,7 +20,7 @@
  *
  * <p>
  * Accesses the latest features for managing Ad Exchange accounts and Real-Time
- * Bidding configurations.</p>
+ * Bidding configurations and auction metrics.</p>
  *
  * <p>
  * For more information about this service, see the API

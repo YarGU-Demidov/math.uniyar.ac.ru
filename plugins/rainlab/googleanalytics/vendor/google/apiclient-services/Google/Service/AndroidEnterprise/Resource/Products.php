@@ -124,7 +124,8 @@ class Google_Service_AndroidEnterprise_Resource_Products extends Google_Service_
     return $this->call('getPermissions', array($params), "Google_Service_AndroidEnterprise_ProductPermissions");
   }
   /**
-   * Finds approved products that match a query. (products.listProducts)
+   * Finds approved products that match a query, or all approved products if there
+   * is no query. (products.listProducts)
    *
    * @param string $enterpriseId The ID of the enterprise.
    * @param array $optParams Optional parameters.
@@ -140,7 +141,8 @@ class Google_Service_AndroidEnterprise_Resource_Products extends Google_Service_
    * which is also the maximum retrievable within a single response.
    * @opt_param string query The search query as typed in the Google Play Store
    * search box. If omitted, all approved apps will be returned (using the
-   * pagination parameters).
+   * pagination parameters), including apps that are not available in the store
+   * (e.g. unpublished apps).
    * @opt_param string token A pagination token is contained in a requests
    * response when there are more products. The token can be used in a subsequent
    * request to obtain more products, and so forth. This parameter cannot be used
@@ -152,6 +154,20 @@ class Google_Service_AndroidEnterprise_Resource_Products extends Google_Service_
     $params = array('enterpriseId' => $enterpriseId);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_AndroidEnterprise_ProductsListResponse");
+  }
+  /**
+   * Unapproves the specified product (and the relevant app permissions, if any)
+   * (products.unapprove)
+   *
+   * @param string $enterpriseId The ID of the enterprise.
+   * @param string $productId The ID of the product.
+   * @param array $optParams Optional parameters.
+   */
+  public function unapprove($enterpriseId, $productId, $optParams = array())
+  {
+    $params = array('enterpriseId' => $enterpriseId, 'productId' => $productId);
+    $params = array_merge($params, $optParams);
+    return $this->call('unapprove', array($params));
   }
   /**
    * This method has been deprecated. To programmatically approve applications,

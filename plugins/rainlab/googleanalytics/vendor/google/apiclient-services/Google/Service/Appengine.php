@@ -35,6 +35,7 @@ class Google_Service_Appengine extends Google_Service
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $apps;
+  public $apps_locations;
   public $apps_operations;
   public $apps_services;
   public $apps_services_versions;
@@ -59,7 +60,11 @@ class Google_Service_Appengine extends Google_Service
         'apps',
         array(
           'methods' => array(
-            'get' => array(
+            'create' => array(
+              'path' => 'v1beta5/apps',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
+            ),'get' => array(
               'path' => 'v1beta5/apps/{appsId}',
               'httpMethod' => 'GET',
               'parameters' => array(
@@ -71,6 +76,53 @@ class Google_Service_Appengine extends Google_Service
                 'ensureResourcesExist' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->apps_locations = new Google_Service_Appengine_Resource_AppsLocations(
+        $this,
+        $this->serviceName,
+        'locations',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'v1beta5/apps/{appsId}/locations/{locationsId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'appsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'locationsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'v1beta5/apps/{appsId}/locations',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'appsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -331,7 +383,82 @@ class Google_Service_Appengine extends Google_Service
         'instances',
         array(
           'methods' => array(
-            'list' => array(
+            'debug' => array(
+              'path' => 'v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'appsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'servicesId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'versionsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'instancesId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => 'v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'appsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'servicesId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'versionsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'instancesId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => 'v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'appsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'servicesId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'versionsId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'instancesId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
               'path' => 'v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances',
               'httpMethod' => 'GET',
               'parameters' => array(

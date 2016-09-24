@@ -26,6 +26,38 @@
 class Google_Service_AndroidEnterprise_Resource_Users extends Google_Service_Resource
 {
   /**
+   * Deleted an EMM-managed user. (users.delete)
+   *
+   * @param string $enterpriseId The ID of the enterprise.
+   * @param string $userId The ID of the user.
+   * @param array $optParams Optional parameters.
+   */
+  public function delete($enterpriseId, $userId, $optParams = array())
+  {
+    $params = array('enterpriseId' => $enterpriseId, 'userId' => $userId);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete', array($params));
+  }
+  /**
+   * Generates an authentication token which the device policy client can use to
+   * provision the given EMM-managed user account on a device. The generated token
+   * is single-use and expires after a few minutes.
+   *
+   * This call only works with EMM-managed accounts.
+   * (users.generateAuthenticationToken)
+   *
+   * @param string $enterpriseId The ID of the enterprise.
+   * @param string $userId The ID of the user.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_AndroidEnterprise_AuthenticationToken
+   */
+  public function generateAuthenticationToken($enterpriseId, $userId, $optParams = array())
+  {
+    $params = array('enterpriseId' => $enterpriseId, 'userId' => $userId);
+    $params = array_merge($params, $optParams);
+    return $this->call('generateAuthenticationToken', array($params), "Google_Service_AndroidEnterprise_AuthenticationToken");
+  }
+  /**
    * Generates a token (activation code) to allow this user to configure their
    * work account in the Android Setup Wizard. Revokes any previously generated
    * token.
@@ -73,7 +105,24 @@ class Google_Service_AndroidEnterprise_Resource_Users extends Google_Service_Res
     return $this->call('getAvailableProductSet', array($params), "Google_Service_AndroidEnterprise_ProductSet");
   }
   /**
-   * Looks up a user by their primary email address. (users.listUsers)
+   * Inserts a new resource into this collection. (users.insert)
+   *
+   * @param string $enterpriseId The ID of the enterprise.
+   * @param Google_Service_AndroidEnterprise_User $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_AndroidEnterprise_User
+   */
+  public function insert($enterpriseId, Google_Service_AndroidEnterprise_User $postBody, $optParams = array())
+  {
+    $params = array('enterpriseId' => $enterpriseId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "Google_Service_AndroidEnterprise_User");
+  }
+  /**
+   * Looks up a user by primary email address. This is only supported for Google-
+   * managed users. Lookup of the id is not needed for EMM-managed users because
+   * the id is already returned in the result of the Users.insert call.
+   * (users.listUsers)
    *
    * @param string $enterpriseId The ID of the enterprise.
    * @param string $email The exact primary email address of the user to look up.
@@ -85,6 +134,26 @@ class Google_Service_AndroidEnterprise_Resource_Users extends Google_Service_Res
     $params = array('enterpriseId' => $enterpriseId, 'email' => $email);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_AndroidEnterprise_UsersListResponse");
+  }
+  /**
+   * Updates the details of an EMM-managed user.
+   *
+   * Can be used with EMM-managed users only (not Google managed users). Pass the
+   * new details in the Users resource in the request body. Only the displayName
+   * field can be changed. Other fields must either be unset or have the currently
+   * active value. This method supports patch semantics. (users.patch)
+   *
+   * @param string $enterpriseId The ID of the enterprise.
+   * @param string $userId The ID of the user.
+   * @param Google_Service_AndroidEnterprise_User $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_AndroidEnterprise_User
+   */
+  public function patch($enterpriseId, $userId, Google_Service_AndroidEnterprise_User $postBody, $optParams = array())
+  {
+    $params = array('enterpriseId' => $enterpriseId, 'userId' => $userId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('patch', array($params), "Google_Service_AndroidEnterprise_User");
   }
   /**
    * Revokes a previously generated token (activation code) for the user.
@@ -115,5 +184,25 @@ class Google_Service_AndroidEnterprise_Resource_Users extends Google_Service_Res
     $params = array('enterpriseId' => $enterpriseId, 'userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('setAvailableProductSet', array($params), "Google_Service_AndroidEnterprise_ProductSet");
+  }
+  /**
+   * Updates the details of an EMM-managed user.
+   *
+   * Can be used with EMM-managed users only (not Google managed users). Pass the
+   * new details in the Users resource in the request body. Only the displayName
+   * field can be changed. Other fields must either be unset or have the currently
+   * active value. (users.update)
+   *
+   * @param string $enterpriseId The ID of the enterprise.
+   * @param string $userId The ID of the user.
+   * @param Google_Service_AndroidEnterprise_User $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_AndroidEnterprise_User
+   */
+  public function update($enterpriseId, $userId, Google_Service_AndroidEnterprise_User $postBody, $optParams = array())
+  {
+    $params = array('enterpriseId' => $enterpriseId, 'userId' => $userId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('update', array($params), "Google_Service_AndroidEnterprise_User");
   }
 }

@@ -41,11 +41,11 @@ class Google_Service_AndroidEnterprise_Resource_Devices extends Google_Service_R
     return $this->call('get', array($params), "Google_Service_AndroidEnterprise_Device");
   }
   /**
-   * Retrieves whether a device is enabled or disabled for access by the user to
-   * Google services. The device state takes effect only if enforcing EMM policies
-   * on Android devices is enabled in the Google Admin Console. Otherwise, the
-   * device state is ignored and all devices are allowed access to Google
-   * services. (devices.getState)
+   * Retrieves whether a device's access to Google services is enabled or
+   * disabled. The device state takes effect only if enforcing EMM policies on
+   * Android devices is enabled in the Google Admin Console. Otherwise, the device
+   * state is ignored and all devices are allowed access to Google services. This
+   * is only supported for Google-managed users. (devices.getState)
    *
    * @param string $enterpriseId The ID of the enterprise.
    * @param string $userId The ID of the user.
@@ -74,11 +74,11 @@ class Google_Service_AndroidEnterprise_Resource_Devices extends Google_Service_R
     return $this->call('list', array($params), "Google_Service_AndroidEnterprise_DevicesListResponse");
   }
   /**
-   * Sets whether a device is enabled or disabled for access by the user to Google
-   * services. The device state takes effect only if enforcing EMM policies on
-   * Android devices is enabled in the Google Admin Console. Otherwise, the device
-   * state is ignored and all devices are allowed access to Google services.
-   * (devices.setState)
+   * Sets whether a device's access to Google services is enabled or disabled. The
+   * device state takes effect only if enforcing EMM policies on Android devices
+   * is enabled in the Google Admin Console. Otherwise, the device state is
+   * ignored and all devices are allowed access to Google services. This is only
+   * supported for Google-managed users. (devices.setState)
    *
    * @param string $enterpriseId The ID of the enterprise.
    * @param string $userId The ID of the user.

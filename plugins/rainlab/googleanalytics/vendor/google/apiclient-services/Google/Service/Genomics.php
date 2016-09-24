@@ -19,9 +19,7 @@
  * Service definition for Genomics (v1).
  *
  * <p>
- * Stores, processes, explores and shares genomic data. This API implements the
- * Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several
- * extensions.</p>
+ * Stores, processes, explores and shares genomic data.</p>
  *
  * <p>
  * For more information about this service, see the API

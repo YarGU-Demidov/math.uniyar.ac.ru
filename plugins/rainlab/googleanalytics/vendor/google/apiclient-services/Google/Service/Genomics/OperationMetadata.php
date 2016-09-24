@@ -18,13 +18,24 @@
 class Google_Service_Genomics_OperationMetadata extends Google_Collection
 {
   protected $collection_key = 'events';
+  public $clientId;
   public $createTime;
   public $endTime;
   protected $eventsType = 'Google_Service_Genomics_OperationEvent';
   protected $eventsDataType = 'array';
   public $projectId;
   public $request;
+  public $runtimeMetadata;
+  public $startTime;
 
+  public function setClientId($clientId)
+  {
+    $this->clientId = $clientId;
+  }
+  public function getClientId()
+  {
+    return $this->clientId;
+  }
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
@@ -64,5 +75,21 @@ class Google_Service_Genomics_OperationMetadata extends Google_Collection
   public function getRequest()
   {
     return $this->request;
+  }
+  public function setRuntimeMetadata($runtimeMetadata)
+  {
+    $this->runtimeMetadata = $runtimeMetadata;
+  }
+  public function getRuntimeMetadata()
+  {
+    return $this->runtimeMetadata;
+  }
+  public function setStartTime($startTime)
+  {
+    $this->startTime = $startTime;
+  }
+  public function getStartTime()
+  {
+    return $this->startTime;
   }
 }

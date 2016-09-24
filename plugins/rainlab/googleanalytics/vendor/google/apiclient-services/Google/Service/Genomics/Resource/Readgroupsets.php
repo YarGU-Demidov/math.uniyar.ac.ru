@@ -49,9 +49,7 @@ class Google_Service_Genomics_Resource_Readgroupsets extends Google_Service_Reso
    * [Fundamentals of Google Genomics](https://cloud.google.com/genomics
    * /fundamentals-of-google-genomics) Note that currently there may be some
    * differences between exported BAM files and the original BAM file at the time
-   * of import. See
-   * [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets)
-   * for caveats. (readgroupsets.export)
+   * of import. See ImportReadGroupSets for caveats. (readgroupsets.export)
    *
    * @param string $readGroupSetId Required. The ID of the read group set to
    * export. The caller must have READ access to this read group set.

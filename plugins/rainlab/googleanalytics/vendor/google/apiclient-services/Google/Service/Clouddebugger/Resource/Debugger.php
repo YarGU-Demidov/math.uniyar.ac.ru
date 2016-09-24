@@ -19,10 +19,10 @@
  * The "debugger" collection of methods.
  * Typical usage is:
  *  <code>
- *   $clouddebuggerService = new Google_Service_Clouddebugger(...);
+ *   $clouddebuggerService = new Google_Service_CloudDebugger(...);
  *   $debugger = $clouddebuggerService->debugger;
  *  </code>
  */
-class Google_Service_Clouddebugger_Resource_Debugger extends Google_Service_Resource
+class Google_Service_CloudDebugger_Resource_Debugger extends Google_Service_Resource
 {
 }

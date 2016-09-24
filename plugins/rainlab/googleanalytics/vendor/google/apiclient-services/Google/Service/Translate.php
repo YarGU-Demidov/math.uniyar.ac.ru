@@ -19,7 +19,7 @@
  * Service definition for Translate (v2).
  *
  * <p>
- * Lets you translate text from one language to another</p>
+ * Translates text from one language to another.</p>
  *
  * <p>
  * For more information about this service, see the API

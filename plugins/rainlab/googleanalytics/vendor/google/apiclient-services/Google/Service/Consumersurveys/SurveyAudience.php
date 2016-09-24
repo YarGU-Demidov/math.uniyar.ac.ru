@@ -15,7 +15,7 @@
  * the License.
  */
 
-class Google_Service_Consumersurveys_SurveyAudience extends Google_Collection
+class Google_Service_ConsumerSurveys_SurveyAudience extends Google_Collection
 {
   protected $collection_key = 'languages';
   public $ages;

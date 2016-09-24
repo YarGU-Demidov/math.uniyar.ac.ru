@@ -48,8 +48,8 @@ class Google_Service_Fitness_Resource_UsersDataSources extends Google_Service_Re
     return $this->call('create', array($params), "Google_Service_Fitness_DataSource");
   }
   /**
-   * Delete the data source if there are no datapoints associated with it
-   * (dataSources.delete)
+   * Deletes the specified data source. The request will fail if the data source
+   * contains any data points. (dataSources.delete)
    *
    * @param string $userId Retrieve a data source for the person identified. Use
    * me to indicate the authenticated user. Only me is supported at this time.
@@ -64,7 +64,7 @@ class Google_Service_Fitness_Resource_UsersDataSources extends Google_Service_Re
     return $this->call('delete', array($params), "Google_Service_Fitness_DataSource");
   }
   /**
-   * Returns a data source identified by a data stream ID. (dataSources.get)
+   * Returns the specified data source. (dataSources.get)
    *
    * @param string $userId Retrieve a data source for the person identified. Use
    * me to indicate the authenticated user. Only me is supported at this time.
@@ -81,8 +81,8 @@ class Google_Service_Fitness_Resource_UsersDataSources extends Google_Service_Re
   }
   /**
    * Lists all data sources that are visible to the developer, using the OAuth
-   * scopes provided. The list is not exhaustive: the user may have private data
-   * sources that are only visible to other developers or calls using other
+   * scopes provided. The list is not exhaustive; the user may have private data
+   * sources that are only visible to other developers, or calls using other
    * scopes. (dataSources.listUsersDataSources)
    *
    * @param string $userId List data sources for the person identified. Use me to
@@ -100,13 +100,12 @@ class Google_Service_Fitness_Resource_UsersDataSources extends Google_Service_Re
     return $this->call('list', array($params), "Google_Service_Fitness_ListDataSourcesResponse");
   }
   /**
-   * Updates a given data source. It is an error to modify the data source's data
-   * stream ID, data type, type, stream name or device information apart from the
-   * device version. Changing these fields would require a new unique data stream
-   * ID and separate data source.
+   * Updates the specified data source. The dataStreamId, dataType, type,
+   * dataStreamName, and device properties with the exception of version, cannot
+   * be modified.
    *
-   * Data sources are identified by their data stream ID. This method supports
-   * patch semantics. (dataSources.patch)
+   * Data sources are identified by their dataStreamId. This method supports patch
+   * semantics. (dataSources.patch)
    *
    * @param string $userId Update the data source for the person identified. Use
    * me to indicate the authenticated user. Only me is supported at this time.
@@ -122,12 +121,11 @@ class Google_Service_Fitness_Resource_UsersDataSources extends Google_Service_Re
     return $this->call('patch', array($params), "Google_Service_Fitness_DataSource");
   }
   /**
-   * Updates a given data source. It is an error to modify the data source's data
-   * stream ID, data type, type, stream name or device information apart from the
-   * device version. Changing these fields would require a new unique data stream
-   * ID and separate data source.
+   * Updates the specified data source. The dataStreamId, dataType, type,
+   * dataStreamName, and device properties with the exception of version, cannot
+   * be modified.
    *
-   * Data sources are identified by their data stream ID. (dataSources.update)
+   * Data sources are identified by their dataStreamId. (dataSources.update)
    *
    * @param string $userId Update the data source for the person identified. Use
    * me to indicate the authenticated user. Only me is supported at this time.

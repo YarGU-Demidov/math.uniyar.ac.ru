@@ -531,6 +531,10 @@ class Google_Service_Drive extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'removeExpiration' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
                 'transferOwnership' => array(
                   'location' => 'query',
                   'type' => 'boolean',

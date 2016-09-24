@@ -80,7 +80,7 @@ class Google_Service_FirebaseRulesAPI_Resource_ProjectsReleases extends Google_S
     return $this->call('delete', array($params), "Google_Service_FirebaseRulesAPI_FirebaserulesEmpty");
   }
   /**
-   * Get a `Release` by name.  (releases.get)
+   * Get a `Release` by name. (releases.get)
    *
    * @param string $name Resource name of the `Release`.
    *

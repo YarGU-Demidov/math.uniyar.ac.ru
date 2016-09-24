@@ -97,6 +97,7 @@ class Google_Service_Drive_Resource_Permissions extends Google_Service_Resource
    * @param Google_Service_Drive_Permission $postBody
    * @param array $optParams Optional parameters.
    *
+   * @opt_param bool removeExpiration Whether to remove the expiration date.
    * @opt_param bool transferOwnership Whether to transfer ownership to the
    * specified user and downgrade the current owner to a writer. This parameter is
    * required as an acknowledgement of the side effect.

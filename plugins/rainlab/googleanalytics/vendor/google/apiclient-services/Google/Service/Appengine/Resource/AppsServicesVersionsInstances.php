@@ -26,6 +26,62 @@
 class Google_Service_Appengine_Resource_AppsServicesVersionsInstances extends Google_Service_Resource
 {
   /**
+   * Enable debugging of this VM instance. This call allows you to SSH to the VM.
+   * While the VM is in debug mode, it continues to serve live traffic. After
+   * you're done debugging an instance, delete the instance; the system creates a
+   * new instance when needed. You can't debug a non-VM instance.
+   * (instances.debug)
+   *
+   * @param string $appsId Part of `name`. Name of the resource requested. For
+   * example: "apps/myapp/services/default/versions/v1/instances/instance-1".
+   * @param string $servicesId Part of `name`. See documentation of `appsId`.
+   * @param string $versionsId Part of `name`. See documentation of `appsId`.
+   * @param string $instancesId Part of `name`. See documentation of `appsId`.
+   * @param Google_Service_Appengine_DebugInstanceRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Appengine_Operation
+   */
+  public function debug($appsId, $servicesId, $versionsId, $instancesId, Google_Service_Appengine_DebugInstanceRequest $postBody, $optParams = array())
+  {
+    $params = array('appsId' => $appsId, 'servicesId' => $servicesId, 'versionsId' => $versionsId, 'instancesId' => $instancesId, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('debug', array($params), "Google_Service_Appengine_Operation");
+  }
+  /**
+   * Stops a running instance. (instances.delete)
+   *
+   * @param string $appsId Part of `name`. Name of the resource requested. For
+   * example: "apps/myapp/services/default/versions/v1/instances/instance-1".
+   * @param string $servicesId Part of `name`. See documentation of `appsId`.
+   * @param string $versionsId Part of `name`. See documentation of `appsId`.
+   * @param string $instancesId Part of `name`. See documentation of `appsId`.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Appengine_Operation
+   */
+  public function delete($appsId, $servicesId, $versionsId, $instancesId, $optParams = array())
+  {
+    $params = array('appsId' => $appsId, 'servicesId' => $servicesId, 'versionsId' => $versionsId, 'instancesId' => $instancesId);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete', array($params), "Google_Service_Appengine_Operation");
+  }
+  /**
+   * Gets instance information. (instances.get)
+   *
+   * @param string $appsId Part of `name`. Name of the resource requested. For
+   * example: "apps/myapp/services/default/versions/v1/instances/instance-1".
+   * @param string $servicesId Part of `name`. See documentation of `appsId`.
+   * @param string $versionsId Part of `name`. See documentation of `appsId`.
+   * @param string $instancesId Part of `name`. See documentation of `appsId`.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Appengine_Instance
+   */
+  public function get($appsId, $servicesId, $versionsId, $instancesId, $optParams = array())
+  {
+    $params = array('appsId' => $appsId, 'servicesId' => $servicesId, 'versionsId' => $versionsId, 'instancesId' => $instancesId);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "Google_Service_Appengine_Instance");
+  }
+  /**
    * Lists the instances of a version.
    * (instances.listAppsServicesVersionsInstances)
    *

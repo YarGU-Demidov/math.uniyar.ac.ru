@@ -39,7 +39,7 @@ class Google_Service_Directory_Resource_Domains extends Google_Service_Resource
     return $this->call('delete', array($params));
   }
   /**
-   * Retrives a domain of the customer. (domains.get)
+   * Retrieves a domain of the customer. (domains.get)
    *
    * @param string $customer Immutable id of the Google Apps account.
    * @param string $domainName Name of domain to be retrieved
