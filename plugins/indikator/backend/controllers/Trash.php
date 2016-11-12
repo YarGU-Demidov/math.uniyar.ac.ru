@@ -99,6 +99,8 @@ class Trash extends Controller
             'modules/backend/assets/js/october.triggerapi.js' => [1, 6047],
             'modules/backend/assets/js/october.utils.js' => [1, 5644],
             'modules/backend/assets/js/editorpreferences' => [2, 1523],
+            'modules/backend/assets/js/vendor/jquery-2.0.3.min.js' => [1, 83573],
+            'modules/backend/assets/js/vendor/jquery.touchwipe.min.js' => [1, 1561],
             'modules/backend/assets/js/vendor/modernizr.min.js' => [1, 15406],
             'modules/backend/assets/js/vendor/moment.js' => [1, 99200],
             'modules/backend/assets/js/vendor/mousewheel.js' => [1, 7348],
@@ -161,8 +163,29 @@ class Trash extends Controller
             'plugins/anandpatel/wysiwygeditors/formwidgets/editor/partials/_froala.htm' => [1, 9707],
             'plugins/anandpatel/wysiwygeditors/resources' => [2, 1183925],
             'plugins/anandpatel/wysiwygeditors/src' => [2, 11669],
+            'plugins/indikator/backend/assets/css/media-menu.css' => [1, 57],
+            'plugins/indikator/backend/assets/css/media-menu-pages.css' => [1, 57],
             'plugins/indikator/backend/assets/js/media-menu.js' => [1, 85],
-            'plugins/indikator/backend/partials' => [2, 2740]
+            'plugins/indikator/backend/partials' => [2, 2740],
+            'plugins/indikator/content/models/BlogCategory.php' => [1, 689],
+            'plugins/indikator/content/models/NewsCategory.php' => [1, 689],
+            'plugins/indikator/content/models/PortfolioCategory.php' => [1, 704],
+            'plugins/indikator/login/assets/css' => [2, 113000],
+            'plugins/indikator/news/models/Post.php' => [1, 2283],
+            'plugins/indikator/news/models/posts/_statistics.htm' => [1, 84],
+            'plugins/martin/adminer/classes/adminer-en.php' => [1, 289371],
+            'plugins/martin/adminer/classes/adminer-4.2.4-en.php' => [1, 289386],
+            'plugins/renatio/dynamicpdf/.gitignore' => [1, 45],
+            'plugins/renatio/dynamicpdf/config' => [2, 11074],
+            'plugins/renatio/dynamicpdf/controllers/PDFLayouts.php' => [1, 1174],
+            'plugins/renatio/dynamicpdf/controllers/PDFTemplates.php' => [1, 1322],
+            'plugins/renatio/dynamicpdf/controllers/pdflayouts' => [2, 6141],
+            'plugins/renatio/dynamicpdf/controllers/pdftemplates' => [2, 6243],
+            'plugins/renatio/dynamicpdf/models/PDFLayout.php' => [1, 2439],
+            'plugins/renatio/dynamicpdf/models/PDFTemplate.php' => [1, 2841],
+            'plugins/renatio/dynamicpdf/models/pdflayout' => [2, 2049],
+            'plugins/renatio/dynamicpdf/models/pdftemplate' => [2, 1689],
+            'plugins/renatio/dynamicpdf/src' => [2, 9818]
         ];
 
         foreach ($trash as $path => $data) {
@@ -217,13 +240,14 @@ class Trash extends Controller
         // Scan folder
         foreach ($elements as $element) {
             if ($element != '.' && $element != '..') {
+
                 // Folder
                 if (filetype($folder.'/'.$element) == 'dir') {
                     $this->scanVendor($folder.'/'.$element, $deph + 1);
                 }
 
                 // File
-                else if ((substr_count($element, 'LICENSE') == 1 || substr_count($element, 'README') == 1 || substr_count($element, 'CHANGELOG') == 1) && Items::where('path', '/'.$folder.'/'.$element)->count() == 0) {
+                else if ((substr_count($element, 'LICENSE') == 1 || substr_count($element, 'README') == 1 || substr_count($element, 'readme') == 1 || substr_count($element, 'CHANGE') == 1 || substr_count($element, 'UPGRADE') == 1 || substr_count($element, 'SECURITY') == 1 || substr_count($element, 'CONTRIBUT') == 1 || substr_count($element, 'ERRATA') == 1) && Items::where('path', '/'.$folder.'/'.$element)->count() == 0) {
                     Items::insertGetId([
                         'type' => 1,
                         'path' => '/'.$folder.'/'.$element,
@@ -240,8 +264,9 @@ class Trash extends Controller
     {
         if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
             foreach ($checkedIds as $objectId) {
-                if (Items::where('id', $objectId)->count() == 1) {
-                    $item = Items::where('id', $objectId)->first();
+                if (Items::whereId($objectId)->count() == 1) {
+                    $item = Items::whereId($objectId)->first();
+
                     // File
                     if ($item->type == 1) {
                         File::delete(base_path().$item->path);
@@ -257,7 +282,7 @@ class Trash extends Controller
                         DB::table('system_settings')->where('item', $item->path)->delete();
                     }
 
-                    Items::where('id', $objectId)->delete();
+                    Items::whereId($objectId)->delete();
                 }
             }
 
@@ -287,7 +312,7 @@ class Trash extends Controller
                 DB::table('system_settings')->where('item', $item->path)->delete();
             }
 
-            Items::where('id', $item->id)->delete();
+            Items::whereId($item->id)->delete();
         }
 
         Flash::success(Lang::get('indikator.backend::lang.trash.remove'));

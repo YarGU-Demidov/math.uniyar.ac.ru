@@ -225,6 +225,26 @@ class PluginTest extends PluginTestCase
         $this->assertEquals($twigTemplate->render([]), 'testooo');
     }
 
+    public function testVardumpFunction()
+    {
+        $twig = $this->getTwig();
+
+        $template = "{{ var_dump('test') }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertContains('string(4) "test"', $twigTemplate->render([]));
+    }
+
+    public function testVardumpFilter()
+    {
+        $twig = $this->getTwig();
+
+        $template = "{{ 'test' | var_dump }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertContains('string(4) "test"', $twigTemplate->render([]));
+    }
+
     public function testConfigFunction()
     {
         $twig = $this->getTwig();

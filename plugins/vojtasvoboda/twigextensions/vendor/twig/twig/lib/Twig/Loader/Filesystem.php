@@ -168,8 +168,8 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
     /**
      * Checks if the template can be found.
      *
-     * @param string  $name  The template name
-     * @param Boolean $throw Whether to throw an exception when an error occurs
+     * @param string $name  The template name
+     * @param bool   $throw Whether to throw an exception when an error occurs
      *
      * @return string|false The template name or false
      */
@@ -205,11 +205,7 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
 
         foreach ($this->paths[$namespace] as $path) {
             if (is_file($path.'/'.$shortname)) {
-                if (false !== $realpath = realpath($path.'/'.$shortname)) {
-                    return $this->cache[$name] = $realpath;
-                }
-
-                return $this->cache[$name] = $path.'/'.$shortname;
+                return $this->cache[$name] = $this->normalizePath($path.'/'.$shortname);
             }
         }
 
@@ -263,5 +259,21 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
                 throw new Twig_Error_Loader(sprintf('Looks like you try to load a template outside configured directories (%s).', $name));
             }
         }
+    }
+
+    private function normalizePath($path)
+    {
+        $parts = explode('/', str_replace('\\', '/', $path));
+        $hasProto = false !== strpos($path, '://');
+        $new = array();
+        foreach ($parts as $i => $part) {
+            if ('..' === $part) {
+                array_pop($new);
+            } elseif ('.' !== $part && ('' !== $part || 0 === $i || $hasProto && $i < 3)) {
+                $new[] = $part;
+            }
+        }
+
+        return implode('/', $new);
     }
 }

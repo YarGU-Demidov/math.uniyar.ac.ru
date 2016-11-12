@@ -12,7 +12,7 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
 {
     public function testRenderBlockOptimizer()
     {
-        $env = new Twig_Environment($this->getMock('Twig_LoaderInterface'), array('cache' => false, 'autoescape' => false));
+        $env = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock(), array('cache' => false, 'autoescape' => false));
 
         $stream = $env->parse($env->tokenize('{{ block("foo") }}', 'index'));
 
@@ -24,7 +24,7 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
 
     public function testRenderParentBlockOptimizer()
     {
-        $env = new Twig_Environment($this->getMock('Twig_LoaderInterface'), array('cache' => false, 'autoescape' => false));
+        $env = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock(), array('cache' => false, 'autoescape' => false));
 
         $stream = $env->parse($env->tokenize('{% extends "foo" %}{% block content %}{{ parent() }}{% endblock %}', 'index'));
 
@@ -39,7 +39,7 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
      */
     public function testForOptimizer($template, $expected)
     {
-        $env = new Twig_Environment($this->getMock('Twig_LoaderInterface'), array('cache' => false));
+        $env = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock(), array('cache' => false));
 
         $stream = $env->parse($env->tokenize($template, 'index'));
 
@@ -87,12 +87,8 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function checkForConfiguration(Twig_Node $node = null, $target, $withLoop)
+    public function checkForConfiguration(Twig_Node $node, $target, $withLoop)
     {
-        if (null === $node) {
-            return;
-        }
-
         foreach ($node as $n) {
             if ($n instanceof Twig_Node_For) {
                 if ($target === $n->getNode('value_target')->getAttribute('name')) {

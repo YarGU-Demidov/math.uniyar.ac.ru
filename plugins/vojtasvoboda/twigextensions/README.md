@@ -6,11 +6,17 @@
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/g/vojtasvoboda/oc-twigextensions-plugin.svg)](https://scrutinizer-ci.com/g/vojtasvoboda/oc-twigextensions-plugin/?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vojtasvoboda/oc-twigextensions-plugin/blob/master/LICENSE.md)
 
-Twig extensions plugin for OctoberCMS adds new filter and functions to your templates. No other plugin dependencies. Tested with the latest stable build 349.
+Twig extensions plugin for OctoberCMS adds new filter and functions to your templates. No other plugin dependencies. Tested with the latest stable OctoberCMS build 349.
 
 ## Installation
 
-Just install VojtaSvoboda.TwigExtensions plugin a you can use new added filters/functions at your templates:
+Install plugin from CMS backend or by Composer:
+
+```
+composer require vojtasvoboda/oc-twigextensions-plugin:dev-master
+```
+
+Than you can use newly added filters/functions at your templates:
 
 ```
 <h1 class="heading">{{ article.heading | uppercase }}</h1>
@@ -24,7 +30,7 @@ Just install VojtaSvoboda.TwigExtensions plugin a you can use new added filters/
 
 ## Available functions
 
-[template\_from\_string](http://twig.sensiolabs.org/doc/functions/template_from_string.html), [config](https://laravel.com/docs/5.0/configuration#accessing-configuration-values), [session](https://laravel.com/docs/5.0/session#session-usage), [trans](https://octobercms.com/docs/plugin/localization)
+[template\_from\_string](http://twig.sensiolabs.org/doc/functions/template_from_string.html), [config](https://laravel.com/docs/5.0/configuration#accessing-configuration-values), [session](https://laravel.com/docs/5.0/session#session-usage), [trans](https://octobercms.com/docs/plugin/localization), [var_dump](http://php.net/manual/en/function.var-dump.php)
 
 ### template\_from\_string
 
@@ -66,12 +72,19 @@ Function transports the functionality of the Laravel `trans()` helper function t
 The example would output a value stored in a localization file of an imaginary blog plugin.
 See [more about localization in October CMS here](https://octobercms.com/docs/plugin/localization).
 
+### var_dump
+
+Dumps information about a variable. Can be also used as filter.
+
+```
+<pre>{{ var_dump(users) }}</pre>
+```
 
 ## Available filters
 
 strftime, uppercase, lowercase, ucfirst, lcfirst, ltrim, rtrim, str_repeat,
 plural, truncate, wordwrap, strpad, leftpad, rightpad, shuffle, time_diff,
-localizeddate, localizednumber, localizedcurrency
+localizeddate, localizednumber, localizedcurrency, var_dump
 
 ### strftime
 
@@ -301,7 +314,7 @@ To get a translatable output, give a Symfony\Component\Translation\TranslatorInt
 
 ### localizeddate
 
-Use the localizeddate filter to format dates into a localized string representating the date.
+Use the localizeddate filter to format dates into a localized string representating the date. Note that **php5-intl extension** has to be installed!
 
 ```
 {{ post.published_at | localizeddate('medium', 'none', locale) }}
@@ -323,7 +336,7 @@ The localizeddate filter accepts strings (it must be in a format supported by th
 
 ### localizednumber
 
-Use the localizednumber filter to format numbers into a localized string representating the number.
+Use the localizednumber filter to format numbers into a localized string representating the number. Note that **php5-intl extension** has to be installed!
 
 ```
 {{ product.quantity | localizednumber }}
@@ -351,7 +364,7 @@ Internally, Twig uses the PHP NumberFormatter::create() function for the number.
 
 ### localizedcurrency
 
-Use the localizedcurrency filter to format a currency value into a localized string.
+Use the localizedcurrency filter to format a currency value into a localized string. Note that **php5-intl extension** has to be installed!
 
 ```
 {{ product.price | localizedcurrency('EUR') }}
@@ -361,6 +374,14 @@ Use the localizedcurrency filter to format a currency value into a localized str
 
 - currency: The 3-letter ISO 4217 currency code indicating the currency to use.
 - locale: The locale used for the format. If NULL is given, Twig will use Locale::getDefault()
+
+### var_dump
+
+Dumps information about a variable.
+
+```
+<pre>{{ users | var_dump }}</pre>
+```
 
 ## Future plans
 

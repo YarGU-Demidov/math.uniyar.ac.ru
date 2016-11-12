@@ -22,6 +22,8 @@ class Twig_Node implements Countable, IteratorAggregate
     protected $lineno;
     protected $tag;
 
+    private $filename;
+
     /**
      * Constructor.
      *
@@ -35,6 +37,11 @@ class Twig_Node implements Countable, IteratorAggregate
      */
     public function __construct(array $nodes = array(), array $attributes = array(), $lineno = 0, $tag = null)
     {
+        foreach ($nodes as $name => $node) {
+            if (!$node instanceof self) {
+                throw new InvalidArgumentException(sprintf('Using "%s" for the value of node "%s" of "%s" is not supported. You must pass a Twig_Node instance.', is_object($node) ? get_class($node) : null === $node ? 'null' : gettype($node), $name, get_class($this)));
+            }
+        }
         $this->nodes = $nodes;
         $this->attributes = $attributes;
         $this->lineno = $lineno;
@@ -144,7 +151,7 @@ class Twig_Node implements Countable, IteratorAggregate
      */
     public function hasNode($name)
     {
-        return array_key_exists($name, $this->nodes);
+        return isset($this->nodes[$name]);
     }
 
     /**
@@ -156,7 +163,7 @@ class Twig_Node implements Countable, IteratorAggregate
      */
     public function getNode($name)
     {
-        if (!array_key_exists($name, $this->nodes)) {
+        if (!isset($this->nodes[$name])) {
             throw new LogicException(sprintf('Node "%s" does not exist for Node "%s".', $name, get_class($this)));
         }
 
@@ -169,7 +176,7 @@ class Twig_Node implements Countable, IteratorAggregate
      * @param string    $name
      * @param Twig_Node $node
      */
-    public function setNode($name, $node = null)
+    public function setNode($name, Twig_Node $node)
     {
         $this->nodes[$name] = $node;
     }
@@ -192,5 +199,18 @@ class Twig_Node implements Countable, IteratorAggregate
     public function getIterator()
     {
         return new ArrayIterator($this->nodes);
+    }
+
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+        foreach ($this->nodes as $node) {
+            $node->setFilename($filename);
+        }
+    }
+
+    public function getFilename()
+    {
+        return $this->filename;
     }
 }
