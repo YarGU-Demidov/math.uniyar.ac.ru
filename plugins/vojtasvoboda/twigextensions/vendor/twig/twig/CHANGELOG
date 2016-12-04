@@ -1,25 +1,42 @@
-* 2.0.0 (2016-XX-XX)
+* 1.29.0 (2016-XX-XX)
 
- * removed Twig_Environment::getLexer(), Twig_Environment::getParser(), Twig_Environment::getCompiler()
- * removed Twig_Compiler::getFilename()
- * added hasser support in Twig_Template::getAttribute()
- * sped up the json_encode filter
- * removed reserved macro names; all names can be used as macro
- * removed Twig_Template::getEnvironment()
- * changed _self variable to return the current template name
- * made the loader a required argument of Twig_Environment constructor
- * removed Twig_Environment::clearTemplateCache()
- * removed Twig_Autoloader (use Composer instead)
- * removed `true` as an equivalent to `html` for the auto-escaping strategy
- * removed pre-1.8 autoescape tag syntax
- * dropped support for PHP 5.2, 5.3, and 5.4
- * removed the ability to register a global variable after the runtime or the extensions have been initialized
- * improved the performance of the filesystem loader
- * removed features that were deprecated in 1.x
+ * deprecated support for mbstring.func_overload != 0
 
-* 1.26.2 (2016-XX-XX)
+* 1.28.2 (2016-11-23)
 
- * Fixed template paths when a template name contains a protocol like vfs://
+ * fixed precedence between getFoo() and isFoo() in Twig_Template::getAttribute()
+ * improved a deprecation message
+
+* 1.28.1 (2016-11-18)
+
+ * fixed block() function when used with a template argument
+
+* 1.28.0 (2016-11-17)
+
+ * added support for the PHP 7 null coalescing operator for the ?? Twig implementation
+ * exposed a way to access template data and methods in a portable way
+ * changed context access to use the PHP 7 null coalescing operator when available
+ * added the "with" tag
+ * added support for a custom template on the block() function
+ * added "is defined" support for block() and constant()
+ * optimized the way attributes are fetched
+
+* 1.27.0 (2016-10-25)
+
+ * deprecated Twig_Parser::getEnvironment()
+ * deprecated Twig_Parser::addHandler() and Twig_Parser::addNodeVisitor()
+ * deprecated Twig_Compiler::addIndentation()
+ * fixed regression when registering two extensions having the same class name
+ * deprecated Twig_LoaderInterface::getSource() (implement Twig_SourceContextLoaderInterface instead)
+ * fixed the filesystem loader with relative paths
+ * deprecated Twig_Node::getLine() in favor of Twig_Node::getTemplateLine()
+ * deprecated Twig_Template::getSource() in favor of Twig_Template::getSourceContext()
+ * deprecated Twig_Node::getFilename() in favor of Twig_Node::getTemplateName()
+ * deprecated the "filename" escaping strategy (use "name" instead)
+ * added Twig_Source to hold information about the original template
+ * deprecated Twig_Error::getTemplateFile() and Twig_Error::setTemplateFile() in favor of Twig_Error::getTemplateName() and Twig_Error::setTemplateName()
+ * deprecated Parser::getFilename()
+ * fixed template paths when a template name contains a protocol like vfs://
  * improved debugging with Twig_Sandbox_SecurityError exceptions for disallowed methods and properties
 
 * 1.26.1 (2016-10-05)
@@ -140,7 +157,7 @@
  * fixed limited RCEs when in sandbox mode
  * deprecated Twig_Template::getEnvironment()
  * deprecated the _self variable for usage outside of the from and import tags
- * added Twig_BaseNodeVisitor to ease the compatibility of node visitors
+ * added Twig_BaseNodeVisitor to ease the compatibility of node visitors 
    between 1.x and 2.x
 
 * 1.19.0 (2015-07-31)

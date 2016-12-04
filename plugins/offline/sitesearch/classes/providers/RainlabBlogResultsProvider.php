@@ -15,7 +15,6 @@ use RainLab\Blog\Models\Post;
  */
 class RainlabBlogResultsProvider extends ResultsProvider
 {
-
     /**
      * @var Controller to be used to form urls to search results
      */
@@ -132,4 +131,3 @@ class RainlabBlogResultsProvider extends ResultsProvider
         return 'RainLab.Blog';
     }
 }
-

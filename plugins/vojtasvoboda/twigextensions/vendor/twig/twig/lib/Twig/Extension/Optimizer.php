@@ -10,7 +10,7 @@
  */
 class Twig_Extension_Optimizer extends Twig_Extension
 {
-    private $optimizers;
+    protected $optimizers;
 
     public function __construct($optimizers = -1)
     {
@@ -20,5 +20,10 @@ class Twig_Extension_Optimizer extends Twig_Extension
     public function getNodeVisitors()
     {
         return array(new Twig_NodeVisitor_Optimizer($this->optimizers));
+    }
+
+    public function getName()
+    {
+        return 'optimizer';
     }
 }

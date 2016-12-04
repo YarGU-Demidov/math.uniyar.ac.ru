@@ -10,9 +10,9 @@
  */
 class Twig_Extension_Sandbox extends Twig_Extension
 {
-    private $sandboxedGlobally;
-    private $sandboxed;
-    private $policy;
+    protected $sandboxedGlobally;
+    protected $sandboxed;
+    protected $policy;
 
     public function __construct(Twig_Sandbox_SecurityPolicyInterface $policy, $sandboxed = false)
     {
@@ -88,5 +88,10 @@ class Twig_Extension_Sandbox extends Twig_Extension
         }
 
         return $obj;
+    }
+
+    public function getName()
+    {
+        return 'sandbox';
     }
 }

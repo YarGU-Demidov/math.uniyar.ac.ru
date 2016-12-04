@@ -18,14 +18,12 @@
  */
 class Twig_NodeTraverser
 {
-    private $env;
-    private $visitors = array();
+    protected $env;
+    protected $visitors = array();
 
     /**
-     * Constructor.
-     *
-     * @param Twig_Environment            $env      A Twig_Environment instance
-     * @param Twig_NodeVisitorInterface[] $visitors An array of Twig_NodeVisitorInterface instances
+     * @param Twig_Environment            $env
+     * @param Twig_NodeVisitorInterface[] $visitors
      */
     public function __construct(Twig_Environment $env, array $visitors = array())
     {
@@ -35,11 +33,6 @@ class Twig_NodeTraverser
         }
     }
 
-    /**
-     * Adds a visitor.
-     *
-     * @param Twig_NodeVisitorInterface $visitor A Twig_NodeVisitorInterface instance
-     */
     public function addVisitor(Twig_NodeVisitorInterface $visitor)
     {
         if (!isset($this->visitors[$visitor->getPriority()])) {
@@ -52,11 +45,9 @@ class Twig_NodeTraverser
     /**
      * Traverses a node and calls the registered visitors.
      *
-     * @param Twig_Node $node A Twig_Node instance
-     *
-     * @return Twig_Node
+     * @return Twig_NodeInterface
      */
-    public function traverse(Twig_Node $node)
+    public function traverse(Twig_NodeInterface $node)
     {
         ksort($this->visitors);
         foreach ($this->visitors as $visitors) {
@@ -68,8 +59,12 @@ class Twig_NodeTraverser
         return $node;
     }
 
-    private function traverseForVisitor(Twig_NodeVisitorInterface $visitor, Twig_Node $node)
+    protected function traverseForVisitor(Twig_NodeVisitorInterface $visitor, Twig_NodeInterface $node = null)
     {
+        if (null === $node) {
+            return;
+        }
+
         $node = $visitor->enterNode($node, $this->env);
 
         foreach ($node as $k => $n) {

@@ -16,10 +16,10 @@
  */
 class Twig_NodeVisitor_Sandbox extends Twig_BaseNodeVisitor
 {
-    private $inAModule = false;
-    private $tags;
-    private $filters;
-    private $functions;
+    protected $inAModule = false;
+    protected $tags;
+    protected $filters;
+    protected $functions;
 
     /**
      * {@inheritdoc}
@@ -51,7 +51,7 @@ class Twig_NodeVisitor_Sandbox extends Twig_BaseNodeVisitor
 
             // wrap print to check __toString() calls
             if ($node instanceof Twig_Node_Print) {
-                return new Twig_Node_SandboxedPrint($node->getNode('expr'), $node->getLine(), $node->getNodeTag());
+                return new Twig_Node_SandboxedPrint($node->getNode('expr'), $node->getTemplateLine(), $node->getNodeTag());
             }
         }
 
