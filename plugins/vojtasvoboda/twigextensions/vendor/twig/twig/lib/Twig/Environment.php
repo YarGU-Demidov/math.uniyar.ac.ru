@@ -16,10 +16,10 @@
  */
 class Twig_Environment
 {
-    const VERSION = '1.29.0-DEV';
-    const VERSION_ID = 12900;
+    const VERSION = '1.30.0-DEV';
+    const VERSION_ID = 13000;
     const MAJOR_VERSION = 1;
-    const MINOR_VERSION = 20;
+    const MINOR_VERSION = 30;
     const RELEASE_VERSION = 0;
     const EXTRA_VERSION = 'DEV';
 
@@ -741,10 +741,10 @@ class Twig_Environment
         try {
             return $this->compile($this->parse($this->tokenize($source)));
         } catch (Twig_Error $e) {
-            $e->setTemplateName($source->getName());
+            $e->setSourceContext($source);
             throw $e;
         } catch (Exception $e) {
-            throw new Twig_Error_Syntax(sprintf('An exception has been thrown during the compilation of a template ("%s").', $e->getMessage()), -1, $source->getName(), $e);
+            throw new Twig_Error_Syntax(sprintf('An exception has been thrown during the compilation of a template ("%s").', $e->getMessage()), -1, $source, $e);
         }
     }
 
@@ -831,7 +831,7 @@ class Twig_Environment
             return true;
         }
 
-        return isset($this->extensionsByClass[ltrim($class, '\\')]);
+        return isset($this->extensionsByClass[$class]);
     }
 
     /**
@@ -1512,8 +1512,12 @@ class Twig_Environment
 
         // operators
         if ($operators = $extension->getOperators()) {
+            if (!is_array($operators)) {
+                throw new InvalidArgumentException(sprintf('"%s::getOperators()" must return an array with operators, got "%s".', get_class($extension), is_object($operators) ? get_class($operators) : gettype($operators).(is_resource($operators) ? '' : '#'.$operators)));
+            }
+
             if (2 !== count($operators)) {
-                throw new InvalidArgumentException(sprintf('"%s::getOperators()" does not return a valid operators array.', get_class($extension)));
+                throw new InvalidArgumentException(sprintf('"%s::getOperators()" must return an array of 2 elements, got %d.', get_class($extension), count($operators)));
             }
 
             $this->unaryOperators = array_merge($this->unaryOperators, $operators[0]);

@@ -115,12 +115,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "717365d089a2f5cc767d75084f9639811881f628"
+            "reference": "c33628267e5f7ccfe68d3e3e5c61b802876a7bcc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/717365d089a2f5cc767d75084f9639811881f628",
-            "reference": "717365d089a2f5cc767d75084f9639811881f628",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/c33628267e5f7ccfe68d3e3e5c61b802876a7bcc",
+            "reference": "c33628267e5f7ccfe68d3e3e5c61b802876a7bcc",
             "shasum": ""
         },
         "require": {
@@ -130,11 +130,11 @@
             "symfony/debug": "~2.7",
             "symfony/phpunit-bridge": "~3.2@dev"
         },
-        "time": "2016-11-23 18:59:28",
+        "time": "2016-12-20 04:02:06",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.29-dev"
+                "dev-master": "1.30-dev"
             }
         },
         "installation-source": "source",
@@ -232,12 +232,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "3d7c5418561389ea5c57ba29edbdf7cf6c4ecb40"
+            "reference": "e7623113d23eb35275a87999d87fac8c4681d711"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/3d7c5418561389ea5c57ba29edbdf7cf6c4ecb40",
-            "reference": "3d7c5418561389ea5c57ba29edbdf7cf6c4ecb40",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/e7623113d23eb35275a87999d87fac8c4681d711",
+            "reference": "e7623113d23eb35275a87999d87fac8c4681d711",
             "shasum": ""
         },
         "require": {
@@ -257,7 +257,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2016-11-18 20:26:45",
+        "time": "2016-12-19 15:22:46",
         "type": "library",
         "extra": {
             "branch-alias": {

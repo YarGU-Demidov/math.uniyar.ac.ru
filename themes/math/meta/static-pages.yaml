@@ -4,6 +4,8 @@ static-pages:
             for-entrants-napravleniya-i-specialnosti-podgotovki-prikladnaya-matematika-i-informatika: {  }
             for-entrants-napravleniya-i-specialnosti-podgotovki-matematika-i-kompyuternye-nauki: {  }
             for-entrants-napravleniya-i-specialnosti-podgotovki-kompyuternaya-bezopasnost: {  }
+        for-entrants-otkrytaya-olimpiada-yargu-po-matematike-dlya-shkolnikov: {  }
+        registr_olimp: {  }
     for-students:
         for-students-seminary:
             for-students-seminary-seminar-laboratorii-diskretnaya-i-vychislitelnaya-geometriya-im-bn-delone: {  }
