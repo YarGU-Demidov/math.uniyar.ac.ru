@@ -59,6 +59,7 @@ Many IDEs support syntax highlighting and auto-completion for Twig:
 * *Notepad++* via the `Notepad++ Twig Highlighter`_
 * *Emacs* via `web-mode.el`_
 * *Atom* via the `PHP-twig for atom`_
+* *Visual Studio Code* via the `Twig pack`_
 
 Also, `TwigFiddle`_ is an online service that allows you to execute Twig templates
 from a browser; it supports all versions of Twig.
@@ -110,7 +111,6 @@ is set, Twig will throw an error (see :ref:`environment options<environment_opti
       (even if ``bar`` is the constructor - use ``__construct()`` instead);
     * if not, and if ``foo`` is an object, check that ``getBar`` is a valid method;
     * if not, and if ``foo`` is an object, check that ``isBar`` is a valid method;
-    * if not, and if ``foo`` is an object, check that ``hasBar`` is a valid method;
     * if not, return a ``null`` value.
 
     ``foo['bar']`` on the other hand only works with PHP arrays:
@@ -128,7 +128,7 @@ Global Variables
 
 The following variables are always available in templates:
 
-* ``_self``: references the current template name;
+* ``_self``: references the current template;
 * ``_context``: references the current context;
 * ``_charset``: references the current charset.
 
@@ -198,6 +198,9 @@ built-in functions.
 
 Named Arguments
 ---------------
+
+.. versionadded:: 1.12
+    Support for named arguments was added in Twig 1.12.
 
 .. code-block:: jinja
 
@@ -421,10 +424,8 @@ everything by default.
 
 Twig supports both, automatic escaping is enabled by default.
 
-.. note::
-
-    Automatic escaping is only supported if the *escaper* extension has been
-    enabled (which is the default).
+The automatic escaping strategy can be configured via the
+:ref:`autoescape<environment_options>` option and defaults to ``html``.
 
 Working with Manual Escaping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -493,6 +494,9 @@ For bigger sections it makes sense to mark a block
 
 Macros
 ------
+
+.. versionadded:: 1.12
+    Support for default argument values was added in Twig 1.12.
 
 Macros are comparable with functions in regular programming languages. They
 are useful to reuse often used HTML fragments to not repeat yourself.
@@ -570,6 +574,9 @@ even if you're not working with PHP you should feel comfortable with it.
 Literals
 ~~~~~~~~
 
+.. versionadded:: 1.5
+    Support for hash keys as names and expressions was added in Twig 1.5.
+
 The simplest form of expressions are literals. Literals are representations
 for PHP types such as strings, numbers, and arrays. The following literals
 exist:
@@ -597,13 +604,13 @@ exist:
     {# keys as string #}
     { 'foo': 'foo', 'bar': 'bar' }
 
-    {# keys as names (equivalent to the previous hash) #}
+    {# keys as names (equivalent to the previous hash) -- as of Twig 1.5 #}
     { foo: 'foo', bar: 'bar' }
 
     {# keys as integer #}
     { 2: 'foo', 4: 'bar' }
 
-    {# keys as expressions (the expression must be enclosed into parentheses) #}
+    {# keys as expressions (the expression must be enclosed into parentheses) -- as of Twig 1.5 #}
     { (1 + 1): 'foo', (a ~ 'b'): 'bar' }
 
 * ``true`` / ``false``: ``true`` represents the true value, ``false``
@@ -761,6 +768,9 @@ tests.
 Other Operators
 ~~~~~~~~~~~~~~~
 
+.. versionadded:: 1.12.0
+    Support for the extended ternary operator was added in Twig 1.12.0.
+
 The following operators don't fit into any of the other categories:
 
 * ``|``: Applies a filter.
@@ -793,6 +803,8 @@ The following operators don't fit into any of the other categories:
   .. code-block:: jinja
 
       {{ foo ? 'yes' : 'no' }}
+
+      {# as of Twig 1.12.0 #}
       {{ foo ?: 'no' }} is the same as {{ foo ? foo : 'no' }}
       {{ foo ? 'yes' }} is the same as {{ foo ? 'yes' : '' }}
 
@@ -805,6 +817,9 @@ The following operators don't fit into any of the other categories:
 
 String Interpolation
 ~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.5
+    String interpolation was added in Twig 1.5.
 
 String interpolation (``#{expression}``) allows any valid expression to appear
 within a *double-quoted string*. The result of evaluating that expression is
@@ -819,6 +834,9 @@ inserted into the string:
 
 Whitespace Control
 ------------------
+
+.. versionadded:: 1.1
+    Tag level whitespace control was added in Twig 1.1.
 
 The first newline after a template tag is removed automatically (like in PHP.)
 Whitespace is not further modified by the template engine, so each whitespace
@@ -887,3 +905,4 @@ Extension<creating_extensions>` chapter.
 .. _`regular expressions`:        http://php.net/manual/en/pcre.pattern.php
 .. _`PHP-twig for atom`:          https://github.com/reesef/php-twig
 .. _`TwigFiddle`:                 http://twigfiddle.com/
+.. _`Twig pack`:                  https://marketplace.visualstudio.com/items?itemName=bajdzis.vscode-twig-pack

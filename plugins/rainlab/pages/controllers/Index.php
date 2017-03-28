@@ -12,7 +12,6 @@ use Cms\Classes\Theme;
 use Cms\Classes\CmsCompoundObject;
 use Cms\Widgets\TemplateList;
 use Backend\Classes\Controller;
-use Backend\Classes\WidgetManager;
 use RainLab\Pages\Widgets\PageList;
 use RainLab\Pages\Widgets\MenuList;
 use RainLab\Pages\Widgets\SnippetList;
@@ -409,7 +408,7 @@ class Index extends Controller
             /*
              * Translation support
              */
-            $translatableTypes = ['text', 'textarea', 'richeditor'];
+            $translatableTypes = ['text', 'textarea', 'richeditor', 'repeater'];
             if (in_array($fieldConfig['type'], $translatableTypes)) {
                 $page->translatable[] = 'viewBag['.$fieldCode.']';
             }
@@ -591,7 +590,8 @@ class Index extends Controller
     {
         $alias = Request::input('formWidgetAlias');
         $type = Request::input('objectType');
-        $object = $this->loadObject($type, Request::input('objectPath'));
+        $objectPath = trim(Request::input('objectPath'));
+        $object = $objectPath ? $this->loadObject($type, $objectPath) : $this->createObject($type);
 
         $widget = $this->makeObjectFormWidget($type, $object, $alias);
         $widget->bindToController();

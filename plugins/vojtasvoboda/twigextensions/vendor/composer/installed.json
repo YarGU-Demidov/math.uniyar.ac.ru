@@ -1,40 +1,43 @@
 [
     {
-        "name": "symfony/polyfill-mbstring",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "composer/installers",
+        "version": "v1.2.0",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "8a6bdec191138e01c92ae026e5aacb7b3e66267d"
+            "url": "https://github.com/composer/installers.git",
+            "reference": "d78064c68299743e0161004f2de3a0204e33b804"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8a6bdec191138e01c92ae026e5aacb7b3e66267d",
-            "reference": "8a6bdec191138e01c92ae026e5aacb7b3e66267d",
+            "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
+            "reference": "d78064c68299743e0161004f2de3a0204e33b804",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3"
+            "composer-plugin-api": "^1.0"
         },
-        "suggest": {
-            "ext-mbstring": "For best performance"
+        "replace": {
+            "roundcube/plugin-installer": "*",
+            "shama/baton": "*"
         },
-        "time": "2016-06-29 14:58:48",
-        "type": "library",
+        "require-dev": {
+            "composer/composer": "1.0.*@dev",
+            "phpunit/phpunit": "4.1.*"
+        },
+        "time": "2016-08-13 20:53:52",
+        "type": "composer-plugin",
         "extra": {
+            "class": "Composer\\Installers\\Plugin",
             "branch-alias": {
-                "dev-master": "1.2-dev"
+                "dev-master": "1.0-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Symfony\\Polyfill\\Mbstring\\": ""
-            },
-            "files": [
-                "bootstrap.php"
-            ]
+                "Composer\\Installers\\": "src/Composer/Installers"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -42,52 +45,96 @@
         ],
         "authors": [
             {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
+                "name": "Kyle Robinson Young",
+                "email": "kyle@dontkry.com",
+                "homepage": "https://github.com/shama"
             }
         ],
-        "description": "Symfony polyfill for the Mbstring extension",
-        "homepage": "https://symfony.com",
+        "description": "A multi-framework Composer library installer",
+        "homepage": "https://composer.github.io/installers/",
         "keywords": [
-            "compatibility",
-            "mbstring",
-            "polyfill",
-            "portable",
-            "shim"
+            "Craft",
+            "Dolibarr",
+            "Hurad",
+            "ImageCMS",
+            "MODX Evo",
+            "Mautic",
+            "OXID",
+            "Plentymarkets",
+            "RadPHP",
+            "SMF",
+            "Thelia",
+            "WolfCMS",
+            "agl",
+            "aimeos",
+            "annotatecms",
+            "attogram",
+            "bitrix",
+            "cakephp",
+            "chef",
+            "cockpit",
+            "codeigniter",
+            "concrete5",
+            "croogo",
+            "dokuwiki",
+            "drupal",
+            "elgg",
+            "expressionengine",
+            "fuelphp",
+            "grav",
+            "installer",
+            "joomla",
+            "kohana",
+            "laravel",
+            "lithium",
+            "magento",
+            "mako",
+            "mediawiki",
+            "modulework",
+            "moodle",
+            "phpbb",
+            "piwik",
+            "ppi",
+            "puppet",
+            "reindex",
+            "roundcube",
+            "shopware",
+            "silverstripe",
+            "symfony",
+            "typo3",
+            "wordpress",
+            "yawik",
+            "zend",
+            "zikula"
         ]
     },
     {
         "name": "twig/twig",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "1.x-dev",
+        "version_normalized": "1.9999999.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "cf96ecf366eb24cfe680b62f9134b5ddc9b86818"
+            "reference": "94acd3701122d28b097ce878fd035fc9793c1a70"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/cf96ecf366eb24cfe680b62f9134b5ddc9b86818",
-            "reference": "cf96ecf366eb24cfe680b62f9134b5ddc9b86818",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/94acd3701122d28b097ce878fd035fc9793c1a70",
+            "reference": "94acd3701122d28b097ce878fd035fc9793c1a70",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.5",
-            "symfony/polyfill-mbstring": "~1.0"
+            "php": ">=5.2.7"
         },
         "require-dev": {
             "symfony/debug": "~2.7",
-            "symfony/phpunit-bridge": "~2.7"
+            "symfony/phpunit-bridge": "~3.2"
         },
-        "time": "2016-05-30 09:07:11",
+        "time": "2017-01-05 19:55:35",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.0-dev"
+                "dev-master": "1.30-dev"
             }
         },
         "installation-source": "source",
@@ -131,16 +178,16 @@
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig-extensions.git",
-            "reference": "afd3a08ad948e034b4ffdab23f53925538a91635"
+            "reference": "e740ab2e3c97b54028f21f9f8314caf6fdc482d7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/afd3a08ad948e034b4ffdab23f53925538a91635",
-            "reference": "afd3a08ad948e034b4ffdab23f53925538a91635",
+            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/e740ab2e3c97b54028f21f9f8314caf6fdc482d7",
+            "reference": "e740ab2e3c97b54028f21f9f8314caf6fdc482d7",
             "shasum": ""
         },
         "require": {
-            "twig/twig": "~1.20|~2.0"
+            "twig/twig": "~1.27|~2.0"
         },
         "require-dev": {
             "symfony/translation": "~2.3"
@@ -148,11 +195,11 @@
         "suggest": {
             "symfony/translation": "Allow the time_diff output to be translated"
         },
-        "time": "2016-01-28 10:03:51",
+        "time": "2017-01-02 20:34:49",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.3-dev"
+                "dev-master": "1.4-dev"
             }
         },
         "installation-source": "source",
@@ -180,42 +227,41 @@
     },
     {
         "name": "symfony/translation",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "2.7.x-dev",
+        "version_normalized": "2.7.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "3c589e93013e2808758f61b02755afc113f3be44"
+            "reference": "f158ed71fe8921de1409a7823221dcfe5070425a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/3c589e93013e2808758f61b02755afc113f3be44",
-            "reference": "3c589e93013e2808758f61b02755afc113f3be44",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/f158ed71fe8921de1409a7823221dcfe5070425a",
+            "reference": "f158ed71fe8921de1409a7823221dcfe5070425a",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.5.9",
-            "symfony/polyfill-mbstring": "~1.0"
+            "php": ">=5.3.9"
         },
         "conflict": {
-            "symfony/config": "<2.8"
+            "symfony/config": "<2.7"
         },
         "require-dev": {
             "psr/log": "~1.0",
-            "symfony/config": "~2.8|~3.0",
-            "symfony/intl": "~2.8|~3.0",
-            "symfony/yaml": "~2.8|~3.0"
+            "symfony/config": "~2.7",
+            "symfony/intl": "~2.4",
+            "symfony/yaml": "~2.2"
         },
         "suggest": {
             "psr/log": "To use logging capability in translator",
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2016-06-29 05:43:10",
+        "time": "2017-01-02 20:30:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "2.7-dev"
             }
         },
         "installation-source": "source",

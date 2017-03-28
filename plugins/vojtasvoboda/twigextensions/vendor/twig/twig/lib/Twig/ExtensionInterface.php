@@ -17,6 +17,15 @@
 interface Twig_ExtensionInterface
 {
     /**
+     * Initializes the runtime environment.
+     *
+     * This is where you can load some file that contains filter functions for instance.
+     *
+     * @deprecated since 1.23 (to be removed in 2.0), implement Twig_Extension_InitRuntimeInterface instead
+     */
+    public function initRuntime(Twig_Environment $environment);
+
+    /**
      * Returns the token parser instances to add to the existing list.
      *
      * @return Twig_TokenParserInterface[]
@@ -26,7 +35,7 @@ interface Twig_ExtensionInterface
     /**
      * Returns the node visitor instances to add to the existing list.
      *
-     * @return Twig_NodeVisitorInterface[] An array of Twig_NodeVisitorInterface instances
+     * @return Twig_NodeVisitorInterface[]
      */
     public function getNodeVisitors();
 
@@ -54,14 +63,25 @@ interface Twig_ExtensionInterface
     /**
      * Returns a list of operators to add to the existing list.
      *
-     * @return array An array of operators
+     * @return array<array> First array of unary operators, second array of binary operators
      */
     public function getOperators();
+
+    /**
+     * Returns a list of global variables to add to the existing list.
+     *
+     * @return array An array of global variables
+     *
+     * @deprecated since 1.23 (to be removed in 2.0), implement Twig_Extension_GlobalsInterface instead
+     */
+    public function getGlobals();
 
     /**
      * Returns the name of the extension.
      *
      * @return string The extension name
+     *
+     * @deprecated since 1.26 (to be removed in 2.0), not used anymore internally
      */
     public function getName();
 }

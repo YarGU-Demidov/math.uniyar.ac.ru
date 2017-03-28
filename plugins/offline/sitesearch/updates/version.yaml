@@ -59,3 +59,21 @@
     - 'Added a new meta property for search results (thanks to cracki)'
 1.2.16:
     - 'Added Persian (Farsi) translations (thanks to cracki)'
+1.2.17:
+    - 'Added support for Indikator.News (thanks to gergo85)'
+1.2.18:
+    - 'Fixed bug where titles of static pages where not searched (thanks to beenen445)'
+1.2.19:
+    - 'Added support for OFFLINE.SnipcartShop'
+1.2.20:
+    - 'Added support for VojtaSvoboda.Brands (thanks to vojtasvoboda)'
+1.2.21:
+    - 'Added Portuguese translations (thanks to ribsousa)'
+1.2.22:
+    - 'Fixed Portuguese translations'
+1.2.23:
+    - 'Fixed support for translated Rainlab.Blog contents'
+1.2.24:
+    - 'Added composer.json to allow loading plugin as dependency (thanks to adduc)'
+1.2.25:
+    - 'Fixed bug that sometimes lead to broken html in search results (thanks to graker)'

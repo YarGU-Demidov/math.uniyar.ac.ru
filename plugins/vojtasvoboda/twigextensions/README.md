@@ -4,13 +4,19 @@
 [![HHVM Status](https://img.shields.io/hhvm/vojtasvoboda/oc-twigextensions-plugin/master.svg)](http://hhvm.h4cc.de/package/vojtasvoboda/oc-twigextensions-plugin)
 [![Codacy](https://img.shields.io/codacy/c6b23b6527bd407092763cace324ef4a.svg)](https://www.codacy.com/app/vojtasvoboda/oc-twigextensions-plugin)
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/g/vojtasvoboda/oc-twigextensions-plugin.svg)](https://scrutinizer-ci.com/g/vojtasvoboda/oc-twigextensions-plugin/?branch=master)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vojtasvoboda/oc-twigextensions-plugin/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vojtasvoboda/oc-twigextensions-plugin/blob/master/LICENSE)
 
-Twig extensions plugin for OctoberCMS adds new filter and functions to your templates. No other plugin dependencies. Tested with the latest stable build 349.
+Twig extensions plugin for OctoberCMS adds new filter and functions to your templates. No other plugin dependencies. Tested with the latest stable OctoberCMS build 382.
 
 ## Installation
 
-Just install VojtaSvoboda.TwigExtensions plugin a you can use new added filters/functions at your templates:
+Install plugin from CMS backend or by Composer:
+
+```
+composer require vojtasvoboda/oc-twigextensions-plugin:dev-master
+```
+
+Than you can use newly added filters/functions at your templates:
 
 ```
 <h1 class="heading">{{ article.heading | uppercase }}</h1>
@@ -24,17 +30,7 @@ Just install VojtaSvoboda.TwigExtensions plugin a you can use new added filters/
 
 ## Available functions
 
-[template\_from\_string](http://twig.sensiolabs.org/doc/functions/template_from_string.html), [config](https://laravel.com/docs/5.0/configuration#accessing-configuration-values), [session](https://laravel.com/docs/5.0/session#session-usage), [trans](https://octobercms.com/docs/plugin/localization)
-
-### template\_from\_string
-
-Function loads a template from a string.
-
-```
-{% set name = 'John' %}
-{{ include(template_from_string("Hello {{ name }}")) }}
-{{ include(template_from_string("Hurry up it is: {{ "now"|date("m/d/Y") }}")) }}
-```
+[config](https://laravel.com/docs/5.0/configuration#accessing-configuration-values), [session](https://laravel.com/docs/5.0/session#session-usage), [trans](https://octobercms.com/docs/plugin/localization), [var_dump](http://php.net/manual/en/function.var-dump.php), [template\_from\_string](http://twig.sensiolabs.org/doc/functions/template_from_string.html)
 
 ### config
 
@@ -66,12 +62,29 @@ Function transports the functionality of the Laravel `trans()` helper function t
 The example would output a value stored in a localization file of an imaginary blog plugin.
 See [more about localization in October CMS here](https://octobercms.com/docs/plugin/localization).
 
+### var_dump
+
+Dumps information about a variable. Can be also used as filter.
+
+```
+<pre>{{ var_dump(users) }}</pre>
+```
+
+### template\_from\_string
+
+Function loads a template from a string.
+
+```
+{% set name = 'John' %}
+{{ include(template_from_string("Hello {{ name }}")) }}
+{{ include(template_from_string("Hurry up it is: {{ "now"|date("m/d/Y") }}")) }}
+```
 
 ## Available filters
 
-strftime, uppercase, lowercase, ucfirst, lcfirst, ltrim, rtrim, str_repeat,
-plural, truncate, wordwrap, strpad, leftpad, rightpad, shuffle, time_diff,
-localizeddate, localizednumber, localizedcurrency
+strftime, uppercase, lowercase, ucfirst, lcfirst, ltrim, rtrim, str\_repeat,
+plural, truncate, wordwrap, strpad, leftpad, rightpad, rtl, shuffle, time\_diff,
+localizeddate, localizednumber, localizedcurrency, mailto, var\_dump
 
 ### strftime
 
@@ -264,6 +277,20 @@ This would print:
 xxxoo
 ```
 
+### rtl
+
+Reverse a string.
+
+```
+{{ 'Hello world!' | rtl }}
+```
+
+This would print:
+
+```
+!dlrow olleH
+```
+
 ### shuffle
 
 Shuffle an array.
@@ -290,6 +317,8 @@ Use the time_diff filter to render the difference between a date and now.
 
 The example above will output a string like 4 seconds ago or in 1 month, depending on the filtered date.
 
+Output is **translatable**. All translations are stored at `/lang` folder in this plugin. If you want more locales, just copy them from [this repository](https://github.com/KnpLabs/KnpTimeBundle/tree/master/Resources/translations), replace `%count%` with `:count` and send it as pull reqest to this repository.
+
 #### Arguments
 
 - date: The date for calculate the difference from now. Can be a string or a DateTime instance.
@@ -301,7 +330,7 @@ To get a translatable output, give a Symfony\Component\Translation\TranslatorInt
 
 ### localizeddate
 
-Use the localizeddate filter to format dates into a localized string representating the date.
+Use the localizeddate filter to format dates into a localized string representating the date. Note that **php5-intl extension** has to be installed!
 
 ```
 {{ post.published_at | localizeddate('medium', 'none', locale) }}
@@ -323,7 +352,7 @@ The localizeddate filter accepts strings (it must be in a format supported by th
 
 ### localizednumber
 
-Use the localizednumber filter to format numbers into a localized string representating the number.
+Use the localizednumber filter to format numbers into a localized string representating the number. Note that **php5-intl extension** has to be installed!
 
 ```
 {{ product.quantity | localizednumber }}
@@ -351,7 +380,7 @@ Internally, Twig uses the PHP NumberFormatter::create() function for the number.
 
 ### localizedcurrency
 
-Use the localizedcurrency filter to format a currency value into a localized string.
+Use the localizedcurrency filter to format a currency value into a localized string. Note that **php5-intl extension** has to be installed!
 
 ```
 {{ product.price | localizedcurrency('EUR') }}
@@ -362,16 +391,51 @@ Use the localizedcurrency filter to format a currency value into a localized str
 - currency: The 3-letter ISO 4217 currency code indicating the currency to use.
 - locale: The locale used for the format. If NULL is given, Twig will use Locale::getDefault()
 
-## Future plans
+### mailto
 
-- [x] Add Unit tests
-- [ ] Create backend settings and add checkboxes for each functions/filters group
+Filter for rendering email as normal mailto link, but with encryption against bots!
 
-**Feel free to send pullrequest!**
+```
+{{ 'vojtasvoboda.cz@gmail.com' | mailto }}
+```
+
+returns
+
+```
+<span id="e846043876">[javascript protected email address]</span><script type="text/javascript">/*<![CDATA[*/eval("var a=\"9IV1G0on6.ryWZYS28iPcNBwq4aeUJF5CskjuLQAh3XdlEz@7KtmpHbTxM-ODg_+Rvf\";var b=a.split(\"\").sort().join(\"\");var c=\"_TtD3O_TXTl3VdfZ@H3KpVdTH\";var d=\"\";for(var e=0;e<c.length;e++)d+=b.charAt(a.indexOf(c.charAt(e)));document.getElementById(\"e846043876\").innerHTML=\"<a href=\\\"mailto:\"+d+\"\\\">\"+d+\"</a>\"")/*]]>*/</script>
+```
+
+which will be rendered to page as normal
+
+```
+<a href="mailto:vojtasvoboda.cz@gmail.com">vojtasvoboda.cz@gmail.com</a>
+```
+
+PHP encrypts your email address and generates the JavaScript that decrypts it. Most bots can't execute JavaScript and that is what makes this work. A visitors of your web page will not notice that you used this script as long as they has JavaScript enabled. The visitors will see "[javascript protected email address]" instead of the email address if they has JavaScript disabled.
+
+#### Filter parameters
+
+```
+{{ 'vojtasvoboda.cz@gmail.com' | mailto(true, true, 'Let me know') }}
+```
+
+- first boolean parameter = returns email clickable (with link)
+- second boolean parameter = encryption is enabled
+- third string parameter = link text (not encrypted!)
+
+### var_dump
+
+Dumps information about a variable.
+
+```
+<pre>{{ users | var_dump }}</pre>
+```
 
 ## Contributing
 
-Please send Pull Request to master branch.
+- [ ] Fix time_diff unit test, which pass at local machine, but fails at TravisCI.
+
+**Feel free to send pullrequest!** Please, send Pull Request to master branch.
 
 ## License
 

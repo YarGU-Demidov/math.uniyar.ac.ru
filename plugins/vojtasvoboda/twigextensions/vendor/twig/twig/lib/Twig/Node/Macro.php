@@ -18,11 +18,11 @@ class Twig_Node_Macro extends Twig_Node
 {
     const VARARGS_NAME = 'varargs';
 
-    public function __construct($name, Twig_Node $body, Twig_Node $arguments, $lineno, $tag = null)
+    public function __construct($name, Twig_NodeInterface $body, Twig_NodeInterface $arguments, $lineno, $tag = null)
     {
         foreach ($arguments as $argumentName => $argument) {
             if (self::VARARGS_NAME === $argumentName) {
-                throw new Twig_Error_Syntax(sprintf('The argument "%s" in macro "%s" cannot be defined because the variable "%s" is reserved for arbitrary arguments.', self::VARARGS_NAME, $name, self::VARARGS_NAME), $argument->getLine());
+                throw new Twig_Error_Syntax(sprintf('The argument "%s" in macro "%s" cannot be defined because the variable "%s" is reserved for arbitrary arguments.', self::VARARGS_NAME, $name, self::VARARGS_NAME), $argument->getTemplateLine());
             }
         }
 
@@ -33,7 +33,7 @@ class Twig_Node_Macro extends Twig_Node
     {
         $compiler
             ->addDebugInfo($this)
-            ->write(sprintf('public function macro_%s(', $this->getAttribute('name')))
+            ->write(sprintf('public function get%s(', $this->getAttribute('name')))
         ;
 
         $count = count($this->getNode('arguments'));
@@ -70,7 +70,7 @@ class Twig_Node_Macro extends Twig_Node
 
         foreach ($this->getNode('arguments') as $name => $default) {
             $compiler
-                ->addIndentation()
+                ->write('')
                 ->string($name)
                 ->raw(' => $__'.$name.'__')
                 ->raw(",\n")
@@ -78,7 +78,7 @@ class Twig_Node_Macro extends Twig_Node
         }
 
         $compiler
-            ->addIndentation()
+            ->write('')
             ->string(self::VARARGS_NAME)
             ->raw(' => ')
         ;
@@ -103,14 +103,19 @@ class Twig_Node_Macro extends Twig_Node
             ->write("try {\n")
             ->indent()
             ->subcompile($this->getNode('body'))
-            ->raw("\n")
-            ->write("return ('' === \$tmp = ob_get_contents()) ? '' : new Twig_Markup(\$tmp, \$this->env->getCharset());\n")
             ->outdent()
-            ->write("} finally {\n")
+            ->write("} catch (Exception \$e) {\n")
             ->indent()
-            ->write("ob_end_clean();\n")
+            ->write("ob_end_clean();\n\n")
+            ->write("throw \$e;\n")
             ->outdent()
-            ->write("}\n")
+            ->write("} catch (Throwable \$e) {\n")
+            ->indent()
+            ->write("ob_end_clean();\n\n")
+            ->write("throw \$e;\n")
+            ->outdent()
+            ->write("}\n\n")
+            ->write("return ('' === \$tmp = ob_get_clean()) ? '' : new Twig_Markup(\$tmp, \$this->env->getCharset());\n")
             ->outdent()
             ->write("}\n\n")
         ;

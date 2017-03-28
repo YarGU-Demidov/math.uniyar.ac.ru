@@ -49,6 +49,7 @@ class FieldParser
         'mediafinder',
         'dropdown',
         'radio',
+        'checkbox',
         'repeater',
         'variable'
     ];
@@ -149,6 +150,7 @@ class FieldParser
 
     /**
      * Returns default values for all fields.
+     * @param  array $fields
      * @return array
      */
     public function getDefaultParams($fields = null)
@@ -208,6 +210,7 @@ class FieldParser
     /**
      * Processes all registered tags against a template.
      * @param  string $template
+     * @param  bool $usingTags
      * @return void
      */
     protected function processTags($template, $usingTags = null)
@@ -231,8 +234,8 @@ class FieldParser
         $paramStrings = $result[2];
 
         foreach ($tagStrings as $key => $tagString) {
-            $params = $this->processParams($paramStrings[$key]);
             $tagName = $tagNames[$key];
+            $params = $this->processParams($paramStrings[$key], $tagName);
 
             if (isset($params['name'])) {
                 $name = $params['name'];
@@ -265,9 +268,10 @@ class FieldParser
      * Processes group 2 from the Tag regex and returns
      * an array of captured parameters.
      * @param  string $value
+     * @param  string $tagName
      * @return array
      */
-    protected function processParams($value)
+    protected function processParams($value, $tagName)
     {
         $close = Parser::CHAR_CLOSE;
         $closePos = strpos($value, $close);
@@ -287,7 +291,13 @@ class FieldParser
         $paramNames = $result[1];
         $paramValues = $result[2];
         $params = array_combine($paramNames, $paramValues);
-        $params['default'] = $defaultValue;
+
+        if ($tagName == 'checkbox') {
+            $params['_content'] = $defaultValue;
+        }
+        else {
+            $params['default'] = $defaultValue;
+        }
 
         return $params;
     }
@@ -381,7 +391,9 @@ class FieldParser
 
                 if (strlen($key)) {
                     if (!preg_match('/^[0-9a-z-_]+$/i', $key)) {
-                        throw new Exception(sprintf('Invalid drop-down option key: %s. Option keys can contain only digits, Latin letters and characters _ and -', $key));
+                        throw new Exception(sprintf(
+                            'Invalid drop-down option key: %s. Option keys can contain only digits, Latin letters and characters _ and -', $key
+                        ));
                     }
 
                     $result[$key] = trim($parts[1]);

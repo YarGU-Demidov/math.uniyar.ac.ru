@@ -42,14 +42,15 @@ trait Hashable
 
     /**
      * Adds an attribute to the hashable attributes list
-     * @param string $attribute Attribute
+     * @param  array|string|null  $attributes
      * @return $this
      */
-    public function addHashableAttribute($attribute)
+    public function addHashable($attributes = null)
     {
-        if (in_array($attribute, $this->hashable)) return;
+        $attributes = is_array($attributes) ? $attributes : func_get_args();
 
-        $this->hashable[] = $attribute;
+        $this->hashable = array_merge($this->hashable, $attributes);
+
         return $this;
     }
 
@@ -103,5 +104,16 @@ trait Hashable
         return isset($this->originalHashableValues[$attribute])
             ? $this->originalHashableValues[$attribute]
             : null;
+    }
+
+    /**
+     * @deprecated use self::addHashable()
+     * Remove this method if year >= 2018
+     */
+    public function addHashableAttribute($attribute)
+    {
+        traceLog('The addHashableAttribute() method is deprecated, use addHashable() instead.');
+
+        return $this->addHashable($attribute);
     }
 }

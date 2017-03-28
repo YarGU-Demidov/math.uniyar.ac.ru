@@ -10,24 +10,30 @@
  */
 
 /**
- * Used by Twig_Environment as a staging area.
+ * Internal class.
+ *
+ * This class is used by Twig_Environment as a staging area and must not be used directly.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @internal
  */
-final class Twig_Extension_Staging extends Twig_Extension
+class Twig_Extension_Staging extends Twig_Extension
 {
-    private $functions = array();
-    private $filters = array();
-    private $visitors = array();
-    private $tokenParsers = array();
-    private $globals = array();
-    private $tests = array();
+    protected $functions = array();
+    protected $filters = array();
+    protected $visitors = array();
+    protected $tokenParsers = array();
+    protected $globals = array();
+    protected $tests = array();
 
-    public function addFunction(Twig_Function $function)
+    public function addFunction($name, $function)
     {
-        $this->functions[$function->getName()] = $function;
+        if (isset($this->functions[$name])) {
+            @trigger_error(sprintf('Overriding function "%s" that is already registered is deprecated since version 1.30 and won\'t be possible anymore in 2.0.', $name), E_USER_DEPRECATED);
+        }
+
+        $this->functions[$name] = $function;
     }
 
     public function getFunctions()
@@ -35,9 +41,13 @@ final class Twig_Extension_Staging extends Twig_Extension
         return $this->functions;
     }
 
-    public function addFilter(Twig_Filter $filter)
+    public function addFilter($name, $filter)
     {
-        $this->filters[$filter->getName()] = $filter;
+        if (isset($this->filters[$name])) {
+            @trigger_error(sprintf('Overriding filter "%s" that is already registered is deprecated since version 1.30 and won\'t be possible anymore in 2.0.', $name), E_USER_DEPRECATED);
+        }
+
+        $this->filters[$name] = $filter;
     }
 
     public function getFilters()
@@ -57,7 +67,11 @@ final class Twig_Extension_Staging extends Twig_Extension
 
     public function addTokenParser(Twig_TokenParserInterface $parser)
     {
-        $this->tokenParsers[] = $parser;
+        if (isset($this->tokenParsers[$parser->getTag()])) {
+            @trigger_error(sprintf('Overriding tag "%s" that is already registered is deprecated since version 1.30 and won\'t be possible anymore in 2.0.', $parser->getTag()), E_USER_DEPRECATED);
+        }
+
+        $this->tokenParsers[$parser->getTag()] = $parser;
     }
 
     public function getTokenParsers()
@@ -75,9 +89,13 @@ final class Twig_Extension_Staging extends Twig_Extension
         return $this->globals;
     }
 
-    public function addTest(Twig_Test $test)
+    public function addTest($name, $test)
     {
-        $this->tests[$test->getName()] = $test;
+        if (isset($this->tests[$name])) {
+            @trigger_error(sprintf('Overriding test "%s" that is already registered is deprecated since version 1.30 and won\'t be possible anymore in 2.0.', $name), E_USER_DEPRECATED);
+        }
+
+        $this->tests[$name] = $test;
     }
 
     public function getTests()

@@ -31,6 +31,10 @@
 #define Z_ADDREF_P(pz)                (pz)->refcount++
 #endif
 
+#ifndef E_USER_DEPRECATED
+#define E_USER_DEPRECATED	(1<<14L)
+#endif
+
 #define FREE_DTOR(z) 	\
 	zval_dtor(z); 		\
 	efree(z);
@@ -144,7 +148,7 @@ static zval *TWIG_GET_ARRAYOBJECT_ELEMENT(zval *object, zval *offset TSRMLS_DC)
 
 		if (!retval) {
 			if (!EG(exception)) {
-				zend_error(E_ERROR, "Undefined offset for object of type %s used as array", ce->name);
+				zend_error(E_ERROR, "Undefined offset for object of type %s used as array.", ce->name);
 			}
 			return NULL;
 		}
@@ -167,7 +171,7 @@ static int TWIG_ISSET_ARRAYOBJECT_ELEMENT(zval *object, zval *offset TSRMLS_DC)
 
 		if (!retval) {
 			if (!EG(exception)) {
-				zend_error(E_ERROR, "Undefined offset for object of type %s used as array", ce->name);
+				zend_error(E_ERROR, "Undefined offset for object of type %s used as array.", ce->name);
 			}
 			return 0;
 		}
@@ -609,6 +613,7 @@ static char *TWIG_GET_CLASS_NAME(zval *object TSRMLS_DC)
 
 static int twig_add_method_to_class(void *pDest APPLY_TSRMLS_DC, int num_args, va_list args, zend_hash_key *hash_key)
 {
+	zend_class_entry *ce;
 	zval *retval;
 	char *item;
 	size_t item_len;
@@ -619,11 +624,22 @@ static int twig_add_method_to_class(void *pDest APPLY_TSRMLS_DC, int num_args, v
 		return 0;
 	}
 
+	ce = *va_arg(args, zend_class_entry**);
 	retval = va_arg(args, zval*);
 
 	item_len = strlen(mptr->common.function_name);
 	item = estrndup(mptr->common.function_name, item_len);
 	php_strtolower(item, item_len);
+
+	if (strcmp("getenvironment", item) == 0) {
+		zend_class_entry **twig_template_ce;
+		if (zend_lookup_class("Twig_Template", strlen("Twig_Template"), &twig_template_ce TSRMLS_CC) == FAILURE) {
+			return 0;
+		}
+		if (instanceof_function(ce, *twig_template_ce TSRMLS_CC)) {
+			return 0;
+		}
+	}
 
 	add_assoc_stringl_ex(retval, item, item_len+1, item, item_len, 0);
 
@@ -670,7 +686,7 @@ static void twig_add_class_to_cache(zval *cache, zval *object, char *class_name 
 	array_init(class_methods);
 	array_init(class_properties);
 	// add all methods to self::cache[$class]['methods']
-	zend_hash_apply_with_arguments(&class_ce->function_table APPLY_TSRMLS_CC, twig_add_method_to_class, 1, class_methods);
+	zend_hash_apply_with_arguments(&class_ce->function_table APPLY_TSRMLS_CC, twig_add_method_to_class, 2, &class_ce, class_methods);
 	zend_hash_apply_with_arguments(&class_ce->properties_info APPLY_TSRMLS_CC, twig_add_property_to_class, 2, &class_ce, class_properties);
 
 	add_assoc_zval(class_info, "methods", class_methods);
@@ -799,15 +815,15 @@ PHP_FUNCTION(twig_template_get_attributes)
 	}
 */
 			if (TWIG_INSTANCE_OF(object, zend_ce_arrayaccess TSRMLS_CC)) {
-				TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Key \"%s\" in object with ArrayAccess of class \"%s\" does not exist", item, TWIG_GET_CLASS_NAME(object TSRMLS_CC));
+				TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Key \"%s\" in object with ArrayAccess of class \"%s\" does not exist.", item, TWIG_GET_CLASS_NAME(object TSRMLS_CC));
 			} else if (Z_TYPE_P(object) == IS_OBJECT) {
-				TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Impossible to access a key \"%s\" on an object of class \"%s\" that does not implement ArrayAccess interface", item, TWIG_GET_CLASS_NAME(object TSRMLS_CC));
+				TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Impossible to access a key \"%s\" on an object of class \"%s\" that does not implement ArrayAccess interface.", item, TWIG_GET_CLASS_NAME(object TSRMLS_CC));
 			} else if (Z_TYPE_P(object) == IS_ARRAY) {
 				if (0 == zend_hash_num_elements(Z_ARRVAL_P(object))) {
-					TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Key \"%s\" does not exist as the array is empty", item);
+					TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Key \"%s\" does not exist as the array is empty.", item);
 				} else {
 					char *array_keys = TWIG_IMPLODE_ARRAY_KEYS(", ", object TSRMLS_CC);
-					TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Key \"%s\" for array with keys \"%s\" does not exist", item, array_keys);
+					TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Key \"%s\" for array with keys \"%s\" does not exist.", item, array_keys);
 					efree(array_keys);
 				}
 			} else {
@@ -817,15 +833,15 @@ PHP_FUNCTION(twig_template_get_attributes)
 					convert_to_string(object);
 					TWIG_RUNTIME_ERROR(template TSRMLS_CC,
 						(strcmp("array", type) == 0)
-							? "Impossible to access a key (\"%s\") on a %s variable"
-							: "Impossible to access an attribute (\"%s\") on a %s variable",
+							? "Impossible to access a key (\"%s\") on a %s variable."
+							: "Impossible to access an attribute (\"%s\") on a %s variable.",
 						item, type_name);
 				} else {
 					convert_to_string(object);
 					TWIG_RUNTIME_ERROR(template TSRMLS_CC,
 						(strcmp("array", type) == 0)
-							? "Impossible to access a key (\"%s\") on a %s variable (\"%s\")"
-							: "Impossible to access an attribute (\"%s\") on a %s variable (\"%s\")",
+							? "Impossible to access a key (\"%s\") on a %s variable (\"%s\")."
+							: "Impossible to access an attribute (\"%s\") on a %s variable (\"%s\").",
 						item, type_name, Z_STRVAL_P(object));
 				}
 				zval_ptr_dtor(&object);
@@ -871,11 +887,11 @@ PHP_FUNCTION(twig_template_get_attributes)
 		if (Z_TYPE_P(object) == IS_NULL) {
 			convert_to_string_ex(&object);
 
-			TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Impossible to invoke a method (\"%s\") on a %s variable", item, type_name);
+			TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Impossible to invoke a method (\"%s\") on a %s variable.", item, type_name);
 		} else {
 			convert_to_string_ex(&object);
 
-			TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Impossible to invoke a method (\"%s\") on a %s variable (\"%s\")", item, type_name, Z_STRVAL_P(object));
+			TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Impossible to invoke a method (\"%s\") on a %s variable (\"%s\").", item, type_name, Z_STRVAL_P(object));
 		}
 
 		zval_ptr_dtor(&object);
@@ -904,8 +920,8 @@ PHP_FUNCTION(twig_template_get_attributes)
 				return true;
 			}
 
-			if ($this->env->hasExtension('sandbox')) {
-				$this->env->getExtension('sandbox')->checkPropertyAllowed($object, $item);
+			if ($this->env->hasExtension('Twig_Extension_Sandbox')) {
+				$this->env->getExtension('Twig_Extension_Sandbox')->checkPropertyAllowed($object, $item);
 			}
 
 			return $object->$item;
@@ -923,8 +939,8 @@ PHP_FUNCTION(twig_template_get_attributes)
 				efree(item);
 				RETURN_TRUE;
 			}
-			if (TWIG_CALL_SB(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "hasExtension", "sandbox" TSRMLS_CC)) {
-				TWIG_CALL_ZZ(TWIG_CALL_S(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "getExtension", "sandbox" TSRMLS_CC), "checkPropertyAllowed", object, zitem TSRMLS_CC);
+			if (TWIG_CALL_SB(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "hasExtension", "Twig_Extension_Sandbox" TSRMLS_CC)) {
+				TWIG_CALL_ZZ(TWIG_CALL_S(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "getExtension", "Twig_Extension_Sandbox" TSRMLS_CC), "checkPropertyAllowed", object, zitem TSRMLS_CC);
 			}
 			if (EG(exception)) {
 				efree(item);
@@ -944,7 +960,12 @@ PHP_FUNCTION(twig_template_get_attributes)
 			$methods = array();
 
 			foreach ($ref->getMethods(ReflectionMethod::IS_PUBLIC) as $refMethod) {
-				$methods[strtolower($refMethod->name)] = true;
+				$methodName = strtolower($refMethod->name);
+
+				// Accessing the environment from templates is forbidden to prevent untrusted changes to the environment
+				if ('getenvironment' !== $methodName) {
+					$methods[$methodName] = true;
+				}
 			}
 
 			self::$cache[$class]['methods'] = $methods;
@@ -970,22 +991,22 @@ PHP_FUNCTION(twig_template_get_attributes)
 		char *lcItem = TWIG_STRTOLOWER(item, item_len);
 		int   lcItem_length;
 		char *method = NULL;
+		char *methodForDeprecation = NULL;
 		char *tmp_method_name_get;
 		char *tmp_method_name_is;
-		char *tmp_method_name_has;
 		zval *zmethod;
 		zval *tmp_methods;
 
 		lcItem_length = strlen(lcItem);
 		tmp_method_name_get = emalloc(4 + lcItem_length);
 		tmp_method_name_is  = emalloc(3 + lcItem_length);
-		tmp_method_name_has  = emalloc(4 + lcItem_length);
 
 		sprintf(tmp_method_name_get, "get%s", lcItem);
 		sprintf(tmp_method_name_is, "is%s", lcItem);
-		sprintf(tmp_method_name_has, "has%s", lcItem);
 
 		tmp_methods = TWIG_GET_ARRAY_ELEMENT(tmp_class, "methods", strlen("methods") TSRMLS_CC);
+		methodForDeprecation = emalloc(item_len + 1);
+		sprintf(methodForDeprecation, "%s", item);
 
 		if (TWIG_GET_ARRAY_ELEMENT(tmp_methods, lcItem, lcItem_length TSRMLS_CC)) {
 			method = item;
@@ -993,8 +1014,6 @@ PHP_FUNCTION(twig_template_get_attributes)
 			method = tmp_method_name_get;
 		} else if (TWIG_GET_ARRAY_ELEMENT(tmp_methods, tmp_method_name_is, lcItem_length + 2 TSRMLS_CC)) {
 			method = tmp_method_name_is;
-		} else if (TWIG_GET_ARRAY_ELEMENT(tmp_methods, tmp_method_name_has, lcItem_length + 3 TSRMLS_CC)) {
-			method = tmp_method_name_has;
 		} else if (TWIG_GET_ARRAY_ELEMENT(tmp_methods, "__call", 6 TSRMLS_CC)) {
 			method = item;
 			call = 1;
@@ -1008,7 +1027,7 @@ PHP_FUNCTION(twig_template_get_attributes)
 			return null;
 		}
 
-		throw new Twig_Error_Runtime(sprintf('Method "%s" for object "%s" does not exist', $item, get_class($object)), -1, $this->getTemplateName());
+		throw new Twig_Error_Runtime(sprintf('Method "%s" for object "%s" does not exist.', $item, get_class($object)), -1, $this->getTemplateName());
 	}
 
 	if ($isDefinedTest) {
@@ -1028,7 +1047,7 @@ PHP_FUNCTION(twig_template_get_attributes)
 				efree(item);
 				return;
 			}
-			TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Neither the property \"%s\" nor one of the methods \"%s()\", \"get%s()\"/\"is%s()\" or \"__call()\" exist and have public access in class \"%s\"", item, item, item, item, TWIG_GET_CLASS_NAME(object TSRMLS_CC));
+			TWIG_RUNTIME_ERROR(template TSRMLS_CC, "Neither the property \"%s\" nor one of the methods \"%s()\", \"get%s()\"/\"is%s()\" or \"__call()\" exist and have public access in class \"%s\".", item, item, item, item, TWIG_GET_CLASS_NAME(object TSRMLS_CC));
 			efree(item);
 			return;
 		}
@@ -1040,14 +1059,14 @@ PHP_FUNCTION(twig_template_get_attributes)
 			RETURN_TRUE;
 		}
 /*
-	if ($this->env->hasExtension('sandbox')) {
-		$this->env->getExtension('sandbox')->checkMethodAllowed($object, $method);
+	if ($this->env->hasExtension('Twig_Extension_Sandbox')) {
+		$this->env->getExtension('Twig_Extension_Sandbox')->checkMethodAllowed($object, $method);
 	}
 */
 		MAKE_STD_ZVAL(zmethod);
 		ZVAL_STRING(zmethod, method, 1);
-		if (TWIG_CALL_SB(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "hasExtension", "sandbox" TSRMLS_CC)) {
-			TWIG_CALL_ZZ(TWIG_CALL_S(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "getExtension", "sandbox" TSRMLS_CC), "checkMethodAllowed", object, zmethod TSRMLS_CC);
+		if (TWIG_CALL_SB(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "hasExtension", "Twig_Extension_Sandbox" TSRMLS_CC)) {
+			TWIG_CALL_ZZ(TWIG_CALL_S(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "getExtension", "Twig_Extension_Sandbox" TSRMLS_CC), "checkMethodAllowed", object, zmethod TSRMLS_CC);
 		}
 		zval_ptr_dtor(&zmethod);
 		if (EG(exception)) {
@@ -1082,34 +1101,115 @@ PHP_FUNCTION(twig_template_get_attributes)
 		efree(tmp_method_name_get);
 		efree(tmp_method_name_is);
 		efree(lcItem);
-	}
 /*
-	// useful when calling a template method from a template
-	// this is not supported but unfortunately heavily used in the Symfony profiler
-	if ($object instanceof Twig_Template) {
+	// @deprecated in 1.28
+	if ($object instanceof Twig_TemplateInterface) {
+		$self = $object->getTemplateName() === $this->getTemplateName();
+		$message = sprintf('Calling "%s" on template "%s" from template "%s" is deprecated since version 1.28 and won\'t be supported anymore in 2.0.', $item, $object->getTemplateName(), $this->getTemplateName());
+		if ('renderBlock' === $method || 'displayBlock' === $method) {
+			$message .= sprintf(' Use block("%s"%s) instead).', $arguments[0], $self ? '' : ', template');
+		} elseif ('hasBlock' === $method) {
+			$message .= sprintf(' Use "block("%s"%s) is defined" instead).', $arguments[0], $self ? '' : ', template');
+		} elseif ('render' === $method || 'display' === $method) {
+			$message .= sprintf(' Use include("%s") instead).', $object->getTemplateName());
+		}
+		@trigger_error($message, E_USER_DEPRECATED);
+
 		return $ret === '' ? '' : new Twig_Markup($ret, $this->env->getCharset());
 	}
 
 	return $ret;
 */
-	efree(item);
-	// ret can be null, if e.g. the called method throws an exception
-	if (ret) {
-		if (TWIG_INSTANCE_OF_USERLAND(object, "Twig_Template" TSRMLS_CC)) {
-			if (Z_STRLEN_P(ret) != 0) {
-				zval *charset = TWIG_CALL_USER_FUNC_ARRAY(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "getCharset", NULL TSRMLS_CC);
-				TWIG_NEW(return_value, "Twig_Markup", ret, charset TSRMLS_CC);
-				zval_ptr_dtor(&charset);
-				if (ret) {
-					zval_ptr_dtor(&ret);
+		efree(item);
+		// ret can be null, if e.g. the called method throws an exception
+		if (ret) {
+			if (TWIG_INSTANCE_OF_USERLAND(object, "Twig_TemplateInterface" TSRMLS_CC)) {
+				int self;
+				int old_error_reporting;
+				zval *object_filename;
+				zval *this_filename;
+				zval *filename_func;
+				char *deprecation_message_complement = NULL;
+				char *deprecation_message = NULL;
+
+				MAKE_STD_ZVAL(object_filename);
+				MAKE_STD_ZVAL(this_filename);
+				MAKE_STD_ZVAL(filename_func);
+
+				// Get templates names
+				ZVAL_STRINGL(filename_func, "getTemplateName", sizeof("getTemplateName")-1, 1);
+				call_user_function(EG(function_table), &object, filename_func, object_filename, 0, 0 TSRMLS_CC);
+				ZVAL_STRINGL(filename_func, "getTemplateName", sizeof("getTemplateName")-1, 1);
+				call_user_function(EG(function_table), &template, filename_func, this_filename, 0, 0 TSRMLS_CC);
+
+				self = (strcmp(Z_STRVAL_P(object_filename), Z_STRVAL_P(this_filename)) == 0);
+
+				if (strcmp(methodForDeprecation, "renderBlock") == 0 || strcmp(methodForDeprecation, "displayBlock") == 0) {
+					zval **arg0;
+					zend_hash_index_find(HASH_OF(arguments), 0, (void **) &arg0);
+					asprintf(
+						&deprecation_message_complement,
+						" Use block(\"%s\"%s) instead).",
+						Z_STRVAL_PP(arg0),
+						self ? "" : ", template"
+					);
+				} else if (strcmp(methodForDeprecation, "hasBlock") == 0) {
+					zval **arg0;
+					zend_hash_index_find(HASH_OF(arguments), 0, (void **) &arg0);
+					asprintf(
+						&deprecation_message_complement,
+						" Use \"block(\"%s\"%s) is defined\" instead).",
+						Z_STRVAL_PP(arg0),
+						self ? "" : ", template"
+					);
+				} else if (strcmp(methodForDeprecation, "render") == 0 || strcmp(methodForDeprecation, "display") == 0) {
+					asprintf(
+						&deprecation_message_complement,
+						" Use include(\"%s\") instead).",
+						Z_STRVAL_P(object_filename)
+					);
+				} else {
+					deprecation_message_complement = (char*)calloc(0, sizeof(char));
 				}
-				return;
+
+				asprintf(
+					&deprecation_message,
+					"Calling \"%s\" on template \"%s\" from template \"%s\" is deprecated since version 1.28 and won't be supported anymore in 2.0.%s",
+					methodForDeprecation,
+					Z_STRVAL_P(object_filename),
+					Z_STRVAL_P(this_filename),
+					deprecation_message_complement
+				);
+
+				old_error_reporting = EG(error_reporting);
+				EG(error_reporting) = 0;
+				zend_error(E_USER_DEPRECATED, "%s", deprecation_message);
+				EG(error_reporting) = old_error_reporting;
+
+				FREE_DTOR(filename_func)
+				FREE_DTOR(object_filename)
+				FREE_DTOR(this_filename)
+				free(deprecation_message);
+				free(deprecation_message_complement);
+
+				if (Z_STRLEN_P(ret) != 0) {
+					zval *charset = TWIG_CALL_USER_FUNC_ARRAY(TWIG_PROPERTY_CHAR(template, "env" TSRMLS_CC), "getCharset", NULL TSRMLS_CC);
+					TWIG_NEW(return_value, "Twig_Markup", ret, charset TSRMLS_CC);
+					zval_ptr_dtor(&charset);
+					if (ret) {
+						zval_ptr_dtor(&ret);
+					}
+					efree(methodForDeprecation);
+					return;
+				}
+			}
+
+			RETVAL_ZVAL(ret, 1, 0);
+			if (free_ret) {
+				zval_ptr_dtor(&ret);
 			}
 		}
 
-		RETVAL_ZVAL(ret, 1, 0);
-		if (free_ret) {
-			zval_ptr_dtor(&ret);
-		}
+		efree(methodForDeprecation);
 	}
 }

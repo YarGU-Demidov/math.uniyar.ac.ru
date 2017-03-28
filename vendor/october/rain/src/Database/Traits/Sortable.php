@@ -35,7 +35,7 @@ trait Sortable
     public static function bootSortable()
     {
         static::created(function($model) {
-            $model->setSortableOrder($model->id);
+            $model->setSortableOrder($model->getKey());
         });
 
         static::addGlobalScope(new SortableScope);
@@ -59,7 +59,7 @@ trait Sortable
 
         foreach ($itemIds as $index => $id) {
             $order = $itemOrders[$index];
-            $this->newQuery()->where('id', $id)->update([$this->getSortOrderColumn() => $order]);
+            $this->newQuery()->where($this->getKeyName(), $id)->update([$this->getSortOrderColumn() => $order]);
         }
     }
 

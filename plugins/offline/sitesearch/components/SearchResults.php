@@ -7,11 +7,14 @@ use OFFLINE\SiteSearch\Classes\Providers\ArrizalaminPortfolioResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\CmsPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\FeeglewebOctoshopProductsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\GenericResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\IndikatorNewsResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\JiriJKShopResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\OfflineSnipcartShopResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RadiantWebProBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabBlogResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\RainlabPagesResultsProvider;
 use OFFLINE\SiteSearch\Classes\Providers\ResponsivShowcaseResultsProvider;
+use OFFLINE\SiteSearch\Classes\Providers\VojtaSvobodaBrandsResultsProvider;
 use OFFLINE\SiteSearch\Classes\ResultCollection;
 use Request;
 
@@ -171,15 +174,18 @@ class SearchResults extends ComponentBase
         $results->setQuery($this->query);
         if ($this->query !== '') {
             $results->addMany([
+                (new OfflineSnipcartShopResultsProvider($this->query))->search()->results(),
                 (new RadiantWebProBlogResultsProvider($this->query))->search()->results(),
                 (new FeeglewebOctoshopProductsResultsProvider($this->query))->search()->results(),
                 (new JiriJKShopResultsProvider($this->query))->search()->results(),
+                (new IndikatorNewsResultsProvider($this->query))->search()->results(),
                 (new ArrizalaminPortfolioResultsProvider($this->query))->search()->results(),
                 (new ResponsivShowcaseResultsProvider($this->query))->search()->results(),
                 (new RainlabBlogResultsProvider($this->query, $this->controller))->search()->results(),
                 (new RainlabPagesResultsProvider($this->query))->search()->results(),
                 (new CmsPagesResultsProvider($this->query))->search()->results(),
                 (new GenericResultsProvider($this->query))->search()->results(),
+                (new VojtaSvobodaBrandsResultsProvider($this->query))->search()->results(),
             ]);
         }
 
@@ -247,5 +253,4 @@ class SearchResults extends ComponentBase
     {
         return $results->slice(($this->pageNumber - 1) * $this->resultsPerPage, $this->resultsPerPage);
     }
-
 }

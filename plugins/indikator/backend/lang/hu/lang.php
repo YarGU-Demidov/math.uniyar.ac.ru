@@ -8,27 +8,21 @@ return [
     ],
     'settings' => [
         'tab_display' => 'Megjelenés',
-        'avatar_label' => 'Kerek profilkép használata a szögletes helyett.',
+        'avatar_label' => 'Kerek profilkép használata a szögletes helyett',
         'avatar_comment' => 'Csak a felső menüben módosul a bélyegkép.',
-        'topmenu_label' => 'Címke elrejtése a felső menüben.',
+        'topmenu_label' => 'Címkék elrejtése a felső menüben',
         'topmenu_comment' => 'Mindegyik menü stílusnál működik.',
-        'sidebar_desc_label' => 'Leírások rejtése az oldalsó menüben.',
+        'sidebar_desc_label' => 'Leírások elrejtése az oldalsó menüben',
         'sidebar_desc_comment' => 'Csak a Beállítások aloldalain működik.',
-        'sidebar_search_label' => 'Kereső mező rejtése az oldalsó menüben.',
+        'sidebar_search_label' => 'Keresőmező elrejtése az oldalsó menüben',
         'sidebar_search_comment' => 'Csak a Beállítások aloldalain működik.',
-        'themes_label' => 'A "További témák ..." link rejtése.',
-        'themes_comment' => 'A Dizájn oldalon található a hivatkozás.',
         'tab_behavior' => 'Működés',
-        'search_label' => 'Kereső mező automatikus aktiválása.',
+        'search_label' => 'Keresőmező automatikus aktiválása',
         'search_comment' => 'Elsőként a listáknál, másodsorban az oldalsó menüben.',
-        'clearbutton_label' => 'Törlés gomb hozzáadása a beviteli mezőkhöz.',
-        'clearbutton_comment' => 'Csak az egyszerű szöveges mezőknél működik.',
-        'keyboard_label' => 'Virtuális billentyűzet megjelenítése.',
-        'keyboard_comment' => 'Csak az egysoros szöveges mezőknél működik.',
-        'delete_plugin_label' => 'Az October Demo bővítmény eltávolítása.',
-        'delete_plugin_comment' => 'Az összes fájl véglegesen eltávolításra kerül.',
-        'enabled_gzip_label' => 'Gzip tömörítés engedélyezése.',
-        'enabled_gzip_comment' => 'A teljes weboldalra érvényes a beállítás.'
+        'context_menu_label' => 'Gyorsmenü engedélyezése',
+        'context_menu_comment' => 'A jobb egérgomb lenyomásával jelenik meg.',
+        'keyboard_label' => 'Virtuális billentyűzet megjelenítése (béta)',
+        'keyboard_comment' => 'Csak az egysoros beviteli mezőknél működik.'
     ],
     'trash' => [
         'title' => 'Felesleges fájlok',
@@ -45,7 +39,7 @@ return [
         'search' => 'Keresés',
         'success' => 'A beolvasás sikeresen befejeződött.',
         'no_items' => 'Gratulálunk, nem találtunk felesleges fájlt a weboldalon!',
-        'remove_all' => 'Összes törlése',
+        'remove_all' => 'Kiürítés',
         'delete' => 'Valóban törölni akarja a tételeket?',
         'remove' => 'A tételek sikeresen eltávolításra kerültek.'
     ],
@@ -166,19 +160,5 @@ return [
         'sports' => 'Sport',
         'technics' => 'Technika',
         'transport' => 'Utazás'
-    ],
-    'component' => [
-        'image' => [
-            'name' => 'Lorem ipsum kép',
-            'description' => ''
-        ],
-        'text' => [
-            'name' => 'Lorem ipsum szöveg',
-            'description' => '',
-            'length' => 'Hossza',
-            'bit' => 'kevés',
-            'some' => 'több',
-            'lots' => 'sok'
-        ]
     ]
 ];

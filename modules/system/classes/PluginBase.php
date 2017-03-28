@@ -49,7 +49,9 @@ class PluginBase extends ServiceProviderBase
             'method in the plugin class.', $thisClass));
 
         if (!array_key_exists('plugin', $configuration)) {
-            throw new SystemException(sprintf('The plugin configuration file plugin.yaml should contain the "plugin" section: %s.', $thisClass));
+            throw new SystemException(sprintf(
+                'The plugin configuration file plugin.yaml should contain the "plugin" section: %s.', $thisClass)
+            );
         }
 
         return $configuration['plugin'];
@@ -182,6 +184,16 @@ class PluginBase extends ServiceProviderBase
     }
 
     /**
+     * Registers custom back-end list column types introduced by this plugin.
+     *
+     * @return array
+     */
+    public function registerListColumnTypes()
+    {
+        return [];
+    }
+
+    /**
      * Registers any mail templates implemented by this plugin.
      * The templates must be returned in the following format:
      * ['acme.blog::mail.welcome' => 'This is a description of the welcome template'],
@@ -237,7 +249,7 @@ class PluginBase extends ServiceProviderBase
         else {
             $this->loadedYamlConfiguration = Yaml::parse(file_get_contents($yamlFilePath));
             if (!is_array($this->loadedYamlConfiguration)) {
-                throw new SystemException('Invalid format of the plugin configuration file: %s. The file should define an array.', $yamlFilePath);
+                throw new SystemException(sprintf('Invalid format of the plugin configuration file: %s. The file should define an array.', $yamlFilePath));
             }
         }
 

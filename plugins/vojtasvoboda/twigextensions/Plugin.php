@@ -9,10 +9,10 @@ use Twig_Extensions_Extension_Array;
 use Twig_Extensions_Extension_Date;
 use Twig_Extensions_Extension_Intl;
 use Twig_Extensions_Extension_Text;
+use VojtaSvoboda\TwigExtensions\Classes\TimeDiffTranslator;
 
 /**
- * Twig Extensions Plugin
- * - add more Twig filters to your template
+ * Twig Extensions Plugin.
  *
  * @see http://twig.sensiolabs.org/doc/extensions/index.html#extensions-install
  */
@@ -30,12 +30,24 @@ class Plugin extends PluginBase
             'description' => 'Add more Twig filters to your templates.',
             'author'      => 'Vojta Svoboda',
             'icon'        => 'icon-plus',
-            'homepage'    => 'https://github.com/vojtasvoboda/oc-twigextensions-plugin'
+            'homepage'    => 'https://github.com/vojtasvoboda/oc-twigextensions-plugin',
         ];
     }
 
+    public function boot()
+    {
+        $this->app->singleton('time_diff_translator', function($app) {
+            $loader = $app->make('translation.loader');
+            $locale = $app->config->get('app.locale');
+            $translator = $app->make(TimeDiffTranslator::class, [$loader, $locale]);
+            $translator->setFallback($app->config->get('app.fallback_locale'));
+
+            return $translator;
+        });
+    }
+
     /**
-     * Add Twig extensions
+     * Add Twig extensions.
      *
      * @see Text extensions http://twig.sensiolabs.org/doc/extensions/text.html
      * @see Intl extensions http://twig.sensiolabs.org/doc/extensions/intl.html
@@ -50,7 +62,7 @@ class Plugin extends PluginBase
         $functions = [];
 
         // init Twig
-        $twig = App::make('twig.environment');
+        $twig = $this->app->make('twig.environment');
 
         // add String Loader functions
         $functions += $this->getStringLoaderFunctions($twig);
@@ -63,6 +75,9 @@ class Plugin extends PluginBase
 
         // add Trans function
         $functions += $this->getTransFunction();
+
+        // add var_dump function
+        $functions += $this->getVarDumpFunction();
 
         // add Text extensions
         $filters += $this->getTextFilters($twig);
@@ -78,17 +93,20 @@ class Plugin extends PluginBase
         // add Time extensions
         $filters += $this->getTimeFilters($twig);
 
+        // add Mail filters
+        $filters += $this->getMailFilters();
+
         // add PHP functions
         $filters += $this->getPhpFunctions();
 
         return [
             'filters'   => $filters,
-            'functions' => $functions
+            'functions' => $functions,
         ];
     }
 
     /**
-     * Returns String Loader functions
+     * Returns String Loader functions.
      *
      * @param \Twig_Environment $twig
      *
@@ -108,7 +126,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Returns Text filters
+     * Returns Text filters.
      *
      * @param \Twig_Environment $twig
      *
@@ -132,7 +150,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Returns Intl filters
+     * Returns Intl filters.
      *
      * @param \Twig_Environment $twig
      *
@@ -160,7 +178,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Returns Array filters
+     * Returns Array filters.
      *
      * @return array
      */
@@ -178,7 +196,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Returns Date filters
+     * Returns Date filters.
      *
      * @param \Twig_Environment $twig
      *
@@ -186,7 +204,8 @@ class Plugin extends PluginBase
      */
     private function getTimeFilters($twig)
     {
-        $timeExtension = new Twig_Extensions_Extension_Date();
+        $translator = $this->app->make('time_diff_translator');
+        $timeExtension = new Twig_Extensions_Extension_Date($translator);
         $timeFilters = $timeExtension->getFilters();
 
         return [
@@ -198,7 +217,21 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Returns plain PHP functions
+     * Returns mail filters.
+     *
+     * @return array
+     */
+    private function getMailFilters()
+    {
+        return [
+            'mailto' => function($string, $link = true, $protected = true, $text = null) {
+                return $this->hideEmail($string, $link, $protected, $text);
+            }
+        ];
+    }
+
+    /**
+     * Returns plain PHP functions.
      *
      * @return array
      */
@@ -242,11 +275,21 @@ class Plugin extends PluginBase
             'rightpad' => function($string, $pad_length, $pad_string = ' ') {
                 return str_pad($string, $pad_length, $pad_string, $pad_type = STR_PAD_RIGHT);
             },
+            'rtl' => function($string) {
+                return strrev($string);
+            },
+            'var_dump' => function($expression) {
+                ob_start();
+                var_dump($expression);
+                $result = ob_get_clean();
+
+                return $result;
+            },
         ];
     }
 
     /**
-     * Works like the config() helper function
+     * Works like the config() helper function.
      *
      * @return array
      */
@@ -260,7 +303,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Works like the session() helper function
+     * Works like the session() helper function.
      *
      * @return array
      */
@@ -274,7 +317,7 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Works like the trans() helper function
+     * Works like the trans() helper function.
      *
      * @return array
      */
@@ -285,5 +328,71 @@ class Plugin extends PluginBase
                 return trans($key);
             },
         ];
+    }
+
+    /**
+     * Dumps information about a variable.
+     *
+     * @return array
+     */
+    private function getVarDumpFunction()
+    {
+        return [
+            'var_dump' => function($expression) {
+                ob_start();
+                var_dump($expression);
+                $result = ob_get_clean();
+
+                return $result;
+            },
+        ];
+    }
+
+    /**
+     * Create protected link with mailto:
+     *
+     * @param string $email Email to render.
+     * @param bool $link If email should be rendered as link.
+     * @param bool $protected If email should be protected.
+     * @param string $text Link text. Render email by default.
+     *
+     * @see http://www.maurits.vdschee.nl/php_hide_email/
+     *
+     * @return string
+     */
+    private function hideEmail($email, $link = true, $protected = true, $text = null)
+    {
+        // email link text
+        $linkText = $email;
+        if ($text !== null) {
+            $linkText = $text;
+        }
+
+        // if we want just unprotected link
+        if (!$protected) {
+            return $link ? '<a href="mailto:' . $email . '">' . $linkText . '</a>' : $linkText;
+        }
+
+        // turn on protection
+        $character_set = '+-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
+        $key = str_shuffle($character_set);
+        $cipher_text = '';
+        $id = 'e' . rand(1, 999999999);
+        for ($i = 0; $i < strlen($email); $i += 1) $cipher_text .= $key[strpos($character_set, $email[$i])];
+        $script = 'var a="' . $key . '";var b=a.split("").sort().join("");var c="' . $cipher_text . '";var d="";';
+        $script .= 'for(var e=0;e<c.length;e++)d+=b.charAt(a.indexOf(c.charAt(e)));';
+        $script .= 'var y = d;';
+        if ($text !== null) {
+            $script .= 'var y = "'.$text.'";';
+        }
+        if ($link) {
+            $script .= 'document.getElementById("' . $id . '").innerHTML="<a href=\\"mailto:"+d+"\\">"+y+"</a>"';
+        } else {
+            $script .= 'document.getElementById("' . $id . '").innerHTML=y';
+        }
+        $script = "eval(\"" . str_replace(array("\\", '"'), array("\\\\", '\"'), $script) . "\")";
+        $script = '<script type="text/javascript">/*<![CDATA[*/' . $script . '/*]]>*/</script>';
+
+        return '<span id="' . $id . '">[javascript protected email address]</span>' . $script;
     }
 }

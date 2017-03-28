@@ -8,27 +8,21 @@ return [
     ],
     'settings' => [
         'tab_display' => 'Anzeigen',
-        'avatar_label' => 'Abgerundete Profilbild statt eines Würfels.',
+        'avatar_label' => 'Abgerundete Profilbild statt eines Würfels',
         'avatar_comment' => 'Der Avatar ändert nur in Top-Menü.',
-        'topmenu_label' => 'Blenden Sie das Etikett im oberen Top-Menü.',
+        'topmenu_label' => 'Blenden Sie das Etikett im oberen Top-Menü',
         'topmenu_comment' => 'Es funktioniert mit allen Menüstil.',
-        'sidebar_desc_label' => 'Blenden Sie das Menü Beschreibung in der Seitenleiste.',
+        'sidebar_desc_label' => 'Blenden Sie das Menü Beschreibung in der Seitenleiste',
         'sidebar_desc_comment' => 'Blenden Sie die Beschreibung der Menüs in der Seitenleiste.',
-        'sidebar_search_label' => 'Blenden Sie das Suchfeld in der Seitenleiste.',
+        'sidebar_search_label' => 'Blenden Sie das Suchfeld in der Seitenleiste',
         'sidebar_search_comment' => 'Blenden Sie die Beschreibung der Menüs in der Seitenleiste.',
-        'themes_label' => 'Blenden Sie die "Weitere Themen" Link.',
-        'themes_comment' => 'Das Hotel liegt am Frontend-Themenseite.',
         'tab_behavior' => 'Verhalten',
-        'search_label' => 'Fokus auf das Suchfeld automatisch.',
+        'search_label' => 'Fokus auf das Suchfeld automatisch',
         'search_comment' => 'Zum einen in Listen, zweitens in der Seitenleiste.',
-        'clearbutton_label' => 'Fügen Sie die Löschtaste, um Eingabefelder ein.',
-        'clearbutton_comment' => 'Es funktioniert nur mit einfachen Textfelder.',
-        'keyboard_label' => 'Lassen Sie sich die virtuelle Tastatur von Formen.',
-        'keyboard_comment' => 'Es funktioniert nur mit einfachen Textfelder.',
-        'delete_plugin_label' => 'Löschen Sie die Oktober-Demo Plugin.',
-        'delete_plugin_comment' => 'Alle Dateien werden dauerhaft entfernt werden.',
-        'enabled_gzip_label' => 'Aktivieren Sie die gzip-Kompression.',
-        'enabled_gzip_comment' => 'Es funktioniert auf dem Frontend und Backend-Tool.'
+        'context_menu_label' => 'Aktivieren Sie das Kontextmenü',
+        'context_menu_comment' => 'Klicken Sie mit der rechten Maustaste auf das Menü.',
+        'keyboard_label' => 'Lassen Sie sich die virtuelle Tastatur von Formen (beta)',
+        'keyboard_comment' => 'Es funktioniert nur mit einfachen Textfelder.'
     ],
     'trash' => [
         'title' => 'Trash items',
@@ -166,19 +160,5 @@ return [
         'sports' => 'Sport',
         'technics' => 'Technics',
         'transport' => 'Verkehr'
-    ],
-    'component' => [
-        'image' => [
-            'name' => 'Lorem ipsum bild',
-            'description' => ''
-        ],
-        'text' => [
-            'name' => 'Lorem ipsum text',
-            'description' => '',
-            'length' => 'Länge',
-            'bit' => 'ein bisschen',
-            'some' => 'einige',
-            'lots' => 'viele'
-        ]
     ]
 ];

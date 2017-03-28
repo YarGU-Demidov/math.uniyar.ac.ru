@@ -5,3 +5,11 @@
 1.0.5: Add config function (thanks to Sebastian Hilger)
 1.0.6: Fix localizednumber and localizedcurrency filters (thanks to Vita Zoubek)
 1.0.7: Add the session() and trans() helper functions (thanks to Sebastian Hilger)
+1.0.8: Plugin can be installed over Composer.
+1.0.9: Add var_dump filter and function.
+1.0.10: Remove pre tag from var_dump
+1.0.11: Add mailto filter for rendering encrypted email addresses.
+1.0.12: Add mailto text parameter and rtl filter.
+1.0.13: Make time_diff translatable.
+1.0.14: Add pt-br locale for time_diff translation (thanks to Ronaldo Ribeiro de Sousa)
+1.0.15: Add DE and HU locale (thanks to Szabó Gergő and Sebastian Hilger)

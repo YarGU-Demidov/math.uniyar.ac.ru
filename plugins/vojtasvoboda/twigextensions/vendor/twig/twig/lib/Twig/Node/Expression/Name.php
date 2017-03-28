@@ -11,8 +11,8 @@
  */
 class Twig_Node_Expression_Name extends Twig_Node_Expression
 {
-    private $specialVars = array(
-        '_self' => '$this->getTemplateName()',
+    protected $specialVars = array(
+        '_self' => '$this',
         '_context' => '$context',
         '_charset' => '$this->env->getCharset()',
     );
@@ -43,30 +43,46 @@ class Twig_Node_Expression_Name extends Twig_Node_Expression
                 ->raw(']')
             ;
         } else {
-            if ($this->getAttribute('ignore_strict_check') || !$compiler->getEnvironment()->isStrictVariables()) {
+            if (PHP_VERSION_ID >= 70000) {
+                // use PHP 7 null coalescing operator
+                $compiler
+                    ->raw('($context[')
+                    ->string($name)
+                    ->raw('] ?? ')
+                ;
+
+                if ($this->getAttribute('ignore_strict_check') || !$compiler->getEnvironment()->isStrictVariables()) {
+                    $compiler->raw('null)');
+                } else {
+                    $compiler->raw('$this->getContext($context, ')->string($name)->raw('))');
+                }
+            } elseif (PHP_VERSION_ID >= 50400) {
+                // PHP 5.4 ternary operator performance was optimized
                 $compiler
                     ->raw('(isset($context[')
                     ->string($name)
                     ->raw(']) ? $context[')
                     ->string($name)
-                    ->raw('] : null)')
+                    ->raw('] : ')
                 ;
+
+                if ($this->getAttribute('ignore_strict_check') || !$compiler->getEnvironment()->isStrictVariables()) {
+                    $compiler->raw('null)');
+                } else {
+                    $compiler->raw('$this->getContext($context, ')->string($name)->raw('))');
+                }
             } else {
-                // When Twig will require PHP 7.0, the Template::notFound() method
-                // will be removed and the code inlined like this:
-                // (function () { throw new Exception(...); })();
                 $compiler
-                    ->raw('(isset($context[')
+                    ->raw('$this->getContext($context, ')
                     ->string($name)
-                    ->raw(']) || array_key_exists(')
-                    ->string($name)
-                    ->raw(', $context) ? $context[')
-                    ->string($name)
-                    ->raw('] : $this->notFound(')
-                    ->string($name)
-                    ->raw(', ')
-                    ->repr($this->lineno)
-                    ->raw('))')
+                ;
+
+                if ($this->getAttribute('ignore_strict_check')) {
+                    $compiler->raw(', true');
+                }
+
+                $compiler
+                    ->raw(')')
                 ;
             }
         }

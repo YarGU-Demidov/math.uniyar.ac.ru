@@ -4,7 +4,7 @@
 *
 * @license http://opensource.org/licenses/MIT
 * @link https://github.com/thephpleague/csv/
-* @version 8.1.1
+* @version 8.2.0
 * @package League.csv
 *
 * For the full copyright and license information, please view the LICENSE
@@ -63,6 +63,10 @@ trait QueryFilter
 
     /**
      * Stripping BOM setter
+     *
+     * DEPRECATION WARNING! This method will be removed in the next major point release
+     *
+     * @deprecated deprecated since version 8.2
      *
      * @param bool $status
      *
@@ -222,7 +226,7 @@ trait QueryFilter
             }
 
             $row[0] = mb_substr($row[0], $bom_length);
-            if ($row[0][0] === $enclosure && mb_substr($row[0], -1, 1) === $enclosure) {
+            if (mb_substr($row[0], 0, 1) === $enclosure && mb_substr($row[0], -1, 1) === $enclosure) {
                 $row[0] = mb_substr($row[0], 1, -1);
             }
 

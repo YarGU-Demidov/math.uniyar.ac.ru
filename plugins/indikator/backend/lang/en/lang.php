@@ -8,27 +8,21 @@ return [
     ],
     'settings' => [
         'tab_display' => 'Display',
-        'avatar_label' => 'Rounded profile image instead of cube one.',
+        'avatar_label' => 'Rounded profile image instead of cube one',
         'avatar_comment' => 'The avatar modifies only in the top menu.',
-        'topmenu_label' => 'Hide the label in the top menu.',
+        'topmenu_label' => 'Hide the label in the top menu',
         'topmenu_comment' => 'It works with all menu style.',
-        'sidebar_desc_label' => 'Hide the description of menus in the sidebar.',
+        'sidebar_desc_label' => 'Hide the description of menus in the sidebar',
         'sidebar_desc_comment' => 'It works only the pages of Settings menu.',
-        'sidebar_search_label' => 'Hide the search field in the sidebar.',
+        'sidebar_search_label' => 'Hide the search field in the sidebar',
         'sidebar_search_comment' => 'It works only the pages of Settings menu.',
-        'themes_label' => 'Hide the "Find more themes" link.',
-        'themes_comment' => 'Located on the Front-end theme page.',
         'tab_behavior' => 'Behavior',
-        'search_label' => 'Focus the search field automatically.',
+        'search_label' => 'Focus the search field automatically',
         'search_comment' => 'Firstly in the lists, secondly in the sidebar.',
-        'clearbutton_label' => 'Add the clear button to input fields.',
-        'clearbutton_comment' => 'It works only by simple text fields.',
-        'keyboard_label' => 'Show the virtual keyboard by forms.',
-        'keyboard_comment' => 'It works only by simple text fields.',
-        'delete_plugin_label' => 'Uninstall the October Demo plugin.',
-        'delete_plugin_comment' => 'All files will be removed permanently.',
-        'enabled_gzip_label' => 'Enable the gzip compression.',
-        'enabled_gzip_comment' => 'It works on the front-end and back-end too.'
+        'context_menu_label' => 'Enable the context menu',
+        'context_menu_comment' => 'Right-click to show the quick menu.',
+        'keyboard_label' => 'Show the virtual keyboard by forms (beta)',
+        'keyboard_comment' => 'It works only by simple input fields.'
     ],
     'trash' => [
         'title' => 'Trash items',
@@ -166,19 +160,5 @@ return [
         'sports' => 'Sports',
         'technics' => 'Technics',
         'transport' => 'Transport'
-    ],
-    'component' => [
-        'image' => [
-            'name' => 'Lorem ipsum image',
-            'description' => ''
-        ],
-        'text' => [
-            'name' => 'Lorem ipsum text',
-            'description' => '',
-            'length' => 'Length',
-            'bit' => 'a bit',
-            'some' => 'some',
-            'lots' => 'lots'
-        ]
     ]
 ];
