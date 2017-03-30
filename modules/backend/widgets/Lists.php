@@ -106,7 +106,7 @@ class Lists extends WidgetBase
     //
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $defaultAlias = 'list';
 
@@ -219,7 +219,7 @@ class Lists extends WidgetBase
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected function loadAssets()
     {
@@ -522,6 +522,13 @@ class Lists extends WidgetBase
         }
         else {
             $records = $model->get();
+        }
+
+        /*
+         * Extensibility
+         */
+        if ($event = $this->fireSystemEvent('backend.list.extendRecords', [&$records])) {
+            $records = $event;
         }
 
         return $this->records = $records;
