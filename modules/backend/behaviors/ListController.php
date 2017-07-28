@@ -8,8 +8,19 @@ use ApplicationException;
 use Backend\Classes\ControllerBehavior;
 
 /**
- * List Controller Behavior
  * Adds features for working with backend lists.
+ *
+ * This behavior is implemented in the controller like so:
+ *
+ *     public $implement = [
+ *         'Backend.Behaviors.ListController',
+ *     ];
+ *
+ *     public $listConfig = 'config_list.yaml';
+ *
+ * The `$listConfig` property makes reference to the list configuration
+ * values as either a YAML file, located in the controller view directory,
+ * or directly as a PHP array.
  *
  * @package october\backend
  * @author Alexey Bobkov, Samuel Georges
@@ -231,9 +242,16 @@ class ListController extends ControllerBehavior
             });
 
             /*
+             * Filter Widget with extensibility
+             */
+            $filterWidget->bindEvent('filter.extendScopes', function () use ($filterWidget) {
+                $this->controller->listFilterExtendScopes($filterWidget);
+            });
+
+            /*
              * Extend the query of the list of options
              */
-            $filterWidget->bindEvent('filter.extendQuery', function($query, $scope) {
+            $filterWidget->bindEvent('filter.extendQuery', function ($query, $scope) {
                 $this->controller->listFilterExtendQuery($query, $scope);
             });
 
@@ -438,6 +456,15 @@ class ListController extends ControllerBehavior
     public function listExtendColumns($host)
     {
     }
+    
+    /**
+     * Called after the filter scopes are defined.
+     * @param \Backend\Widgets\Filter $host The hosting filter widget
+     * @return void
+     */
+    public function listFilterExtendScopes($host)
+    {
+    }
 
     /**
      * Controller override: Extend supplied model
@@ -530,6 +557,22 @@ class ListController extends ControllerBehavior
                 return;
             }
             call_user_func_array($callback, [$widget, $widget->model]);
+        });
+    }
+    
+     /**
+     * Static helper for extending filter scopes.
+     * @param  callable $callback
+     * @return void
+     */
+    public static function extendListFilterScopes($callback)
+    {
+        $calledClass = self::getCalledExtensionClass();
+        Event::listen('backend.filter.extendScopes', function ($widget) use ($calledClass, $callback) {
+            if (!is_a($widget->getController(), $calledClass)) {
+                return;
+            }
+            call_user_func_array($callback, [$widget]);
         });
     }
 }

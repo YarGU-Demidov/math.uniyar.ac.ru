@@ -43,6 +43,7 @@
         this.$el.on('ajaxDone', '> .field-repeater-items > .field-repeater-item > .repeater-item-remove > [data-repeater-remove]', this.proxy(this.onRemoveItemSuccess))
         this.$el.on('ajaxDone', '> .field-repeater-add-item > [data-repeater-add]', this.proxy(this.onAddItemSuccess))
         this.$el.on('click', '> ul > li > .repeater-item-collapse .repeater-item-collapse-one', this.proxy(this.toggleCollapse))
+        this.$el.on('click', '> .field-repeater-add-item > [data-repeater-add-group]', this.proxy(this.clickAddGroupButton))
 
         this.$el.one('dispose-control', this.proxy(this.dispose))
 
@@ -51,10 +52,11 @@
 
     Repeater.prototype.dispose = function() {
         this.$sortable.sortable('destroy')
-        
+
         this.$el.off('ajaxDone', '> .field-repeater-items > .field-repeater-item > .repeater-item-remove > [data-repeater-remove]', this.proxy(this.onRemoveItemSuccess))
         this.$el.off('ajaxDone', '> .field-repeater-add-item > [data-repeater-add]', this.proxy(this.onAddItemSuccess))
         this.$el.off('click', '> .field-repeater-items > .field-repeater-item > .repeater-item-collapse .repeater-item-collapse-one', this.proxy(this.toggleCollapse))
+        this.$el.off('click', '> .field-repeater-add-item > [data-repeater-add-group]', this.proxy(this.clickAddGroupButton))
 
         this.$el.off('dispose-control', this.proxy(this.dispose))
         this.$el.removeData('oc.repeater')
@@ -80,6 +82,36 @@
         this.$sortable.sortable(sortableOptions)
     }
 
+    Repeater.prototype.clickAddGroupButton = function(ev) {
+        var templateHtml = $('> [data-group-palette-template]', this.$el).html(),
+            $target = $(ev.target),
+            $form = this.$el.closest('form'),
+            $loadContainer = $target.closest('.loading-indicator-container')
+
+        $target.ocPopover({
+            content: templateHtml
+        })
+
+        var $container = $target.data('oc.popover').$container
+
+        // Initialize the scrollpad control in the popup
+        $container.trigger('render')
+
+        $container
+            .on('click', 'a', function (ev) {
+                setTimeout(function() { $(ev.target).trigger('close.oc.popover') }, 1)
+            })
+            .on('ajaxPromise', '[data-repeater-add]', function(ev, context) {
+                $loadContainer.loadIndicator()
+
+                $form.one('ajaxComplete', function() {
+                    $loadContainer.loadIndicator('hide')
+                })
+            })
+
+        $('[data-repeater-add]', $container).data('request-form', $form)
+    }
+
     Repeater.prototype.onRemoveItemSuccess = function(ev) {
         $(ev.target).closest('.field-repeater-item').remove()
         this.togglePrompt()
@@ -102,7 +134,9 @@
         var $item = $(ev.target).closest('.field-repeater-item'),
             isCollapsed = $item.hasClass('collapsed')
 
-        if (event.ctrlKey || event.metaKey) {
+        ev.preventDefault()
+
+        if (ev.ctrlKey || ev.metaKey) {
             isCollapsed ? this.expandAll() : this.collapseAll()
         }
         else {
@@ -139,7 +173,12 @@
 
     Repeater.prototype.getCollapseTitle = function($item) {
         var $target,
-            defaultText = ''
+            defaultText = '',
+            explicitText = $item.data('collapse-title')
+
+        if (explicitText) {
+            return explicitText
+        }
 
         if (this.options.titleFrom) {
             $target = $('[data-field-name="'+this.options.titleFrom+'"]')

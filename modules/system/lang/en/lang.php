@@ -14,7 +14,7 @@ return [
         'en-au' => 'English (Australia)',
         'en-ca' => 'English (Canada)',
         'en-gb' => 'English (United Kingdom)',
-        'de' => 'Deutsche',
+        'de' => 'Deutsch',
         'el' => 'Ελληνικά',
         'es' => 'Español',
         'es-ar' => 'Español (Argentina)',
@@ -25,7 +25,8 @@ return [
         'id' => 'Bahasa Indonesia',
         'it' => 'Italiano',
         'ja' => '日本語',
-        'lv' => 'Latvijas',
+        'lt' => 'Lietuvių',
+        'lv' => 'Latviešu',
         'nb-no' => 'Norsk (Bokmål)',
         'nl' => 'Nederlands',
         'pl' => 'Polskie',
@@ -269,11 +270,12 @@ return [
         'important_action' => [
             'empty' => 'Select action',
             'confirm' => 'Confirm update',
-            'skip' => 'Skip this plugin (once only)',
-            'ignore' => 'Skip this plugin (always)'
+            'skip' => 'Skip this update (once only)',
+            'ignore' => 'Skip this update (always)'
         ],
         'important_action_required' => 'Action required',
         'important_view_guide' => 'View upgrade guide',
+        'important_view_release_notes' => 'View release notes',
         'important_alert_text' => 'Some updates need your attention.',
         'details_title' => 'Plugin details',
         'details_view_homepage' => 'View homepage',

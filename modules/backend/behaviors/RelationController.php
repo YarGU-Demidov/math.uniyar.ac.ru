@@ -10,8 +10,19 @@ use October\Rain\Database\Model;
 use ApplicationException;
 
 /**
- * Relation Controller Behavior
  * Uses a combination of lists and forms for managing Model relations.
+ *
+ * This behavior is implemented in the controller like so:
+ *
+ *     public $implement = [
+ *         'Backend.Behaviors.RelationController',
+ *     ];
+ *
+ *     public $relationConfig = 'config_relation.yaml';
+ *
+ * The `$relationConfig` property makes reference to the configuration
+ * values as either a YAML file, located in the controller view directory,
+ * or directly as a PHP array.
  *
  * @package october\backend
  * @author Alexey Bobkov, Samuel Georges
@@ -639,17 +650,17 @@ class RelationController extends ControllerBehavior
              * Apply defined constraints
              */
             if ($sqlConditions = $this->getConfig('view[conditions]')) {
-                $widget->bindEvent('list.extendQueryBefore', function($query) use ($sqlConditions) {
+                $widget->bindEvent('list.extendQueryBefore', function ($query) use ($sqlConditions) {
                     $query->whereRaw($sqlConditions);
                 });
             }
             elseif ($scopeMethod = $this->getConfig('view[scope]')) {
-                $widget->bindEvent('list.extendQueryBefore', function($query) use ($scopeMethod) {
+                $widget->bindEvent('list.extendQueryBefore', function ($query) use ($scopeMethod) {
                     $query->$scopeMethod($this->model);
                 });
             }
             else {
-                $widget->bindEvent('list.extendQueryBefore', function($query) {
+                $widget->bindEvent('list.extendQueryBefore', function ($query) {
                     $this->relationObject->addDefinedConstraintsToQuery($query);
                 });
             }
@@ -769,17 +780,17 @@ class RelationController extends ControllerBehavior
              * Apply defined constraints
              */
             if ($sqlConditions = $this->getConfig('manage[conditions]')) {
-                $widget->bindEvent('list.extendQueryBefore', function($query) use ($sqlConditions) {
+                $widget->bindEvent('list.extendQueryBefore', function ($query) use ($sqlConditions) {
                     $query->whereRaw($sqlConditions);
                 });
             }
             elseif ($scopeMethod = $this->getConfig('manage[scope]')) {
-                $widget->bindEvent('list.extendQueryBefore', function($query) use ($scopeMethod) {
+                $widget->bindEvent('list.extendQueryBefore', function ($query) use ($scopeMethod) {
                     $query->$scopeMethod($this->model);
                 });
             }
             else {
-                $widget->bindEvent('list.extendQueryBefore', function($query) {
+                $widget->bindEvent('list.extendQueryBefore', function ($query) {
                     $this->relationObject->addDefinedConstraintsToQuery($query);
                 });
             }

@@ -4,6 +4,7 @@ namespace OFFLINE\SiteSearch\Classes;
 
 use Config;
 use Html;
+use October\Rain\Database\Model;
 use OFFLINE\SiteSearch\Models\Settings;
 use Str;
 use System\Models\File;
@@ -30,11 +31,19 @@ class Result
     /**
      * @var string
      */
+    public $identifier;
+    /**
+     * @var string
+     */
     public $query;
     /**
      * @var mixed
      */
     public $meta;
+    /**
+     * @var Model
+     */
+    public $model;
 
     /**
      * Result constructor.
@@ -171,6 +180,18 @@ class Result
     public function setThumb(File $thumb = null)
     {
         $this->thumb = $thumb;
+
+        return $this;
+    }
+
+    /**
+     * @param Model $model
+     *
+     * @return Result
+     */
+    public function setModel($model = null)
+    {
+        $this->model = $model;
 
         return $this;
     }
