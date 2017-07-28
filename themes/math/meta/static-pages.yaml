@@ -41,7 +41,6 @@ static-pages:
             departments-calculus-semko-elena-romanovna: {  }
             departments-calculus-strelkov-nikolaj-aleksandrovich: {  }
             departments-calculus-kashenko-aleksandra-andreevna: {  }
-            departments-calculus-kubyshkin-evgenij-pavlovich: {  }
             departments-calculus-glazkov-dmitrij-vladimirovich: {  }
             departments-calculus-istoriya: {  }
         kafedra-kompyuternoj-bezopasnosti:
@@ -60,6 +59,7 @@ static-pages:
             onishik-arkadij-lvovich: {  }
             yablokova-svetlana-ivanovna: {  }
         mathmod:
+            departments-calculus-kubyshkin-evgenij-pavlovich: {  }
             nesterov-pavel-nikolaevich: {  }
             kashenko-ilya-sergeevich: {  }
             glyzin-dmitrij-sergeevich:
