@@ -64,7 +64,13 @@ final class Twig_ExtensionSet
      */
     public function hasExtension($class)
     {
-        return isset($this->extensions[ltrim($class, '\\')]);
+        $class = ltrim($class, '\\');
+        if (!isset($this->extensions[$class]) && class_exists($class, false)) {
+            // For BC/FC with namespaced aliases
+            $class = (new ReflectionClass($class))->name;
+        }
+
+        return isset($this->extensions[$class]);
     }
 
     /**
@@ -77,6 +83,10 @@ final class Twig_ExtensionSet
     public function getExtension($class)
     {
         $class = ltrim($class, '\\');
+        if (!isset($this->extensions[$class]) && class_exists($class, false)) {
+            // For BC/FC with namespaced aliases
+            $class = (new ReflectionClass($class))->name;
+        }
 
         if (!isset($this->extensions[$class])) {
             throw new Twig_Error_Runtime(sprintf('The "%s" extension is not enabled.', $class));
@@ -150,7 +160,6 @@ final class Twig_ExtensionSet
             throw new LogicException(sprintf('Unable to register extension "%s" as it is already registered.', $class));
         }
 
-        $this->lastModifiedExtension = 0;
         $this->extensions[$class] = $extension;
     }
 
@@ -163,9 +172,6 @@ final class Twig_ExtensionSet
         $this->staging->addFunction($function);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions()
     {
         if (!$this->initialized) {
@@ -226,9 +232,6 @@ final class Twig_ExtensionSet
         $this->staging->addFilter($filter);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFilters()
     {
         if (!$this->initialized) {
@@ -292,9 +295,6 @@ final class Twig_ExtensionSet
         $this->staging->addNodeVisitor($visitor);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getNodeVisitors()
     {
         if (!$this->initialized) {
@@ -313,9 +313,6 @@ final class Twig_ExtensionSet
         $this->staging->addTokenParser($parser);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTokenParsers()
     {
         if (!$this->initialized) {
@@ -325,9 +322,6 @@ final class Twig_ExtensionSet
         return $this->parsers;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getGlobals()
     {
         if (null !== $this->globals) {
@@ -364,9 +358,6 @@ final class Twig_ExtensionSet
         $this->staging->addTest($test);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTests()
     {
         if (!$this->initialized) {
@@ -426,7 +417,6 @@ final class Twig_ExtensionSet
 
     private function initExtensions()
     {
-        $this->initialized = true;
         $this->parsers = array();
         $this->filters = array();
         $this->functions = array();
@@ -439,6 +429,8 @@ final class Twig_ExtensionSet
             $this->initExtension($extension);
         }
         $this->initExtension($this->staging);
+        // Done at the end only, so that an exception during initialization does not mark the environment as initialized when catching the exception
+        $this->initialized = true;
     }
 
     private function initExtension(Twig_ExtensionInterface $extension)
@@ -474,8 +466,12 @@ final class Twig_ExtensionSet
 
         // operators
         if ($operators = $extension->getOperators()) {
+            if (!is_array($operators)) {
+                throw new InvalidArgumentException(sprintf('"%s::getOperators()" must return an array with operators, got "%s".', get_class($extension), is_object($operators) ? get_class($operators) : gettype($operators).(is_resource($operators) ? '' : '#'.$operators)));
+            }
+
             if (2 !== count($operators)) {
-                throw new InvalidArgumentException(sprintf('"%s::getOperators()" does not return a valid operators array.', get_class($extension)));
+                throw new InvalidArgumentException(sprintf('"%s::getOperators()" must return an array of 2 elements, got %d.', get_class($extension), count($operators)));
             }
 
             $this->unaryOperators = array_merge($this->unaryOperators, $operators[0]);
@@ -483,3 +479,5 @@ final class Twig_ExtensionSet
         }
     }
 }
+
+class_alias('Twig_ExtensionSet', 'Twig\ExtensionSet', false);

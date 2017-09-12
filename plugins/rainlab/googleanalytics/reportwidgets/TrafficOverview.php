@@ -39,7 +39,7 @@ class TrafficOverview extends ReportWidgetBase
                 'validationMessage' => 'backend::lang.dashboard.widget_title_error'
             ],
             'days' => [
-                'title'             => 'Number of days to display data for',
+                'title'             => 'rainlab.googleanalytics::lang.widgets.days',
                 'default'           => '30',
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$'
@@ -52,8 +52,9 @@ class TrafficOverview extends ReportWidgetBase
         $obj = Analytics::instance();
 
         $days = $this->property('days');
-        if (!$days)
+        if (!$days) {
             throw new ApplicationException('Invalid days value: '.$days);
+        }
 
         $data = $obj->service->data_ga->get(
             $obj->viewId,
@@ -62,8 +63,14 @@ class TrafficOverview extends ReportWidgetBase
             'ga:visits',
             ['dimensions' => 'ga:date']
         );
+
+        $rows = $data->getRows();
+        if (!$rows) {
+            throw new ApplicationException('No traffic found yet.');
+        }
+
         $points = [];
-        foreach ($data->getRows() as $row) {
+        foreach ($rows as $row) {
             $point = [
                 strtotime($row[0])*1000,
                 $row[1]
@@ -74,5 +81,4 @@ class TrafficOverview extends ReportWidgetBase
 
         $this->vars['rows'] = str_replace('"', '', substr(substr(json_encode($points), 1), 0, -1));
     }
-
 }

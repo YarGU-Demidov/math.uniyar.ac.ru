@@ -3,6 +3,7 @@
 use App;
 use Backend;
 use Carbon\Carbon;
+use Snilius\Twig\SortByFieldExtension;
 use System\Classes\PluginBase;
 use Twig_Extension_StringLoader;
 use Twig_Extensions_Extension_Array;
@@ -93,11 +94,17 @@ class Plugin extends PluginBase
         // add Time extensions
         $filters += $this->getTimeFilters($twig);
 
+        // add Sort by Field extensions
+        $filters += $this->getSortByField();
+
         // add Mail filters
         $filters += $this->getMailFilters();
 
         // add PHP functions
         $filters += $this->getPhpFunctions();
+
+        // add File Version filter
+        $filters += $this->getFileRevision();
 
         return [
             'filters'   => $filters,
@@ -217,6 +224,24 @@ class Plugin extends PluginBase
     }
 
     /**
+     * Returns Sort by Field filters.
+     *
+     * @return array
+     */
+    private function getSortByField()
+    {
+        $extension = new SortByFieldExtension();
+        $filters = $extension->getFilters();
+
+        return [
+            'sortbyfield' => function($array, $sort_by = null, $direction = 'asc') use ($filters) {
+                $callable = $filters[0]->getCallable();
+                return $callable($array, $sort_by, $direction);
+            }
+        ];
+    }
+
+    /**
      * Returns mail filters.
      *
      * @return array
@@ -278,6 +303,9 @@ class Plugin extends PluginBase
             'rtl' => function($string) {
                 return strrev($string);
             },
+            'strip_tags' => function($string, $allow = '') {
+                return strip_tags($string, $allow);
+            },
             'var_dump' => function($expression) {
                 ob_start();
                 var_dump($expression);
@@ -324,8 +352,8 @@ class Plugin extends PluginBase
     private function getTransFunction()
     {
         return [
-            'trans' => function($key = null) {
-                return trans($key);
+            'trans' => function($key = null, $parameters = []) {
+                return trans($key, $parameters);
             },
         ];
     }
@@ -394,5 +422,33 @@ class Plugin extends PluginBase
         $script = '<script type="text/javascript">/*<![CDATA[*/' . $script . '/*]]>*/</script>';
 
         return '<span id="' . $id . '">[javascript protected email address]</span>' . $script;
+    }
+
+    /**
+     * Appends this pattern: ? . {last modified date}
+     * to an assets filename to force browser to reload
+     * cached modified file.
+     *
+     * See: https://github.com/vojtasvoboda/oc-twigextensions-plugin/issues/25
+     *
+     * @return array
+     */
+    private function getFileRevision()
+    {
+        return [
+            'revision' => function ($filename, $format = null) {
+                // Remove http/web address from the file name if there is one to load it locally
+                $prefix = url('/');
+                $filename_ = trim(preg_replace('/^' . preg_quote($prefix, '/') . '/', '', $filename), '/');
+                if (file_exists($filename_)) {
+                    $timestamp = filemtime($filename_);
+                    $prepend = ($format) ? date($format, $timestamp) : $timestamp;
+
+                    return $filename . "?" . $prepend;
+                }
+
+                return $filename;
+            },
+        ];
     }
 }

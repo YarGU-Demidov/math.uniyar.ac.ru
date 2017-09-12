@@ -31,7 +31,7 @@ class PluginTest extends PluginTestCase
 
     /**
      * Return Twig environment
-     * 
+     *
      * @return Twig_Environment
      */
     private function getTwig()
@@ -223,6 +223,16 @@ class PluginTest extends PluginTestCase
         $this->assertEquals($twigTemplate->render([]), '   test   ');
     }
 
+    public function testStripTagsFunction()
+    {
+        $twig = $this->getTwig();
+
+        $template = "{{ '<p><b>text</b></p>' | strip_tags('<p>') }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals($twigTemplate->render([]), '<p>text</p>');
+    }
+
     public function testLeftpadFunction()
     {
         $twig = $this->getTwig();
@@ -251,6 +261,23 @@ class PluginTest extends PluginTestCase
 
         $twigTemplate = $twig->createTemplate($template);
         $this->assertEquals($twigTemplate->render([]), '!dlrow olleH');
+    }
+
+    public function testSortByFieldFunction()
+    {
+        $twig = $this->getTwig();
+
+        // sort by name
+        $template = "{% set data = [{'name': 'David', 'age': 31}, {'name': 'John', 'age': 28}] %}";
+        $template .= "{% for item in data | sortbyfield('name') %}{{ item.name }}{% endfor %}";
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals($twigTemplate->render([]), 'DavidJohn');
+
+        // sort by age
+        $template = "{% set data = [{'name': 'David', 'age': 31}, {'name': 'John', 'age': 28}] %}";
+        $template .= "{% for item in data | sortbyfield('age') %}{{ item.name }}{% endfor %}";
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals($twigTemplate->render([]), 'JohnDavid');
     }
 
     public function testMailtoFilter()
@@ -338,10 +365,21 @@ class PluginTest extends PluginTestCase
     {
         $twig = $this->getTwig();
         Config::set('app.locale', 'en');
-        
+
         $template = "{{ trans('validation.accepted') }}";
 
         $twigTemplate = $twig->createTemplate($template);
         $this->assertEquals($twigTemplate->render([]), 'The :attribute must be accepted.');
+    }
+
+    public function testTransFunctionWithParam()
+    {
+        $twig = $this->getTwig();
+        Config::set('app.locale', 'en');
+
+        $template = "{{ trans('backend::lang.access_log.hint', {'days': 60}) }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertContains('60 days', $twigTemplate->render([]));
     }
 }

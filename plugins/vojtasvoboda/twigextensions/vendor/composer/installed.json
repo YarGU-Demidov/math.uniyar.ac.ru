@@ -1,17 +1,17 @@
 [
     {
         "name": "composer/installers",
-        "version": "v1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "d78064c68299743e0161004f2de3a0204e33b804"
+            "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
-            "reference": "d78064c68299743e0161004f2de3a0204e33b804",
+            "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+            "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
             "shasum": ""
         },
         "require": {
@@ -25,7 +25,7 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2016-08-13 20:53:52",
+        "time": "2017-08-09 07:53:48",
         "type": "composer-plugin",
         "extra": {
             "class": "Composer\\Installers\\Plugin",
@@ -55,12 +55,17 @@
         "keywords": [
             "Craft",
             "Dolibarr",
+            "Eliasis",
             "Hurad",
             "ImageCMS",
+            "Kanboard",
+            "Lan Management System",
             "MODX Evo",
             "Mautic",
+            "Maya",
             "OXID",
             "Plentymarkets",
+            "Porto",
             "RadPHP",
             "SMF",
             "Thelia",
@@ -78,20 +83,24 @@
             "croogo",
             "dokuwiki",
             "drupal",
+            "eZ Platform",
             "elgg",
             "expressionengine",
             "fuelphp",
             "grav",
             "installer",
+            "itop",
             "joomla",
             "kohana",
             "laravel",
+            "lavalite",
             "lithium",
             "magento",
             "mako",
             "mediawiki",
             "modulework",
             "moodle",
+            "osclass",
             "phpbb",
             "piwik",
             "ppi",
@@ -100,6 +109,7 @@
             "roundcube",
             "shopware",
             "silverstripe",
+            "sydes",
             "symfony",
             "typo3",
             "wordpress",
@@ -109,38 +119,145 @@
         ]
     },
     {
-        "name": "twig/twig",
-        "version": "1.x-dev",
-        "version_normalized": "1.9999999.9999999.9999999-dev",
+        "name": "snilius/twig-sort-by-field",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/twigphp/Twig.git",
-            "reference": "94acd3701122d28b097ce878fd035fc9793c1a70"
+            "url": "https://github.com/victorhaggqvist/Twig-sort-by-field.git",
+            "reference": "6d02c6d49f93d78526e24ecf8999d322f291aa44"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/94acd3701122d28b097ce878fd035fc9793c1a70",
-            "reference": "94acd3701122d28b097ce878fd035fc9793c1a70",
+            "url": "https://api.github.com/repos/victorhaggqvist/Twig-sort-by-field/zipball/6d02c6d49f93d78526e24ecf8999d322f291aa44",
+            "reference": "6d02c6d49f93d78526e24ecf8999d322f291aa44",
+            "shasum": ""
+        },
+        "require-dev": {
+            "doctrine/collections": "^1.3",
+            "php": ">=5.5.9",
+            "phpunit/phpunit": "~4.5",
+            "twig/extensions": "~1.2"
+        },
+        "time": "2016-01-27 00:29:51",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Snilius\\Twig\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Victor Häggqvist",
+                "email": "victor@snilius.com"
+            }
+        ],
+        "description": "A Twig Extension filter to sort an array of entries (objects or arrays) by the specified field"
+    },
+    {
+        "name": "symfony/polyfill-mbstring",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-mbstring.git",
+            "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+            "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.2.7"
+            "php": ">=5.3.3"
         },
-        "require-dev": {
-            "symfony/debug": "~2.7",
-            "symfony/phpunit-bridge": "~3.2"
+        "suggest": {
+            "ext-mbstring": "For best performance"
         },
-        "time": "2017-01-05 19:55:35",
+        "time": "2017-06-14 15:44:48",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.30-dev"
+                "dev-master": "1.5-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Mbstring\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill for the Mbstring extension",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "mbstring",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "twig/twig",
+        "version": "2.x-dev",
+        "version_normalized": "2.9999999.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twigphp/Twig.git",
+            "reference": "103cae817d68b56ddcb50c051a6ed7980d746409"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/103cae817d68b56ddcb50c051a6ed7980d746409",
+            "reference": "103cae817d68b56ddcb50c051a6ed7980d746409",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.0",
+            "symfony/polyfill-mbstring": "~1.0"
+        },
+        "require-dev": {
+            "psr/container": "^1.0",
+            "symfony/debug": "~2.7",
+            "symfony/phpunit-bridge": "~3.3@dev"
+        },
+        "time": "2017-08-19 17:43:10",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
             }
         },
         "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Twig_": "lib/"
+            },
+            "psr-4": {
+                "Twig\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -178,34 +295,38 @@
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig-extensions.git",
-            "reference": "e740ab2e3c97b54028f21f9f8314caf6fdc482d7"
+            "reference": "2c2a90088f34be0b35c5c80ea55704a602c4fdb4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/e740ab2e3c97b54028f21f9f8314caf6fdc482d7",
-            "reference": "e740ab2e3c97b54028f21f9f8314caf6fdc482d7",
+            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/2c2a90088f34be0b35c5c80ea55704a602c4fdb4",
+            "reference": "2c2a90088f34be0b35c5c80ea55704a602c4fdb4",
             "shasum": ""
         },
         "require": {
             "twig/twig": "~1.27|~2.0"
         },
         "require-dev": {
-            "symfony/translation": "~2.3"
+            "symfony/phpunit-bridge": "~3.3@dev",
+            "symfony/translation": "~2.3|~3.0"
         },
         "suggest": {
             "symfony/translation": "Allow the time_diff output to be translated"
         },
-        "time": "2017-01-02 20:34:49",
+        "time": "2017-06-09 13:53:09",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.4-dev"
+                "dev-master": "1.5-dev"
             }
         },
         "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Twig_Extensions_": "lib/"
+            },
+            "psr-4": {
+                "Twig\\Extensions\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -232,12 +353,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "f158ed71fe8921de1409a7823221dcfe5070425a"
+            "reference": "51d1ce6d2e6f25644a75762079feb07aab964914"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/f158ed71fe8921de1409a7823221dcfe5070425a",
-            "reference": "f158ed71fe8921de1409a7823221dcfe5070425a",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/51d1ce6d2e6f25644a75762079feb07aab964914",
+            "reference": "51d1ce6d2e6f25644a75762079feb07aab964914",
             "shasum": ""
         },
         "require": {
@@ -249,7 +370,7 @@
         "require-dev": {
             "psr/log": "~1.0",
             "symfony/config": "~2.7",
-            "symfony/intl": "~2.4",
+            "symfony/intl": "~2.7.25|^2.8.18",
             "symfony/yaml": "~2.2"
         },
         "suggest": {
@@ -257,7 +378,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2017-01-02 20:30:00",
+        "time": "2017-09-11 20:37:52",
         "type": "library",
         "extra": {
             "branch-alias": {

@@ -9,15 +9,19 @@
  * file that was distributed with this source code.
  */
 
-class CustomExtensionTest extends PHPUnit_Framework_TestCase
+class CustomExtensionTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @requires PHP 5.3
      * @dataProvider provideInvalidExtensions
      */
     public function testGetInvalidOperators(Twig_ExtensionInterface $extension, $expectedExceptionMessage)
     {
-        $this->setExpectedException('InvalidArgumentException', $expectedExceptionMessage);
+        if (method_exists($this, 'expectException')) {
+            $this->expectException('InvalidArgumentException');
+            $this->expectExceptionMessage($expectedExceptionMessage);
+        } else {
+            $this->setExpectedException('InvalidArgumentException', $expectedExceptionMessage);
+        }
 
         $env = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock());
         $env->addExtension($extension);
@@ -40,10 +44,6 @@ class InvalidOperatorExtension implements Twig_ExtensionInterface
     public function __construct($operators)
     {
         $this->operators = $operators;
-    }
-
-    public function initRuntime(Twig_Environment $environment)
-    {
     }
 
     public function getTokenParsers()
@@ -71,18 +71,8 @@ class InvalidOperatorExtension implements Twig_ExtensionInterface
         return array();
     }
 
-    public function getGlobals()
-    {
-        return array();
-    }
-
     public function getOperators()
     {
         return $this->operators;
-    }
-
-    public function getName()
-    {
-        return __CLASS__;
     }
 }
