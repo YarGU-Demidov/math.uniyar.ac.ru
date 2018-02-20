@@ -4,8 +4,10 @@ items:
         title: Абитуриентам
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: for-entrants
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'
@@ -15,8 +17,10 @@ items:
         title: Студентам
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: for-students
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'
@@ -26,8 +30,10 @@ items:
         title: Школа
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: shkolnikam
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'
@@ -37,8 +43,21 @@ items:
         title: Контакты
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: contacts
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Наука
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: for-students-seminary
         replace: '0'
         viewBag:
             isHidden: '0'
