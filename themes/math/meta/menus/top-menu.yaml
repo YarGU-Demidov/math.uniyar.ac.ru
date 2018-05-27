@@ -14,6 +14,19 @@ items:
             cssClass: ''
             isExternal: '0'
     -
+        title: Школа
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: shkolnikam
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
         title: Студентам
         nesting: '0'
         type: static-page
@@ -27,12 +40,12 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: Школа
+        title: Наука
         nesting: '0'
         type: static-page
         url: ''
         code: ''
-        reference: shkolnikam
+        reference: for-students-seminary
         cmsPage: ''
         replace: '0'
         viewBag:
@@ -47,17 +60,6 @@ items:
         code: ''
         reference: contacts
         cmsPage: ''
-        replace: '0'
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
-    -
-        title: Наука
-        nesting: '0'
-        type: static-page
-        code: ''
-        reference: for-students-seminary
         replace: '0'
         viewBag:
             isHidden: '0'
