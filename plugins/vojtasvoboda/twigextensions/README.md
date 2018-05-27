@@ -7,7 +7,7 @@
 
 Twig extensions plugin for OctoberCMS adds new filter and functions to your templates. No other plugin dependencies.
 
-Tested with the latest stable OctoberCMS build 420 (with Laravel 5.5). For Laravel 5.4 use version 1.1.3.
+Tested with the latest stable OctoberCMS build 420 (with Laravel 5.5). For Laravel 5.4 use special branch `laravel54`.
 
 ## Installation
 
@@ -84,7 +84,7 @@ Function loads a template from a string.
 ## Available filters
 
 strftime, uppercase, lowercase, ucfirst, lcfirst, ltrim, rtrim, str\_repeat,
-plural, truncate, wordwrap, strpad, strip_tags, leftpad, rightpad, rtl, shuffle, time\_diff,
+plural, truncate, wordwrap, strpad, str_replace, strip_tags, leftpad, rightpad, rtl, shuffle, time\_diff,
 localizeddate, localizednumber, localizedcurrency, mailto, var\_dump, revision
 
 ### strftime
@@ -250,6 +250,20 @@ This would print:
 ooxxxoo
 ```
 
+### str_replace
+
+Replace all occurrences of the search string with the replacement string.
+
+```
+{{ 'Alice' | str_replace('Alice', 'Bob') }}
+```
+
+This would return:
+
+```
+Bob
+```
+
 ### strip_tags
 
 Strip HTML and PHP tags from a string. In first parameter you can specify allowable tags.
@@ -345,7 +359,7 @@ To get a translatable output, give a Symfony\Component\Translation\TranslatorInt
 
 ### localizeddate
 
-Use the localizeddate filter to format dates into a localized string representating the date. Note that **php5-intl extension** has to be installed!
+Use the localizeddate filter to format dates into a localized string representating the date. Note that **php5-intl extension**/**php7-intl extension** has to be installed!
 
 ```
 {{ post.published_at | localizeddate('medium', 'none', locale) }}
@@ -473,6 +487,8 @@ http://php.net/manual/en/function.date.php
 - [ ] Fix time_diff unit test, which pass at local machine, but fails at TravisCI.
 - [ ] Convert PHP functions and custom code to the Twig_Extension classes.
 - [ ] Create Twig_Extension loader and load all extensions and filters as Twig_Extension automatically from config.
+- [ ] New filters *ga* and *gtm* for adding GA or GTM code (Heap Analytics) - {{ 'UA-1234567' | ga }}.
+- [ ] Add [cache extension](https://github.com/vojtasvoboda/oc-twigextensions-plugin/issues/11).
 
 **Feel free to send pullrequest!** Please, send Pull Request to master branch.
 

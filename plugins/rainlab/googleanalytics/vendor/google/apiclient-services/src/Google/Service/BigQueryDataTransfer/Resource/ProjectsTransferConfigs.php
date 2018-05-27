@@ -30,9 +30,9 @@ class Google_Service_BigQueryDataTransfer_Resource_ProjectsTransferConfigs exten
    *
    * @param string $parent The BigQuery project id where the transfer
    * configuration should be created. Must be in the format
-   * /projects/{project_id}/locations/{location_id} or
-   * /projects/{project_id}/locations/- In case when '-' is specified as
-   * location_id, location is infered from the destination dataset region.
+   * projects/{project_id}/locations/{location_id} If specified location and
+   * location of the destination bigquery dataset do not match - the request will
+   * fail.
    * @param Google_Service_BigQueryDataTransfer_TransferConfig $postBody
    * @param array $optParams Optional parameters.
    *
@@ -116,17 +116,17 @@ class Google_Service_BigQueryDataTransfer_Resource_ProjectsTransferConfigs exten
    * Updates a data transfer configuration. All fields must be set, even if they
    * are not updated. (transferConfigs.patch)
    *
-   * @param string $name The resource name of the transfer run. Transfer run names
-   * have the form `projects/{project_id}/transferConfigs/{config_id}`. Where
-   * `config_id` is usually a uuid, even though it is not guaranteed or required.
-   * The name is ignored when creating a transfer run.
+   * @param string $name The resource name of the transfer config. Transfer config
+   * names have the form `projects/{project_id}/transferConfigs/{config_id}`.
+   * Where `config_id` is usually a uuid, even though it is not guaranteed or
+   * required. The name is ignored when creating a transfer config.
    * @param Google_Service_BigQueryDataTransfer_TransferConfig $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string authorizationCode Optional OAuth2 authorization code to use
    * with this transfer configuration. If it is provided, the transfer
-   * configuration will be associated with the gaia id of the authorizing user. In
-   * order to obtain authorization_code, please make a request to
+   * configuration will be associated with the authorizing user. In order to
+   * obtain authorization_code, please make a request to
    * https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id==_uri=
    *
    * * client_id should be OAuth client_id of BigQuery DTS API for the given
@@ -149,10 +149,10 @@ class Google_Service_BigQueryDataTransfer_Resource_ProjectsTransferConfigs exten
     return $this->call('patch', array($params), "Google_Service_BigQueryDataTransfer_TransferConfig");
   }
   /**
-   * Creates transfer runs for a time range [range_start_time, range_end_time].
-   * For each date - or whatever granularity the data source supports - in the
-   * range, one transfer run is created. Note that runs are created per UTC time
-   * in the time range. (transferConfigs.scheduleRuns)
+   * Creates transfer runs for a time range [start_time, end_time]. For each date
+   * - or whatever granularity the data source supports - in the range, one
+   * transfer run is created. Note that runs are created per UTC time in the time
+   * range. (transferConfigs.scheduleRuns)
    *
    * @param string $parent Transfer configuration name in the form:
    * `projects/{project_id}/transferConfigs/{config_id}`.

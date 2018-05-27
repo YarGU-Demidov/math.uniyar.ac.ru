@@ -1,6 +1,4 @@
-<?php
-
-namespace VojtaSvoboda\TwigExtensions\Tests;
+<?php namespace VojtaSvoboda\TwigExtensions\Tests;
 
 use App;
 use Carbon\Carbon;
@@ -19,7 +17,7 @@ class PluginTest extends PluginTestCase
 
         $this->app->setLocale('en');
 
-        $this->app->singleton('time_diff_translator', function($app) {
+        $this->app->singleton('time_diff_translator', function ($app) {
             $loader = $app->make('translation.loader');
             $locale = $app->config->get('app.locale');
             $translator = $app->make(TimeDiffTranslator::class, [$loader, $locale]);
@@ -221,6 +219,16 @@ class PluginTest extends PluginTestCase
 
         $twigTemplate = $twig->createTemplate($template);
         $this->assertEquals($twigTemplate->render([]), '   test   ');
+    }
+
+    public function testStrReplaceFunction()
+    {
+        $twig = $this->getTwig();
+
+        $template = "{{ 'test' | str_replace('test', 'tset') }}";
+
+        $twigTemplate = $twig->createTemplate($template);
+        $this->assertEquals($twigTemplate->render([]), 'tset');
     }
 
     public function testStripTagsFunction()

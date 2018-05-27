@@ -37,8 +37,11 @@ class Google_Service_Container_Cluster extends Google_Collection
   public $labelFingerprint;
   protected $legacyAbacType = 'Google_Service_Container_LegacyAbac';
   protected $legacyAbacDataType = '';
+  public $location;
   public $locations;
   public $loggingService;
+  protected $maintenancePolicyType = 'Google_Service_Container_MaintenancePolicy';
+  protected $maintenancePolicyDataType = '';
   protected $masterAuthType = 'Google_Service_Container_MasterAuth';
   protected $masterAuthDataType = '';
   protected $masterAuthorizedNetworksConfigType = 'Google_Service_Container_MasterAuthorizedNetworksConfig';
@@ -207,6 +210,14 @@ class Google_Service_Container_Cluster extends Google_Collection
   {
     return $this->legacyAbac;
   }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+  public function getLocation()
+  {
+    return $this->location;
+  }
   public function setLocations($locations)
   {
     $this->locations = $locations;
@@ -222,6 +233,20 @@ class Google_Service_Container_Cluster extends Google_Collection
   public function getLoggingService()
   {
     return $this->loggingService;
+  }
+  /**
+   * @param Google_Service_Container_MaintenancePolicy
+   */
+  public function setMaintenancePolicy(Google_Service_Container_MaintenancePolicy $maintenancePolicy)
+  {
+    $this->maintenancePolicy = $maintenancePolicy;
+  }
+  /**
+   * @return Google_Service_Container_MaintenancePolicy
+   */
+  public function getMaintenancePolicy()
+  {
+    return $this->maintenancePolicy;
   }
   /**
    * @param Google_Service_Container_MasterAuth

@@ -57,7 +57,6 @@ class Google_Service_YouTube extends Google_Service
   public $channels;
   public $commentThreads;
   public $comments;
-  public $fanFundingEvents;
   public $guideCategories;
   public $i18nLanguages;
   public $i18nRegions;
@@ -288,6 +287,10 @@ class Google_Service_YouTube extends Google_Service
               'path' => 'channelBanners/insert',
               'httpMethod' => 'POST',
               'parameters' => array(
+                'channelId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'onBehalfOfContentOwner' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -630,38 +633,6 @@ class Google_Service_YouTube extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                   'required' => true,
-                ),
-              ),
-            ),
-          )
-        )
-    );
-    $this->fanFundingEvents = new Google_Service_YouTube_Resource_FanFundingEvents(
-        $this,
-        $this->serviceName,
-        'fanFundingEvents',
-        array(
-          'methods' => array(
-            'list' => array(
-              'path' => 'fanFundingEvents',
-              'httpMethod' => 'GET',
-              'parameters' => array(
-                'part' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'hl' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'maxResults' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

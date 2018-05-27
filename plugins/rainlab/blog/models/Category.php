@@ -22,7 +22,7 @@ class Category extends Model
     public $rules = [
         'name' => 'required',
         'slug' => 'required|between:3,64|unique:rainlab_blog_categories',
-        'code' => 'unique:rainlab_blog_categories',
+        'code' => 'nullable|unique:rainlab_blog_categories',
     ];
 
     /**
@@ -258,6 +258,10 @@ class Category extends Model
 
     /**
      * Returns URL of a category page.
+     *
+     * @param $pageCode
+     * @param $category
+     * @param $theme
      */
     protected static function getCategoryPageUrl($pageCode, $category, $theme)
     {

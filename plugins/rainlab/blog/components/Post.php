@@ -1,5 +1,6 @@
 <?php namespace RainLab\Blog\Components;
 
+use BackendAuth;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\Blog\Models\Post as BlogPost;
@@ -53,6 +54,13 @@ class Post extends ComponentBase
         $this->post = $this->page['post'] = $this->loadPost();
     }
 
+    public function onRender()
+    {
+        if (empty($this->post)) {
+            $this->post = $this->page['post'] = $this->loadPost();
+        }
+    }
+
     protected function loadPost()
     {
         $slug = $this->property('slug');
@@ -63,7 +71,11 @@ class Post extends ComponentBase
             ? $post->transWhere('slug', $slug)
             : $post->where('slug', $slug);
 
-        $post = $post->isPublished()->first();
+        if (!$this->checkEditor()) {
+            $post = $post->isPublished();
+        }
+
+        $post = $post->first();
 
         /*
          * Add a "url" helper attribute for linking to each category
@@ -108,5 +120,11 @@ class Post extends ComponentBase
         });
 
         return $post;
+    }
+
+    protected function checkEditor()
+    {
+        $backendUser = BackendAuth::getUser();
+        return $backendUser && $backendUser->hasAccess('rainlab.blog.access_posts');
     }
 }

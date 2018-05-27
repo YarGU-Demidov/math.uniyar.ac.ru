@@ -22,6 +22,8 @@ class Google_Service_AndroidManagement_Device extends Google_Collection
   public $appliedPolicyName;
   public $appliedPolicyVersion;
   public $appliedState;
+  protected $deviceSettingsType = 'Google_Service_AndroidManagement_DeviceSettings';
+  protected $deviceSettingsDataType = '';
   protected $disabledReasonType = 'Google_Service_AndroidManagement_UserFacingMessage';
   protected $disabledReasonDataType = '';
   protected $displaysType = 'Google_Service_AndroidManagement_Display';
@@ -33,7 +35,6 @@ class Google_Service_AndroidManagement_Device extends Google_Collection
   protected $hardwareInfoDataType = '';
   protected $hardwareStatusSamplesType = 'Google_Service_AndroidManagement_HardwareStatus';
   protected $hardwareStatusSamplesDataType = 'array';
-  public $lastOfflineStateChangeTime;
   public $lastPolicyComplianceReportTime;
   public $lastPolicySyncTime;
   public $lastStatusReportTime;
@@ -87,6 +88,20 @@ class Google_Service_AndroidManagement_Device extends Google_Collection
   public function getAppliedState()
   {
     return $this->appliedState;
+  }
+  /**
+   * @param Google_Service_AndroidManagement_DeviceSettings
+   */
+  public function setDeviceSettings(Google_Service_AndroidManagement_DeviceSettings $deviceSettings)
+  {
+    $this->deviceSettings = $deviceSettings;
+  }
+  /**
+   * @return Google_Service_AndroidManagement_DeviceSettings
+   */
+  public function getDeviceSettings()
+  {
+    return $this->deviceSettings;
   }
   /**
    * @param Google_Service_AndroidManagement_UserFacingMessage
@@ -167,14 +182,6 @@ class Google_Service_AndroidManagement_Device extends Google_Collection
   public function getHardwareStatusSamples()
   {
     return $this->hardwareStatusSamples;
-  }
-  public function setLastOfflineStateChangeTime($lastOfflineStateChangeTime)
-  {
-    $this->lastOfflineStateChangeTime = $lastOfflineStateChangeTime;
-  }
-  public function getLastOfflineStateChangeTime()
-  {
-    return $this->lastOfflineStateChangeTime;
   }
   public function setLastPolicyComplianceReportTime($lastPolicyComplianceReportTime)
   {

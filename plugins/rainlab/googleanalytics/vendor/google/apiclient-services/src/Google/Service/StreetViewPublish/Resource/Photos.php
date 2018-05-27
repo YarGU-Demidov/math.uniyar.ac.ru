@@ -77,7 +77,12 @@ class Google_Service_StreetViewPublish_Resource_Photos extends Google_Service_Re
    * may have been failures for single photos in the batch. These failures will be
    * specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results.
    * See UpdatePhoto for specific failures that can occur per photo.
-   * (photos.batchUpdate)
+   *
+   * Only the fields specified in updateMask field are used. If `updateMask` is
+   * not present, the update applies to all fields.
+   *
+   * Note: To update Pose.altitude, Pose.latLngPair has to be filled as well.
+   * Otherwise, the request will fail. (photos.batchUpdate)
    *
    * @param Google_Service_StreetViewPublish_BatchUpdatePhotosRequest $postBody
    * @param array $optParams Optional parameters.
@@ -90,10 +95,19 @@ class Google_Service_StreetViewPublish_Resource_Photos extends Google_Service_Re
     return $this->call('batchUpdate', array($params), "Google_Service_StreetViewPublish_BatchUpdatePhotosResponse");
   }
   /**
-   * Lists all the Photos that belong to the user. (photos.listPhotos)
+   * Lists all the Photos that belong to the user.
+   *
+   * Note: Recently created photos that are still being indexed are not returned
+   * in the response. (photos.listPhotos)
    *
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string filter The filter expression. For example:
+   * `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+   *
+   * The only filter supported at the moment is `placeId`.
+   * @opt_param string pageToken The nextPageToken value returned from a previous
+   * ListPhotos request, if any.
    * @opt_param int pageSize The maximum number of photos to return. `pageSize`
    * must be non-negative. If `pageSize` is zero or is not provided, the default
    * page size of 100 will be used. The number of photos returned in the response
@@ -101,10 +115,6 @@ class Google_Service_StreetViewPublish_Resource_Photos extends Google_Service_Re
    * is less than `pageSize`.
    * @opt_param string view Specifies if a download URL for the photos bytes
    * should be returned in the Photos response.
-   * @opt_param string filter The filter expression. For example:
-   * `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-   * @opt_param string pageToken The nextPageToken value returned from a previous
-   * ListPhotos request, if any.
    * @return Google_Service_StreetViewPublish_ListPhotosResponse
    */
   public function listPhotos($optParams = array())

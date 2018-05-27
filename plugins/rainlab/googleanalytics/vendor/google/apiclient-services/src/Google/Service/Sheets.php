@@ -47,6 +47,7 @@ class Google_Service_Sheets extends Google_Service
       "https://www.googleapis.com/auth/spreadsheets.readonly";
 
   public $spreadsheets;
+  public $spreadsheets_developerMetadata;
   public $spreadsheets_sheets;
   public $spreadsheets_values;
   
@@ -92,14 +93,59 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'includeGridData' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
                 'ranges' => array(
                   'location' => 'query',
                   'type' => 'string',
                   'repeated' => true,
+                ),
+                'includeGridData' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+              ),
+            ),'getByDataFilter' => array(
+              'path' => 'v4/spreadsheets/{spreadsheetId}:getByDataFilter',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'spreadsheetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->spreadsheets_developerMetadata = new Google_Service_Sheets_Resource_SpreadsheetsDeveloperMetadata(
+        $this,
+        $this->serviceName,
+        'developerMetadata',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'spreadsheetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'metadataId' => array(
+                  'location' => 'path',
+                  'type' => 'integer',
+                  'required' => true,
+                ),
+              ),
+            ),'search' => array(
+              'path' => 'v4/spreadsheets/{spreadsheetId}/developerMetadata:search',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'spreadsheetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),
@@ -151,6 +197,10 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'includeValuesInResponse' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
                 'responseValueRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -167,13 +217,19 @@ class Google_Service_Sheets extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'includeValuesInResponse' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
               ),
             ),'batchClear' => array(
               'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchClear',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'spreadsheetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'batchClearByDataFilter' => array(
+              'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'spreadsheetId' => array(
@@ -191,15 +247,11 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'dateTimeRenderOption' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'valueRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'majorDimension' => array(
+                'dateTimeRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -208,9 +260,33 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'repeated' => true,
                 ),
+                'majorDimension' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'batchGetByDataFilter' => array(
+              'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'spreadsheetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
               ),
             ),'batchUpdate' => array(
               'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchUpdate',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'spreadsheetId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'batchUpdateByDataFilter' => array(
+              'path' => 'v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'spreadsheetId' => array(
@@ -248,7 +324,7 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'dateTimeRenderOption' => array(
+                'majorDimension' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -256,7 +332,7 @@ class Google_Service_Sheets extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'majorDimension' => array(
+                'dateTimeRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -275,14 +351,6 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'responseValueRenderOption' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'valueInputOption' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'responseDateTimeRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -290,6 +358,14 @@ class Google_Service_Sheets extends Google_Service
                 'includeValuesInResponse' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+                'responseValueRenderOption' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'valueInputOption' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

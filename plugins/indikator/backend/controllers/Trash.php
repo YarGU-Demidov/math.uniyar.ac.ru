@@ -4,7 +4,7 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use System\Classes\SettingsManager;
 use File;
-use DB;
+use Db;
 use Indikator\Backend\Models\Trash as Items;
 use Flash;
 use Lang;
@@ -13,7 +13,7 @@ use Redirect;
 class Trash extends Controller
 {
     public $implement = [
-        'Backend.Behaviors.ListController'
+        \Backend\Behaviors\ListController::class
     ];
 
     public $listConfig = 'config_list.yaml';
@@ -31,7 +31,7 @@ class Trash extends Controller
     public function onSearchItems()
     {
         // Unused database settings
-        $sql = DB::table('system_settings')->get();
+        $sql = Db::table('system_settings')->get()->all();
 
         foreach ($sql as $row) {
             $name = explode('_', $row->item);
@@ -144,6 +144,7 @@ class Trash extends Controller
             'modules/backend/formwidgets/richeditor/assets/vendor/redactor' => [2, 307615],
             // CMS
             'modules/cms/assets/less/css' => [2, 2993],
+            'modules/cms/widgets/mediamanager' => [2, 187801],
             // System
             'modules/system/assets/css/settings.css' => [1, 1655],
             'modules/system/assets/css/updates.css' => [1, 926],
@@ -205,6 +206,8 @@ class Trash extends Controller
             'plugins/indikator/news/models/posts/_statistics.htm' => [1, 84],
             'plugins/indikator/news/models/Statistics.php' => [1, 124],
             'plugins/indikator/news/models/statistics' => [2, 194],
+            'plugins/indikator/paste/models/code/_status.htm' => [1, 267],
+            'plugins/indikator/paste/models/text/_status.htm' => [1, 267],
             'plugins/indikator/plugins/models/frontend/_name.htm' => [1, 354],
             'plugins/martin/adminer/classes/adminer-en.php' => [1, 289371],
             'plugins/martin/adminer/classes/adminer-4.2.4-en.php' => [1, 289386],
@@ -312,7 +315,7 @@ class Trash extends Controller
 
                     // Database
                     else if ($item->type == 3) {
-                        DB::table('system_settings')->where('item', $item->path)->delete();
+                        Db::table('system_settings')->where('item', $item->path)->delete();
                     }
 
                     Items::whereId($objectId)->delete();
@@ -342,7 +345,7 @@ class Trash extends Controller
 
             // Database
             else if ($item->type == 3) {
-                DB::table('system_settings')->where('item', $item->path)->delete();
+                Db::table('system_settings')->where('item', $item->path)->delete();
             }
 
             Items::whereId($item->id)->delete();

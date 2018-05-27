@@ -23,6 +23,8 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $addChartDataType = '';
   protected $addConditionalFormatRuleType = 'Google_Service_Sheets_AddConditionalFormatRuleRequest';
   protected $addConditionalFormatRuleDataType = '';
+  protected $addDimensionGroupType = 'Google_Service_Sheets_AddDimensionGroupRequest';
+  protected $addDimensionGroupDataType = '';
   protected $addFilterViewType = 'Google_Service_Sheets_AddFilterViewRequest';
   protected $addFilterViewDataType = '';
   protected $addNamedRangeType = 'Google_Service_Sheets_AddNamedRangeRequest';
@@ -43,14 +45,20 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $clearBasicFilterDataType = '';
   protected $copyPasteType = 'Google_Service_Sheets_CopyPasteRequest';
   protected $copyPasteDataType = '';
+  protected $createDeveloperMetadataType = 'Google_Service_Sheets_CreateDeveloperMetadataRequest';
+  protected $createDeveloperMetadataDataType = '';
   protected $cutPasteType = 'Google_Service_Sheets_CutPasteRequest';
   protected $cutPasteDataType = '';
   protected $deleteBandingType = 'Google_Service_Sheets_DeleteBandingRequest';
   protected $deleteBandingDataType = '';
   protected $deleteConditionalFormatRuleType = 'Google_Service_Sheets_DeleteConditionalFormatRuleRequest';
   protected $deleteConditionalFormatRuleDataType = '';
+  protected $deleteDeveloperMetadataType = 'Google_Service_Sheets_DeleteDeveloperMetadataRequest';
+  protected $deleteDeveloperMetadataDataType = '';
   protected $deleteDimensionType = 'Google_Service_Sheets_DeleteDimensionRequest';
   protected $deleteDimensionDataType = '';
+  protected $deleteDimensionGroupType = 'Google_Service_Sheets_DeleteDimensionGroupRequest';
+  protected $deleteDimensionGroupDataType = '';
   protected $deleteEmbeddedObjectType = 'Google_Service_Sheets_DeleteEmbeddedObjectRequest';
   protected $deleteEmbeddedObjectDataType = '';
   protected $deleteFilterViewType = 'Google_Service_Sheets_DeleteFilterViewRequest';
@@ -103,6 +111,10 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $updateChartSpecDataType = '';
   protected $updateConditionalFormatRuleType = 'Google_Service_Sheets_UpdateConditionalFormatRuleRequest';
   protected $updateConditionalFormatRuleDataType = '';
+  protected $updateDeveloperMetadataType = 'Google_Service_Sheets_UpdateDeveloperMetadataRequest';
+  protected $updateDeveloperMetadataDataType = '';
+  protected $updateDimensionGroupType = 'Google_Service_Sheets_UpdateDimensionGroupRequest';
+  protected $updateDimensionGroupDataType = '';
   protected $updateDimensionPropertiesType = 'Google_Service_Sheets_UpdateDimensionPropertiesRequest';
   protected $updateDimensionPropertiesDataType = '';
   protected $updateEmbeddedObjectPositionType = 'Google_Service_Sheets_UpdateEmbeddedObjectPositionRequest';
@@ -159,6 +171,20 @@ class Google_Service_Sheets_Request extends Google_Model
   public function getAddConditionalFormatRule()
   {
     return $this->addConditionalFormatRule;
+  }
+  /**
+   * @param Google_Service_Sheets_AddDimensionGroupRequest
+   */
+  public function setAddDimensionGroup(Google_Service_Sheets_AddDimensionGroupRequest $addDimensionGroup)
+  {
+    $this->addDimensionGroup = $addDimensionGroup;
+  }
+  /**
+   * @return Google_Service_Sheets_AddDimensionGroupRequest
+   */
+  public function getAddDimensionGroup()
+  {
+    return $this->addDimensionGroup;
   }
   /**
    * @param Google_Service_Sheets_AddFilterViewRequest
@@ -301,6 +327,20 @@ class Google_Service_Sheets_Request extends Google_Model
     return $this->copyPaste;
   }
   /**
+   * @param Google_Service_Sheets_CreateDeveloperMetadataRequest
+   */
+  public function setCreateDeveloperMetadata(Google_Service_Sheets_CreateDeveloperMetadataRequest $createDeveloperMetadata)
+  {
+    $this->createDeveloperMetadata = $createDeveloperMetadata;
+  }
+  /**
+   * @return Google_Service_Sheets_CreateDeveloperMetadataRequest
+   */
+  public function getCreateDeveloperMetadata()
+  {
+    return $this->createDeveloperMetadata;
+  }
+  /**
    * @param Google_Service_Sheets_CutPasteRequest
    */
   public function setCutPaste(Google_Service_Sheets_CutPasteRequest $cutPaste)
@@ -343,6 +383,20 @@ class Google_Service_Sheets_Request extends Google_Model
     return $this->deleteConditionalFormatRule;
   }
   /**
+   * @param Google_Service_Sheets_DeleteDeveloperMetadataRequest
+   */
+  public function setDeleteDeveloperMetadata(Google_Service_Sheets_DeleteDeveloperMetadataRequest $deleteDeveloperMetadata)
+  {
+    $this->deleteDeveloperMetadata = $deleteDeveloperMetadata;
+  }
+  /**
+   * @return Google_Service_Sheets_DeleteDeveloperMetadataRequest
+   */
+  public function getDeleteDeveloperMetadata()
+  {
+    return $this->deleteDeveloperMetadata;
+  }
+  /**
    * @param Google_Service_Sheets_DeleteDimensionRequest
    */
   public function setDeleteDimension(Google_Service_Sheets_DeleteDimensionRequest $deleteDimension)
@@ -355,6 +409,20 @@ class Google_Service_Sheets_Request extends Google_Model
   public function getDeleteDimension()
   {
     return $this->deleteDimension;
+  }
+  /**
+   * @param Google_Service_Sheets_DeleteDimensionGroupRequest
+   */
+  public function setDeleteDimensionGroup(Google_Service_Sheets_DeleteDimensionGroupRequest $deleteDimensionGroup)
+  {
+    $this->deleteDimensionGroup = $deleteDimensionGroup;
+  }
+  /**
+   * @return Google_Service_Sheets_DeleteDimensionGroupRequest
+   */
+  public function getDeleteDimensionGroup()
+  {
+    return $this->deleteDimensionGroup;
   }
   /**
    * @param Google_Service_Sheets_DeleteEmbeddedObjectRequest
@@ -719,6 +787,34 @@ class Google_Service_Sheets_Request extends Google_Model
   public function getUpdateConditionalFormatRule()
   {
     return $this->updateConditionalFormatRule;
+  }
+  /**
+   * @param Google_Service_Sheets_UpdateDeveloperMetadataRequest
+   */
+  public function setUpdateDeveloperMetadata(Google_Service_Sheets_UpdateDeveloperMetadataRequest $updateDeveloperMetadata)
+  {
+    $this->updateDeveloperMetadata = $updateDeveloperMetadata;
+  }
+  /**
+   * @return Google_Service_Sheets_UpdateDeveloperMetadataRequest
+   */
+  public function getUpdateDeveloperMetadata()
+  {
+    return $this->updateDeveloperMetadata;
+  }
+  /**
+   * @param Google_Service_Sheets_UpdateDimensionGroupRequest
+   */
+  public function setUpdateDimensionGroup(Google_Service_Sheets_UpdateDimensionGroupRequest $updateDimensionGroup)
+  {
+    $this->updateDimensionGroup = $updateDimensionGroup;
+  }
+  /**
+   * @return Google_Service_Sheets_UpdateDimensionGroupRequest
+   */
+  public function getUpdateDimensionGroup()
+  {
+    return $this->updateDimensionGroup;
   }
   /**
    * @param Google_Service_Sheets_UpdateDimensionPropertiesRequest

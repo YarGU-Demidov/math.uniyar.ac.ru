@@ -33,6 +33,7 @@ class Google_Service_Compute_Image extends Google_Collection
   public $kind;
   public $labelFingerprint;
   public $labels;
+  public $licenseCodes;
   public $licenses;
   public $name;
   protected $rawDiskType = 'Google_Service_Compute_ImageRawDisk';
@@ -42,6 +43,14 @@ class Google_Service_Compute_Image extends Google_Collection
   protected $sourceDiskEncryptionKeyType = 'Google_Service_Compute_CustomerEncryptionKey';
   protected $sourceDiskEncryptionKeyDataType = '';
   public $sourceDiskId;
+  public $sourceImage;
+  protected $sourceImageEncryptionKeyType = 'Google_Service_Compute_CustomerEncryptionKey';
+  protected $sourceImageEncryptionKeyDataType = '';
+  public $sourceImageId;
+  public $sourceSnapshot;
+  protected $sourceSnapshotEncryptionKeyType = 'Google_Service_Compute_CustomerEncryptionKey';
+  protected $sourceSnapshotEncryptionKeyDataType = '';
+  public $sourceSnapshotId;
   public $sourceType;
   public $status;
 
@@ -159,6 +168,14 @@ class Google_Service_Compute_Image extends Google_Collection
   {
     return $this->labels;
   }
+  public function setLicenseCodes($licenseCodes)
+  {
+    $this->licenseCodes = $licenseCodes;
+  }
+  public function getLicenseCodes()
+  {
+    return $this->licenseCodes;
+  }
   public function setLicenses($licenses)
   {
     $this->licenses = $licenses;
@@ -226,6 +243,66 @@ class Google_Service_Compute_Image extends Google_Collection
   public function getSourceDiskId()
   {
     return $this->sourceDiskId;
+  }
+  public function setSourceImage($sourceImage)
+  {
+    $this->sourceImage = $sourceImage;
+  }
+  public function getSourceImage()
+  {
+    return $this->sourceImage;
+  }
+  /**
+   * @param Google_Service_Compute_CustomerEncryptionKey
+   */
+  public function setSourceImageEncryptionKey(Google_Service_Compute_CustomerEncryptionKey $sourceImageEncryptionKey)
+  {
+    $this->sourceImageEncryptionKey = $sourceImageEncryptionKey;
+  }
+  /**
+   * @return Google_Service_Compute_CustomerEncryptionKey
+   */
+  public function getSourceImageEncryptionKey()
+  {
+    return $this->sourceImageEncryptionKey;
+  }
+  public function setSourceImageId($sourceImageId)
+  {
+    $this->sourceImageId = $sourceImageId;
+  }
+  public function getSourceImageId()
+  {
+    return $this->sourceImageId;
+  }
+  public function setSourceSnapshot($sourceSnapshot)
+  {
+    $this->sourceSnapshot = $sourceSnapshot;
+  }
+  public function getSourceSnapshot()
+  {
+    return $this->sourceSnapshot;
+  }
+  /**
+   * @param Google_Service_Compute_CustomerEncryptionKey
+   */
+  public function setSourceSnapshotEncryptionKey(Google_Service_Compute_CustomerEncryptionKey $sourceSnapshotEncryptionKey)
+  {
+    $this->sourceSnapshotEncryptionKey = $sourceSnapshotEncryptionKey;
+  }
+  /**
+   * @return Google_Service_Compute_CustomerEncryptionKey
+   */
+  public function getSourceSnapshotEncryptionKey()
+  {
+    return $this->sourceSnapshotEncryptionKey;
+  }
+  public function setSourceSnapshotId($sourceSnapshotId)
+  {
+    $this->sourceSnapshotId = $sourceSnapshotId;
+  }
+  public function getSourceSnapshotId()
+  {
+    return $this->sourceSnapshotId;
   }
   public function setSourceType($sourceType)
   {

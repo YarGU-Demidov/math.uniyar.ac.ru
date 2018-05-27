@@ -93,11 +93,12 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    * Filters are case-sensitive and have the following syntax:field = value AND
    * field = value ...where field is status.state or labels.[KEY], and [KEY] is a
    * label key. value can be * to match all values. status.state can be either
-   * ACTIVE or INACTIVE. Only the logical AND operator is supported; space-
+   * ACTIVE or NON_ACTIVE. Only the logical AND operator is supported; space-
    * separated items are treated as having an implicit AND operator.Example
    * filter:status.state = ACTIVE AND labels.env = staging AND labels.starred = *
    * @opt_param string jobStateMatcher Optional. Specifies enumerated categories
-   * of jobs to list (default = match ALL jobs).
+   * of jobs to list. (default = match ALL jobs).If filter is provided,
+   * jobStateMatcher will be ignored.
    * @opt_param string pageToken Optional. The page token, returned by a previous
    * call, to request the next page of results.
    * @opt_param int pageSize Optional. The number of results to return in each

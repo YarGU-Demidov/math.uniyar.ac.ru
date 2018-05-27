@@ -88,7 +88,8 @@ class Plugin extends PluginBase
         return [
             'indikator.backend.trash' => [
                 'tab'   => 'indikator.backend::lang.plugin.name',
-                'label' => 'indikator.backend::lang.trash.permission'
+                'label' => 'indikator.backend::lang.trash.permission',
+                'roles' => ['developer']
             ]
         ];
     }
@@ -177,9 +178,7 @@ class Plugin extends PluginBase
                 /*
                  * User settings
                  */
-                $preferenceModel = class_exists('Backend\Models\UserPreference')
-                    ? Backend\Models\UserPreference::forUser()
-                    : Backend\Models\UserPreferences::forUser();
+                $preferenceModel = Backend\Models\UserPreference::forUser();
                 $preferences = $preferenceModel->get('backend::backend.preferences');
 
                 /*
