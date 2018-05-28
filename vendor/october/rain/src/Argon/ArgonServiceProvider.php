@@ -1,8 +1,6 @@
 <?php namespace October\Rain\Argon;
-
 use October\Rain\Argon\Argon;
 use October\Rain\Support\ServiceProvider;
-
 class ArgonServiceProvider extends ServiceProvider
 {
     /**
@@ -11,7 +9,6 @@ class ArgonServiceProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = false;
-
     /**
      * Bootstrap the application events.
      *
@@ -20,14 +17,11 @@ class ArgonServiceProvider extends ServiceProvider
     public function boot()
     {
         $locale = $this->app['translator']->getLocale();
-
         $this->setArgonLocale($locale);
-
         $this->app['events']->listen('locale.changed', function($locale) {
             $this->setArgonLocale($locale);
         });
     }
-
     /**
      * Sets the locale using the correct load order.
      */
@@ -36,7 +30,6 @@ class ArgonServiceProvider extends ServiceProvider
         Argon::setFallbackLocale($this->getFallbackLocale($locale));
         Argon::setLocale($locale);
     }
-
     /**
      * Split the locale and use it as the fallback.
      */
@@ -49,10 +42,8 @@ class ArgonServiceProvider extends ServiceProvider
                 return $target;
             }
         }
-
         return $this->app['config']->get('app.fallback_locale');
     }
-
     /**
      * Register the service provider.
      *
